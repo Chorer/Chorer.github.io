@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[jQuery AJAX load()方法中代码执行顺序的问题]]></title>
+    <url>%2F2019%2F02%2F10%2FjQuery%20AJAX%20load()%E6%96%B9%E6%B3%95%E4%B8%AD%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[问题来源于菜鸟教程介绍jq load() 方法时用的一个实例：js：12345678$(&quot;button&quot;).click(function()&#123; $(&quot;#div1&quot;).load(&quot;demo_test.txt&quot;,function(responseTxt,statusTxt,xhr)&#123; if(statusTxt==&quot;success&quot;) alert(&quot;外部内容加载成功!&quot;); if(statusTxt==&quot;error&quot;) alert(&quot;Error: &quot;+xhr.status+&quot;: &quot;+xhr.statusText); &#125;);&#125;); html：12&lt;div id=&quot;div1&quot;&gt;&lt;h2&gt;使用 jQuery AJAX 修改该文本&lt;/h2&gt;&lt;/div&gt;&lt;button&gt;获取外部内容&lt;/button&gt; 这里作为load方法参数的函数是一个回调函数。什么是回调函数呢？我们先来看看回调的英文定义：A callback is a function that is passed as an argument to another function and is executed after its parent function has completed。字面上的理解，回调函数就是一个参数，将这个函数作为参数传到另一个函数里面，当那个函数执行完之后，再执行传进去的这个函数。这个过程就叫做回调。那么根据这个解释，这段代码应该是先执行load(“demo_test.txt”) 加载外部内容，之后再执行回调函数弹出alert。但是实际运行后发现和预想的不一样：从结果来看，是先弹出alert再改变文本内容。那么，为什么会这样呢？难道上面的说法有误？为了进一步验证，修改代码如下： $(&quot;#div1&quot;).load(&quot;demo_test.txt&quot;,function(responseTxt,statusTxt,xhr){ alert(responseTxt); if(statusTxt==&quot;success&quot;){ 运行：很明显文本内容已经改变，说明前面关于回调函数最后执行的说法是没问题的。接着猜想，之所以先弹出alert再改变文本内容，可能是因为必须等回调函数执行完后才能把文本渲染到浏览器上。为了进一步验证，修改代码如下： 12345$(&quot;#div1&quot;).load(&quot;demo_test.txt&quot;,function(responseTxt,statusTxt,xhr)&#123; if(statusTxt==&quot;success&quot;)&#123; debugger； console.log(&quot;1&quot;); &#125; 运行：控制台中没有打印出1，且程序中断，说明此时回调函数还在执行当中，但是文本内容却已经改变了。这说明上面的猜想错误—–即文本渲染到浏览器上不需要等到回调函数执行结束。但是，那只是一般情况！！问题就在于，alert是可以阻塞浏览器的渲染工作的！ 重新运行最初的代码，可以看到还是先弹出alert，文本没变，但是这时候点开控制台的elements，可以看到图中红框显示这时候文本的内容其实已经改变了。虽然文本内容看上去不变——但是实际情况是文本内容已经改变了，也就是load()方法已经生效了，只是alert阻塞了浏览器将它渲染出来。在这里还要注意，alert可以阻塞浏览器的渲染，而debugger是没办法的。]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>-JavaScript -AJAX</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[我的第一篇博客]]></title>
     <url>%2F2019%2F02%2F09%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-02-10T12:09:51.562Z</updated>
+  <updated>2019-02-10T12:23:36.425Z</updated>
   <id>https://chorer.github.io/</id>
   
   <author>
@@ -21,17 +21,16 @@
     <link href="https://chorer.github.io/2019/02/10/null%E5%92%8Cundefined/"/>
     <id>https://chorer.github.io/2019/02/10/null和undefined/</id>
     <published>2019-02-10T12:08:34.756Z</published>
-    <updated>2019-02-10T12:09:51.562Z</updated>
+    <updated>2019-02-10T12:23:36.425Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;一-undefined在变量声明中的体现：&quot;&gt;&lt;a href=&quot;#一-undefined在变量声明中的体现：&quot; class=&quot;headerlink&quot; title=&quot;一. undefined在变量声明中的体现：&quot;&gt;&lt;/a&gt;一.
-        
-      
+      &lt;h2 id=&quot;一-undefined在变量声明中的体现：&quot;&gt;&lt;a href=&quot;#一-undefined在变量声明中的体现：&quot; class=&quot;headerlink&quot; title=&quot;一. undefined在变量声明中的体现：&quot;&gt;&lt;/a&gt;一. undefined在变量声明中的体现：&lt;/h2&gt;&lt;p&gt;1）声明了、但是没有初始化的变量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var aa;
+alert(aa);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;浏览器会弹出窗口显示 &lt;code&gt;undefined&lt;/code&gt;。因为对于使用了 &lt;code&gt;var&lt;/code&gt; 声明但没有进行初始化定义的变量, 其值默认为 &lt;code&gt;undefined&lt;/code&gt;.&lt;br&gt;2） 未声明的变量(1)：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;alert(aa);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;浏览器不会弹出任何东西. 因为 aa 是没有声明的变量。打开 chrome 浏览器的控制台会看到报错如下：&lt;br&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20190210200002551.png&quot; alt=&quot;在这里插入图片描述&quot;&gt;&lt;/p&gt;
     
     </summary>
     

@@ -40,7 +40,9 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
 
 
 
@@ -48,7 +50,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
@@ -79,16 +83,16 @@
 
 
 
-<meta name="description" content="个人博客网站">
+<meta name="description" content="个人博客网站，主要涉及前端知识共享，个人心得体会">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Chor">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Chor">
-<meta property="og:description" content="个人博客网站">
+<meta property="og:description" content="个人博客网站，主要涉及前端知识共享，个人心得体会">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chor">
-<meta name="twitter:description" content="个人博客网站">
+<meta name="twitter:description" content="个人博客网站，主要涉及前端知识共享，个人心得体会">
 
 
 
@@ -371,6 +375,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  728 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -388,19 +423,16 @@
 
       
         
-          
-            <p>问题来源于菜鸟教程介绍jq load() 方法时用的一个实例：<br><strong>js：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;button&quot;).click(function()&#123;</span><br><span class="line">  $(&quot;#div1&quot;).load(&quot;demo_test.txt&quot;,function(responseTxt,statusTxt,xhr)&#123;</span><br><span class="line">    if(statusTxt==&quot;success&quot;)</span><br><span class="line">      alert(&quot;外部内容加载成功!&quot;);</span><br><span class="line">    if(statusTxt==&quot;error&quot;)</span><br><span class="line">      alert(&quot;Error: &quot;+xhr.status+&quot;: &quot;+xhr.statusText);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+          <p>问题来源于菜鸟教程介绍jq load() 方法时用的一个实例：<br><strong>js：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;button&quot;).click(function()&#123;</span><br><span class="line">  $(&quot;#div1&quot;).load(&quot;demo_test.txt&quot;,function(responseTxt,statusTxt,xhr)&#123;</span><br><span class="line">    if(statusTxt==&quot;success&quot;)</span><br><span class="line">      alert(&quot;外部内容加载成功!&quot;);</span><br><span class="line">    if(statusTxt==&quot;error&quot;)</span><br><span class="line">      alert(&quot;Error: &quot;+xhr.status+&quot;: &quot;+xhr.statusText);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <p><strong>html：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;div1&quot;&gt;&lt;h2&gt;使用 jQuery AJAX 修改该文本&lt;/h2&gt;&lt;/div&gt;</span><br><span class="line">&lt;button&gt;获取外部内容&lt;/button&gt;</span><br></pre></td></tr></table></figure></p>
-<p>这里作为load方法参数的函数是一个回调函数。什么是回调函数呢？我们先来看看回调的英文定义：<br>A callback is a function that is passed as an argument to another function and is executed after its parent function has completed。字面上的理解，回调函数就是一个参数，将这个函数作为参数传到另一个函数里面，当那个函数执行完之后，再执行传进去的这个函数。这个过程就叫做回调。那么根据这个解释，这段代码应该是先执行load(“demo_test.txt”) 加载外部内容，之后再执行回调函数弹出alert。但是实际运行后发现和预想的不一样：<br><img src="https://img-blog.csdnimg.cn/20190127192754349.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Nob3Jlcg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190127192811728.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Nob3Jlcg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>从结果来看，是先弹出alert再改变文本内容。那么，为什么会这样呢？难道上面的说法有误？为了进一步验证，修改代码如下：</p>
-<pre><code>$(&quot;#div1&quot;).load(&quot;demo_test.txt&quot;,function(responseTxt,statusTxt,xhr){
-alert(responseTxt);
-if(statusTxt==&quot;success&quot;){
-</code></pre><p> 运行：<br><img src="https://img-blog.csdnimg.cn/20190127193622484.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Nob3Jlcg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>很明显文本内容已经改变，说明前面关于回调函数最后执行的说法是没问题的。接着猜想，之所以先弹出alert再改变文本内容，可能是因为必须等回调函数执行完后才能把文本渲染到浏览器上。<br>为了进一步验证，修改代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#div1&quot;).load(&quot;demo_test.txt&quot;,function(responseTxt,statusTxt,xhr)&#123;</span><br><span class="line">    if(statusTxt==&quot;success&quot;)&#123;</span><br><span class="line">	  	debugger；</span><br><span class="line">   		console.log(&quot;1&quot;);</span><br><span class="line">	  &#125;</span><br></pre></td></tr></table></figure>
-<p>运行：<br><img src="https://img-blog.csdnimg.cn/20190127194652630.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Nob3Jlcg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>控制台中没有打印出1，且程序中断，说明此时回调函数还在执行当中，但是文本内容却已经改变了。这说明上面的猜想错误—–即文本渲染到浏览器上不需要等到回调函数执行结束。<br>但是，那只是一般情况！！问题就在于，<strong>alert是可以阻塞浏览器的渲染工作的！</strong></p>
-<p>重新运行最初的代码，可以看到还是先弹出alert，文本没变，但是这时候点开控制台的elements，可以看到图中红框显示这时候文本的内容其实已经改变了。<br><img src="https://img-blog.csdnimg.cn/20190127223004922.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Nob3Jlcg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>虽然文本内容看上去不变——但是实际情况是文本内容已经改变了，也就是load()方法已经生效了，只是alert阻塞了浏览器将它渲染出来。<br>在这里还要注意，alert可以阻塞浏览器的渲染，而debugger是没办法的。</p>
-
-          
+<p>这里作为load方法参数的函数是一个回调函数。什么是回调函数呢？我们先来看看回调的英文定义：</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/10/jQuery AJAX load()方法中代码执行顺序的问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -524,6 +556,37 @@ if(statusTxt==&quot;success&quot;){
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  73 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -542,17 +605,24 @@ if(statusTxt==&quot;success&quot;){
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new "My New Post"
+More info: Writing
+Run server1$ hexo server
+More info: Server
+Generate static files1$ hexo generate
+More info: Generating
+Deploy to remote sites1$ hexo deploy
+More info: Deployment
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/09/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -624,7 +694,7 @@ if(statusTxt==&quot;success&quot;){
               <img class="site-author-image" itemprop="image" src="/images/cat.png" alt="Chor">
             
               <p class="site-author-name" itemprop="name">Chor</p>
-              <p class="site-description motion-element" itemprop="description">个人博客网站</p>
+              <p class="site-description motion-element" itemprop="description">个人博客网站，主要涉及前端知识共享，个人心得体会</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -680,6 +750,36 @@ if(statusTxt==&quot;success&quot;){
 
           
           
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/" title="博客园" target="_blank">博客园</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.csdn.net/" title="CSDN" target="_blank">CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.douban.com/" title="豆瓣" target="_blank">豆瓣</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
 
           
 
@@ -712,6 +812,15 @@ if(statusTxt==&quot;success&quot;){
   <span class="author" itemprop="copyrightHolder">Chor</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">801</span>
+  
 </div>
 
 
@@ -740,6 +849,26 @@ if(statusTxt==&quot;success&quot;){
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
 
 
 
@@ -776,6 +905,8 @@ if(statusTxt==&quot;success&quot;){
   
 
 
+  
+
 
 
 
@@ -788,32 +919,37 @@ if(statusTxt==&quot;success&quot;){
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
   
 
 
@@ -1216,5 +1352,6 @@ if(statusTxt==&quot;success&quot;){
 
   
 
+  undefined
 <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-02-10T10:18:45.954Z</updated>
+  <updated>2019-02-10T12:09:51.562Z</updated>
   <id>https://chorer.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【数据类型】null和undefined</title>
+    <link href="https://chorer.github.io/2019/02/10/null%E5%92%8Cundefined/"/>
+    <id>https://chorer.github.io/2019/02/10/null和undefined/</id>
+    <published>2019-02-10T12:08:34.756Z</published>
+    <updated>2019-02-10T12:09:51.562Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一-undefined在变量声明中的体现：&quot;&gt;&lt;a href=&quot;#一-undefined在变量声明中的体现：&quot; class=&quot;headerlink&quot; title=&quot;一. undefined在变量声明中的体现：&quot;&gt;&lt;/a&gt;一.
+        
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="https://chorer.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="https://chorer.github.io/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://chorer.github.io/tags/JavaScript/"/>
+    
+      <category term="数据类型" scheme="https://chorer.github.io/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo+Github pages部署个人博客网站的感想</title>

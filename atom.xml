@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-10T05:48:28.674Z</updated>
+  <updated>2019-02-10T06:10:35.752Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/02/10/jQuery%20AJAX%20load()%E6%96%B9%E6%B3%95%E4%B8%AD%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>http://yoursite.com/2019/02/10/jQuery AJAX load()方法中代码执行顺序的问题/</id>
     <published>2019-02-09T17:10:01.182Z</published>
-    <updated>2019-02-10T05:48:28.674Z</updated>
+    <updated>2019-02-10T06:10:35.752Z</updated>
     
     <summary type="html">
     
@@ -31,12 +31,16 @@
     
     </summary>
     
-      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
     
     
       <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
     
       <category term="AJAX" scheme="http://yoursite.com/tags/AJAX/"/>
+    
+      <category term="浏览器渲染" scheme="http://yoursite.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93/"/>
     
   </entry>
   

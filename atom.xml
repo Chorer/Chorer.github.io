@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2019-02-10T09:06:58.446Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="https://chorer.github.io/"/>
+  <updated>2019-02-10T10:18:45.954Z</updated>
+  <id>https://chorer.github.io/</id>
   
   <author>
     <name>Chor</name>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Hexo+Github pages部署个人博客网站的感想</title>
-    <link href="http://yoursite.com/2019/02/10/hexo+github%20pages%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E7%9A%84%E6%84%9F%E6%83%B3/"/>
-    <id>http://yoursite.com/2019/02/10/hexo+github pages部署个人博客网站的感想/</id>
+    <link href="https://chorer.github.io/2019/02/10/hexo+github%20pages%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E7%9A%84%E6%84%9F%E6%83%B3/"/>
+    <id>https://chorer.github.io/2019/02/10/hexo+github pages部署个人博客网站的感想/</id>
     <published>2019-02-10T09:02:40.504Z</published>
-    <updated>2019-02-10T09:06:58.446Z</updated>
+    <updated>2019-02-10T10:18:45.954Z</updated>
     
     <summary type="html">
     
@@ -30,23 +30,23 @@
     
     </summary>
     
-      <category term="心得和感想" scheme="http://yoursite.com/categories/%E5%BF%83%E5%BE%97%E5%92%8C%E6%84%9F%E6%83%B3/"/>
+      <category term="心得和感想" scheme="https://chorer.github.io/categories/%E5%BF%83%E5%BE%97%E5%92%8C%E6%84%9F%E6%83%B3/"/>
     
     
-      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+      <category term="博客" scheme="https://chorer.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
-      <category term="网站搭建" scheme="http://yoursite.com/tags/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"/>
+      <category term="网站搭建" scheme="https://chorer.github.io/tags/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"/>
     
-      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
+      <category term="Github" scheme="https://chorer.github.io/tags/Github/"/>
     
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+      <category term="Hexo" scheme="https://chorer.github.io/tags/Hexo/"/>
     
   </entry>
   
   <entry>
     <title>jQuery AJAX load()方法中代码执行顺序的问题</title>
-    <link href="http://yoursite.com/2019/02/10/jQuery%20AJAX%20load()%E6%96%B9%E6%B3%95%E4%B8%AD%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2019/02/10/jQuery AJAX load()方法中代码执行顺序的问题/</id>
+    <link href="https://chorer.github.io/2019/02/10/jQuery%20AJAX%20load()%E6%96%B9%E6%B3%95%E4%B8%AD%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://chorer.github.io/2019/02/10/jQuery AJAX load()方法中代码执行顺序的问题/</id>
     <published>2019-02-09T17:10:01.182Z</published>
     <updated>2019-02-10T06:10:35.752Z</updated>
     
@@ -58,16 +58,16 @@
     
     </summary>
     
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://chorer.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="JavaScript" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
+      <category term="JavaScript" scheme="https://chorer.github.io/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
     
     
-      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+      <category term="JavaScript" scheme="https://chorer.github.io/tags/JavaScript/"/>
     
-      <category term="AJAX" scheme="http://yoursite.com/tags/AJAX/"/>
+      <category term="AJAX" scheme="https://chorer.github.io/tags/AJAX/"/>
     
-      <category term="浏览器渲染" scheme="http://yoursite.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93/"/>
+      <category term="浏览器渲染" scheme="https://chorer.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93/"/>
     
   </entry>
   

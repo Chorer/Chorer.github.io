@@ -57,13 +57,13 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/icon.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/cat.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/cat.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/cat.png?v=5.1.4">
 
 
 
@@ -87,13 +87,13 @@
 <meta name="keywords" content="博客,网站搭建,Github,Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo+Github pages部署个人博客网站的感想">
-<meta property="og:url" content="http://yoursite.com/2019/02/10/hexo+github pages部署个人博客网站的感想/index.html">
+<meta property="og:url" content="https://chorer.github.io/2019/02/10/hexo+github pages部署个人博客网站的感想/index.html">
 <meta property="og:site_name" content="Chor">
 <meta property="og:description" content="题外话：之前我习惯用印象笔记进行知识的剪藏和整理，但是印象笔记本身带给我一种相对封闭的感觉，更像是比较私人的产品；而博客则相反，它更多是面向大众的、开放的，有利于个人经验的输出和知识的共享，所以拥有自己的博客非常有必要。拿博客园和CSDN来说，这两者虽然可以满足写博客的需求，但是自定义程度不够高，缺少一些个性tag。既然如此，为什么我们不自己搭建一个个人博客网站呢？ 用hexo+github pa">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190210155541502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Nob3Jlcg==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190210161138691.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Nob3Jlcg==,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-02-10T09:06:58.446Z">
+<meta property="og:updated_time" content="2019-02-10T10:18:45.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github pages部署个人博客网站的感想">
 <meta name="twitter:description" content="题外话：之前我习惯用印象笔记进行知识的剪藏和整理，但是印象笔记本身带给我一种相对封闭的感觉，更像是比较私人的产品；而博客则相反，它更多是面向大众的、开放的，有利于个人经验的输出和知识的共享，所以拥有自己的博客非常有必要。拿博客园和CSDN来说，这两者虽然可以满足写博客的需求，但是自定义程度不够高，缺少一些个性tag。既然如此，为什么我们不自己搭建一个个人博客网站呢？ 用hexo+github pa">
@@ -107,7 +107,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/10/hexo+github pages部署个人博客网站的感想/">
+  <link rel="canonical" href="https://chorer.github.io/2019/02/10/hexo+github pages部署个人博客网站的感想/">
 
 
 
@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/10/hexo+github pages部署个人博客网站的感想/">
+    <link itemprop="mainEntityOfPage" href="https://chorer.github.io/2019/02/10/hexo+github pages部署个人博客网站的感想/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chor">
@@ -446,13 +446,11 @@
 <p>用hexo+github pages 搭建个人博客网站是极其方便的，不需要购买域名和服务器，只需要按部就班操作，就可以在短时间内成功拥有自己的一个网站。我自己大概是花了两三个小时搞定，主要是因为对git bash的使用不够熟悉，因此走了一些弯路。实际上动作快的话半个小时就可以搞定。下面是对部署过程的大概介绍，以及<strong>必须注意的事项</strong>（划重点，也就是所谓的“坑”）。由于本文参考了大量博客，所以在文末我会列出原文链接。</p>
 <a id="more"></a>
 <h2 id="一-Github，Github-pages-，Hexo"><a href="#一-Github，Github-pages-，Hexo" class="headerlink" title="一.Github，Github pages ，Hexo"></a>一.Github，Github pages ，Hexo</h2><p>首先介绍一下这三个东西，有大概的了解、知道是什么东西就可以。GitHub是一个面向开源及私有软件项目的托管平台，而GIthub Pages则是github的一项功能，可以放置网页文件到指定文件夹，然后给你一个专属域名用于展示一些项目，现在大多用来开发和制作个人博客网站。它的好处在于域名和服务器都是免费提供的，并且没有网站数量的限制。而Hexo 是一个快速、简洁且高效的博客框架，它使用Markdown解析文章，在几秒内，就可以利用靓丽的主题生成静态网页。（关于Hexo的详细介绍，请看官方文档 <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a> ，这里就不展开了）。因此，可以说github和hexo是绝配。接下来，开始我们的工作。</p>
-<h2 id="二-环境和必要准备"><a href="#二-环境和必要准备" class="headerlink" title="二. 环境和必要准备"></a>二. 环境和必要准备</h2><p>我个人的环境：win10，64bit<br>必要准备：你需要<br><strong>（1）</strong>github账号<strong>** ：前往<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a> 官网注册就好
-</strong>（2）<strong>git 2.20.1**</strong>  ： 即最新版本的git，前往<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a> 官网下载并安装。安装完后前往git文件夹下打开git bash，运行以下命令：</p>
+<h2 id="二-环境和必要准备"><a href="#二-环境和必要准备" class="headerlink" title="二. 环境和必要准备"></a>二. 环境和必要准备</h2><p>我个人的环境：win10，64bit<br>必要准备：你需要<br><strong>（1）github账号</strong> ：前往<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a> 官网注册就好<br><strong>（2）git 2.20.1</strong> ： 即最新版本的git，前往<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a> 官网下载并安装。安装完后前往git文件夹下打开git bash，运行以下命令：</p>
 <pre><code>git config –global user.name “username” 
 git config –global user.email “your mail” 
 </code></pre><p>注：将username替换为自己的github账号名，将your mail替换为自己注册github时绑定的邮箱。这一步非常重要，当时部署的时候我因为遗漏了这一步，导致后面报错.</p>
-<p><strong>（3）</strong>node.js<strong>**  ： 前往 <a href="https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi" target="_blank" rel="noopener">https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi</a> 下载并安装。<br>这两个的安装比较简单，一路next就好，不过我推荐还是修改一下路径，尽量放在自己可以找到的位置。
-</strong>（4）hexo ：** ：打开git文件夹下的git bash，运行 以下命令 <code>npm install -g hexo-cli</code><br>，安装hexo。之后，依次运行以下命令进行hexo的初始化</p>
+<p><strong>（3）node.js</strong> ： 前往 <a href="https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi" target="_blank" rel="noopener">https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi</a> 下载并安装。<br>这两个的安装比较简单，一路next就好，不过我推荐还是修改一下路径，尽量放在自己可以找到的位置。<br><strong>（4）hexo</strong> ：打开git文件夹下的git bash，运行 以下命令 <code>npm install -g hexo-cli</code><br>，安装hexo。之后，依次运行以下命令进行hexo的初始化</p>
 <pre><code>$ hexo init &lt;folder&gt;
 $ cd &lt;folder&gt;
 $ npm install
@@ -465,7 +463,7 @@ $ npm install
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 <p>这将在本地打开我们的网站，当提示”xxx is  running at xxx“的时候，我们可以通过<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 这个网址预览我们的网站，想要切断连接，只需要在命令行窗口按下ctrl+c。至此，hexo博客已经在本地搭建好了。接下来，我们要将hexo和github进行对接。</p>
 <h2 id="三-hexo与github-实现对接"><a href="#三-hexo与github-实现对接" class="headerlink" title="三. hexo与github 实现对接"></a>三. hexo与github 实现对接</h2><p><strong>1.建立仓库</strong></p>
-<p>还记得我们之前注册的github账号吗？现在，请进入github网站，并点击头像选择your repository，我们现在需要创建一个仓库（也就是repository）用于存放相关站点文件。按照下图顺序进行设置：<br><img src="https://img-blog.csdnimg.cn/20190210161138691.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Nob3Jlcg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>其中，Repository name也即是我们的仓库名字，必须是 Github账号名称.github.io的格式。比如你的github名字是ccc，那么仓库名字必须是c’c’c.github.io 。</p>
+<p>还记得我们之前注册的github账号吗？现在，请进入github网站，并点击头像选择your repository，我们现在需要创建一个仓库（也就是repository）用于存放相关站点文件。按照下图顺序进行设置：<br><img src="https://img-blog.csdnimg.cn/20190210161138691.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Nob3Jlcg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>其中，Repository name也即是我们的仓库名字，必须是 Github账号名称.github.io的格式。比如你的github名字是ccc，那么仓库名字必须是ccc.github.io 。</p>
 <p><strong>2.对接github</strong><br> 在git bash中运行以下命令，安装 hexo-deployer-git 插件。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <p>运行以下命令，创建SSH key。（注：和上面一样，请将your mail替换成github邮箱地址）</p>
@@ -482,7 +480,7 @@ deploy:
 <p>运行以下命令，对接并推送内容到github。</p>
 <pre><code>$ hexo g
 $ hexo d
-</code></pre><p>等待片刻，打开 https://&lt;Github账号名称&gt;.github.io （例如 <a href="https://ccc.github.io）即可进入你搭建好的个人博客网站了！当然，网站默认用的是landscape主题，比较难看，关于主题的美化和后期一些插件的添加，可以参考文章末尾贴出的链接。" target="_blank" rel="noopener">https://ccc.github.io）即可进入你搭建好的个人博客网站了！当然，网站默认用的是landscape主题，比较难看，关于主题的美化和后期一些插件的添加，可以参考文章末尾贴出的链接。</a></p>
+</code></pre><p>等待片刻，打开 https://&lt;Github账号名称&gt;.github.io （例如 <a href="https://ccc.github.io" target="_blank" rel="noopener">https://ccc.github.io</a> ) 即可进入你搭建好的个人博客网站了！当然，网站默认用的是landscape主题，比较难看，关于主题的美化和后期一些插件的添加，可以参考文章末尾贴出的链接。</p>
 <p><strong>PS：</strong></p>
 <p>这里顺便介绍一下常用的 hexo 命令：<br><code>hexo clean</code>     ————————&gt;清除缓存文件和已生成的静态文件<br><code>hexo g</code> 或者  <code>hexo generate</code> ————————&gt;生成静态文件<br> <code>hexo d</code> 或者<code>hexo deploy</code> ————————&gt;生成静态文件并部署到仓库<br> <code>hexo s</code> 或者 <code>hexo server</code> —————————&gt;在本地打开网站</p>
 <p>一般来说，在对网站进行修改后，我们可以先用hexo g和hexo s 在本地预览效果，如果效果符合预期的话再用hexo d 推送到 github。当然，可能会遇到本地打开和域名打开的效果不一致，这种情况下通常是因为 1. 没有用hexo clean 清除缓存  2. 没有对浏览器用ctrl+f5 清除缓存 3.忘记用hexo d 将本地文件推送到github  4. 本地和线上的同步本身需要时间，所以上述方法如果无效，可以尝试等几分钟，再打开网站就正常显示了。</p>
@@ -504,13 +502,13 @@ $ hexo d
       
         <div class="post-tags">
           
-            <a href="/tags/博客/" rel="tag"># 博客</a>
+            <a href="/tags/博客/" rel="tag"><i class="fa fa-tag"></i> 博客</a>
           
-            <a href="/tags/网站搭建/" rel="tag"># 网站搭建</a>
+            <a href="/tags/网站搭建/" rel="tag"><i class="fa fa-tag"></i> 网站搭建</a>
           
-            <a href="/tags/Github/" rel="tag"># Github</a>
+            <a href="/tags/Github/" rel="tag"><i class="fa fa-tag"></i> Github</a>
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+            <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
           
         </div>
       
@@ -549,6 +547,12 @@ $ hexo d
 
 
     <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c5ffe9669609061" async="async"></script>
+</div>
+
       
     </div>
   </div>
@@ -716,6 +720,8 @@ $ hexo d
       
         <div class="back-to-top">
           <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
           
         </div>
       
@@ -1304,5 +1310,5 @@ $ hexo d
   
 
   undefined
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
 </html>

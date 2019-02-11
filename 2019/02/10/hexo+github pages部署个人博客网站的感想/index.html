@@ -91,13 +91,13 @@
 <meta property="og:site_name" content="Chor">
 <meta property="og:description" content="题外话：之前我习惯用印象笔记进行知识的剪藏和整理，但是印象笔记本身带给我一种相对封闭的感觉，更像是比较私人的产品；而博客则相反，它更多是面向大众的、开放的，有利于个人经验的输出和知识的共享，所以拥有自己的博客非常有必要。拿博客园和CSDN来说，这两者虽然可以满足写博客的需求，但是自定义程度不够高，缺少一些个性tag。既然如此，为什么我们不自己搭建一个个人博客网站呢？ 用hexo+github pa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190210155541502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Nob3Jlcg==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190210161138691.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Nob3Jlcg==,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-02-10T10:18:45.954Z">
+<meta property="og:image" content="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA1.png">
+<meta property="og:image" content="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA2.png">
+<meta property="og:updated_time" content="2019-02-11T12:18:16.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github pages部署个人博客网站的感想">
 <meta name="twitter:description" content="题外话：之前我习惯用印象笔记进行知识的剪藏和整理，但是印象笔记本身带给我一种相对封闭的感觉，更像是比较私人的产品；而博客则相反，它更多是面向大众的、开放的，有利于个人经验的输出和知识的共享，所以拥有自己的博客非常有必要。拿博客园和CSDN来说，这两者虽然可以满足写博客的需求，但是自定义程度不够高，缺少一些个性tag。既然如此，为什么我们不自己搭建一个个人博客网站呢？ 用hexo+github pa">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190210155541502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Nob3Jlcg==,size_16,color_FFFFFF,t_70">
+<meta name="twitter:image" content="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA1.png">
 
 
 
@@ -458,12 +458,12 @@ $ npm install
 <pre><code>$ hexo init Myblog
 $ cd  Myblog
 $ npm install
-</code></pre><p>成功之后，我们会在git文件夹下看到新建的Myblog文件夹，里面存放了大量文件。<br>好了，到了这一步，请把git bash关闭，并进入你的站点文件夹里（例如：Myblog文件夹里），右键选择git bash here。如图：<br><img src="https://img-blog.csdnimg.cn/20190210155541502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Nob3Jlcg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这样，我们会在站点目录下重新打开git bash。你可能会疑惑，这和直接去git文件夹下打开git bash有区别吗？有！！区别非常大，在站点目录下打开git bash才可以找到运行命令所需要的环境。所以这里一定要记住，<strong>在之后介绍的操作中，凡是需要输入命令的，我们都是像上图这样先打开git bash再输入。</strong> </p>
+</code></pre><p>成功之后，我们会在git文件夹下看到新建的Myblog文件夹，里面存放了大量文件。<br>好了，到了这一步，请把git bash关闭，并进入你的站点文件夹里（例如：Myblog文件夹里），右键选择git bash here。如图：<br><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA1.png" alt="在这里插入图片描述"><br>这样，我们会在站点目录下重新打开git bash。你可能会疑惑，这和直接去git文件夹下打开git bash有区别吗？有！！区别非常大，在站点目录下打开git bash才可以找到运行命令所需要的环境。所以这里一定要记住，<strong>在之后介绍的操作中，凡是需要输入命令的，我们都是像上图这样先打开git bash再输入。</strong> </p>
 <p>按照上面所说的，我们右键打开git bash，并运行以下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 <p>这将在本地打开我们的网站，当提示”xxx is  running at xxx“的时候，我们可以通过<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 这个网址预览我们的网站，想要切断连接，只需要在命令行窗口按下ctrl+c。至此，hexo博客已经在本地搭建好了。接下来，我们要将hexo和github进行对接。</p>
 <h2 id="三-hexo与github-实现对接"><a href="#三-hexo与github-实现对接" class="headerlink" title="三. hexo与github 实现对接"></a>三. hexo与github 实现对接</h2><p><strong>1.建立仓库</strong></p>
-<p>还记得我们之前注册的github账号吗？现在，请进入github网站，并点击头像选择your repository，我们现在需要创建一个仓库（也就是repository）用于存放相关站点文件。按照下图顺序进行设置：<br><img src="https://img-blog.csdnimg.cn/20190210161138691.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Nob3Jlcg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>其中，Repository name也即是我们的仓库名字，必须是 Github账号名称.github.io的格式。比如你的github名字是ccc，那么仓库名字必须是ccc.github.io 。</p>
+<p>还记得我们之前注册的github账号吗？现在，请进入github网站，并点击头像选择your repository，我们现在需要创建一个仓库（也就是repository）用于存放相关站点文件。按照下图顺序进行设置：<br><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA2.png" alt="在这里插入图片描述"><br>其中，Repository name也即是我们的仓库名字，必须是 Github账号名称.github.io的格式。比如你的github名字是ccc，那么仓库名字必须是ccc.github.io 。</p>
 <p><strong>2.对接github</strong><br> 在git bash中运行以下命令，安装 hexo-deployer-git 插件。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <p>运行以下命令，创建SSH key。（注：和上面一样，请将your mail替换成github邮箱地址）</p>

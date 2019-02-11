@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-02-11T12:22:58.382Z</updated>
+  <updated>2019-02-11T13:16:08.433Z</updated>
   <id>https://chorer.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>英伦摇滚入门：20支英国摇滚乐队</title>
+    <link href="https://chorer.github.io/2019/02/11/%E8%8B%B1%E4%BC%A6%E6%91%87%E6%BB%9A%E5%85%A5%E9%97%A8%EF%BC%9A20%E6%94%AF%E8%8B%B1%E5%9B%BD%E6%91%87%E6%BB%9A%E4%B9%90%E9%98%9F/"/>
+    <id>https://chorer.github.io/2019/02/11/英伦摇滚入门：20支英国摇滚乐队/</id>
+    <published>2019-02-11T12:55:21.063Z</published>
+    <updated>2019-02-11T13:16:08.433Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;之前看到的一篇关于英国摇滚乐队的总结。还挺好的，不全是英伦摇滚。当然，我还是偏爱Oasis。&lt;/p&gt;
+&lt;h4 id=&quot;1-The-Beatles（披头士乐队-甲壳虫乐队）&quot;&gt;&lt;a href=&quot;#1-The-Beatles（披头士乐队-甲壳虫乐队）&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="音乐" scheme="https://chorer.github.io/categories/%E9%9F%B3%E4%B9%90/"/>
+    
+      <category term="英伦摇滚" scheme="https://chorer.github.io/categories/%E9%9F%B3%E4%B9%90/%E8%8B%B1%E4%BC%A6%E6%91%87%E6%BB%9A/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>【数据类型】null和undefined</title>

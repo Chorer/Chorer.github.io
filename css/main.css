@@ -1841,14 +1841,15 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #63cd4e;
+  background: #4ac9dd;
 }
 .links-of-blogroll {
   font-size: 13px;
 }
 .links-of-blogroll-title {
   margin-top: 20px;
-  font-size: 14px;
+  margin-left: -12px;
+  font-size: 16px;
   font-weight: 600;
 }
 .links-of-blogroll-list {

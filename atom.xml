@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-02-11T13:18:30.043Z</updated>
+  <updated>2019-02-12T09:15:48.921Z</updated>
   <id>https://chorer.github.io/</id>
   
   <author>
@@ -17,11 +17,55 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【原型】JavaScript原型等概念的理解</title>
+    <link href="https://chorer.github.io/2019/02/12/%E3%80%90%E5%8E%9F%E5%9E%8B%E3%80%91JavaScript%E5%8E%9F%E5%9E%8B%E7%AD%89%E6%A6%82%E5%BF%B5%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>https://chorer.github.io/2019/02/12/【原型】JavaScript原型等概念的理解/</id>
+    <published>2019-02-12T09:07:15.544Z</published>
+    <updated>2019-02-12T09:15:48.921Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-创建对象的方法&quot;&gt;&lt;a href=&quot;#1-创建对象的方法&quot; class=&quot;headerlink&quot; title=&quot;1.创建对象的方法&quot;&gt;&lt;/a&gt;1.创建对象的方法&lt;/h2&gt;&lt;p&gt;在了解原型链之前，首先先了解一下创建对象的几种方式，介绍以下三种。&lt;br&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/%E5%8E%9F%E5%9E%8B1.png&quot; alt=&quot;在这里插入图片描述&quot;&gt;&lt;br&gt;代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+// 第一种方式：字面量
+var o1 = {name: &amp;apos;o1&amp;apos;}
+var o2 = new Object({name: &amp;apos;o2&amp;apos;})
+// 第二种方式：构造函数
+var M = function (name) { this.name = name; }
+var o3 = new M(&amp;apos;o3&amp;apos;)
+// 第三种方式：Object.create
+var p = {name: &amp;apos;p&amp;apos;}
+var o4 = Object.create(p)
+
+console.log(o1)
+console.log(o2)
+console.log(o3)
+console.log(o4)
+
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;打印结果：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="https://chorer.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="https://chorer.github.io/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
+    
+    
+      <category term="继承" scheme="https://chorer.github.io/tags/%E7%BB%A7%E6%89%BF/"/>
+    
+      <category term="原型" scheme="https://chorer.github.io/tags/%E5%8E%9F%E5%9E%8B/"/>
+    
+      <category term="对象" scheme="https://chorer.github.io/tags/%E5%AF%B9%E8%B1%A1/"/>
+    
+  </entry>
+  
+  <entry>
     <title>英伦摇滚入门：20支英国摇滚乐队</title>
     <link href="https://chorer.github.io/2019/02/11/%E8%8B%B1%E4%BC%A6%E6%91%87%E6%BB%9A%E5%85%A5%E9%97%A8%EF%BC%9A20%E6%94%AF%E8%8B%B1%E5%9B%BD%E6%91%87%E6%BB%9A%E4%B9%90%E9%98%9F/"/>
     <id>https://chorer.github.io/2019/02/11/英伦摇滚入门：20支英国摇滚乐队/</id>
-    <published>2019-02-11T12:55:21.063Z</published>
-    <updated>2019-02-11T13:18:30.043Z</updated>
+    <published>2019-02-11T12:55:00.000Z</published>
+    <updated>2019-02-12T06:19:47.326Z</updated>
     
     <summary type="html">
     

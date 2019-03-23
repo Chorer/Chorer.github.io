@@ -20,7 +20,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;前言：&lt;br&gt;本系列文章翻译自全栈工程师Jonathan Klughertz的&lt;a href=&quot;http://www.codeblocq.com/2016/03/Create-an-Hexo-Theme-Part-2-Other-Pages/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;博客文章&lt;/a&gt;，将会用三个part详细讲解如何制作一个Hexo主题。我自己从这几篇文章中受益良多，所以心想干脆翻译一下，于是有了这篇译文。&lt;br&gt;我不是学翻译出身，若有翻译错误或是不到位之处，请指正。&lt;/p&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;前言：&lt;br&gt;本系列文章翻译自全栈工程师Jonathan Klughertz的&lt;a href=&quot;http://www.codeblocq.com/2016/03/Create-an-Hexo-Theme-Part-2-Other-Pages/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;博客文章&lt;/a&gt;，将会用三个part详细讲解如何制作一个Hexo主题。我自己从这几篇文章中受益良多，所以心想干脆翻译一下，于是有了这篇译文。&lt;br&gt;我不是学翻译出身，若有翻译错误或是不到位之处，请指正。&lt;/p&gt;
     
     </summary>
     
@@ -36,7 +36,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;前言：&lt;br&gt;本系列文章翻译自全栈工程师Jonathan Klughertz的&lt;a href=&quot;http://www.codeblocq.com/2016/03/Create-an-Hexo-Theme-Part-1-Index/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;博客文章&lt;/a&gt;，将会用三个part详细讲解如何制作一个Hexo主题。我自己从这几篇文章中受益良多，所以心想干脆翻译一下，于是有了这篇译文。&lt;br&gt;我不是学翻译出身，若有翻译错误或是不到位之处，请指正。&lt;/p&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;前言：&lt;br&gt;本系列文章翻译自全栈工程师Jonathan Klughertz的&lt;a href=&quot;http://www.codeblocq.com/2016/03/Create-an-Hexo-Theme-Part-1-Index/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;博客文章&lt;/a&gt;，将会用三个part详细讲解如何制作一个Hexo主题。我自己从这几篇文章中受益良多，所以心想干脆翻译一下，于是有了这篇译文。&lt;br&gt;我不是学翻译出身，若有翻译错误或是不到位之处，请指正。&lt;/p&gt;
     
     </summary>
     
@@ -52,7 +52,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;h3 id=&quot;1-伪类和伪元素的引入&quot;&gt;&lt;a href=&quot;#1-伪类和伪元素的引入&quot; class=&quot;headerlink&quot; title=&quot;1.伪类和伪元素的引入&quot;&gt;&lt;/a&gt;1.伪类和伪元素的引入&lt;/h3&gt;&lt;blockquote&gt;&lt;p&gt;CSS introduces the concepts of pseudo-elements and pseudo-classes to permit formatting based on information that lies outside the document tree.&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;CSS 引入伪类和伪元素的概念是为了格式化文档树以外的信息。也就是说，伪类和伪元素是用来修饰不在文档树中的部分，比如，一句话中的第一个字母，或者是列表中的第一个元素。&lt;br&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;h3 id=&quot;1-伪类和伪元素的引入&quot;&gt;&lt;a href=&quot;#1-伪类和伪元素的引入&quot; class=&quot;headerlink&quot; title=&quot;1.伪类和伪元素的引入&quot;&gt;&lt;/a&gt;1.伪类和伪元素的引入&lt;/h3&gt;&lt;blockquote&gt;&lt;p&gt;CSS introduces the concepts of pseudo-elements and pseudo-classes to permit formatting based on information that lies outside the document tree.&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;CSS 引入伪类和伪元素的概念是为了格式化文档树以外的信息。也就是说，伪类和伪元素是用来修饰不在文档树中的部分，比如，一句话中的第一个字母，或者是列表中的第一个元素。&lt;br&gt;
     
     </summary>
     
@@ -72,7 +72,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E7%BF%BB%E8%AF%91/%E4%B8%8B%E8%BD%BD.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E7%BF%BB%E8%AF%91/%E4%B8%8B%E8%BD%BD.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -90,7 +90,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;之前就想翻译文章来着，所以这回拿了Medium上的一篇博文下手。确实没有想象中的那么容易，因为你不得不仔细斟酌每个字词。我不是学翻译的，如有不对，欢迎指正。&lt;/p&gt;&lt;p&gt;原文: &lt;a href=&quot;https://medium.com/javascript-in-plain-english/https-medium-com-javascript-in-plain-english-how-to-build-a-simple-chrome-extension-in-vanilla-javascript-e52b2994aeeb&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;How to Build a Simple Chrome Extension in Vanilla JavaScript&lt;/a&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;之前就想翻译文章来着，所以这回拿了Medium上的一篇博文下手。确实没有想象中的那么容易，因为你不得不仔细斟酌每个字词。我不是学翻译的，如有不对，欢迎指正。&lt;/p&gt;&lt;p&gt;原文: &lt;a href=&quot;https://medium.com/javascript-in-plain-english/https-medium-com-javascript-in-plain-english-how-to-build-a-simple-chrome-extension-in-vanilla-javascript-e52b2994aeeb&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;How to Build a Simple Chrome Extension in Vanilla JavaScript&lt;/a&gt;&lt;br&gt;
     
     </summary>
     
@@ -108,7 +108,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/event-loop.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/event-loop.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -130,7 +130,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;感觉有时候还是会忘记，而且都是原生操作DOM的时候常用的东西，老是查阅文档不太方便，因此在这里做个记录。&lt;/p&gt;&lt;h3 id=&quot;1-获取DOM节点的方法&quot;&gt;&lt;a href=&quot;#1-获取DOM节点的方法&quot; class=&quot;headerlink&quot; title=&quot;1.获取DOM节点的方法&quot;&gt;&lt;/a&gt;1.获取DOM节点的方法&lt;/h3&gt;&lt;h4 id=&quot;1-1-通过顶层document节点获取：&quot;&gt;&lt;a href=&quot;#1-1-通过顶层document节点获取：&quot; class=&quot;headerlink&quot; title=&quot;1.1 通过顶层document节点获取：&quot;&gt;&lt;/a&gt;1.1 通过顶层document节点获取：&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;document.getElementById(&amp;quot;ID&amp;quot;)&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;document.getElementsByName(&amp;quot;Name&amp;quot;)&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;document.getElementsByClassName(&amp;quot;className&amp;quot;)&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;document.getElementsByTagName(&amp;quot;tagName&amp;quot;)&lt;/code&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;感觉有时候还是会忘记，而且都是原生操作DOM的时候常用的东西，老是查阅文档不太方便，因此在这里做个记录。&lt;/p&gt;&lt;h3 id=&quot;1-获取DOM节点的方法&quot;&gt;&lt;a href=&quot;#1-获取DOM节点的方法&quot; class=&quot;headerlink&quot; title=&quot;1.获取DOM节点的方法&quot;&gt;&lt;/a&gt;1.获取DOM节点的方法&lt;/h3&gt;&lt;h4 id=&quot;1-1-通过顶层document节点获取：&quot;&gt;&lt;a href=&quot;#1-1-通过顶层document节点获取：&quot; class=&quot;headerlink&quot; title=&quot;1.1 通过顶层document节点获取：&quot;&gt;&lt;/a&gt;1.1 通过顶层document节点获取：&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;document.getElementById(&amp;quot;ID&amp;quot;)&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;document.getElementsByName(&amp;quot;Name&amp;quot;)&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;document.getElementsByClassName(&amp;quot;className&amp;quot;)&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;document.getElementsByTagName(&amp;quot;tagName&amp;quot;)&lt;/code&gt;
     
     </summary>
     
@@ -150,7 +150,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;之前想不通的一道题—–主要是不知道思路怎么来的，为何会想到用闭包。本来打算就将原博客转载过来，但是刚刚重新审视这道题的时候，好像看到了以前没有发现的东西，有种恍然大悟的感觉，所以决定用自己的话来解释这道题的思路。&lt;br&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;之前想不通的一道题—–主要是不知道思路怎么来的，为何会想到用闭包。本来打算就将原博客转载过来，但是刚刚重新审视这道题的时候，好像看到了以前没有发现的东西，有种恍然大悟的感觉，所以决定用自己的话来解释这道题的思路。&lt;br&gt;
     
     </summary>
     
@@ -172,7 +172,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/So.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/So.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -190,7 +190,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;本篇博客专门用于收集各类经典面试题，并给出相关的解题思路和原理。&lt;/p&gt;&lt;h3 id=&quot;1-考点：块级作用域和闭包&quot;&gt;&lt;a href=&quot;#1-考点：块级作用域和闭包&quot; class=&quot;headerlink&quot; title=&quot;1.考点：块级作用域和闭包&quot;&gt;&lt;/a&gt;1.考点：块级作用域和闭包&lt;/h3&gt;&lt;p&gt;先看一道很经典的面试题&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;var a=[];
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;本篇博客专门用于收集各类经典面试题，并给出相关的解题思路和原理。&lt;/p&gt;&lt;h3 id=&quot;1-考点：块级作用域和闭包&quot;&gt;&lt;a href=&quot;#1-考点：块级作用域和闭包&quot; class=&quot;headerlink&quot; title=&quot;1.考点：块级作用域和闭包&quot;&gt;&lt;/a&gt;1.考点：块级作用域和闭包&lt;/h3&gt;&lt;p&gt;先看一道很经典的面试题&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;var a=[];
 for(var i=0;i&amp;lt;10;i++){
     a[i] = function(){
         console.log(i);
@@ -217,7 +217,7 @@ console.log(a[6]);
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;java和JavaScript都是面向对象的语言，但二者的继承方式截然不同。前者采用类式继承（classical inheritence），也是大多数面向对象语言的继承方式。而后者采用原型式继承（prototype ineritence），因此称JavaScript为基于对象更加合适。&lt;br&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;java和JavaScript都是面向对象的语言，但二者的继承方式截然不同。前者采用类式继承（classical inheritence），也是大多数面向对象语言的继承方式。而后者采用原型式继承（prototype ineritence），因此称JavaScript为基于对象更加合适。&lt;br&gt;
     
     </summary>
     
@@ -237,7 +237,7 @@ console.log(a[6]);
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/%E4%B8%8B%E8%BD%BD.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/%E4%B8%8B%E8%BD%BD.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -263,7 +263,7 @@ console.log(a[6]);
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;1.关于英语&lt;br&gt;准备英语竞赛和四级考试，重点是听力和写作；&lt;/p&gt;&lt;p&gt;2.前端&lt;/p&gt;&lt;p&gt;2.1. 旧东西的收尾，具体来说包括：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;del&gt;培训视频（进阶系列），这部分的速度尽量加快&lt;/del&gt;&lt;/li&gt;&lt;li&gt;SegmentFault上js进阶的相关文章。由于是js中的难点，并且在面试中出现比较多，所以慢慢来。打算是每周攻克一个或两个&lt;br&gt;【进阶1期】 调用堆栈&lt;br&gt;【进阶2期】 作用域闭包&lt;br&gt;【进阶3期】 this全面解析&lt;br&gt;【进阶4期】 深浅拷贝原理&lt;br&gt;&lt;del&gt;【进阶5期】 原型Prototype&lt;/del&gt;&lt;br&gt;【进阶6期】 高阶函数&lt;br&gt;【进阶7期】 事件机制&lt;br&gt;【进阶8期】 Event Loop原理&lt;br&gt;【进阶9期】 Promise原理&lt;br&gt;【进阶10期】Async/Await原理&lt;br&gt;【进阶11期】防抖/节流原理&lt;br&gt;【进阶12期】模块化详解&lt;br&gt;【进阶13期】ES6重难点&lt;br&gt;【进阶14期】计算机网络概述&lt;br&gt;【进阶15期】浏览器渲染原理
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;1.关于英语&lt;br&gt;准备英语竞赛和四级考试，重点是听力和写作；&lt;/p&gt;&lt;p&gt;2.前端&lt;/p&gt;&lt;p&gt;2.1. 旧东西的收尾，具体来说包括：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;del&gt;培训视频（进阶系列），这部分的速度尽量加快&lt;/del&gt;&lt;/li&gt;&lt;li&gt;SegmentFault上js进阶的相关文章。由于是js中的难点，并且在面试中出现比较多，所以慢慢来。打算是每周攻克一个或两个&lt;br&gt;【进阶1期】 调用堆栈&lt;br&gt;【进阶2期】 作用域闭包&lt;br&gt;【进阶3期】 this全面解析&lt;br&gt;【进阶4期】 深浅拷贝原理&lt;br&gt;&lt;del&gt;【进阶5期】 原型Prototype&lt;/del&gt;&lt;br&gt;【进阶6期】 高阶函数&lt;br&gt;【进阶7期】 事件机制&lt;br&gt;【进阶8期】 Event Loop原理&lt;br&gt;【进阶9期】 Promise原理&lt;br&gt;【进阶10期】Async/Await原理&lt;br&gt;【进阶11期】防抖/节流原理&lt;br&gt;【进阶12期】模块化详解&lt;br&gt;【进阶13期】ES6重难点&lt;br&gt;【进阶14期】计算机网络概述&lt;br&gt;【进阶15期】浏览器渲染原理
     
     </summary>
     
@@ -281,7 +281,7 @@ console.log(a[6]);
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;h2 id=&quot;1-相关概念普及：&quot;&gt;&lt;a href=&quot;#1-相关概念普及：&quot; class=&quot;headerlink&quot; title=&quot;1.相关概念普及：&quot;&gt;&lt;/a&gt;1.相关概念普及：&lt;/h2&gt;&lt;p&gt;1.1 &lt;span style=&quot;background-color:#fffa7d&quot;&gt;顶线，中线，基线和底线&lt;/span&gt; ：&lt;br&gt;直接见下图。inline-block和inline都可以有这四种线。其中，我们重点研究基线，即base line。基线并不是汉字文字的下端沿，而是英文字母“x”的下端沿。&lt;br&gt;1.2 &lt;span style=&quot;background-color:#fffa7d&quot;&gt;行高&lt;/span&gt;：&lt;br&gt;即line-height，是指同一个元素中，两个文本行基线间的垂直距离。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&amp;lt;div style=&amp;quot;width:170px;&amp;quot;&amp;gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;h2 id=&quot;1-相关概念普及：&quot;&gt;&lt;a href=&quot;#1-相关概念普及：&quot; class=&quot;headerlink&quot; title=&quot;1.相关概念普及：&quot;&gt;&lt;/a&gt;1.相关概念普及：&lt;/h2&gt;&lt;p&gt;1.1 &lt;span style=&quot;background-color:#fffa7d&quot;&gt;顶线，中线，基线和底线&lt;/span&gt; ：&lt;br&gt;直接见下图。inline-block和inline都可以有这四种线。其中，我们重点研究基线，即base line。基线并不是汉字文字的下端沿，而是英文字母“x”的下端沿。&lt;br&gt;1.2 &lt;span style=&quot;background-color:#fffa7d&quot;&gt;行高&lt;/span&gt;：&lt;br&gt;即line-height，是指同一个元素中，两个文本行基线间的垂直距离。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&amp;lt;div style=&amp;quot;width:170px;&amp;quot;&amp;gt;
      &amp;lt;span style=&amp;quot;font-size:16px;line-height:20px;background:red;&amp;quot;&amp;gt;
      I&amp;#39;m the first line
      &amp;lt;/span&amp;gt;
@@ -309,7 +309,7 @@ console.log(a[6]);
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/11111111111111111111111111111.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/11111111111111111111111111111.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -327,7 +327,7 @@ console.log(a[6]);
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;之前就说过这个博客不会纯记录自己的学习心得，而是会适当地聊聊自己的一些感想，其中当然也包括游戏。游戏被称为“第九艺术”，艺术自然不止是带给人娱乐感。&lt;/p&gt;&lt;h4 id=&quot;gt-gt-2012年：《刺客信条II》&quot;&gt;&lt;a href=&quot;#gt-gt-2012年：《刺客信条II》&quot; class=&quot;headerlink&quot; title=&quot;&amp;gt;&amp;gt;2012年：《刺客信条II》&quot;&gt;&lt;/a&gt;&amp;gt;&amp;gt;2012年：《刺客信条II》&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/1.jpeg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;之前就说过这个博客不会纯记录自己的学习心得，而是会适当地聊聊自己的一些感想，其中当然也包括游戏。游戏被称为“第九艺术”，艺术自然不止是带给人娱乐感。&lt;/p&gt;&lt;h4 id=&quot;gt-gt-2012年：《刺客信条II》&quot;&gt;&lt;a href=&quot;#gt-gt-2012年：《刺客信条II》&quot; class=&quot;headerlink&quot; title=&quot;&amp;gt;&amp;gt;2012年：《刺客信条II》&quot;&gt;&lt;/a&gt;&amp;gt;&amp;gt;2012年：《刺客信条II》&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/myblog/1.jpeg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -345,7 +345,7 @@ console.log(a[6]);
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;问题：想要使所有div下的p标签的类名+1.因此采用下列办法：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;    &amp;lt;div&amp;gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;问题：想要使所有div下的p标签的类名+1.因此采用下列办法：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;    &amp;lt;div&amp;gt;
         &amp;lt;p class=&amp;quot;1&amp;quot;&amp;gt;1&amp;lt;/p&amp;gt;
         &amp;lt;p class=&amp;quot;2&amp;quot;&amp;gt;2&amp;lt;/p&amp;gt;
         &amp;lt;p class=&amp;quot;3&amp;quot;&amp;gt;3&amp;lt;/p&amp;gt;
@@ -382,7 +382,7 @@ console.log(a[6]);
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;Hexo是静态博客网站，必须先在本地编辑好md文件再推送到网站上去—md文件也就是所谓的用markdown语法编写内容的文件。“工欲善其事，必先利其器”，因此我们需要一个合适的markdown编辑工具，它必须具备以下特点：&lt;br&gt;1.可导出md文件到本地，并随时进行修改&lt;br&gt;2.可提供分屏预览，支持同步滚动和定位&lt;br&gt;3.启动时响应速度快，编辑时渲染速度快&lt;/p&gt;&lt;p&gt;以下是一些工具在markdown编写方面的优劣比较，可酌情进行选择。&lt;br&gt;（平台：windows）&lt;br&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;Hexo是静态博客网站，必须先在本地编辑好md文件再推送到网站上去—md文件也就是所谓的用markdown语法编写内容的文件。“工欲善其事，必先利其器”，因此我们需要一个合适的markdown编辑工具，它必须具备以下特点：&lt;br&gt;1.可导出md文件到本地，并随时进行修改&lt;br&gt;2.可提供分屏预览，支持同步滚动和定位&lt;br&gt;3.启动时响应速度快，编辑时渲染速度快&lt;/p&gt;&lt;p&gt;以下是一些工具在markdown编写方面的优劣比较，可酌情进行选择。&lt;br&gt;（平台：windows）&lt;br&gt;
     
     </summary>
     
@@ -402,7 +402,7 @@ console.log(a[6]);
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;初衷：之前我习惯用印象笔记进行知识的收集和整理，虽然很好用，但终归只适合输入而不适合输出。我需要的是一个更加开放的平台，在这上面可以输出： 1.&lt;strong&gt;学习的收获 ；2.生活的感想 ；3.有价值的分享&lt;/strong&gt;，因此有了这个博客网站。&lt;/p&gt;&lt;p&gt;用hexo+github pages 可以很方便地搭建一个个人博客网站，不需要购买域名和服务器，只需要按部就班操作即可。我自己大概是花了两三个小时搞定，主要是因为对git bash的使用不够熟悉，因此走了一些弯路。实际上动作快的话半个小时就可以搞定。下面是对部署过程的大概介绍，以及&lt;strong&gt;必须注意的事项&lt;/strong&gt;（划重点，也就是所谓的“坑”）。由于本文参考了大量博客，所以在文末我会列出原文链接。&lt;/p&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;初衷：之前我习惯用印象笔记进行知识的收集和整理，虽然很好用，但终归只适合输入而不适合输出。我需要的是一个更加开放的平台，在这上面可以输出： 1.&lt;strong&gt;学习的收获 ；2.生活的感想 ；3.有价值的分享&lt;/strong&gt;，因此有了这个博客网站。&lt;/p&gt;&lt;p&gt;用hexo+github pages 可以很方便地搭建一个个人博客网站，不需要购买域名和服务器，只需要按部就班操作即可。我自己大概是花了两三个小时搞定，主要是因为对git bash的使用不够熟悉，因此走了一些弯路。实际上动作快的话半个小时就可以搞定。下面是对部署过程的大概介绍，以及&lt;strong&gt;必须注意的事项&lt;/strong&gt;（划重点，也就是所谓的“坑”）。由于本文参考了大量博客，所以在文末我会列出原文链接。&lt;/p&gt;
     
     </summary>
     
@@ -424,7 +424,7 @@ console.log(a[6]);
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Mar 22 2019 22:04:42 GMT+0800 (GMT+08:00) --&gt;&lt;h4 id=&quot;1-DOM&quot;&gt;&lt;a href=&quot;#1-DOM&quot; class=&quot;headerlink&quot; title=&quot;1.DOM&quot;&gt;&lt;/a&gt;1.DOM&lt;/h4&gt;&lt;p&gt;DOM（文档对象模型）是由W3C制定的一套访问和操作XML（eXtensible Markup Language）文档的标准，即API。比如DOM告诉JavaScript引擎如何在浏览器窗口中显示和操作XML创建的标记（Tag）。&lt;/p&gt;&lt;p&gt;DOM与特定的平台、浏览器、语言无关，很多种语言都实现了DOM，比如因为JavaScript和PHP都实现了DOM，所以 JavaScript中有getElementsByTagName()方法，PHP中也有 getElementsByTagName()，getElementsByTagName()方法是DOM规定的访问XML文档的接口。&lt;br&gt;
+      &lt;!-- build time:Sat Mar 23 2019 00:43:43 GMT+0800 (GMT+08:00) --&gt;&lt;h4 id=&quot;1-DOM&quot;&gt;&lt;a href=&quot;#1-DOM&quot; class=&quot;headerlink&quot; title=&quot;1.DOM&quot;&gt;&lt;/a&gt;1.DOM&lt;/h4&gt;&lt;p&gt;DOM（文档对象模型）是由W3C制定的一套访问和操作XML（eXtensible Markup Language）文档的标准，即API。比如DOM告诉JavaScript引擎如何在浏览器窗口中显示和操作XML创建的标记（Tag）。&lt;/p&gt;&lt;p&gt;DOM与特定的平台、浏览器、语言无关，很多种语言都实现了DOM，比如因为JavaScript和PHP都实现了DOM，所以 JavaScript中有getElementsByTagName()方法，PHP中也有 getElementsByTagName()，getElementsByTagName()方法是DOM规定的访问XML文档的接口。&lt;br&gt;
     
     </summary>
     

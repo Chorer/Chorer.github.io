@@ -1,3 +1,3 @@
-// build time:Sun Mar 31 2019 19:11:32 GMT+0800 (GMT+08:00)
+// build time:Sun Mar 31 2019 19:35:38 GMT+0800 (GMT+08:00)
 var oDiv=document.getElementsByClassName("toc")[0],H=0,Y=oDiv;while(Y){H+=Y.offsetTop;Y=Y.offsetParent}window.onscroll=function(){var e=document.body.scrollTop||document.documentElement.scrollTop;if(e>H){oDiv.style="position:fixed;top:-18px;"}else{oDiv.style=""}};var catalog=document.getElementById("post-catalog-text");var txt=document.createElement("li");txt.className="real-catalog-text";txt.innerHTML='<i class="fa fa-list"></i>'+catalog.innerHTML;oDiv.insertBefore(txt,oDiv.children[0]);var toTop=document.getElementById("post-toTop-text");var topper=document.createElement("li");topper.className="real-toTop-text";topper.innerHTML='<i class="fa fa-chevron-circle-up"></i>'+toTop.innerHTML;oDiv.appendChild(topper);
 //rebuild by neat 

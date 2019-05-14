@@ -1,3 +1,3 @@
-// build time:Tue May 14 2019 11:02:18 GMT+0800 (GMT+08:00)
+// build time:Tue May 14 2019 12:14:50 GMT+0800 (GMT+08:00)
 $(function(){var t=500;var o=document.body.clientHeight;$(".real-toTop-text").click(function(){$("html,body").animate({scrollTop:"0px"},t)})});
 //rebuild by neat 

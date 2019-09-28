@@ -6,10 +6,32 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-09-23T07:34:52.096Z</updated>
+  <updated>2019-09-28T02:36:04.975Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为什么应该在 v-for 中使用 :key？</title>
+    <link href="https://chorer.github.io/2019/09/28/F-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BA%94%E8%AF%A5%E5%9C%A8v-for%E4%B8%AD%E4%BD%BF%E7%94%A8key%EF%BC%9F/"/>
+    <id>https://chorer.github.io/2019/09/28/F-为什么应该在v-for中使用key？/</id>
+    <published>2019-09-28T01:16:45.566Z</published>
+    <updated>2019-09-28T02:36:04.975Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BA%94%E8%AF%A5%E5%9C%A8%20v-for%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20key-4.webp&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+      <category term="Vue" scheme="https://chorer.github.io/categories/Front-end/Vue/"/>
+    
+    
+      <category term="框架" scheme="https://chorer.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构与算法笔记 cp2-2：线性表</title>
@@ -20,7 +42,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/数据结构与算法笔记cp2：线性表-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/数据结构与算法笔记cp2：线性表-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -42,7 +64,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/数据结构与算法笔记cp2：线性表-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/数据结构与算法笔记cp2：线性表-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -64,7 +86,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;https://medium.com/better-programming/vs-code-extension-for-web-dev-productivity-fa541654161f&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;VS Code Extensions For Web Dev Productivity&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Deepak Gupta&lt;/li&gt;&lt;li&gt;译者：Chor
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;https://medium.com/better-programming/vs-code-extension-for-web-dev-productivity-fa541654161f&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;VS Code Extensions For Web Dev Productivity&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Deepak Gupta&lt;/li&gt;&lt;li&gt;译者：Chor
     
     </summary>
     
@@ -82,7 +104,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/深入理解计算机系统cp2：定点数的表示和运算-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/深入理解计算机系统cp2：定点数的表示和运算-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -102,7 +124,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/深入理解计算机系统cp1：存储单位与编码-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/深入理解计算机系统cp1：存储单位与编码-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -122,7 +144,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0cp1-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0cp1-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -144,7 +166,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0-1.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0-1.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -166,7 +188,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;常用的数据类型判断方法&lt;br&gt;
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;常用的数据类型判断方法&lt;br&gt;
     
     </summary>
     
@@ -188,7 +210,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/callapplybind.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/callapplybind.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -210,7 +232,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;h2 id=&quot;可维护性&quot;&gt;&lt;a href=&quot;#可维护性&quot; class=&quot;headerlink&quot; title=&quot;可维护性&quot;&gt;&lt;/a&gt;可维护性&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;可维护性包括：可理解性、直观性、可适应性、可扩展性和可调试性&lt;br&gt;
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;h2 id=&quot;可维护性&quot;&gt;&lt;a href=&quot;#可维护性&quot; class=&quot;headerlink&quot; title=&quot;可维护性&quot;&gt;&lt;/a&gt;可维护性&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;可维护性包括：可理解性、直观性、可适应性、可扩展性和可调试性&lt;br&gt;
     
     </summary>
     
@@ -230,7 +252,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/解析赋值、浅拷贝和深拷贝-1.webp&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/解析赋值、浅拷贝和深拷贝-1.webp&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -250,7 +272,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;本来应该是在年底做一些总结，然后写下明年的目标，但是我感觉这一年 —— 准确地说是这一学期过得太快，以至于给我一种好像 2019 年就要结束了的错觉。加上最近算是完成了一个阶段的学习，所以我想还是记录一下这个学期的事情。&lt;br&gt;
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;本来应该是在年底做一些总结，然后写下明年的目标，但是我感觉这一年 —— 准确地说是这一学期过得太快，以至于给我一种好像 2019 年就要结束了的错觉。加上最近算是完成了一个阶段的学习，所以我想还是记录一下这个学期的事情。&lt;br&gt;
     
     </summary>
     
@@ -268,7 +290,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;https://devinduct.com/blogpost/35/tips-and-tricks-for-better-javascript-conditionals-and-match-criteria&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Tips and Tricks for Better JavaScript Conditionals and Match Criteria&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Milos Protic&lt;/li&gt;&lt;li&gt;译者：Chor
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;https://devinduct.com/blogpost/35/tips-and-tricks-for-better-javascript-conditionals-and-match-criteria&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Tips and Tricks for Better JavaScript Conditionals and Match Criteria&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Milos Protic&lt;/li&gt;&lt;li&gt;译者：Chor
     
     </summary>
     
@@ -286,7 +308,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;https://www.smashingmagazine.com/2018/12/common-css-issues-front-end-projects/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Common CSS Issues For Front-End Projects&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Ahmad Shadeed&lt;/li&gt;&lt;li&gt;译者：Chor
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;https://www.smashingmagazine.com/2018/12/common-css-issues-front-end-projects/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Common CSS Issues For Front-End Projects&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Ahmad Shadeed&lt;/li&gt;&lt;li&gt;译者：Chor
     
     </summary>
     
@@ -304,7 +326,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/什么是抽象语法树-1.jpg&quot; alt=&quot;&quot;&gt;
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/什么是抽象语法树-1.jpg&quot; alt=&quot;&quot;&gt;
     
     </summary>
     
@@ -322,7 +344,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;https://marina-ferreira.github.io/tutorials/css/flexbox/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Flexbox Fundamentals&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：&lt;a href=&quot;https://marina-ferreira.github.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Marina-ferreira&lt;/a&gt;&lt;/li&gt;&lt;li&gt;译文地址：&lt;a href=&quot;https://juejin.im/post/5cfb34316fb9a07eef69fec7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;「译」Flexbox 基本原理&lt;/a&gt;&lt;/li&gt;&lt;li&gt;译者：Chor
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;https://marina-ferreira.github.io/tutorials/css/flexbox/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Flexbox Fundamentals&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：&lt;a href=&quot;https://marina-ferreira.github.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Marina-ferreira&lt;/a&gt;&lt;/li&gt;&lt;li&gt;译文地址：&lt;a href=&quot;https://juejin.im/post/5cfb34316fb9a07eef69fec7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;「译」Flexbox 基本原理&lt;/a&gt;&lt;/li&gt;&lt;li&gt;译者：Chor
     
     </summary>
     
@@ -342,7 +364,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/flex%20布局-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/flex%20布局-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -364,7 +386,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;http://www.codeblocq.com/2016/03/Create-an-Hexo-Theme-Part-3-Comments-Analytics-and-Widgets/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Create an Hexo Theme - Part 3: Comments, Analytics and Widgets&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Jonathan Klughertz&lt;/li&gt;&lt;li&gt;译者：Chor
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;http://www.codeblocq.com/2016/03/Create-an-Hexo-Theme-Part-3-Comments-Analytics-and-Widgets/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Create an Hexo Theme - Part 3: Comments, Analytics and Widgets&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Jonathan Klughertz&lt;/li&gt;&lt;li&gt;译者：Chor
     
     </summary>
     
@@ -384,33 +406,13 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/常见布局方式-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Sat Sep 28 2019 15:31:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/常见布局方式-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
       <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
     
       <category term="HTML &amp; CSS" scheme="https://chorer.github.io/categories/Front-end/HTML-CSS/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>DOM 和 BOM 中的各种宽高属性</title>
-    <link href="https://chorer.github.io/2019/05/30/F-DOM%20%E5%92%8C%20BOM%20%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E5%AE%BD%E9%AB%98%E5%B1%9E%E6%80%A7/"/>
-    <id>https://chorer.github.io/2019/05/30/F-DOM 和 BOM 中的各种宽高属性/</id>
-    <published>2019-05-30T11:46:45.299Z</published>
-    <updated>2019-06-23T12:12:40.236Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Fri Sep 27 2019 23:13:53 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/各种宽高属性-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
-    
-      <category term="JavaScript" scheme="https://chorer.github.io/categories/Front-end/JavaScript/"/>
     
     
   </entry>

@@ -6,21 +6,45 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-10-02T13:15:09.494Z</updated>
+  <updated>2019-10-03T10:50:38.290Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Vue 组件：基础概念</title>
-    <link href="https://chorer.github.io/2019/10/02/F-Vue%20%E7%BB%84%E4%BB%B6%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"/>
-    <id>https://chorer.github.io/2019/10/02/F-Vue 组件：基础概念/</id>
-    <published>2019-10-02T06:22:12.461Z</published>
-    <updated>2019-10-02T13:15:09.494Z</updated>
+    <title>Vue 组件：父子组件通信</title>
+    <link href="https://chorer.github.io/2019/10/03/F-Vue%20%E7%BB%84%E4%BB%B6%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/"/>
+    <id>https://chorer.github.io/2019/10/03/F-Vue 组件：父子组件通信/</id>
+    <published>2019-10-03T02:00:30.308Z</published>
+    <updated>2019-10-03T10:50:38.290Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Wed Oct 02 2019 21:57:08 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20组件化：基础概念-8.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Thu Oct 03 2019 18:51:37 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20组件：父子组件通信-0.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+      <category term="Vue" scheme="https://chorer.github.io/categories/Front-end/Vue/"/>
+    
+    
+      <category term="Vue" scheme="https://chorer.github.io/tags/Vue/"/>
+    
+      <category term="组件" scheme="https://chorer.github.io/tags/%E7%BB%84%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue 组件：组件的基本使用</title>
+    <link href="https://chorer.github.io/2019/10/02/F-Vue%20%E7%BB%84%E4%BB%B6%EF%BC%9A%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
+    <id>https://chorer.github.io/2019/10/02/F-Vue 组件：组件的基本使用/</id>
+    <published>2019-10-02T06:22:12.461Z</published>
+    <updated>2019-10-03T08:12:17.975Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Thu Oct 03 2019 18:51:37 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20组件化：基础概念-8.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -398,26 +422,6 @@
     
     
       <category term="flex" scheme="https://chorer.github.io/tags/flex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>「译」创建一个Hexo主题-Part3 :评论、分析和小部件</title>
-    <link href="https://chorer.github.io/2019/06/05/Trs-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAHexo%E4%B8%BB%E9%A2%98%E4%B9%8BPart3/"/>
-    <id>https://chorer.github.io/2019/06/05/Trs-创建一个Hexo主题之Part3/</id>
-    <published>2019-06-04T16:00:00.000Z</published>
-    <updated>2019-06-21T06:53:27.554Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Wed Oct 02 2019 21:57:08 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;http://www.codeblocq.com/2016/03/Create-an-Hexo-Theme-Part-3-Comments-Analytics-and-Widgets/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Create an Hexo Theme - Part 3: Comments, Analytics and Widgets&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Jonathan Klughertz&lt;/li&gt;&lt;li&gt;译者：Chor
-    
-    </summary>
-    
-      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
-    
-    
-      <category term="hexo theme" scheme="https://chorer.github.io/tags/hexo-theme/"/>
     
   </entry>
   

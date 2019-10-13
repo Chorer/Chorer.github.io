@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-10-13T07:43:58.427Z</updated>
+  <updated>2019-10-13T07:47:39.669Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
@@ -16,11 +16,11 @@
     <link href="https://chorer.github.io/2019/10/13/F-file%20%E5%8D%8F%E8%AE%AE%E5%AF%BC%E8%87%B4%E7%9A%84%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     <id>https://chorer.github.io/2019/10/13/F-file 协议导致的跨域问题以及解决方案/</id>
     <published>2019-10-13T02:47:17.347Z</published>
-    <updated>2019-10-13T07:43:58.427Z</updated>
+    <updated>2019-10-13T07:47:39.669Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:47:12 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/file协议导致的跨域问题-0.webp&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/file协议导致的跨域问题-0.webp&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -38,7 +38,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/一个案例搞懂%20Vue.js%20的作用域插槽-1.webp&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/一个案例搞懂%20Vue.js%20的作用域插槽-1.webp&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -56,7 +56,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20组件（四）：组件插槽-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20组件（四）：组件插槽-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -80,7 +80,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20关于单向数据流的简单理解-0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20关于单向数据流的简单理解-0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -104,7 +104,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20组件：父子组件通信-0.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20组件：父子组件通信-0.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -128,7 +128,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20组件化：基础概念-8.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20组件化：基础概念-8.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -152,7 +152,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BA%94%E8%AF%A5%E5%9C%A8%20v-for%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20key-4.webp&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BA%94%E8%AF%A5%E5%9C%A8%20v-for%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20key-4.webp&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -174,7 +174,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/数据结构与算法笔记cp2：线性表-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/数据结构与算法笔记cp2：线性表-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -196,7 +196,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/数据结构与算法笔记cp2：线性表-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/数据结构与算法笔记cp2：线性表-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -218,7 +218,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;https://medium.com/better-programming/vs-code-extension-for-web-dev-productivity-fa541654161f&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;VS Code Extensions For Web Dev Productivity&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Deepak Gupta&lt;/li&gt;&lt;li&gt;译者：Chor
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;https://medium.com/better-programming/vs-code-extension-for-web-dev-productivity-fa541654161f&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;VS Code Extensions For Web Dev Productivity&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Deepak Gupta&lt;/li&gt;&lt;li&gt;译者：Chor
     
     </summary>
     
@@ -236,7 +236,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/深入理解计算机系统cp2：定点数的表示和运算-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/深入理解计算机系统cp2：定点数的表示和运算-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -256,7 +256,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/深入理解计算机系统cp1：存储单位与编码-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/深入理解计算机系统cp1：存储单位与编码-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -276,7 +276,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0cp1-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0cp1-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -298,7 +298,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0-1.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0-1.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -320,7 +320,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;常用的数据类型判断方法&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;常用的数据类型判断方法&lt;br&gt;
     
     </summary>
     
@@ -342,7 +342,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/callapplybind.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/callapplybind.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -364,7 +364,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;h2 id=&quot;可维护性&quot;&gt;&lt;a href=&quot;#可维护性&quot; class=&quot;headerlink&quot; title=&quot;可维护性&quot;&gt;&lt;/a&gt;可维护性&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;可维护性包括：可理解性、直观性、可适应性、可扩展性和可调试性&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;h2 id=&quot;可维护性&quot;&gt;&lt;a href=&quot;#可维护性&quot; class=&quot;headerlink&quot; title=&quot;可维护性&quot;&gt;&lt;/a&gt;可维护性&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;可维护性包括：可理解性、直观性、可适应性、可扩展性和可调试性&lt;br&gt;
     
     </summary>
     
@@ -384,7 +384,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/解析赋值、浅拷贝和深拷贝-1.webp&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/解析赋值、浅拷贝和深拷贝-1.webp&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -404,7 +404,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;本来应该是在年底做一些总结，然后写下明年的目标，但是我感觉这一年 —— 准确地说是这一学期过得太快，以至于给我一种好像 2019 年就要结束了的错觉。加上最近算是完成了一个阶段的学习，所以我想还是记录一下这个学期的事情。&lt;br&gt;
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;本来应该是在年底做一些总结，然后写下明年的目标，但是我感觉这一年 —— 准确地说是这一学期过得太快，以至于给我一种好像 2019 年就要结束了的错觉。加上最近算是完成了一个阶段的学习，所以我想还是记录一下这个学期的事情。&lt;br&gt;
     
     </summary>
     
@@ -422,7 +422,7 @@
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Oct 13 2019 15:42:23 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;https://devinduct.com/blogpost/35/tips-and-tricks-for-better-javascript-conditionals-and-match-criteria&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Tips and Tricks for Better JavaScript Conditionals and Match Criteria&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Milos Protic&lt;/li&gt;&lt;li&gt;译者：Chor
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;https://devinduct.com/blogpost/35/tips-and-tricks-for-better-javascript-conditionals-and-match-criteria&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Tips and Tricks for Better JavaScript Conditionals and Match Criteria&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Milos Protic&lt;/li&gt;&lt;li&gt;译者：Chor
     
     </summary>
     

@@ -1,3 +1,3 @@
-// build time:Wed Oct 02 2019 21:57:14 GMT+0800 (GMT+08:00)
+// build time:Sun Oct 13 2019 15:42:30 GMT+0800 (GMT+08:00)
 addBackToTop({diameter:56,backgroundColor:"#53b3fa",textColor:"#fff",scrollDuration:300});
 //rebuild by neat 

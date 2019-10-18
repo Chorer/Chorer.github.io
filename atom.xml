@@ -6,10 +6,32 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-10-13T07:47:39.669Z</updated>
+  <updated>2019-10-18T13:50:36.800Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端模块化</title>
+    <link href="https://chorer.github.io/2019/10/18/F-%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
+    <id>https://chorer.github.io/2019/10/18/F-前端模块化/</id>
+    <published>2019-10-17T16:00:00.000Z</published>
+    <updated>2019-10-18T13:50:36.800Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Fri Oct 18 2019 21:50:46 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/前端模块化-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+      <category term="开发" scheme="https://chorer.github.io/categories/Front-end/%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="模块化" scheme="https://chorer.github.io/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>file 协议导致的跨域问题以及解决方案</title>
@@ -26,28 +48,6 @@
     
       <category term="Thinking" scheme="https://chorer.github.io/categories/Thinking/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>前端模块化</title>
-    <link href="https://chorer.github.io/2019/10/13/F-%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
-    <id>https://chorer.github.io/2019/10/13/F-前端模块化/</id>
-    <published>2019-10-13T02:11:46.309Z</published>
-    <updated>2019-10-18T13:45:00.815Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Fri Oct 18 2019 21:48:48 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/前端模块化-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
-    
-      <category term="开发" scheme="https://chorer.github.io/categories/Front-end/%E5%BC%80%E5%8F%91/"/>
-    
-    
-      <category term="模块化" scheme="https://chorer.github.io/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
     
   </entry>
   

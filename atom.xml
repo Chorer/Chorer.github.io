@@ -30,6 +30,28 @@
   </entry>
   
   <entry>
+    <title>前端模块化</title>
+    <link href="https://chorer.github.io/2019/10/13/F-%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
+    <id>https://chorer.github.io/2019/10/13/F-前端模块化/</id>
+    <published>2019-10-13T02:11:46.309Z</published>
+    <updated>2019-10-18T13:45:00.815Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Fri Oct 18 2019 21:48:48 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/前端模块化-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+      <category term="开发" scheme="https://chorer.github.io/categories/Front-end/%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="模块化" scheme="https://chorer.github.io/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
     <title>「译」一个案例搞懂 Vue.js 的作用域插槽</title>
     <link href="https://chorer.github.io/2019/10/10/Trs-%E4%B8%80%E4%B8%AA%E6%A1%88%E4%BE%8B%E6%90%9E%E6%87%82%20Vue.js%20%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD/"/>
     <id>https://chorer.github.io/2019/10/10/Trs-一个案例搞懂 Vue.js 的作用域插槽/</id>
@@ -409,24 +431,6 @@
     </summary>
     
       <category term="Thinking" scheme="https://chorer.github.io/categories/Thinking/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>「译」编写更好的 JavaScript 条件式和匹配条件的技巧</title>
-    <link href="https://chorer.github.io/2019/06/24/Trs-%E6%9B%B4%E5%A5%BD%E7%9A%84JavaScript%E6%9D%A1%E4%BB%B6%E5%BC%8F%E5%92%8C%E5%8C%B9%E9%85%8D%E6%A0%87%E5%87%86%E6%8A%80%E5%B7%A7/"/>
-    <id>https://chorer.github.io/2019/06/24/Trs-更好的JavaScript条件式和匹配标准技巧/</id>
-    <published>2019-06-24T13:53:13.432Z</published>
-    <updated>2019-07-25T15:27:00.672Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;https://devinduct.com/blogpost/35/tips-and-tricks-for-better-javascript-conditionals-and-match-criteria&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Tips and Tricks for Better JavaScript Conditionals and Match Criteria&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Milos Protic&lt;/li&gt;&lt;li&gt;译者：Chor
-    
-    </summary>
-    
-      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
     
     
   </entry>

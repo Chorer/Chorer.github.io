@@ -6,64 +6,10 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-10-19T00:57:08.017Z</updated>
+  <updated>2019-10-18T13:50:36.800Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Test</title>
-    <link href="https://chorer.github.io/2019/10/19/Test%20-%20%E5%89%AF%E6%9C%AC/"/>
-    <id>https://chorer.github.io/2019/10/19/Test - 副本/</id>
-    <published>2019-10-18T16:00:00.000Z</published>
-    <updated>2019-10-19T00:57:08.017Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Sat Oct 19 2019 08:58:30 GMT+0800 (GMT+08:00) --&gt;
-    
-    </summary>
-    
-    
-      <category term="test" scheme="https://chorer.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Test</title>
-    <link href="https://chorer.github.io/2019/10/19/Test%20-%20%E5%89%AF%E6%9C%AC%20(3)/"/>
-    <id>https://chorer.github.io/2019/10/19/Test - 副本 (3)/</id>
-    <published>2019-10-18T16:00:00.000Z</published>
-    <updated>2019-10-19T00:57:08.017Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Sat Oct 19 2019 08:58:30 GMT+0800 (GMT+08:00) --&gt;
-    
-    </summary>
-    
-    
-      <category term="test" scheme="https://chorer.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Test</title>
-    <link href="https://chorer.github.io/2019/10/19/Test%20-%20%E5%89%AF%E6%9C%AC%20(2)/"/>
-    <id>https://chorer.github.io/2019/10/19/Test - 副本 (2)/</id>
-    <published>2019-10-18T16:00:00.000Z</published>
-    <updated>2019-10-19T00:57:08.017Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Sat Oct 19 2019 08:58:30 GMT+0800 (GMT+08:00) --&gt;
-    
-    </summary>
-    
-    
-      <category term="test" scheme="https://chorer.github.io/tags/test/"/>
-    
-  </entry>
   
   <entry>
     <title>前端模块化</title>
@@ -428,6 +374,64 @@
     
     
       <category term="this" scheme="https://chorer.github.io/tags/this/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《JavaScript 高级程序设计》阅读笔记 1：最佳实践</title>
+    <link href="https://chorer.github.io/2019/08/03/F-JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    <id>https://chorer.github.io/2019/08/03/F-JavaScript高级程序设计阅读笔记/</id>
+    <published>2019-08-02T16:25:52.407Z</published>
+    <updated>2019-08-03T16:58:25.895Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;h2 id=&quot;可维护性&quot;&gt;&lt;a href=&quot;#可维护性&quot; class=&quot;headerlink&quot; title=&quot;可维护性&quot;&gt;&lt;/a&gt;可维护性&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;可维护性包括：可理解性、直观性、可适应性、可扩展性和可调试性&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+      <category term="JavaScript" scheme="https://chorer.github.io/categories/Front-end/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>解析赋值、浅拷贝和深拷贝</title>
+    <link href="https://chorer.github.io/2019/07/11/F-%E8%A7%A3%E6%9E%90%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/"/>
+    <id>https://chorer.github.io/2019/07/11/F-解析赋值、浅拷贝和深拷贝/</id>
+    <published>2019-07-11T08:43:47.216Z</published>
+    <updated>2019-07-23T14:42:23.989Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/解析赋值、浅拷贝和深拷贝-1.webp&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+      <category term="JavaScript" scheme="https://chorer.github.io/categories/Front-end/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>大一下学期：The End</title>
+    <link href="https://chorer.github.io/2019/06/30/T-%E5%A4%A7%E4%B8%80%E4%B8%8B%E5%AD%A6%E6%9C%9F%EF%BC%9AThe%20End/"/>
+    <id>https://chorer.github.io/2019/06/30/T-大一下学期：The End/</id>
+    <published>2019-06-29T16:00:00.000Z</published>
+    <updated>2019-08-29T14:30:41.779Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun Oct 13 2019 15:47:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;本来应该是在年底做一些总结，然后写下明年的目标，但是我感觉这一年 —— 准确地说是这一学期过得太快，以至于给我一种好像 2019 年就要结束了的错觉。加上最近算是完成了一个阶段的学习，所以我想还是记录一下这个学期的事情。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Thinking" scheme="https://chorer.github.io/categories/Thinking/"/>
+    
     
   </entry>
   

@@ -1,331 +1,330 @@
-<!-- build time:Tue Oct 22 2019 13:51:48 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Chor&#39;s Blog</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third party/pace-theme-flash.css"><link rel="icon" href="/images/me.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css"><link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><header class="header"><div class="header_top"><span class="theme"><i class="fa fa-bars"></i> <a href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">HOME</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">CATEGORIES</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">ARCHIVES</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">TAGS</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">ABOUT</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a href="/" class="logo">Chor&#39;s Blog</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">「译」什么是抽象语法树</div></h1><div class="post-sub_title">了解什么是 AST（以及你为什么要了解它）</div><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2019-06-15&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp3.5k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp14 mins&nbsp&nbsp&nbsp</span><div class="post-tags"></div></div><div class="post-content"><p><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/什么是抽象语法树-1.jpg" alt=""><a id="more"></a></p><blockquote><ul><li>原文地址：<a href="https://blog.bitsrc.io/what-is-an-abstract-syntax-tree-7502b71bde27?" target="_blank" rel="noopener">What is an Abstract Syntax Tree</a></li><li>原文作者：Chidume Nnamdi</li><li>译者：Chor</li></ul></blockquote><p>AST 是抽象语法树的缩写词，表示编程语言的语句和表达式中生成的 token。有了 AST，解释器或编译器就可以生成机器码或者对一条指令求值。</p><p><strong>小贴士</strong>: 通过使用 <a href="https://github.com/teambit/bit" target="_blank" rel="noopener"><strong>Bit</strong></a>，你可以将任意的 JS 代码转换为一个可在项目和应用中共享、使用和同步的 API，从而更快地构建并重用更多代码。试一下吧。</p><p>假设我们有下面这条简单的表达式：</p><pre><code class="js">1 + 2
-</code></pre><p>用 AST 来表示的话，它是这样的：</p><pre><code class="js">+ BinaryExpression
- - type: +
- - left_value: 
-  LiteralExpr:
-   value: 1
- - right_vaue:
-  LiteralExpr:
-   value: 2
-</code></pre><p>诸如 <code>if</code> 的语句则可以像下面这样表示：</p><pre><code class="js">if(2 &gt; 6) {
-    var d  = 90
-    console.log(d)
-}
+<!-- build time:Tue Oct 22 2019 13:53:41 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Chor&#39;s Blog</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third party/pace-theme-flash.css"><link rel="icon" href="/images/me.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css"><link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css"><link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><header class="header"><div class="header_top"><span class="theme"><i class="fa fa-bars"></i> <a href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">HOME</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">CATEGORIES</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">ARCHIVES</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">TAGS</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">ABOUT</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a href="/" class="logo">Chor&#39;s Blog</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">「译」什么是抽象语法树</div></h1><div class="post-sub_title">了解什么是 AST（以及你为什么要了解它）</div><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2019-06-15&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp3.5k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp14 mins&nbsp&nbsp&nbsp</span><div class="post-tags"></div></div><div class="post-content"><p><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/什么是抽象语法树-1.jpg" alt=""><a id="more"></a></p><blockquote><ul><li>原文地址：<a href="https://blog.bitsrc.io/what-is-an-abstract-syntax-tree-7502b71bde27?" target="_blank" rel="noopener">What is an Abstract Syntax Tree</a></li><li>原文作者：Chidume Nnamdi</li><li>译者：Chor</li></ul></blockquote><p>AST 是抽象语法树的缩写词，表示编程语言的语句和表达式中生成的 token。有了 AST，解释器或编译器就可以生成机器码或者对一条指令求值。</p><p><strong>小贴士</strong>: 通过使用 <a href="https://github.com/teambit/bit" target="_blank" rel="noopener"><strong>Bit</strong></a>，你可以将任意的 JS 代码转换为一个可在项目和应用中共享、使用和同步的 API，从而更快地构建并重用更多代码。试一下吧。</p><p>假设我们有下面这条简单的表达式：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>用 AST 来表示的话，它是这样的：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token operator">+</span> BinaryExpression
+ <span class="token operator">-</span> type<span class="token punctuation">:</span> <span class="token operator">+</span>
+ <span class="token operator">-</span> left_value<span class="token punctuation">:</span> 
+  LiteralExpr<span class="token punctuation">:</span>
+   value<span class="token punctuation">:</span> <span class="token number">1</span>
+ <span class="token operator">-</span> right_vaue<span class="token punctuation">:</span>
+  LiteralExpr<span class="token punctuation">:</span>
+   value<span class="token punctuation">:</span> <span class="token number">2</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>诸如 <code>if</code> 的语句则可以像下面这样表示：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">></span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> d  <span class="token operator">=</span> <span class="token number">90</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 IfStatement
- - condition
-  + BinaryExpression
-   - type: &gt;
-   - left_value: 2
-   - right_value: 6
- - body
-  [
-    - Assign
-        - left: &#39;d&#39;;
-        - right: 
-            LiteralExpr:
-            - value: 90
-    - MethodCall:
-         - instanceName: console
-         - methodName: log
-         - args: [
-         ]
-  ]
-</code></pre><p>这告诉解释器如何解释语句，同时告诉编译器如何生成语句对应的代码。</p><p>看看这条表达式： <code>1 + 2</code>。我们的大脑判定这是一个将左值和右值相加的加法运算。现在，为了让计算机像我们的大脑那样工作，我们必须以类似于大脑看待它的形式来表示它。</p><p>我们用一个类来表示，其中的属性告诉解释器运算的全部内容、左值和右值。因为一个二元运算涉及两个值，所以我们给这个类命名为 <code>Binary</code>：</p><pre><code class="js">class Binary {  
-    constructor(left, operator, right) {  
-        this.left = left  
-        this.operator = operator  
-        this.right = right  
-    }  
-}
-</code></pre><p>实例化期间，我们将会把 <code>1</code> 传给第一个属性，把 <code>ADD</code> 传给第二个属性，把 <code>2</code> 传给第三个属性：</p><pre><code class="js">new Binary(&#39;1&#39;, &#39;ADD&#39;, &#39;2&#39;)
-</code></pre><p>当我们把它传递给解释器的时候，解释器认为这是一个二元运算，接着检查操作符，认为这是一个加法运算，紧接着继续请求实例中的 <code>left</code> 值和 <code>right</code> 值，并将二者相加：</p><pre><code class="js">const binExpr = new Binary(&#39;1&#39;, &#39;ADD&#39;, &#39;2&#39;)
+ <span class="token operator">-</span> condition
+  <span class="token operator">+</span> BinaryExpression
+   <span class="token operator">-</span> type<span class="token punctuation">:</span> <span class="token operator">></span>
+   <span class="token operator">-</span> left_value<span class="token punctuation">:</span> <span class="token number">2</span>
+   <span class="token operator">-</span> right_value<span class="token punctuation">:</span> <span class="token number">6</span>
+ <span class="token operator">-</span> body
+  <span class="token punctuation">[</span>
+    <span class="token operator">-</span> Assign
+        <span class="token operator">-</span> left<span class="token punctuation">:</span> <span class="token string">'d'</span><span class="token punctuation">;</span>
+        <span class="token operator">-</span> right<span class="token punctuation">:</span> 
+            LiteralExpr<span class="token punctuation">:</span>
+            <span class="token operator">-</span> value<span class="token punctuation">:</span> <span class="token number">90</span>
+    <span class="token operator">-</span> MethodCall<span class="token punctuation">:</span>
+         <span class="token operator">-</span> instanceName<span class="token punctuation">:</span> console
+         <span class="token operator">-</span> methodName<span class="token punctuation">:</span> log
+         <span class="token operator">-</span> args<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+         <span class="token punctuation">]</span>
+  <span class="token punctuation">]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这告诉解释器如何解释语句，同时告诉编译器如何生成语句对应的代码。</p><p>看看这条表达式： <code>1 + 2</code>。我们的大脑判定这是一个将左值和右值相加的加法运算。现在，为了让计算机像我们的大脑那样工作，我们必须以类似于大脑看待它的形式来表示它。</p><p>我们用一个类来表示，其中的属性告诉解释器运算的全部内容、左值和右值。因为一个二元运算涉及两个值，所以我们给这个类命名为 <code>Binary</code>：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Binary</span> <span class="token punctuation">{</span>  
+    <span class="token function">constructor</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> operator<span class="token punctuation">,</span> right<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>left <span class="token operator">=</span> left  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>operator <span class="token operator">=</span> operator  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>right <span class="token operator">=</span> right  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>实例化期间，我们将会把 <code>1</code> 传给第一个属性，把 <code>ADD</code> 传给第二个属性，把 <code>2</code> 传给第三个属性：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Binary</span><span class="token punctuation">(</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'ADD'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>当我们把它传递给解释器的时候，解释器认为这是一个二元运算，接着检查操作符，认为这是一个加法运算，紧接着继续请求实例中的 <code>left</code> 值和 <code>right</code> 值，并将二者相加：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> binExpr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Binary</span><span class="token punctuation">(</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'ADD'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">)</span>
 
-if(binExpr.operator == &#39;ADD&#39;) {  
-    return binExpr.left + binExpr.right  
-}  
-// 返回 `3` 
-</code></pre><p>看，AST 可以像大脑那样执行表达式和语句。</p><p>单数字、字符串、布尔值等都是表达式，它们可以在 AST 中表示并求值。</p><pre><code class="js">23343
-false
-true
-&quot;nnamdi&quot;
-</code></pre><p>拿 1 举例：<br><code>1</code><br>我们在 AST 的 Literal（字面量） 类中来表示它。一个字面量就是一个单词或者数字，Literal 类用一个属性来保存它：</p><pre><code class="js">class Literal {  
-    constructor(value) {  
-        this.value = value  
-    }  
-}
-</code></pre><p>我们可以像下面这样表示 Literal 中的 1：<br><code>new Literal(1)</code><br>当解释器对它求值时，它会请求 Literal 实例中 <code>value</code> 属性的值：</p><pre><code class="js">const oneLit = new Literal(1)  
-oneLit.value  
-// `1`
-</code></pre><p>在我们的二元表达式中，我们直接传递了值<br><code>new Binary(&#39;1&#39;, &#39;ADD&#39;, &#39;2&#39;)</code><br>这其实并不合理。因为正如我们在上面看到的，<code>1</code> 和 <code>2</code> 都是一条表达式，一条基本的表达式。作为字面量，它们同样需要被求值，并且用 Literal 类来表示。</p><pre><code class="js">const oneLit = new Literal(&#39;1&#39;)  
-const twoLit = new Literal(&#39;2&#39;)
-</code></pre><p>因此，二元表达式会将 <code>oneLit</code> 和 <code>twoLit</code> 分别作为左属性和右属性。</p><pre><code class="js">// ...  
-new Binary(oneLit, &#39;ADD&#39;, twoLit)
-</code></pre><p>在求值阶段，左属性和右属性同样需要进行求值，以获得各自的值：</p><pre><code class="js">const oneLit = new Literal(&#39;1&#39;)  
-const twoLit = new Literal(&#39;2&#39;)  
-const binExpr = new Binary(oneLit, &#39;ADD&#39;, twoLit)
+<span class="token keyword">if</span><span class="token punctuation">(</span>binExpr<span class="token punctuation">.</span>operator <span class="token operator">==</span> <span class="token string">'ADD'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+    <span class="token keyword">return</span> binExpr<span class="token punctuation">.</span>left <span class="token operator">+</span> binExpr<span class="token punctuation">.</span>right  
+<span class="token punctuation">}</span>  
+<span class="token comment" spellcheck="true">// 返回 `3` </span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>看，AST 可以像大脑那样执行表达式和语句。</p><p>单数字、字符串、布尔值等都是表达式，它们可以在 AST 中表示并求值。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token number">23343</span>
+<span class="token boolean">false</span>
+<span class="token boolean">true</span>
+<span class="token string">"nnamdi"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>拿 1 举例：<br><code>1</code><br>我们在 AST 的 Literal（字面量） 类中来表示它。一个字面量就是一个单词或者数字，Literal 类用一个属性来保存它：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Literal</span> <span class="token punctuation">{</span>  
+    <span class="token function">constructor</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> value  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我们可以像下面这样表示 Literal 中的 1：<br><code>new Literal(1)</code><br>当解释器对它求值时，它会请求 Literal 实例中 <code>value</code> 属性的值：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> oneLit <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  
+oneLit<span class="token punctuation">.</span>value  
+<span class="token comment" spellcheck="true">// `1`</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>在我们的二元表达式中，我们直接传递了值<br><code>new Binary(&#39;1&#39;, &#39;ADD&#39;, &#39;2&#39;)</code><br>这其实并不合理。因为正如我们在上面看到的，<code>1</code> 和 <code>2</code> 都是一条表达式，一条基本的表达式。作为字面量，它们同样需要被求值，并且用 Literal 类来表示。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> oneLit <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token string">'1'</span><span class="token punctuation">)</span>  
+<span class="token keyword">const</span> twoLit <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token string">'2'</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>因此，二元表达式会将 <code>oneLit</code> 和 <code>twoLit</code> 分别作为左属性和右属性。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">// ...  </span>
+<span class="token keyword">new</span> <span class="token class-name">Binary</span><span class="token punctuation">(</span>oneLit<span class="token punctuation">,</span> <span class="token string">'ADD'</span><span class="token punctuation">,</span> twoLit<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>在求值阶段，左属性和右属性同样需要进行求值，以获得各自的值：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> oneLit <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token string">'1'</span><span class="token punctuation">)</span>  
+<span class="token keyword">const</span> twoLit <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token string">'2'</span><span class="token punctuation">)</span>  
+<span class="token keyword">const</span> binExpr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Binary</span><span class="token punctuation">(</span>oneLit<span class="token punctuation">,</span> <span class="token string">'ADD'</span><span class="token punctuation">,</span> twoLit<span class="token punctuation">)</span>
 
-if(binExpr.operator == &#39;ADD&#39;) {  
-    return binExpr.left.value + binExpr.right.value  
-}  
-// 返回 `3` 
-</code></pre><p>其它语句在 AST 中也大多是用二元来表示的，例如 if 语句。</p><p>我们知道，在 if 语句中，只有条件为真的时候代码块才会执行。</p><pre><code class="js">if(9 &gt; 7) {  
-    log(&#39;Yay!!&#39;)  
-}
-</code></pre><p>上面的 if 语句中，代码块执行的条件是 <code>9</code> 必须大于 <code>7</code>，之后我们可以在终端上看到输出 <code>Yay!!</code>。</p><p>为了让解释器或者编译器这样执行，我们将会在一个包含 <code>condition</code>、 <code>body</code> 属性的类中来表示它。<code>condition</code> 保存着解析后必须为真的条件，<code>body</code> 则是一个数组，它包含着 if 代码块中的所有语句。解释器将会遍历该数组并执行里面的语句。</p><pre><code class="js">class IfStmt {  
-    constructor(condition, body) {  
-        this.condition = condition  
-        this.body = body  
-    }  
-}
-</code></pre><p>现在，让我们在 IfStmt 类中表示下面的语句</p><pre><code class="js">if(9 &gt; 7) {  
-    log(&#39;Yay!!&#39;)  
-}
-</code></pre><p>条件是一个二元运算，这将表示为：</p><pre><code class="js">const cond = new Binary(new Literal(9), &quot;GREATER&quot;, new Literal(7))
-</code></pre><p>就像之前一样，但愿你还记得？这回是一个 GREATER 运算。</p><p>if 语句的代码块只有一条语句：一个函数调用。函数调用同样可以在一个类中表示，它包含的属性有：用于指代所调用函数的 <code>name</code> 以及用于表示传递的参数的 <code>args</code>：</p><pre><code class="js">class FuncCall {  
-    constructor(name, args) {  
-        this.name = name  
-        this.args = args  
-    }  
-}
-</code></pre><p>因此，log(“Yay!!”) 调用可以表示为：</p><pre><code class="js">const logFuncCall = new FuncCall(&#39;log&#39;, [])
-</code></pre><p>现在，把这些组合在一起，我们的 if 语句就可以表示为：</p><pre><code class="js">const cond = new Binary(new Literal(9), &quot;GREATER&quot;, new Literal(7));  
-const logFuncCall = new FuncCall(&#39;log&#39;, []);
+<span class="token keyword">if</span><span class="token punctuation">(</span>binExpr<span class="token punctuation">.</span>operator <span class="token operator">==</span> <span class="token string">'ADD'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+    <span class="token keyword">return</span> binExpr<span class="token punctuation">.</span>left<span class="token punctuation">.</span>value <span class="token operator">+</span> binExpr<span class="token punctuation">.</span>right<span class="token punctuation">.</span>value  
+<span class="token punctuation">}</span>  
+<span class="token comment" spellcheck="true">// 返回 `3` </span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>其它语句在 AST 中也大多是用二元来表示的，例如 if 语句。</p><p>我们知道，在 if 语句中，只有条件为真的时候代码块才会执行。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">9</span> <span class="token operator">></span> <span class="token number">7</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+    <span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Yay!!'</span><span class="token punctuation">)</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>上面的 if 语句中，代码块执行的条件是 <code>9</code> 必须大于 <code>7</code>，之后我们可以在终端上看到输出 <code>Yay!!</code>。</p><p>为了让解释器或者编译器这样执行，我们将会在一个包含 <code>condition</code>、 <code>body</code> 属性的类中来表示它。<code>condition</code> 保存着解析后必须为真的条件，<code>body</code> 则是一个数组，它包含着 if 代码块中的所有语句。解释器将会遍历该数组并执行里面的语句。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">IfStmt</span> <span class="token punctuation">{</span>  
+    <span class="token function">constructor</span><span class="token punctuation">(</span>condition<span class="token punctuation">,</span> body<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>condition <span class="token operator">=</span> condition  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>body <span class="token operator">=</span> body  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>现在，让我们在 IfStmt 类中表示下面的语句</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">9</span> <span class="token operator">></span> <span class="token number">7</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+    <span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Yay!!'</span><span class="token punctuation">)</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>条件是一个二元运算，这将表示为：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> cond <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Binary</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"GREATER"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>就像之前一样，但愿你还记得？这回是一个 GREATER 运算。</p><p>if 语句的代码块只有一条语句：一个函数调用。函数调用同样可以在一个类中表示，它包含的属性有：用于指代所调用函数的 <code>name</code> 以及用于表示传递的参数的 <code>args</code>：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">FuncCall</span> <span class="token punctuation">{</span>  
+    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>args <span class="token operator">=</span> args  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>因此，log(“Yay!!”) 调用可以表示为：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> logFuncCall <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FuncCall</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>现在，把这些组合在一起，我们的 if 语句就可以表示为：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> cond <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Binary</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"GREATER"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token keyword">const</span> logFuncCall <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FuncCall</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-const ifStmt = new IfStmt(cond, [  
+<span class="token keyword">const</span> ifStmt <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IfStmt</span><span class="token punctuation">(</span>cond<span class="token punctuation">,</span> <span class="token punctuation">[</span>  
     logFuncCall  
-])
-</code></pre><p>解释器可以像下面这样解释 if 语句：</p><pre><code class="js">const ifStmt = new IfStmt(cond, [  
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>解释器可以像下面这样解释 if 语句：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> ifStmt <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IfStmt</span><span class="token punctuation">(</span>cond<span class="token punctuation">,</span> <span class="token punctuation">[</span>  
     logFuncCall  
-])
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-function interpretIfStatement(ifStmt) {  
-    if(evalExpr(ifStmt.conditon)) {  
-        for(const stmt of ifStmt.body) {  
-            evalStmt(stmt)  
-        }  
-    }  
-}
+<span class="token keyword">function</span> <span class="token function">interpretIfStatement</span><span class="token punctuation">(</span>ifStmt<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">evalExpr</span><span class="token punctuation">(</span>ifStmt<span class="token punctuation">.</span>conditon<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">const</span> stmt <span class="token keyword">of</span> ifStmt<span class="token punctuation">.</span>body<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+            <span class="token function">evalStmt</span><span class="token punctuation">(</span>stmt<span class="token punctuation">)</span>  
+        <span class="token punctuation">}</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
 
-interpretIfStatement(ifStmt)
-</code></pre><p>输出：<br><code>Yay!!</code></p><p>因为 <code>9 &gt; 7</code> :)</p><p>我们通过检查 <code>condition</code> 解析后是否为真来解释 if 语句。如果为真，我们遍历 <code>body</code> 数组并执行里面的语句。</p><h3 id="执行-AST"><a href="#执行-AST" class="headerlink" title="执行 AST"></a>执行 AST</h3><p>使用访问者模式对 AST 进行求值。访问者模式是设计模式的一种，允许一组对象的算法在一个地方实现。</p><p>ASTs，Literal，Binary，IfStmnt 是一组相关的类，每一个类都需要携带方法以使解释器获得它们的值或者对它们求值。</p><p>访问者模式让我们能够创建单个类，并在类中编写 AST 的实现，将类提供给 AST。每个 AST 都有一个公有的方法，解释器会通过实现类实例对其进行调用，之后 AST 类将在传入的实现类中调用相应的方法，从而计算其 AST。</p><pre><code class="js">class Literal {  
-    constructor(value) {  
-        this.value = value  
-    }
+<span class="token function">interpretIfStatement</span><span class="token punctuation">(</span>ifStmt<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>输出：<br><code>Yay!!</code></p><p>因为 <code>9 &gt; 7</code> :)</p><p>我们通过检查 <code>condition</code> 解析后是否为真来解释 if 语句。如果为真，我们遍历 <code>body</code> 数组并执行里面的语句。</p><h3 id="执行-AST"><a href="#执行-AST" class="headerlink" title="执行 AST"></a>执行 AST</h3><p>使用访问者模式对 AST 进行求值。访问者模式是设计模式的一种，允许一组对象的算法在一个地方实现。</p><p>ASTs，Literal，Binary，IfStmnt 是一组相关的类，每一个类都需要携带方法以使解释器获得它们的值或者对它们求值。</p><p>访问者模式让我们能够创建单个类，并在类中编写 AST 的实现，将类提供给 AST。每个 AST 都有一个公有的方法，解释器会通过实现类实例对其进行调用，之后 AST 类将在传入的实现类中调用相应的方法，从而计算其 AST。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Literal</span> <span class="token punctuation">{</span>  
+    <span class="token function">constructor</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> value  
+    <span class="token punctuation">}</span>
 
-    visit(visitor) {  
-        return visitor.visitLiteral(this)  
-    }  
-}
+    <span class="token function">visit</span><span class="token punctuation">(</span>visitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">return</span> visitor<span class="token punctuation">.</span><span class="token function">visitLiteral</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
 
-class Binary {  
-    constructor(left, operator, right) {  
-        this.left = left  
-        this.operator = operator  
-        this.right = right  
-    }
+<span class="token keyword">class</span> <span class="token class-name">Binary</span> <span class="token punctuation">{</span>  
+    <span class="token function">constructor</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> operator<span class="token punctuation">,</span> right<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>left <span class="token operator">=</span> left  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>operator <span class="token operator">=</span> operator  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>right <span class="token operator">=</span> right  
+    <span class="token punctuation">}</span>
 
-    visit(visitor) {  
-        return visitor.visitBinary(this)  
-    }  
-}
-</code></pre><p>看，AST Literal 和 Binary 都有访问方法，但是在方法里面，它们调用访问者实例的方法来对自身求值。Literal 调用 visitLiteral，Binary 则调用 <code>visitBinary</code>。</p><p>现在，将 Vistor 作为实现类，它将实现 visitLiteral 和 visitBinary 方法：</p><pre><code class="js">class Visitor {
+    <span class="token function">visit</span><span class="token punctuation">(</span>visitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">return</span> visitor<span class="token punctuation">.</span><span class="token function">visitBinary</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>看，AST Literal 和 Binary 都有访问方法，但是在方法里面，它们调用访问者实例的方法来对自身求值。Literal 调用 visitLiteral，Binary 则调用 <code>visitBinary</code>。</p><p>现在，将 Vistor 作为实现类，它将实现 visitLiteral 和 visitBinary 方法：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Visitor</span> <span class="token punctuation">{</span>
 
-    visitBinary(binExpr) {  
-        // ...  
-        log(&#39;not yet implemented&#39;)  
-    }
+    <span class="token function">visitBinary</span><span class="token punctuation">(</span>binExpr<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token comment" spellcheck="true">// ...  </span>
+        <span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'not yet implemented'</span><span class="token punctuation">)</span>  
+    <span class="token punctuation">}</span>
 
-    visitLiteral(litExpr) {  
-        // ...  
-        log(&#39;not yet implemented&#39;)  
-    }  
-}
-</code></pre><p>visitBinary 和 visitLiteral 在 Vistor 类中将会有自己的实现。因此，当一个解释器想要解释一个二元表达式时，它将调用二元表达式的访问方法，并传递 Vistor 类的实例：</p><pre><code class="js">const binExpr = new Binary(...)  
-const visitor = new Visitor()
+    <span class="token function">visitLiteral</span><span class="token punctuation">(</span>litExpr<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token comment" spellcheck="true">// ...  </span>
+        <span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'not yet implemented'</span><span class="token punctuation">)</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>visitBinary 和 visitLiteral 在 Vistor 类中将会有自己的实现。因此，当一个解释器想要解释一个二元表达式时，它将调用二元表达式的访问方法，并传递 Vistor 类的实例：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> binExpr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Binary</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span>  
+<span class="token keyword">const</span> visitor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Visitor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-binExpr.visit(visitor)
-</code></pre><p>访问方法将调用访问者的 visitBinary，并将其传递给方法，之后打印 <code>not yet implemented</code>。这称为双重分派。</p><ol><li>调用 <code>Binary</code> 的访问方法。</li><li>它 (<code>Binary</code>) 反过来调用 <code>Visitor</code> 实例的<code>visitBinary</code>。</li></ol><p>我们把 visitLiteral 的完整代码写一下。由于 Literal 实例的 value 属性保存着值，所以这里只需返回这个值就好：</p><pre><code class="js">class Visitor {
+binExpr<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span>visitor<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>访问方法将调用访问者的 visitBinary，并将其传递给方法，之后打印 <code>not yet implemented</code>。这称为双重分派。</p><ol><li>调用 <code>Binary</code> 的访问方法。</li><li>它 (<code>Binary</code>) 反过来调用 <code>Visitor</code> 实例的<code>visitBinary</code>。</li></ol><p>我们把 visitLiteral 的完整代码写一下。由于 Literal 实例的 value 属性保存着值，所以这里只需返回这个值就好：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Visitor</span> <span class="token punctuation">{</span>
 
-    visitBinary(binExpr) {  
-        // ...  
-        log(&#39;not yet implemented&#39;)  
-    }
+    <span class="token function">visitBinary</span><span class="token punctuation">(</span>binExpr<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token comment" spellcheck="true">// ...  </span>
+        <span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'not yet implemented'</span><span class="token punctuation">)</span>  
+    <span class="token punctuation">}</span>
 
-    visitLiteral(litExpr) {  
-        return litExpr.value  
-    }  
-}
-</code></pre><p>对于 visitBinary，我们知道 Binary 类有操作符、左属性和右属性。操作符表示将对左右属性进行的操作。我们可以编写实现如下：</p><pre><code class="js">class Visitor {
+    <span class="token function">visitLiteral</span><span class="token punctuation">(</span>litExpr<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">return</span> litExpr<span class="token punctuation">.</span>value  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>对于 visitBinary，我们知道 Binary 类有操作符、左属性和右属性。操作符表示将对左右属性进行的操作。我们可以编写实现如下：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Visitor</span> <span class="token punctuation">{</span>
 
-    visitBinary(binExpr) {  
-        switch(binExpr.operator) {  
-            case &#39;ADD&#39;:  
-            // ...  
-        }  
-    }
+    <span class="token function">visitBinary</span><span class="token punctuation">(</span>binExpr<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">switch</span><span class="token punctuation">(</span>binExpr<span class="token punctuation">.</span>operator<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+            <span class="token keyword">case</span> <span class="token string">'ADD'</span><span class="token punctuation">:</span>  
+            <span class="token comment" spellcheck="true">// ...  </span>
+        <span class="token punctuation">}</span>  
+    <span class="token punctuation">}</span>
 
-    visitLiteral(litExpr) {  
-        return litExpr.value  
-    }  
-}
-</code></pre><p>注意，左值和右值都是表达式，可能是字面量表达式、二元表达式、调用表达式或者其它的表达式。我们并不能确保二元运算的左右两边总是字面量。每一个表达式必须有一个用于对表达式求值的访问方法，因此在上面的 visitBinary 方法中，我们通过调用各自对应的 <code>visit</code> 方法对 Binary 的左属性和右属性进行求值：</p><pre><code class="js">class Visitor {
+    <span class="token function">visitLiteral</span><span class="token punctuation">(</span>litExpr<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">return</span> litExpr<span class="token punctuation">.</span>value  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>注意，左值和右值都是表达式，可能是字面量表达式、二元表达式、调用表达式或者其它的表达式。我们并不能确保二元运算的左右两边总是字面量。每一个表达式必须有一个用于对表达式求值的访问方法，因此在上面的 visitBinary 方法中，我们通过调用各自对应的 <code>visit</code> 方法对 Binary 的左属性和右属性进行求值：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Visitor</span> <span class="token punctuation">{</span>
 
-    visitBinary(binExpr) {  
-        switch(binExpr.operator) {  
-            case &#39;ADD&#39;:  
-                return binExpr.left.visit(this) + binExpr.right.visit(this)  
-        }  
-    }
+    <span class="token function">visitBinary</span><span class="token punctuation">(</span>binExpr<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">switch</span><span class="token punctuation">(</span>binExpr<span class="token punctuation">.</span>operator<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+            <span class="token keyword">case</span> <span class="token string">'ADD'</span><span class="token punctuation">:</span>  
+                <span class="token keyword">return</span> binExpr<span class="token punctuation">.</span>left<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token operator">+</span> binExpr<span class="token punctuation">.</span>right<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">}</span>  
+    <span class="token punctuation">}</span>
 
-    visitLiteral(litExpr) {  
-        return litExpr.value  
-    }  
-}
-</code></pre><p>因此，无论左值和右值保存的是哪一种表达式，最后都可以进行传递。</p><p>因此，如果我们有下面这些语句:</p><pre><code class="js">const oneLit = new Literal(&#39;1&#39;)  
-const twoLit = new Literal(&#39;2&#39;)  
-const binExpr = new Binary(oneLit, &#39;ADD&#39;, twoLit)  
-const visitor = new Visitor()
+    <span class="token function">visitLiteral</span><span class="token punctuation">(</span>litExpr<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">return</span> litExpr<span class="token punctuation">.</span>value  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>因此，无论左值和右值保存的是哪一种表达式，最后都可以进行传递。</p><p>因此，如果我们有下面这些语句:</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> oneLit <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token string">'1'</span><span class="token punctuation">)</span>  
+<span class="token keyword">const</span> twoLit <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token string">'2'</span><span class="token punctuation">)</span>  
+<span class="token keyword">const</span> binExpr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Binary</span><span class="token punctuation">(</span>oneLit<span class="token punctuation">,</span> <span class="token string">'ADD'</span><span class="token punctuation">,</span> twoLit<span class="token punctuation">)</span>  
+<span class="token keyword">const</span> visitor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Visitor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-binExpr.visit(visitor)
-</code></pre><p>在这种情况下，二元运算保存的是字面量。</p><p>访问者的 <code>visitBinary</code> 将会被调用，同时将 binExpr 传入，在 Vistor 类中，<code>visitBinary</code> 将 oneLit 作为左值，将 twoLit 作为右值。由于 oneLit 和 twoLit 都是 Literal 的实例，因此它们的访问方法会被调用，同时将 Visitor 类传入。对于 oneLit，其 Literal 类内部又会调用 Vistor 类的 visitLiteral 方法，并将 <code>oneLit</code> 传入，而 Vistor 中的 visitLiteral 方法返回 Literal 类的 value 属性，也就是 <code>1</code>。同理，对于 twoLit 来说，返回的是 <code>2</code>。</p><p>因为执行了 switch 语句中的 <code>case &#39;ADD&#39;</code>，所以返回的值会相加，最后返回 3。</p><p>如果我们将 <code>binExpr.visit(visitor)</code> 传给 <code>console.log</code>，它将会打印 <code>3</code></p><pre><code class="js">console.log(binExpr.visit(visitor))  
-// 3
-</code></pre><p>如下，我们传递一个 3 分支的二元运算：</p><pre><code class="js">1 + 2 + 3
-</code></pre><p>首先，我们选择 <code>1 + 2</code>，那么其结果将作为左值，即 <code>+ 3</code>。</p><p>上述可以用 Binary 类表示为：</p><pre><code class="js">new Binary (new Literal(1), &#39;ADD&#39;, new Binary(new Literal(2), &#39;ADD&#39;, new Literal(3)))
-</code></pre><p>可以看到，右值不是字面量，而是一个二元表达式。所以在执行加法运算之前，它必须先对这个二元表达式求值，并将其结果作为最终求值时的右值。</p><pre><code class="js">const oneLit = new Literal(1)  
-const threeLit =new Literal(3)  
-const twoLit = new Literal(2)
+binExpr<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span>visitor<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在这种情况下，二元运算保存的是字面量。</p><p>访问者的 <code>visitBinary</code> 将会被调用，同时将 binExpr 传入，在 Vistor 类中，<code>visitBinary</code> 将 oneLit 作为左值，将 twoLit 作为右值。由于 oneLit 和 twoLit 都是 Literal 的实例，因此它们的访问方法会被调用，同时将 Visitor 类传入。对于 oneLit，其 Literal 类内部又会调用 Vistor 类的 visitLiteral 方法，并将 <code>oneLit</code> 传入，而 Vistor 中的 visitLiteral 方法返回 Literal 类的 value 属性，也就是 <code>1</code>。同理，对于 twoLit 来说，返回的是 <code>2</code>。</p><p>因为执行了 switch 语句中的 <code>case &#39;ADD&#39;</code>，所以返回的值会相加，最后返回 3。</p><p>如果我们将 <code>binExpr.visit(visitor)</code> 传给 <code>console.log</code>，它将会打印 <code>3</code></p><pre class="line-numbers language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>binExpr<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span>visitor<span class="token punctuation">)</span><span class="token punctuation">)</span>  
+<span class="token comment" spellcheck="true">// 3</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>如下，我们传递一个 3 分支的二元运算：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">3</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>首先，我们选择 <code>1 + 2</code>，那么其结果将作为左值，即 <code>+ 3</code>。</p><p>上述可以用 Binary 类表示为：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Binary</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'ADD'</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Binary</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'ADD'</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>可以看到，右值不是字面量，而是一个二元表达式。所以在执行加法运算之前，它必须先对这个二元表达式求值，并将其结果作为最终求值时的右值。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> oneLit <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  
+<span class="token keyword">const</span> threeLit <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>  
+<span class="token keyword">const</span> twoLit <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
 
-const binExpr2 = new Binary(twoLit, &#39;ADD&#39;, threeLit)  
-const binExpr1 = new Binary (oneLit, &#39;ADD&#39;, binExpr2)
+<span class="token keyword">const</span> binExpr2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Binary</span><span class="token punctuation">(</span>twoLit<span class="token punctuation">,</span> <span class="token string">'ADD'</span><span class="token punctuation">,</span> threeLit<span class="token punctuation">)</span>  
+<span class="token keyword">const</span> binExpr1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Binary</span> <span class="token punctuation">(</span>oneLit<span class="token punctuation">,</span> <span class="token string">'ADD'</span><span class="token punctuation">,</span> binExpr2<span class="token punctuation">)</span>
 
-const visitor = new Visitor()
+<span class="token keyword">const</span> visitor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Visitor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-log(binExpr1.visit(visitor))
+<span class="token function">log</span><span class="token punctuation">(</span>binExpr1<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span>visitor<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-6
-</code></pre><h3 id="添加-if-语句"><a href="#添加-if-语句" class="headerlink" title="添加 if 语句"></a>添加 <code>if</code> 语句</h3><p>将 <code>if</code> 语句带到等式中。为了对一个 if 语句求值，我们将会给 IfStmt 类添加一个 <code>visit</code> 方法，之后它将调用 visitIfStmt 方法：</p><pre><code class="js">class IfStmt {  
-    constructor(condition, body) {  
-        this.condition = condition  
-        this.body = body  
-    }
+<span class="token number">6</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="添加-if-语句"><a href="#添加-if-语句" class="headerlink" title="添加 if 语句"></a>添加 <code>if</code> 语句</h3><p>将 <code>if</code> 语句带到等式中。为了对一个 if 语句求值，我们将会给 IfStmt 类添加一个 <code>visit</code> 方法，之后它将调用 visitIfStmt 方法：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">IfStmt</span> <span class="token punctuation">{</span>  
+    <span class="token function">constructor</span><span class="token punctuation">(</span>condition<span class="token punctuation">,</span> body<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>condition <span class="token operator">=</span> condition  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>body <span class="token operator">=</span> body  
+    <span class="token punctuation">}</span>
 
-    visit(visitor) {  
-        return visitor.visitIfStmt(this)  
-    }  
-}
-</code></pre><p>见识到访问者模式的威力了吗？我们向一些类中新增了一个类，对应地只需要添加相同的访问方法即可，而这将调用它位于 Vistor 类中的对应方法。这种方式将不会破坏或者影响到其它的相关类，访问者模式让我们遵循了开闭原则。</p><p>因此，我们在 Vistor 类中实现 <code>visitIfStmt</code>：</p><pre><code class="js">class Visitor {  
-    // ...
+    <span class="token function">visit</span><span class="token punctuation">(</span>visitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">return</span> visitor<span class="token punctuation">.</span><span class="token function">visitIfStmt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>见识到访问者模式的威力了吗？我们向一些类中新增了一个类，对应地只需要添加相同的访问方法即可，而这将调用它位于 Vistor 类中的对应方法。这种方式将不会破坏或者影响到其它的相关类，访问者模式让我们遵循了开闭原则。</p><p>因此，我们在 Vistor 类中实现 <code>visitIfStmt</code>：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Visitor</span> <span class="token punctuation">{</span>  
+    <span class="token comment" spellcheck="true">// ...</span>
 
-    visitIfStmt(ifStmt) {  
-        if(ifStmt.condition.visit(this)) {  
-            for(const stmt of ifStmt.body) {  
-                stmt.visit(this)  
-            }  
-        }  
-    }  
-}
-</code></pre><p>因为条件是一个表达式，所以我们调用它的访问方法对其进行求值。我们使用 JS 中的 if 语句检查返回值，如果为真，则遍历语句的代码块 <code>ifStmt.body</code>，通过调用 <code>visit</code> 方法并传入 Vistor，对数组中每一条语句进行求值。</p><p>因此我们可以翻译出这条语句：</p><pre><code class="js">if(67 &gt; 90)
-</code></pre><h3 id="添加函数调用和函数声明"><a href="#添加函数调用和函数声明" class="headerlink" title="添加函数调用和函数声明"></a>添加函数调用和函数声明</h3><p>接着来添加一个函数调用。我们已经有一个对应的类了：</p><pre><code class="js">class FuncCall {  
-    constructor(name, args) {  
-        this.name = name  
-        this.args = args  
-    }  
-}
-</code></pre><p>添加一个访问方法：</p><pre><code class="js">class FuncCall {  
-    constructor(name, args) {  
-        this.name = name  
-        this.args = args  
-    }
+    <span class="token function">visitIfStmt</span><span class="token punctuation">(</span>ifStmt<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">if</span><span class="token punctuation">(</span>ifStmt<span class="token punctuation">.</span>condition<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">const</span> stmt <span class="token keyword">of</span> ifStmt<span class="token punctuation">.</span>body<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+                stmt<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>  
+            <span class="token punctuation">}</span>  
+        <span class="token punctuation">}</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>因为条件是一个表达式，所以我们调用它的访问方法对其进行求值。我们使用 JS 中的 if 语句检查返回值，如果为真，则遍历语句的代码块 <code>ifStmt.body</code>，通过调用 <code>visit</code> 方法并传入 Vistor，对数组中每一条语句进行求值。</p><p>因此我们可以翻译出这条语句：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">67</span> <span class="token operator">></span> <span class="token number">90</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="添加函数调用和函数声明"><a href="#添加函数调用和函数声明" class="headerlink" title="添加函数调用和函数声明"></a>添加函数调用和函数声明</h3><p>接着来添加一个函数调用。我们已经有一个对应的类了：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">FuncCall</span> <span class="token punctuation">{</span>  
+    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>args <span class="token operator">=</span> args  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>添加一个访问方法：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">FuncCall</span> <span class="token punctuation">{</span>  
+    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>args <span class="token operator">=</span> args  
+    <span class="token punctuation">}</span>
 
-    visit(visitor) {  
-        return visitor.visitFuncCall(this)  
-    }  
-}
-</code></pre><p>给 <code>Visitor</code> 类添加 <code>visitFuncCall</code> 方法：</p><pre><code class="js">class Visitor {  
-    // ...
+    <span class="token function">visit</span><span class="token punctuation">(</span>visitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">return</span> visitor<span class="token punctuation">.</span><span class="token function">visitFuncCall</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>给 <code>Visitor</code> 类添加 <code>visitFuncCall</code> 方法：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Visitor</span> <span class="token punctuation">{</span>  
+    <span class="token comment" spellcheck="true">// ...</span>
 
-    visitFuncCall(funcCall) {  
-        const funcName = funcCall.name  
-        const args = []  
-        for(const expr of funcCall.args)  
-            args.push(expr.visit(this))  
-        // ...  
-    }  
-}
-</code></pre><p>这里有一个问题。除了内置函数之外，还有自定义函数，我们需要为后者创建一个“容器”，并在里面通过函数名保存和引用该函数。</p><pre><code class="js">const FuncStore = (  
-    class FuncStore {
+    <span class="token function">visitFuncCall</span><span class="token punctuation">(</span>funcCall<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">const</span> funcName <span class="token operator">=</span> funcCall<span class="token punctuation">.</span>name  
+        <span class="token keyword">const</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">const</span> expr <span class="token keyword">of</span> funcCall<span class="token punctuation">.</span>args<span class="token punctuation">)</span>  
+            args<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>expr<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  
+        <span class="token comment" spellcheck="true">// ...  </span>
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这里有一个问题。除了内置函数之外，还有自定义函数，我们需要为后者创建一个“容器”，并在里面通过函数名保存和引用该函数。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> FuncStore <span class="token operator">=</span> <span class="token punctuation">(</span>  
+    <span class="token keyword">class</span> <span class="token class-name">FuncStore</span> <span class="token punctuation">{</span>
 
-        constructor() {  
-            this.map = new Map()  
-        }
+        <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+            <span class="token keyword">this</span><span class="token punctuation">.</span>map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">}</span>
 
-        setFunc(name, body) {  
-            this.map.set(name, body)  
-        }
+        <span class="token function">setFunc</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> body<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+            <span class="token keyword">this</span><span class="token punctuation">.</span>map<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> body<span class="token punctuation">)</span>  
+        <span class="token punctuation">}</span>
 
-        getFunc(name) {  
-            return this.map.get(name)  
-        }  
-    }  
-    return new FuncStore()  
-)()
-</code></pre><p><code>FuncStore</code> 保存着函数，并从一个 <code>Map</code> 实例中取回这些函数。</p><pre><code class="js">class Visitor {  
-    // ...
+        <span class="token function">getFunc</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>map<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>  
+        <span class="token punctuation">}</span>  
+    <span class="token punctuation">}</span>  
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">FuncStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  
+<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><code>FuncStore</code> 保存着函数，并从一个 <code>Map</code> 实例中取回这些函数。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Visitor</span> <span class="token punctuation">{</span>  
+    <span class="token comment" spellcheck="true">// ...</span>
 
-    visitFuncCall(funcCall) {  
-        const funcName = funcCall.name  
-        const args = []  
-        for(const expr of funcCall.args)  
-            args.push(expr.visit(this))  
-        if(funcName == &quot;log&quot;)  
-            console.log(...args)  
-        if(FuncStore.getFunc(funcName))  
-            FuncStore.getFunc(funcName).forEach(stmt =&gt; stmt.visit(this))  
-    }  
-}
-</code></pre><p>看下我们做了什么。如果函数名 <code>funcName</code>（记住，<code>FuncCall</code> 类将函数名保存在 <code>name</code> 属性中）为 <code>log</code>，则运行 JS <code>console.log(...)</code>，并传参给它。如果我们在函数保存中找到了函数，那么就对该函数体进行遍历，依次访问并执行。</p><p>现在看看怎么把我们的函数声明放进函数保存中。</p><p>函数声明以 <code>fucntion</code> 开头。一般的函数结构是这样的：</p><pre><code class="js">function function_name(params) {  
-    // function body  
-}
-</code></pre><p>因此，我们可以在一个类中用属性表示一个函数声明：name 保存函数函数名，body 则是一个数组，保存函数体中的语句：</p><pre><code class="js">class FunctionDeclaration {  
-    constructor(name, body) {  
-        this.name = name  
-        this.body = body  
-    }  
-}
-</code></pre><p>我们添加一个访问方法，该方法在 Vistor 中被称为 visitFunctionDeclaration：</p><pre><code class="js">class FunctionDeclaration {  
-    constructor(name, body) {  
-        this.name = name  
-        this.body = body  
-    }
+    <span class="token function">visitFuncCall</span><span class="token punctuation">(</span>funcCall<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">const</span> funcName <span class="token operator">=</span> funcCall<span class="token punctuation">.</span>name  
+        <span class="token keyword">const</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">const</span> expr <span class="token keyword">of</span> funcCall<span class="token punctuation">.</span>args<span class="token punctuation">)</span>  
+            args<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>expr<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  
+        <span class="token keyword">if</span><span class="token punctuation">(</span>funcName <span class="token operator">==</span> <span class="token string">"log"</span><span class="token punctuation">)</span>  
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>  
+        <span class="token keyword">if</span><span class="token punctuation">(</span>FuncStore<span class="token punctuation">.</span><span class="token function">getFunc</span><span class="token punctuation">(</span>funcName<span class="token punctuation">)</span><span class="token punctuation">)</span>  
+            FuncStore<span class="token punctuation">.</span><span class="token function">getFunc</span><span class="token punctuation">(</span>funcName<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>stmt <span class="token operator">=</span><span class="token operator">></span> stmt<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>看下我们做了什么。如果函数名 <code>funcName</code>（记住，<code>FuncCall</code> 类将函数名保存在 <code>name</code> 属性中）为 <code>log</code>，则运行 JS <code>console.log(...)</code>，并传参给它。如果我们在函数保存中找到了函数，那么就对该函数体进行遍历，依次访问并执行。</p><p>现在看看怎么把我们的函数声明放进函数保存中。</p><p>函数声明以 <code>fucntion</code> 开头。一般的函数结构是这样的：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">function_name</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+    <span class="token comment" spellcheck="true">// function body  </span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>因此，我们可以在一个类中用属性表示一个函数声明：name 保存函数函数名，body 则是一个数组，保存函数体中的语句：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">FunctionDeclaration</span> <span class="token punctuation">{</span>  
+    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> body<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>body <span class="token operator">=</span> body  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我们添加一个访问方法，该方法在 Vistor 中被称为 visitFunctionDeclaration：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">FunctionDeclaration</span> <span class="token punctuation">{</span>  
+    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> body<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name  
+        <span class="token keyword">this</span><span class="token punctuation">.</span>body <span class="token operator">=</span> body  
+    <span class="token punctuation">}</span>
 
-    visit(visitor) {  
-        return visitor.visitFunctionDeclaration(this)  
-    }  
-}
-</code></pre><p>在 Visitor 中：</p><pre><code class="js">class Visitor {  
-    // ...
+    <span class="token function">visit</span><span class="token punctuation">(</span>visitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        <span class="token keyword">return</span> visitor<span class="token punctuation">.</span><span class="token function">visitFunctionDeclaration</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在 Visitor 中：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Visitor</span> <span class="token punctuation">{</span>  
+    <span class="token comment" spellcheck="true">// ...</span>
 
-    visitFunctionDeclaration(funcDecl) {  
-        FuncStore.setFunc(funcDecl.name, funcDecl.body)  
-    }  
-}
-</code></pre><p>将函数名作为键即可保存函数。</p><p>现在，假设我们有下面这个函数：</p><pre><code class="js">function addNumbers(a, b) {  
-    log(a + b)  
-}
+    <span class="token function">visitFunctionDeclaration</span><span class="token punctuation">(</span>funcDecl<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+        FuncStore<span class="token punctuation">.</span><span class="token function">setFunc</span><span class="token punctuation">(</span>funcDecl<span class="token punctuation">.</span>name<span class="token punctuation">,</span> funcDecl<span class="token punctuation">.</span>body<span class="token punctuation">)</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>将函数名作为键即可保存函数。</p><p>现在，假设我们有下面这个函数：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">addNumbers</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+    <span class="token function">log</span><span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span>  
+<span class="token punctuation">}</span>
 
-function logNumbers() {  
-    log(5)  
-    log(6)  
-}
-</code></pre><p>它可以表示为：</p><pre><code class="js">const funcDecl = new FunctionDeclaration(&#39;logNumbers&#39;, [  
-    new FuncCall(&#39;log&#39;, [new Literal(5)]),  
-    new FuncCall(&#39;log&#39;, [new Literal(6)])  
-])
+<span class="token keyword">function</span> <span class="token function">logNumbers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+    <span class="token function">log</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>  
+    <span class="token function">log</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>它可以表示为：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> funcDecl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FunctionDeclaration</span><span class="token punctuation">(</span><span class="token string">'logNumbers'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>  
+    <span class="token keyword">new</span> <span class="token class-name">FuncCall</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  
+    <span class="token keyword">new</span> <span class="token class-name">FuncCall</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">Literal</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-visitor.visitFunctionDeclaration(funcDecl)
-</code></pre><p>现在，我们来调用函数 <code>logNumbers</code>：</p><pre><code class="js">const funcCall = new FuncCall(&#39;logNumbers&#39;, [])  
-visitor.visitFuncCall(funcCall)
-</code></pre><p>控制台将会打印：</p><pre><code class="js">5
-6
-</code></pre><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>理解 AST 的过程是令人望而生畏并且非常消耗脑力的。即使是编写最简单的解析器也需要大量的代码。</p><p>注意，我们并没有介绍扫描仪和解析器，而是先行解释了 ASTs 以展示它们的工作过程。如果你能够深入理解 AST 以及它所需要的内容，那么在你开始编写自己的编程语言时，自然就事半功倍了。<br>熟能生巧，你可以继续添加其它的编程语言特性，例如：</p><ul><li>类和对象</li><li>方法调用</li><li>封装和继承</li><li><code>for-of</code> 语句</li><li><code>while</code> 语句</li><li><code>for-in</code> 语句</li><li>其它任何你能想到的有趣特性</li></ul><p>如果你对此有任何疑问，或者是任何我需要添加、修改、删减的内容，欢迎评论和致邮。</p><p>感谢 ！！！</p></div><div class="post-nav"><div class="post-nav-prev"><a href="/2019/06/18/Trs-前端项目中常见的 CSS 问题/" rel="prev" title="「译」前端项目中常见的 CSS 问题"><i class="fa fa-angle-double-left"></i>&nbsp「译」前端项目中常见的 CSS 问题</a></div><div class="post-nav-next"><a href="/2019/06/07/Trs-FlexBox 基本原理/" rel="next" title="「译」Flexbox 基本原理">「译」Flexbox 基本原理&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top"><i class="fa fa-th-large"></i>Catalog</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#执行-AST"><span class="toc-text">执行 AST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-if-语句"><span class="toc-text">添加 if 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加函数调用和函数声明"><span class="toc-text">添加函数调用和函数声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结论"><span class="toc-text">结论</span></a></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"mm",pageSize:10,visitor:!0})</script></section></main><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - 2019 My Blog</p><p class="a">Powered by <a href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/search.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{jsonPath:"/live2dw/assets/tororo.model.json"},display:{position:"left",width:150,height:300,vOffset:-120,hOffset:-5},mobile:{show:!1},react:{opacityDefault:1e3,opacityOnHover:1e3},log:!1})</script></body></html><!-- rebuild by neat -->
+visitor<span class="token punctuation">.</span><span class="token function">visitFunctionDeclaration</span><span class="token punctuation">(</span>funcDecl<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>现在，我们来调用函数 <code>logNumbers</code>：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> funcCall <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FuncCall</span><span class="token punctuation">(</span><span class="token string">'logNumbers'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  
+visitor<span class="token punctuation">.</span><span class="token function">visitFuncCall</span><span class="token punctuation">(</span>funcCall<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>控制台将会打印：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token number">5</span>
+<span class="token number">6</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>理解 AST 的过程是令人望而生畏并且非常消耗脑力的。即使是编写最简单的解析器也需要大量的代码。</p><p>注意，我们并没有介绍扫描仪和解析器，而是先行解释了 ASTs 以展示它们的工作过程。如果你能够深入理解 AST 以及它所需要的内容，那么在你开始编写自己的编程语言时，自然就事半功倍了。<br>熟能生巧，你可以继续添加其它的编程语言特性，例如：</p><ul><li>类和对象</li><li>方法调用</li><li>封装和继承</li><li><code>for-of</code> 语句</li><li><code>while</code> 语句</li><li><code>for-in</code> 语句</li><li>其它任何你能想到的有趣特性</li></ul><p>如果你对此有任何疑问，或者是任何我需要添加、修改、删减的内容，欢迎评论和致邮。</p><p>感谢 ！！！</p></div><div class="post-nav"><div class="post-nav-prev"><a href="/2019/06/18/Trs-前端项目中常见的 CSS 问题/" rel="prev" title="「译」前端项目中常见的 CSS 问题"><i class="fa fa-angle-double-left"></i>&nbsp「译」前端项目中常见的 CSS 问题</a></div><div class="post-nav-next"><a href="/2019/06/07/Trs-FlexBox 基本原理/" rel="next" title="「译」Flexbox 基本原理">「译」Flexbox 基本原理&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top"><i class="fa fa-th-large"></i>Catalog</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#执行-AST"><span class="toc-text">执行 AST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-if-语句"><span class="toc-text">添加 if 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加函数调用和函数声明"><span class="toc-text">添加函数调用和函数声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结论"><span class="toc-text">结论</span></a></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"mm",pageSize:10,visitor:!0})</script></section></main><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - 2019 My Blog</p><p class="a">Powered by <a href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/search.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{jsonPath:"/live2dw/assets/tororo.model.json"},display:{position:"left",width:150,height:300,vOffset:-120,hOffset:-5},mobile:{show:!1},react:{opacityDefault:1e3,opacityOnHover:1e3},log:!1})</script></body></html><!-- rebuild by neat -->

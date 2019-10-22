@@ -6,21 +6,21 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-10-22T05:27:08.194Z</updated>
+  <updated>2019-10-22T05:33:03.099Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Webpack：使用 loader</title>
+    <title>Webpack（二）：使用 loader</title>
     <link href="https://chorer.github.io/2019/10/20/F-Webpack%EF%BC%9A%E4%BD%BF%E7%94%A8%20loader/"/>
     <id>https://chorer.github.io/2019/10/20/F-Webpack：使用 loader/</id>
     <published>2019-10-19T16:00:00.000Z</published>
-    <updated>2019-10-22T05:27:08.194Z</updated>
+    <updated>2019-10-22T05:33:03.099Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Tue Oct 22 2019 13:30:30 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Webpack：loader-0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Tue Oct 22 2019 13:33:14 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Webpack：loader-0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -32,15 +32,15 @@
   </entry>
   
   <entry>
-    <title>Webpack：安装和基础配置</title>
+    <title>Webpack（一）：安装和基础配置</title>
     <link href="https://chorer.github.io/2019/10/19/F-Webpack%EF%BC%9A%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/"/>
     <id>https://chorer.github.io/2019/10/19/F-Webpack：安装和基础配置/</id>
     <published>2019-10-18T16:00:00.000Z</published>
-    <updated>2019-10-20T02:31:41.674Z</updated>
+    <updated>2019-10-22T05:32:21.477Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Tue Oct 22 2019 13:27:55 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/webpack学习-0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Tue Oct 22 2019 13:33:14 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/webpack学习-0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     

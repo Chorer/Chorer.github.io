@@ -6,10 +6,26 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-10-22T05:33:03.099Z</updated>
+  <updated>2019-10-22T14:01:35.186Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://chorer.github.io/2019/10/22/F-Webpack%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E4%BD%BF%E7%94%A8%20plugin%20%E4%BB%A5%E5%8F%8A%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/"/>
+    <id>https://chorer.github.io/2019/10/22/F-Webpack（三）：使用 plugin 以及本地服务器搭建/</id>
+    <published>2019-10-22T07:03:40.534Z</published>
+    <updated>2019-10-22T14:01:35.186Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Tue Oct 22 2019 22:02:37 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;-–&lt;/p&gt;&lt;p&gt;title: Webpack（三）：使用 plugin 以及本地服务器搭建&lt;/p&gt;&lt;p&gt;categories:&lt;/p&gt;&lt;p&gt;- Front-end&lt;/p&gt;&lt;p&gt;- Webpack&lt;/p&gt;&lt;p&gt;data: 2019-10-22&lt;/p&gt;&lt;p&gt;-–&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/使用 plugin 以及本地服务器搭建-0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Webpack（二）：使用 loader</title>
@@ -414,26 +430,6 @@
     
     
       <category term="this" scheme="https://chorer.github.io/tags/this/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《JavaScript 高级程序设计》阅读笔记 1：最佳实践</title>
-    <link href="https://chorer.github.io/2019/08/03/F-JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
-    <id>https://chorer.github.io/2019/08/03/F-JavaScript高级程序设计阅读笔记/</id>
-    <published>2019-08-02T16:25:52.407Z</published>
-    <updated>2019-08-03T16:58:25.895Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Tue Oct 22 2019 14:48:20 GMT+0800 (GMT+08:00) --&gt;&lt;h2 id=&quot;可维护性&quot;&gt;&lt;a href=&quot;#可维护性&quot; class=&quot;headerlink&quot; title=&quot;可维护性&quot;&gt;&lt;/a&gt;可维护性&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;可维护性包括：可理解性、直观性、可适应性、可扩展性和可调试性&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
-    
-      <category term="JavaScript" scheme="https://chorer.github.io/categories/Front-end/JavaScript/"/>
-    
     
   </entry>
   

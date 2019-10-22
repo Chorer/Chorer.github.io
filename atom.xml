@@ -6,10 +6,30 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-10-20T02:31:41.674Z</updated>
+  <updated>2019-10-22T05:27:08.194Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Webpack：使用 loader</title>
+    <link href="https://chorer.github.io/2019/10/20/F-Webpack%EF%BC%9A%E4%BD%BF%E7%94%A8%20loader/"/>
+    <id>https://chorer.github.io/2019/10/20/F-Webpack：使用 loader/</id>
+    <published>2019-10-19T16:00:00.000Z</published>
+    <updated>2019-10-22T05:27:08.194Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Tue Oct 22 2019 13:30:30 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Webpack：loader-0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+      <category term="Webpack" scheme="https://chorer.github.io/categories/Front-end/Webpack/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Webpack：安装和基础配置</title>
@@ -407,26 +427,6 @@
     <summary type="html">
     
       &lt;!-- build time:Tue Oct 22 2019 13:27:55 GMT+0800 (GMT+08:00) --&gt;&lt;h2 id=&quot;可维护性&quot;&gt;&lt;a href=&quot;#可维护性&quot; class=&quot;headerlink&quot; title=&quot;可维护性&quot;&gt;&lt;/a&gt;可维护性&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;可维护性包括：可理解性、直观性、可适应性、可扩展性和可调试性&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
-    
-      <category term="JavaScript" scheme="https://chorer.github.io/categories/Front-end/JavaScript/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>解析赋值、浅拷贝和深拷贝</title>
-    <link href="https://chorer.github.io/2019/07/11/F-%E8%A7%A3%E6%9E%90%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/"/>
-    <id>https://chorer.github.io/2019/07/11/F-解析赋值、浅拷贝和深拷贝/</id>
-    <published>2019-07-11T08:43:47.216Z</published>
-    <updated>2019-07-23T14:42:23.989Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Tue Oct 22 2019 13:27:55 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/解析赋值、浅拷贝和深拷贝-1.webp&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     

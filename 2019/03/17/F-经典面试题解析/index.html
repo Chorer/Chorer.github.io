@@ -1,201 +1,201 @@
-<!-- build time:Tue Oct 22 2019 13:33:29 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Chor&#39;s Blog</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third party/pace-theme-flash.css"><link rel="icon" href="/images/me.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css"><link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css"><link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><header class="header"><div class="header_top"><span class="theme"><i class="fa fa-bars"></i> <a href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">HOME</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">CATEGORIES</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">ARCHIVES</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">TAGS</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">ABOUT</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a href="/" class="logo">Chor&#39;s Blog</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">经典面试题解析</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2019-03-17&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp4.3k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp16 mins&nbsp&nbsp&nbsp</span><div class="post-tags"></div></div><div class="post-content"><p>本篇博客专门用于收集各类经典面试题，并给出相关的解题思路和原理。<br><a id="more"></a></p><h3 id="1-考点：块级作用域和闭包"><a href="#1-考点：块级作用域和闭包" class="headerlink" title="1.考点：块级作用域和闭包"></a>1.考点：块级作用域和闭包</h3><p>先看一道很经典的面试题</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>                     
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>如果你认为输出的是6，那么恭喜你答错了。正确答案是10。首先分析一下这段代码的具体执行过程。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>   
-<span class="token comment" spellcheck="true">/* 用var声明的变量要么在函数作用域中，要么在全局作用域中，很明显这里是在全局作用域中，
-因此认为i是全局变量，直接放在全局变量中。*/</span>
-a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">/* 关键！！这里之所以i为i而不是0；是因为我们只是定义了该函数，并未调用它，所以没有进入
-该函数执行环境，i当然不会沿着作用域链向上搜索找到自由变量i的值。*/</span>
-<span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">// 由于不具备块级作用域，所以该函数暴露在全局作用域中。</span>
+<!-- build time:Tue Oct 22 2019 13:45:56 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Chor&#39;s Blog</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third party/pace-theme-flash.css"><link rel="icon" href="/images/me.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"></head><body><header class="header"><div class="header_top"><span class="theme"><i class="fa fa-bars"></i> <a href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">HOME</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">CATEGORIES</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">ARCHIVES</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">TAGS</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">ABOUT</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a href="/" class="logo">Chor&#39;s Blog</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">经典面试题解析</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2019-03-17&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp4.3k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp16 mins&nbsp&nbsp&nbsp</span><div class="post-tags"></div></div><div class="post-content"><p>本篇博客专门用于收集各类经典面试题，并给出相关的解题思路和原理。<br><a id="more"></a></p><h3 id="1-考点：块级作用域和闭包"><a href="#1-考点：块级作用域和闭包" class="headerlink" title="1.考点：块级作用域和闭包"></a>1.考点：块级作用域和闭包</h3><p>先看一道很经典的面试题</p><pre><code class="js">var a=[];
+for(var i=0;i&lt;10;i++){
+    a[i] = function(){
+        console.log(i);
+    }
+}                     
+console.log(a[6]);
+</code></pre><p>如果你认为输出的是6，那么恭喜你答错了。正确答案是10。首先分析一下这段代码的具体执行过程。</p><pre><code class="js">var a=[];
+var i=0;   
+/* 用var声明的变量要么在函数作用域中，要么在全局作用域中，很明显这里是在全局作用域中，
+因此认为i是全局变量，直接放在全局变量中。*/
+a[0]=function(){
+console.log(i);
+/* 关键！！这里之所以i为i而不是0；是因为我们只是定义了该函数，并未调用它，所以没有进入
+该函数执行环境，i当然不会沿着作用域链向上搜索找到自由变量i的值。*/
+}  // 由于不具备块级作用域，所以该函数暴露在全局作用域中。
 
 
-<span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//第二次循环，这时var i=1;覆盖了前面的var i=0；即现在全局变量i为1;</span>
-a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//解释同a[0]函数。</span>
-<span class="token punctuation">}</span>
+var i=1;   //第二次循环，这时var i=1;覆盖了前面的var i=0；即现在全局变量i为1;
+a[1]=function(){
+console.log(i);  //解释同a[0]函数。
+}
 
-<span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 第三次循环，这时var i=2;覆盖了前面的var i=1；即现在全局变量i为2;</span>
-a<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-
-<span class="token operator">...</span><span class="token operator">...</span>第四次循环 此时i<span class="token operator">=</span><span class="token number">3</span>  这个以及下面的i不断的覆盖前面的i，因为都在全局作用域中
-<span class="token operator">...</span><span class="token operator">...</span>第五次循环 此时i<span class="token operator">=</span><span class="token number">4</span>
-<span class="token operator">...</span><span class="token operator">...</span>第六次循环 此时i<span class="token operator">=</span><span class="token number">5</span>
-<span class="token operator">...</span><span class="token operator">...</span>第七次循环 此时i<span class="token operator">=</span><span class="token number">6</span>
-<span class="token operator">...</span><span class="token operator">...</span>第八次循环 此时i<span class="token operator">=</span><span class="token number">7</span>
-<span class="token operator">...</span><span class="token operator">...</span>第九次循环 此时i<span class="token operator">=</span><span class="token number">8</span>   
+var i=2;   // 第三次循环，这时var i=2;覆盖了前面的var i=1；即现在全局变量i为2;
+a[2]=function(){
+console.log(i);
+}
 
 
-<span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">;</span>
-a<span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+......第四次循环 此时i=3  这个以及下面的i不断的覆盖前面的i，因为都在全局作用域中
+......第五次循环 此时i=4
+......第六次循环 此时i=5
+......第七次循环 此时i=6
+......第八次循环 此时i=7
+......第九次循环 此时i=8   
 
 
-<span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 这时i为10，因为不满足循环条件，所以停止循环。</span>
+var i=9;
+a[9]=function(){
+    console.log(i);
+}
+
+
+var i=10;// 这时i为10，因为不满足循环条件，所以停止循环。
 
 紧接着在全局环境中继续向下执行。
 
-a<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">/* 这时调用a[6]函数，所以随即进入a[6]函数的执行上下文环境中，即
+a[6]();
+/* 这时调用a[6]函数，所以随即进入a[6]函数的执行上下文环境中，即
 function(){console.log(i)}中，此时执行函数中的代码console.log(i)，
 因为在当前的函数执行上下文中不存在变量i，所以i为自由变量，此时会
 沿着作用域链向上寻找，进而进入了全局作用域中寻找变量i,而全局作用域
-中的i在循环跑完后已经变成了10，所以a[6]的值就是10了。*/</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>那么，如果我们想要输出6，应该怎么修改代码呢？两种方法。<br>1.使用let形成块级作用域，配合闭包使用</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+中的i在循环跑完后已经变成了10，所以a[6]的值就是10了。*/
+</code></pre><p>那么，如果我们想要输出6，应该怎么修改代码呢？两种方法。<br>1.使用let形成块级作用域，配合闭包使用</p><pre><code class="js">var a=[];
 
-<span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//进入第一次循环</span>
-    <span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> 
-    <span class="token comment" spellcheck="true">/*注意：因为使用let使得for循环为块级作用域，此次let i=0
-    在这个块级作用域中，而不是在全局作用域中。*/</span>
-    a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span> 
-<span class="token comment" spellcheck="true">/* 注意：由于是用let声明的i,所以使整个块成为块级作用域，又由于a[0]这个函数
-引用到了上一级作用域中的自由变量，所以a[0]就成了一个闭包。*/</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">/*声明:这里用｛｝表达并不符合语法，只是希望通过它来说明let存在时，这个for循环块
-是块级作用域，而不是全局作用域。*/</span>    
+{ //进入第一次循环
+    let i=0; 
+    /*注意：因为使用let使得for循环为块级作用域，此次let i=0
+    在这个块级作用域中，而不是在全局作用域中。*/
+    a[0]=function(){
+      console.log(i);
+}; 
+/* 注意：由于是用let声明的i,所以使整个块成为块级作用域，又由于a[0]这个函数
+引用到了上一级作用域中的自由变量，所以a[0]就成了一个闭包。*/
+}
+/*声明:这里用｛｝表达并不符合语法，只是希望通过它来说明let存在时，这个for循环块
+是块级作用域，而不是全局作用域。*/    
 
 
 讲道理，上面这是一个块级作用域，就像函数作用域一样，执行完毕，其中的变量会被销毁，
 但是因为这个块级作用域中存在一个闭包，且该闭包维持着对自由变量i的引用，所以在闭包
-被调用之前也就是后续为了测试而console<span class="token punctuation">.</span>log出a<span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>之前，此次循环的自由变量i即<span class="token number">0</span>不会
-被销毁<span class="token punctuation">.</span>
+被调用之前也就是后续为了测试而console.log出a[..]之前，此次循环的自由变量i即0不会
+被销毁.
 
-<span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//进入第二次循环</span>
-     <span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> 
-     <span class="token comment" spellcheck="true">/*注意：进入第二次循环即进入第二个代码块，此时处于激活状态的是let i=1。
-     它位于与let i=0不同的块级作用域中，所以两者不会相互影响。*/</span>
-     a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//同样，这个a[i]也是一个闭包</span>
-<span class="token punctuation">}</span>
+{ //进入第二次循环
+     let i=1; 
+     /*注意：进入第二次循环即进入第二个代码块，此时处于激活状态的是let i=1。
+     它位于与let i=0不同的块级作用域中，所以两者不会相互影响。*/
+     a[1]=function(){
+         console.log(i);
+     }; //同样，这个a[i]也是一个闭包
+}
 
-<span class="token operator">...</span><span class="token operator">...</span>进入第三次循环，此时其中<span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>
-<span class="token operator">...</span><span class="token operator">...</span>进入第四次循环，此时其中<span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>
-<span class="token operator">...</span><span class="token operator">...</span>进入第五次循环，此时其中<span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">;</span>
-<span class="token operator">...</span><span class="token operator">...</span>进入第六次循环，此时其中<span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">;</span>
-<span class="token operator">...</span><span class="token operator">...</span>进入第七次循环，此时其中<span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">;</span>
-<span class="token operator">...</span><span class="token operator">...</span>进入第八次循环，此时其中<span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">;</span>
-<span class="token operator">...</span><span class="token operator">...</span>进入第九次循环，此时其中<span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">;</span>
+......进入第三次循环，此时其中let i=2;
+......进入第四次循环，此时其中let i=3;
+......进入第五次循环，此时其中let i=4;
+......进入第六次循环，此时其中let i=5;
+......进入第七次循环，此时其中let i=6;
+......进入第八次循环，此时其中let i=7;
+......进入第九次循环，此时其中let i=8;
 
-<span class="token punctuation">{</span><span class="token comment" spellcheck="true">//进入第十次循环</span>
-    <span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">;</span>
-    a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//同样，这个a[i]也是一个闭包</span>
-<span class="token punctuation">}</span>
+{//进入第十次循环
+    let i=9;
+    a[i]=function(){
+        console.log(i);
+    };//同样，这个a[i]也是一个闭包
+}
 
-<span class="token punctuation">{</span>
-    <span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">/*不符合条件，不再向下执行，导致此次的块级作用域中不存在闭包，导致let i=10
-    未像前面的i一样等待被闭包引用，故此次的i没有必要继续存在，随即被销毁。*/</span>
-<span class="token punctuation">}</span>
+{
+    let i=10;
+    /*不符合条件，不再向下执行，导致此次的块级作用域中不存在闭包，导致let i=10
+    未像前面的i一样等待被闭包引用，故此次的i没有必要继续存在，随即被销毁。*/
+}
 
-a<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">/*调用a[6]()函数，这时执行环境随即进入下面这个代码块中的执行环境：
-funcion(){console.log(i)};*/</span>
+a[6]();
+/*调用a[6]()函数，这时执行环境随即进入下面这个代码块中的执行环境：
+funcion(){console.log(i)};*/
 即进入：
-<span class="token punctuation">{</span> 
-     <span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">;</span> 
-     a<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//同样，这个a[i]也是一个闭包</span>
-<span class="token punctuation">}</span>
+{ 
+     let i=6; 
+     a[6]=function(){
+          console.log(i);
+     }; //同样，这个a[i]也是一个闭包
+}
 
-a<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span>函数（闭包）这个执行环境中，它会首先寻找该执行环境中是否存在 i，没有找到，
-就沿着作用域链继续向上到了函数所在的块级作用域，找到了自由变量i<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">,</span>于是输出了<span class="token number">6</span>，
-即a<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>的结果为<span class="token number">6</span>。闭包既已被调用，所以整个代码块中的变量i和函数a<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>被销毁。
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>2.利用自执行函数<br>说来惭愧，本来如果明白这道题的原理，应该自然想到可以利用自执行函数达到相同的目的，但是最后还是在群里朋友的点拨下才明白的。<br>实际很简单，前面我们说过一句很关键的话：</p><blockquote><p>这里之所以 i 为 i 而不是 0；是因为我们只是定义了该函数，并未调用它，所以没有进入该函数执行环境，i 当然不会沿着作用域链向上搜索找到自由变量 i 的值</p></blockquote><p>那么反过来想一想，假如我们在定义了函数之后即刻对其进行了调用，是否此时将会在环境中寻找 i 的值并马上替换掉 console.log(i) 中的 i 呢？是的。要立刻调用函数，用自执行函数就可以，代码如下：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>                     
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>需要注意的是，这里每一次的循环实际上是对当前函数进行一次立即调用，所以在循环的同时对应的值就已经打印出来了，并且这些函数的返回值依次赋值给数组元素。在没有显式指定函数返回值时，默认返回 undefined，因此后续再访问数组元素时只能得到 undefined。</p><h3 id="2-考点：连等、解析和引用类型"><a href="#2-考点：连等、解析和引用类型" class="headerlink" title="2.考点：连等、解析和引用类型"></a>2.考点：连等、解析和引用类型</h3><p>这是某大厂一道知名的面试题，表面简单但是坑很多。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>n<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> b <span class="token operator">=</span> a<span class="token punctuation">;</span>
-a<span class="token punctuation">.</span>x <span class="token operator">=</span> a <span class="token operator">=</span><span class="token punctuation">{</span>n<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// undefined</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// {n:2}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我们来分析一下这段代码到底是怎么执行的，就会明白为什么结果与我们预想的完全不同，甚至可以说很怪异。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>n<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> b <span class="token operator">=</span> a<span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>首先，这两句令a和b同时引用了{n:2}对象，接着的<code>a.x = a = {n：2}</code>是关键。尽管赋值是从右到左的没错，但是.的优先级比=要高，所以这里首先执行a.x，相当于为a（或者b）所指向的<code>{n:1}</code>对象新增了一个属性x，即此时对象将变为<code>{n:1;x:undefined}</code>。之后按正常情况，从右到左进行赋值，此时执行<code>a ={n:2}</code>的时候，a重定向，指向了新对象<code>{n：2}</code>,而b依然指向的是旧对象，这点是不变的。接着的关键来了：执行<code>a.x = {n：2}</code>的时候，并不会重新解析一遍a，而是沿用最初解析a.x时候的a，也即旧对象，故此时旧对象的x的值为<code>{n：2}</code>，旧对象为 <code>{n:1;x:{n：2}}</code>，它被b引用着。<br>后面输出a.x的时候，又要解析a了，此时的a当然是重定向后的指向新对象的a，而这个新对象是没有x属性的，故得到undefined；而输出b.x的时候，将输出旧对象的x属性的值，即<code>{n:2}</code>。</p><h3 id="3-考点：异步、作用域、闭包"><a href="#3-考点：异步、作用域、闭包" class="headerlink" title="3.考点：异步、作用域、闭包"></a>3.考点：异步、作用域、闭包</h3><p>如果无法深入到内部，从原理层面上理解代码的运行机制，那么知识只是浮在表面、浅尝辄止。“同步优先，异步靠边，回调垫底”的口诀可以帮助我们迅速判断，但是我希望用自己刚学习的事件循环机制来解释这道题。<br>实际上这也是比较普遍的一道面试题：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token punctuation">}</span>
+a[6]函数（闭包）这个执行环境中，它会首先寻找该执行环境中是否存在 i，没有找到，
+就沿着作用域链继续向上到了函数所在的块级作用域，找到了自由变量i=6,于是输出了6，
+即a[6]()的结果为6。闭包既已被调用，所以整个代码块中的变量i和函数a[6]()被销毁。
+</code></pre><p>2.利用自执行函数<br>说来惭愧，本来如果明白这道题的原理，应该自然想到可以利用自执行函数达到相同的目的，但是最后还是在群里朋友的点拨下才明白的。<br>实际很简单，前面我们说过一句很关键的话：</p><blockquote><p>这里之所以 i 为 i 而不是 0；是因为我们只是定义了该函数，并未调用它，所以没有进入该函数执行环境，i 当然不会沿着作用域链向上搜索找到自由变量 i 的值</p></blockquote><p>那么反过来想一想，假如我们在定义了函数之后即刻对其进行了调用，是否此时将会在环境中寻找 i 的值并马上替换掉 console.log(i) 中的 i 呢？是的。要立刻调用函数，用自执行函数就可以，代码如下：</p><pre><code class="js">var a=[];
+for(var i=0;i&lt;10;i++){
+    a[i] = (function(){
+        console.log(i);
+    })()
+}                     
+</code></pre><p>需要注意的是，这里每一次的循环实际上是对当前函数进行一次立即调用，所以在循环的同时对应的值就已经打印出来了，并且这些函数的返回值依次赋值给数组元素。在没有显式指定函数返回值时，默认返回 undefined，因此后续再访问数组元素时只能得到 undefined。</p><h3 id="2-考点：连等、解析和引用类型"><a href="#2-考点：连等、解析和引用类型" class="headerlink" title="2.考点：连等、解析和引用类型"></a>2.考点：连等、解析和引用类型</h3><p>这是某大厂一道知名的面试题，表面简单但是坑很多。</p><pre><code class="js">var a = {n:1};
+var b = a;
+a.x = a ={n:2};
+console.log(a.x);  // undefined
+console.log(b.x);  // {n:2}
+</code></pre><p>我们来分析一下这段代码到底是怎么执行的，就会明白为什么结果与我们预想的完全不同，甚至可以说很怪异。</p><pre><code class="js">var a = {n:1};
+var b = a;
+</code></pre><p>首先，这两句令a和b同时引用了{n:2}对象，接着的<code>a.x = a = {n：2}</code>是关键。尽管赋值是从右到左的没错，但是.的优先级比=要高，所以这里首先执行a.x，相当于为a（或者b）所指向的<code>{n:1}</code>对象新增了一个属性x，即此时对象将变为<code>{n:1;x:undefined}</code>。之后按正常情况，从右到左进行赋值，此时执行<code>a ={n:2}</code>的时候，a重定向，指向了新对象<code>{n：2}</code>,而b依然指向的是旧对象，这点是不变的。接着的关键来了：执行<code>a.x = {n：2}</code>的时候，并不会重新解析一遍a，而是沿用最初解析a.x时候的a，也即旧对象，故此时旧对象的x的值为<code>{n：2}</code>，旧对象为 <code>{n:1;x:{n：2}}</code>，它被b引用着。<br>后面输出a.x的时候，又要解析a了，此时的a当然是重定向后的指向新对象的a，而这个新对象是没有x属性的，故得到undefined；而输出b.x的时候，将输出旧对象的x属性的值，即<code>{n:2}</code>。</p><h3 id="3-考点：异步、作用域、闭包"><a href="#3-考点：异步、作用域、闭包" class="headerlink" title="3.考点：异步、作用域、闭包"></a>3.考点：异步、作用域、闭包</h3><p>如果无法深入到内部，从原理层面上理解代码的运行机制，那么知识只是浮在表面、浅尝辄止。“同步优先，异步靠边，回调垫底”的口诀可以帮助我们迅速判断，但是我希望用自己刚学习的事件循环机制来解释这道题。<br>实际上这也是比较普遍的一道面试题：</p><pre><code class="js">for (var i = 0; i &lt; 3; i++) {
+   setTimeout(function() {
+       console.log(i);
+     }, 0);
+     console.log(i);
+ }
  代码最后输出什么？
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>如果不熟悉异步，很可能直截了当地回答是：<code>0 0 1 1 2 2</code> 。<br>正确答案应该是 <code>0 1 2 3 3 3</code><br>根据事件循环的机制，跑循环和输出i的值都是主线程上的同步任务，既然是同步任务，当然是按照顺序执行，所以<code>0 1 2</code>是容易理解的。那么setTimeout怎么办呢？setTimeout是异步任务，并不在主线程上，而是在宏任务队列里，它必须等待主线程的执行栈清空，才有自己的“一席之地”，才能去执行，所以这里我们直接忽略setTimeout，将前三次循环的setTimeout都挂在任务队列里。之后，循环跑完了，主线程的同步任务结束。此时i变成了3。<br>轮到任务队列了——&gt; 我们回过头调用setTimeout里的回调函数，进行i的输出。当然，由于i只有一个，即全局变量，所以此时输出的都是3，三次setTimeout即三次3。</p><p>如果我们要输出 <code>0 1 2 0 1 2</code> 呢？<br>其实这里就和第一个考点很像了。这里有三种方法，</p><p>1.将var改为let<br>改为 let 后会形成多个独立的块级作用域，这样，每个setTimeout里的回调函数的i都将对应每一次循环的i（因为是块级作用域）。接着，由于输出和循环依然是同步任务，所以输出 <code>0 1 2</code>；之后轮到任务队列，也是输出<code>0 1 2</code>。</p><p>2.利用自执行函数<br>让函数在定义之后就即刻执行，那么函数中的 i 就会指向当前循环的 i，这个 i 的值为多少在那时就已经确定了，而不再是随着跑循环而动态变化。这里又有两种自执行的方法：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-     <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-         <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-             console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-         <span class="token punctuation">}</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
-     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>  
- <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>或者</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>一个是将回调函数作为自执行函数，一个是将setTimeout函数作为自执行函数，效果是一样的。</p><p>3.利用<code>bind()</code></p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><code>bind()</code> 的第一个参数是 thisArg，用来绑定 this，这里我们不管，直接传参 null，重点在于第二个参数，这个参数也就是回调函数的参数。这里要理解循环做了什么：每一次循环，实际上执行的是 <code>setTimeout()</code> 方法，执行完之后把每次的回调函数挂载在队列里，后续等主任务清空之后，再一一执行。这里添加了 <code>bind()</code> 方法后，每次循环除了挂载回调函数，其实还完成了硬绑定，这时候对应的 i 值已经存在于回调函数的词法作用域里了。所以，后面执行回调函数的时候，每个函数都能在词法作用域中找到自己对应的 i 值。</p><h3 id="4-考点：作用域、NFE的函数名只读性"><a href="#4-考点：作用域、NFE的函数名只读性" class="headerlink" title="4.考点：作用域、NFE的函数名只读性"></a>4.考点：作用域、NFE的函数名只读性</h3><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
-<span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    b<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>  
-<span class="token comment" spellcheck="true">// 代码最后输出什么？</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>如果没有认识到NFE函数的函数名只读性，这道题就会做错。正确答案应该是：</p><pre class="line-numbers language-js"><code class="language-js">f <span class="token punctuation">{</span>
-    b<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token number">10</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>要理解这道题，先来看另一段代码</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> c<span class="token operator">=</span><span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"234"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// b is no defined</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>首先，这是一个具名函数表达式，即NFE。而NFE的函数名只能在函数内部访问，所以我们将该函数的引用赋给变量c之后，就只能通过c()调用该函数，而不能通过b()调用，更不能访问b。并且还要注意，函数名在函数内部类似于一个const常量，只能访问而不能对它进行修改。</p><p>理解这一点之后再来看最开始的代码，这是一段IIFE—–立即执行函数表达式（因为括号是操作符，所以认为括号里的是表达式而不是声明），它同样也是具名函数表达式，自然也有上面的性质。函数自调用，遇到<code>b=20</code>语句时开始在函数作用域中查找b是在哪里声明的，结果发现就是函数b，然后试图对函数名进行修改，因为这种修改相当于是修改一个常量，所以是无效的（非严格模式下静默失败，严格模式下抛出Type错误）。忽略了这段语句后，等于是只输出b，也就是输出函数本身。之后，我们在全局下输出b，根据上面的说法，我们无法在NFE函数外部访问NFE的函数名，所以这里的b代表的不是函数，而是用let声明的那个变量b。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
-<span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">var</span> b<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 20</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>当然，如果在函数内部用var或者let重新声明一个同名变量b并赋值，则是允许的，此时的b变量与函数b没有任何关系，仅仅是同名而已。<br>PS：NFE 函数名为什么是只读的？规范有说吗？还真有，看下面：</p><blockquote><p>The production<br>FunctionExpression : function Identifier ( FormalParameterListopt ) { FunctionBody }<br>is evaluated as follows:<br>1.Let funcEnv be the result of calling NewDeclarativeEnvironment passing the running execution context’s Lexical Environment as the argument<br>2.Let envRec be funcEnv’s environment record.<br>3.Call the CreateImmutableBinding concrete method of envRec passing the String value of Identifier as the argument.<br>4.Let closure be the result of creating a new Function object as specified in 13.2 with parameters specified by FormalParameterListopt and body specified by FunctionBody. Pass in funcEnv as the Scope. Pass in true as the Strict flag if the FunctionExpression is contained in strict code or if its FunctionBody is strict code.<br>5.Call the InitializeImmutableBinding concrete method of envRec passing the String value of Identifier and closure as the arguments.<br>6.Return closure.</p></blockquote><blockquote><p>NOTE The Identifier in a FunctionExpression can be referenced from inside the FunctionExpression’s FunctionBody to allow the function to call itself recursively. However, unlike in a FunctionDeclaration, the Identifier in a FunctionExpression cannot be referenced from and does not affect the scope enclosing the FunctionExpression.</p></blockquote><p>重点就在第三和第五的 ImmutableBinding，注意这是一个不可变的绑定。<br>关于这道题的详细解释，移步：<br><a href="https://segmentfault.com/q/1010000002810093" target="_blank" rel="noopener">https://segmentfault.com/q/1010000002810093</a></p><h3 id="5-this-绑定"><a href="#5-this-绑定" class="headerlink" title="5. this 绑定"></a>5. this 绑定</h3><p>某不知来源的面试题一道：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token string">"use strict"</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> b<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">60</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> c<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">90</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-a<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>globalThis<span class="token punctuation">)</span><span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 输出什么？</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>正确答案是：</p><pre class="line-numbers language-js"><code class="language-js">window
+</code></pre><p>如果不熟悉异步，很可能直截了当地回答是：<code>0 0 1 1 2 2</code> 。<br>正确答案应该是 <code>0 1 2 3 3 3</code><br>根据事件循环的机制，跑循环和输出i的值都是主线程上的同步任务，既然是同步任务，当然是按照顺序执行，所以<code>0 1 2</code>是容易理解的。那么setTimeout怎么办呢？setTimeout是异步任务，并不在主线程上，而是在宏任务队列里，它必须等待主线程的执行栈清空，才有自己的“一席之地”，才能去执行，所以这里我们直接忽略setTimeout，将前三次循环的setTimeout都挂在任务队列里。之后，循环跑完了，主线程的同步任务结束。此时i变成了3。<br>轮到任务队列了——&gt; 我们回过头调用setTimeout里的回调函数，进行i的输出。当然，由于i只有一个，即全局变量，所以此时输出的都是3，三次setTimeout即三次3。</p><p>如果我们要输出 <code>0 1 2 0 1 2</code> 呢？<br>其实这里就和第一个考点很像了。这里有三种方法，</p><p>1.将var改为let<br>改为 let 后会形成多个独立的块级作用域，这样，每个setTimeout里的回调函数的i都将对应每一次循环的i（因为是块级作用域）。接着，由于输出和循环依然是同步任务，所以输出 <code>0 1 2</code>；之后轮到任务队列，也是输出<code>0 1 2</code>。</p><p>2.利用自执行函数<br>让函数在定义之后就即刻执行，那么函数中的 i 就会指向当前循环的 i，这个 i 的值为多少在那时就已经确定了，而不再是随着跑循环而动态变化。这里又有两种自执行的方法：</p><pre><code class="js">for (var i = 0; i &lt; 3; i++) {
+     setTimeout((function(i) {
+         return function() {
+             console.log(i);
+         };
+      })(i), 0);  
+     console.log(i);  
+ }
+</code></pre><p>或者</p><pre><code class="js">for (var i = 0; i &lt; 3; i++){
+    (function (i) {
+        setTimeout(function () {
+            console.log(i);
+        }, 0)
+    })(i);
+    console.log(i);
+   }
+</code></pre><p>一个是将回调函数作为自执行函数，一个是将setTimeout函数作为自执行函数，效果是一样的。</p><p>3.利用<code>bind()</code></p><pre><code class="js">for (var i = 0; i &lt; 3; i++) {
+   setTimeout(function(i) {
+       console.log(i);
+     }.bind(null,i), 0);
+     console.log(i);
+ }
+</code></pre><p><code>bind()</code> 的第一个参数是 thisArg，用来绑定 this，这里我们不管，直接传参 null，重点在于第二个参数，这个参数也就是回调函数的参数。这里要理解循环做了什么：每一次循环，实际上执行的是 <code>setTimeout()</code> 方法，执行完之后把每次的回调函数挂载在队列里，后续等主任务清空之后，再一一执行。这里添加了 <code>bind()</code> 方法后，每次循环除了挂载回调函数，其实还完成了硬绑定，这时候对应的 i 值已经存在于回调函数的词法作用域里了。所以，后面执行回调函数的时候，每个函数都能在词法作用域中找到自己对应的 i 值。</p><h3 id="4-考点：作用域、NFE的函数名只读性"><a href="#4-考点：作用域、NFE的函数名只读性" class="headerlink" title="4.考点：作用域、NFE的函数名只读性"></a>4.考点：作用域、NFE的函数名只读性</h3><pre><code class="js">let b = 10;
+(function b(){
+    b=20;
+    console.log(b);
+})();
+console.log(b);  
+// 代码最后输出什么？
+</code></pre><p>如果没有认识到NFE函数的函数名只读性，这道题就会做错。正确答案应该是：</p><pre><code class="js">f {
+    b=20;
+    console.log(b);
+}
+10
+</code></pre><p>要理解这道题，先来看另一段代码</p><pre><code class="js">var c=function b(){
+    console.log(&quot;234&quot;);
+    console.log(b);
+}
+console.log(b)  // b is no defined
+</code></pre><p>首先，这是一个具名函数表达式，即NFE。而NFE的函数名只能在函数内部访问，所以我们将该函数的引用赋给变量c之后，就只能通过c()调用该函数，而不能通过b()调用，更不能访问b。并且还要注意，函数名在函数内部类似于一个const常量，只能访问而不能对它进行修改。</p><p>理解这一点之后再来看最开始的代码，这是一段IIFE—–立即执行函数表达式（因为括号是操作符，所以认为括号里的是表达式而不是声明），它同样也是具名函数表达式，自然也有上面的性质。函数自调用，遇到<code>b=20</code>语句时开始在函数作用域中查找b是在哪里声明的，结果发现就是函数b，然后试图对函数名进行修改，因为这种修改相当于是修改一个常量，所以是无效的（非严格模式下静默失败，严格模式下抛出Type错误）。忽略了这段语句后，等于是只输出b，也就是输出函数本身。之后，我们在全局下输出b，根据上面的说法，我们无法在NFE函数外部访问NFE的函数名，所以这里的b代表的不是函数，而是用let声明的那个变量b。</p><pre><code class="js">let b = 10;
+(function b(){
+    var b=20;
+    console.log(b);
+})();
+// 20
+</code></pre><p>当然，如果在函数内部用var或者let重新声明一个同名变量b并赋值，则是允许的，此时的b变量与函数b没有任何关系，仅仅是同名而已。<br>PS：NFE 函数名为什么是只读的？规范有说吗？还真有，看下面：</p><blockquote><p>The production<br>FunctionExpression : function Identifier ( FormalParameterListopt ) { FunctionBody }<br>is evaluated as follows:<br>1.Let funcEnv be the result of calling NewDeclarativeEnvironment passing the running execution context’s Lexical Environment as the argument<br>2.Let envRec be funcEnv’s environment record.<br>3.Call the CreateImmutableBinding concrete method of envRec passing the String value of Identifier as the argument.<br>4.Let closure be the result of creating a new Function object as specified in 13.2 with parameters specified by FormalParameterListopt and body specified by FunctionBody. Pass in funcEnv as the Scope. Pass in true as the Strict flag if the FunctionExpression is contained in strict code or if its FunctionBody is strict code.<br>5.Call the InitializeImmutableBinding concrete method of envRec passing the String value of Identifier and closure as the arguments.<br>6.Return closure.</p></blockquote><blockquote><p>NOTE The Identifier in a FunctionExpression can be referenced from inside the FunctionExpression’s FunctionBody to allow the function to call itself recursively. However, unlike in a FunctionDeclaration, the Identifier in a FunctionExpression cannot be referenced from and does not affect the scope enclosing the FunctionExpression.</p></blockquote><p>重点就在第三和第五的 ImmutableBinding，注意这是一个不可变的绑定。<br>关于这道题的详细解释，移步：<br><a href="https://segmentfault.com/q/1010000002810093" target="_blank" rel="noopener">https://segmentfault.com/q/1010000002810093</a></p><h3 id="5-this-绑定"><a href="#5-this-绑定" class="headerlink" title="5. this 绑定"></a>5. this 绑定</h3><p>某不知来源的面试题一道：</p><pre><code class="js">&quot;use strict&quot;;
+const a=[1,2,30];
+const b=[4,5,60];
+const c=[7,8,90];
+a.forEach((function (){
+  console.log(this);
+}).bind(globalThis),b);
+// 输出什么？
+</code></pre><p>正确答案是：</p><pre><code class="js">window
 window
 window
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>这道题的难点在于，<code>forEach()</code> 的 <code>thisArg</code> 指定了回调的 this，而回调本身也有一个 <code>bind()</code> 方法指定 this，那么应该以哪个为准呢？在<a href="https://chorer.github.io/2019/04/17/F-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3this%E7%BB%91%E5%AE%9A/">这篇文章</a>中曾经讨论过 this 绑定的问题，但是 <code>forEach()</code> 的 this 绑定好像并不符合文章里面的情况。不妨看一下 <code>forEach()</code> 的 <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/forEach" target="_blank" rel="noopener">polyfill</a> 代码：</p><blockquote><p>A polyfill is a piece of code (usually JavaScript on the Web) used to provide modern functionality on older browsers that do not natively support it.</p></blockquote><p><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/经典面试题解析-1.jpg" alt=""></p><p>也就是说，<code>forEach()</code> 绑定 this 实际上也是通过 <code>call()</code> 实现的。<br>接下来再来看一下 <code>bind()</code> 的 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind" target="_blank" rel="noopener">polyfill</a> 代码：</p><p><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/经典面试题解析-2.jpg" alt=""></p><p><code>bind()</code> 实际上也是通过 <code>apply()</code> 实现的 —— 原理就是返回一个包装函数，这个函数在内部对初始函数完成了 this binding。之后不管怎么调用这个包装函数，this 都是使用 <code>bind()</code> 的thisArg。也就是说，即使是：</p><pre class="line-numbers language-js"><code class="language-js">func<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>obj2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>func 中的 this 最后也是指向 obj1 而不是 obj2，原因在于 <code>func.bind(obj1)</code> 是一个返回的包装函数，内部的 this 是没有暴露出来的，看上去就像是一个没有 this 的函数，因此后面的 <code>bind(obj2)</code> 对其不生效。这也是为什么说 <code>bind()</code> 是 tight binding 的原因，一旦绑定就很难再改变。<br>理解这一点之后，再来看上面的题就简单了。题目的代码我们可以简化为：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> f0 <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> f1 <span class="token operator">=</span> f0<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>globalThis<span class="token punctuation">)</span>
-a<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>f1<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>f0 是初始函数，f1 是包装函数。那么在 forEach 进行迭代的时候，虽然指定了 this 是参数 b，但是由于此时的 f1 是一个内部完成了 this binding 的包装函数，因此其实已经没有 this 什么事了，自然 forEach 的 thisArg 也不生效。既然是 <code>bind()</code> 生效，那么结果自然是输出全局对象了。<br>Tip: 下次思考问题的时候，polyfill 可以作为一个着手方向。</p></div><div class="post-nav"><div class="post-nav-prev"><a href="/2019/03/18/G-游戏往事/" rel="prev" title="游戏往事"><i class="fa fa-angle-double-left"></i>&nbsp游戏往事</a></div><div class="post-nav-next"><a href="/2019/03/17/T-Stack Overflow提问指南和必备术语汇总/" rel="next" title="如何在Stack Overflow规范提问">如何在Stack Overflow规范提问&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top"><i class="fa fa-th-large"></i>Catalog</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-考点：块级作用域和闭包"><span class="toc-text">1.考点：块级作用域和闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-考点：连等、解析和引用类型"><span class="toc-text">2.考点：连等、解析和引用类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-考点：异步、作用域、闭包"><span class="toc-text">3.考点：异步、作用域、闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-考点：作用域、NFE的函数名只读性"><span class="toc-text">4.考点：作用域、NFE的函数名只读性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-this-绑定"><span class="toc-text">5. this 绑定</span></a></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"mm",pageSize:10,visitor:!0})</script></section></main><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - 2019 My Blog</p><p class="a">Powered by <a href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/search.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{jsonPath:"/live2dw/assets/tororo.model.json"},display:{position:"left",width:150,height:300,vOffset:-120,hOffset:-5},mobile:{show:!1},react:{opacityDefault:1e3,opacityOnHover:1e3},log:!1})</script></body></html><!-- rebuild by neat -->
+</code></pre><p>这道题的难点在于，<code>forEach()</code> 的 <code>thisArg</code> 指定了回调的 this，而回调本身也有一个 <code>bind()</code> 方法指定 this，那么应该以哪个为准呢？在<a href="https://chorer.github.io/2019/04/17/F-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3this%E7%BB%91%E5%AE%9A/">这篇文章</a>中曾经讨论过 this 绑定的问题，但是 <code>forEach()</code> 的 this 绑定好像并不符合文章里面的情况。不妨看一下 <code>forEach()</code> 的 <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/forEach" target="_blank" rel="noopener">polyfill</a> 代码：</p><blockquote><p>A polyfill is a piece of code (usually JavaScript on the Web) used to provide modern functionality on older browsers that do not natively support it.</p></blockquote><p><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/经典面试题解析-1.jpg" alt=""></p><p>也就是说，<code>forEach()</code> 绑定 this 实际上也是通过 <code>call()</code> 实现的。<br>接下来再来看一下 <code>bind()</code> 的 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind" target="_blank" rel="noopener">polyfill</a> 代码：</p><p><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/经典面试题解析-2.jpg" alt=""></p><p><code>bind()</code> 实际上也是通过 <code>apply()</code> 实现的 —— 原理就是返回一个包装函数，这个函数在内部对初始函数完成了 this binding。之后不管怎么调用这个包装函数，this 都是使用 <code>bind()</code> 的thisArg。也就是说，即使是：</p><pre><code class="js">func.bind(obj1).bind(obj2);
+</code></pre><p>func 中的 this 最后也是指向 obj1 而不是 obj2，原因在于 <code>func.bind(obj1)</code> 是一个返回的包装函数，内部的 this 是没有暴露出来的，看上去就像是一个没有 this 的函数，因此后面的 <code>bind(obj2)</code> 对其不生效。这也是为什么说 <code>bind()</code> 是 tight binding 的原因，一旦绑定就很难再改变。<br>理解这一点之后，再来看上面的题就简单了。题目的代码我们可以简化为：</p><pre><code class="js">const f0 = function () {
+  console.log(this)
+}
+const f1 = f0.bind(globalThis)
+a.forEach(f1, b)
+</code></pre><p>f0 是初始函数，f1 是包装函数。那么在 forEach 进行迭代的时候，虽然指定了 this 是参数 b，但是由于此时的 f1 是一个内部完成了 this binding 的包装函数，因此其实已经没有 this 什么事了，自然 forEach 的 thisArg 也不生效。既然是 <code>bind()</code> 生效，那么结果自然是输出全局对象了。<br>Tip: 下次思考问题的时候，polyfill 可以作为一个着手方向。</p></div><div class="post-nav"><div class="post-nav-prev"><a href="/2019/03/18/G-游戏往事/" rel="prev" title="游戏往事"><i class="fa fa-angle-double-left"></i>&nbsp游戏往事</a></div><div class="post-nav-next"><a href="/2019/03/17/T-Stack Overflow提问指南和必备术语汇总/" rel="next" title="如何在Stack Overflow规范提问">如何在Stack Overflow规范提问&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top"><i class="fa fa-th-large"></i>Catalog</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-考点：块级作用域和闭包"><span class="toc-text">1.考点：块级作用域和闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-考点：连等、解析和引用类型"><span class="toc-text">2.考点：连等、解析和引用类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-考点：异步、作用域、闭包"><span class="toc-text">3.考点：异步、作用域、闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-考点：作用域、NFE的函数名只读性"><span class="toc-text">4.考点：作用域、NFE的函数名只读性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-this-绑定"><span class="toc-text">5. this 绑定</span></a></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"mm",pageSize:10,visitor:!0})</script></section></main><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - 2019 My Blog</p><p class="a">Powered by <a href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/search.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":150,"height":300,"vOffset":-120,"hOffset":-5},"mobile":{"show":false},"react":{"opacityDefault":1000,"opacityOnHover":1000},"log":false});</script></body></html><!-- rebuild by neat -->

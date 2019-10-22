@@ -1,94 +1,94 @@
-<!-- build time:Tue Oct 22 2019 13:33:28 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Chor&#39;s Blog</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third party/pace-theme-flash.css"><link rel="icon" href="/images/me.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css"><link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css"><link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><header class="header"><div class="header_top"><span class="theme"><i class="fa fa-bars"></i> <a href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">HOME</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">CATEGORIES</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">ARCHIVES</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">TAGS</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">ABOUT</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a href="/" class="logo">Chor&#39;s Blog</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">Vue 组件（三）：关于单向数据流的简单理解</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2019-10-04&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp1.2k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp4 mins&nbsp&nbsp&nbsp</span><div class="post-tags"><i class="fa fa-tags"></i> <a href="/tags/Vue/">Vue</a> <a href="/tags/组件/">组件</a></div></div><div class="post-content"><p><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20关于单向数据流的简单理解-0.png" alt=""></p><a id="more"></a><h2 id="单向绑定和双向绑定"><a href="#单向绑定和双向绑定" class="headerlink" title="单向绑定和双向绑定"></a>单向绑定和双向绑定</h2><blockquote><p>单双向绑定，指的是 view层和 model 层之间的映射关系</p></blockquote><p>Vue 在数据操作上支持单向绑定和双向绑定：</p><ul><li>单向绑定：例如 Mustache 插值语法，<code>v-bind</code> 等；</li><li>双向绑定：即表单的 <code>v-model</code>。它实际上是一个语法糖，背后包括两步操作：<ul><li><code>v-bind:value</code>：model 层的更改同步到 view 层</li><li><code>v-on:input</code>：view 层的更改同步到 model 层</li></ul></li></ul><h2 id="单向数据流"><a href="#单向数据流" class="headerlink" title="单向数据流"></a>单向数据流</h2><blockquote><p>数据流，指的是组件之间的数据流动</p></blockquote><p>虽然 <code>v-model</code> 是双向绑定，但 Vue 实际上是单向数据流。我们看一个例子：<br>假设现在想要用子组件的 <code>prop</code> 做一个双向绑定，那么我们的代码可能会这么写：</p><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cpn</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>value2</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>value<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cpn</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>cpn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>value2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>{{value2}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>    
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> cpn <span class="token operator">=</span> <span class="token punctuation">{</span>
-  template<span class="token punctuation">:</span><span class="token string">"#cpn"</span><span class="token punctuation">,</span>
-  props<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string">"value2"</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> app  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  el<span class="token punctuation">:</span><span class="token string">'#app'</span><span class="token punctuation">,</span>
-  data<span class="token punctuation">:</span><span class="token punctuation">{</span>
-    value<span class="token punctuation">:</span><span class="token number">0</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  components<span class="token punctuation">:</span><span class="token punctuation">{</span>
+<!-- build time:Tue Oct 22 2019 13:45:56 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Chor&#39;s Blog</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third party/pace-theme-flash.css"><link rel="icon" href="/images/me.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"></head><body><header class="header"><div class="header_top"><span class="theme"><i class="fa fa-bars"></i> <a href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">HOME</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">CATEGORIES</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">ARCHIVES</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">TAGS</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">ABOUT</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a href="/" class="logo">Chor&#39;s Blog</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">Vue 组件（三）：关于单向数据流的简单理解</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2019-10-04&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp1.3k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp5 mins&nbsp&nbsp&nbsp</span><div class="post-tags"><i class="fa fa-tags"></i> <a href="/tags/Vue/">Vue</a> <a href="/tags/组件/">组件</a></div></div><div class="post-content"><p><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20关于单向数据流的简单理解-0.png" alt=""></p><a id="more"></a><h2 id="单向绑定和双向绑定"><a href="#单向绑定和双向绑定" class="headerlink" title="单向绑定和双向绑定"></a>单向绑定和双向绑定</h2><blockquote><p>单双向绑定，指的是 view层和 model 层之间的映射关系</p></blockquote><p>Vue 在数据操作上支持单向绑定和双向绑定：</p><ul><li>单向绑定：例如 Mustache 插值语法，<code>v-bind</code> 等；</li><li>双向绑定：即表单的 <code>v-model</code>。它实际上是一个语法糖，背后包括两步操作：<ul><li><code>v-bind:value</code>：model 层的更改同步到 view 层</li><li><code>v-on:input</code>：view 层的更改同步到 model 层</li></ul></li></ul><h2 id="单向数据流"><a href="#单向数据流" class="headerlink" title="单向数据流"></a>单向数据流</h2><blockquote><p>数据流，指的是组件之间的数据流动</p></blockquote><p>虽然 <code>v-model</code> 是双向绑定，但 Vue 实际上是单向数据流。我们看一个例子：<br>假设现在想要用子组件的 <code>prop</code> 做一个双向绑定，那么我们的代码可能会这么写：</p><pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+  &lt;cpn v-bind:value2=&quot;value&quot;&gt;&lt;/cpn&gt;
+&lt;/div&gt;
+&lt;template id=&quot;cpn&quot;&gt;
+    &lt;input type=&quot;text&quot; v-model=&quot;value2&quot;&gt;
+    &lt;h2&gt;{{value2}}&lt;/h2&gt;    
+&lt;/template&gt;
+</code></pre><pre><code class="js">const cpn = {
+  template:&quot;#cpn&quot;,
+  props:[&quot;value2&quot;]
+}
+const app  = new Vue({
+  el:&#39;#app&#39;,
+  data:{
+    value:0
+  },
+  components:{
     cpn
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我们会发现 model 层的确随着 view 层同步改变了，但是控制台里会报错：</p><p><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20关于单向数据流的简单理解-1.png" alt=""></p><p>实际上，<code>prop</code> 就应该是父组件传过来的原始数据，但是我们试图通过子组件的 <code>v-model</code> 去改变这个 <code>prop</code>，也就是试图通过子组件<strong>直接</strong>去改变父组件的数据（而不是通过发送事件的方式），这是不允许的，因为 Vue 是单向数据流 —— 也就是说，<strong>数据总是从父组件传到子组件</strong>，子组件没有权利修改父组件传过来的数据，<strong>只能请求</strong>父组件对原始数据进行修改。</p><p>这实际上是为了更好的解耦。在开发中可能有多个子组件依赖于父组件的某个数据，万一子组件真的可以直接修改父组件数据，那么一个子组件变化将会引发所有依赖这个数据的子组件发生变化，所以 Vue 不推荐子组件修改父组件的数据，直接修改 <code>prop</code> 会抛出警告。</p><p>官方文档也有针对这个问题的解释：</p><blockquote><p>所有的 prop 都使得其父子 prop 之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。</p></blockquote><p>但是，很多时候我们又确实要操作这个数据，那么应该怎么办呢？<br>有两种方法：</p><ul><li>定义一个局部变量，并用 <code>prop</code> 的值初始化它：</li></ul><pre class="line-numbers language-js"><code class="language-js">props<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'initialCounter'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-data<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    counter<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>initialCounter
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>定义一个计算属性，处理 <code>prop</code> 的值并返回：</li></ul><pre class="line-numbers language-js"><code class="language-js">props<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'size'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-  normalizedSize<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>size<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>第一个方法相当于创建了原始 <code>prop</code> 的副本了，之后怎么操作数据都是操作的子组件数据，不会影响到父组件数据；第二个方法，注意 <code>trim()</code> 会返回一个处理完成后的新字符串，同样不会影响到父组件数据（原字符串）。之后如果父组件确实要用到这个处理后的值，就通过 <code>$emit</code> 的方式传给父组件即可。</p><p>拿前面的例子来说，我们想要利用 <code>prop</code> 这个数据实现双向绑定，可以这么写：</p><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cpn</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>value2</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>value<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cpn</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>cpn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>value3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>{{value3}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>    
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> cpn <span class="token operator">=</span> <span class="token punctuation">{</span>
-  template<span class="token punctuation">:</span><span class="token string">"#cpn"</span><span class="token punctuation">,</span>
-  props<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string">"value2"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  data<span class="token punctuation">:</span><span class="token punctuation">{</span>
-    value3<span class="token punctuation">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>value2
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> app  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  el<span class="token punctuation">:</span><span class="token string">'#app'</span><span class="token punctuation">,</span>
-  data<span class="token punctuation">:</span><span class="token punctuation">{</span>
-    value<span class="token punctuation">:</span><span class="token number">0</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  components<span class="token punctuation">:</span><span class="token punctuation">{</span>
+  }
+})
+</code></pre><p>我们会发现 model 层的确随着 view 层同步改变了，但是控制台里会报错：</p><p><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20关于单向数据流的简单理解-1.png" alt=""></p><p>实际上，<code>prop</code> 就应该是父组件传过来的原始数据，但是我们试图通过子组件的 <code>v-model</code> 去改变这个 <code>prop</code>，也就是试图通过子组件<strong>直接</strong>去改变父组件的数据（而不是通过发送事件的方式），这是不允许的，因为 Vue 是单向数据流 —— 也就是说，<strong>数据总是从父组件传到子组件</strong>，子组件没有权利修改父组件传过来的数据，<strong>只能请求</strong>父组件对原始数据进行修改。</p><p>这实际上是为了更好的解耦。在开发中可能有多个子组件依赖于父组件的某个数据，万一子组件真的可以直接修改父组件数据，那么一个子组件变化将会引发所有依赖这个数据的子组件发生变化，所以 Vue 不推荐子组件修改父组件的数据，直接修改 <code>prop</code> 会抛出警告。</p><p>官方文档也有针对这个问题的解释：</p><blockquote><p>所有的 prop 都使得其父子 prop 之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。</p></blockquote><p>但是，很多时候我们又确实要操作这个数据，那么应该怎么办呢？<br>有两种方法：</p><ul><li>定义一个局部变量，并用 <code>prop</code> 的值初始化它：</li></ul><pre><code class="js">props: [&#39;initialCounter&#39;],
+data: function () {
+  return {
+    counter: this.initialCounter
+  }
+}
+</code></pre><ul><li>定义一个计算属性，处理 <code>prop</code> 的值并返回：</li></ul><pre><code class="js">props: [&#39;size&#39;],
+computed: {
+  normalizedSize: function () {
+    return this.size.trim().toLowerCase()
+  }
+}
+</code></pre><p>第一个方法相当于创建了原始 <code>prop</code> 的副本了，之后怎么操作数据都是操作的子组件数据，不会影响到父组件数据；第二个方法，注意 <code>trim()</code> 会返回一个处理完成后的新字符串，同样不会影响到父组件数据（原字符串）。之后如果父组件确实要用到这个处理后的值，就通过 <code>$emit</code> 的方式传给父组件即可。</p><p>拿前面的例子来说，我们想要利用 <code>prop</code> 这个数据实现双向绑定，可以这么写：</p><pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+  &lt;cpn v-bind:value2=&quot;value&quot;&gt;&lt;/cpn&gt;
+&lt;/div&gt;
+&lt;template id=&quot;cpn&quot;&gt;
+    &lt;input type=&quot;text&quot; v-model=&quot;value3&quot;&gt;
+    &lt;h2&gt;{{value3}}&lt;/h2&gt;    
+&lt;/template&gt;
+</code></pre><pre><code class="js">const cpn = {
+  template:&quot;#cpn&quot;,
+  props:[&quot;value2&quot;],
+  data:{
+    value3:this.value2
+  }
+}
+const app  = new Vue({
+  el:&#39;#app&#39;,
+  data:{
+    value:0
+  },
+  components:{
     cpn
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这样子就不会报错了，因为现在我们操作的是子组件自己的数据，和 <code>prop</code> 无关。</p><p>还要注意一个问题：</p><blockquote><p>注意在 JavaScript 中对象和数组是通过引用传入的，所以对于一个数组或对象类型的 prop 来说，在子组件中改变这个对象或数组本身将会影响到父组件的状态。</p></blockquote><p>比如下面这段代码：</p><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>父组件数据：{{parent}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cpn</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>obj1</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>parent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cpn</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>cpn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>子组件数据：{{son}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>son.age<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> cpn <span class="token operator">=</span> <span class="token punctuation">{</span>
-  template<span class="token punctuation">:</span><span class="token string">"#cpn"</span><span class="token punctuation">,</span>
-  props<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string">"obj1"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">{</span>
-      son<span class="token punctuation">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>obj1
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> app  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  el<span class="token punctuation">:</span><span class="token string">'#app'</span><span class="token punctuation">,</span>
-  data<span class="token punctuation">:</span><span class="token punctuation">{</span>
-    parent<span class="token punctuation">:</span><span class="token punctuation">{</span>age<span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  components<span class="token punctuation">:</span><span class="token punctuation">{</span>
+  }
+})
+</code></pre><p>这样子就不会报错了，因为现在我们操作的是子组件自己的数据，和 <code>prop</code> 无关。</p><p>还要注意一个问题：</p><blockquote><p>注意在 JavaScript 中对象和数组是通过引用传入的，所以对于一个数组或对象类型的 prop 来说，在子组件中改变这个对象或数组本身将会影响到父组件的状态。</p></blockquote><p>比如下面这段代码：</p><pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+  &lt;h2&gt;父组件数据：{{parent}}&lt;/h2&gt;
+  &lt;cpn v-bind:obj1=&quot;parent&quot;&gt;&lt;/cpn&gt;
+&lt;/div&gt;
+&lt;template id=&quot;cpn&quot;&gt;
+  &lt;div&gt;
+    &lt;h2&gt;子组件数据：{{son}}&lt;/h2&gt;
+    &lt;input type=&quot;text&quot; v-model=&quot;son.age&quot;&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre><pre><code class="js">const cpn = {
+  template:&quot;#cpn&quot;,
+  props:[&quot;obj1&quot;],
+  data(){
+    return {
+      son:this.obj1
+    }
+  }
+}
+const app  = new Vue({
+  el:&#39;#app&#39;,
+  data:{
+    parent:{age:20}
+  },
+  components:{
     cpn
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这里的 <code>this.obj1</code> 是引用，赋值给了 <code>son</code>，所以 <code>son</code> 实际上还是指向了父组件的数据，对 <code>son.age</code> 的修改依然会影响到父组件，如图：</p><p><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20关于单向数据流的简单理解-2.png" alt=""></p><p>所以，我们实际上需要的是一个对象副本。因为对象属性都是基本类型，这里只用浅拷贝即可（如果对象属性还是对象，就得用深拷贝）：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> cpn <span class="token operator">=</span> <span class="token punctuation">{</span>
-  template<span class="token punctuation">:</span><span class="token string">"#cpn"</span><span class="token punctuation">,</span>
-  props<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string">"obj1"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">{</span>
-      <span class="token comment" spellcheck="true">// son:this.obj1</span>
-      son<span class="token punctuation">:</span>Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token keyword">this</span><span class="token punctuation">.</span>obj1<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>之后会发现，子组件的数据操作不再影响到父组件：</p><p><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20关于单向数据流的简单理解-3.png" alt=""></p><p>参考：<br><a href="https://cn.vuejs.org/v2/guide/components-props.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components-props.html</a><br><a href="https://juejin.im/entry/59e8b8a8518825579d131e51" target="_blank" rel="noopener">https://juejin.im/entry/59e8b8a8518825579d131e51</a></p></div><div class="post-nav"><div class="post-nav-prev"><a href="/2019/10/08/F-Vue 组件（四）：组件插槽/" rel="prev" title="Vue 组件（四）：组件插槽"><i class="fa fa-angle-double-left"></i>&nbspVue 组件（四）：组件插槽</a></div><div class="post-nav-next"><a href="/2019/10/03/F-Vue 组件（二）：父子组件通信/" rel="next" title="Vue 组件（二）：父子组件通信">Vue 组件（二）：父子组件通信&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top"><i class="fa fa-th-large"></i>Catalog</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#单向绑定和双向绑定"><span class="toc-text">单向绑定和双向绑定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单向数据流"><span class="toc-text">单向数据流</span></a></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"mm",pageSize:10,visitor:!0})</script></section></main><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - 2019 My Blog</p><p class="a">Powered by <a href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/search.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{jsonPath:"/live2dw/assets/tororo.model.json"},display:{position:"left",width:150,height:300,vOffset:-120,hOffset:-5},mobile:{show:!1},react:{opacityDefault:1e3,opacityOnHover:1e3},log:!1})</script></body></html><!-- rebuild by neat -->
+  }
+})
+</code></pre><p>这里的 <code>this.obj1</code> 是引用，赋值给了 <code>son</code>，所以 <code>son</code> 实际上还是指向了父组件的数据，对 <code>son.age</code> 的修改依然会影响到父组件，如图：</p><p><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20关于单向数据流的简单理解-2.png" alt=""></p><p>所以，我们实际上需要的是一个对象副本。因为对象属性都是基本类型，这里只用浅拷贝即可（如果对象属性还是对象，就得用深拷贝）：</p><pre><code class="js">const cpn = {
+  template:&quot;#cpn&quot;,
+  props:[&quot;obj1&quot;],
+  data(){
+    return {
+      // son:this.obj1
+      son:Object.assign({},this.obj1)
+    }
+  }
+}
+</code></pre><p>之后会发现，子组件的数据操作不再影响到父组件：</p><p><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Vue%20关于单向数据流的简单理解-3.png" alt=""></p><p>参考：<br><a href="https://cn.vuejs.org/v2/guide/components-props.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components-props.html</a><br><a href="https://juejin.im/entry/59e8b8a8518825579d131e51" target="_blank" rel="noopener">https://juejin.im/entry/59e8b8a8518825579d131e51</a></p></div><div class="post-nav"><div class="post-nav-prev"><a href="/2019/10/08/F-Vue 组件（四）：组件插槽/" rel="prev" title="Vue 组件（四）：组件插槽"><i class="fa fa-angle-double-left"></i>&nbspVue 组件（四）：组件插槽</a></div><div class="post-nav-next"><a href="/2019/10/03/F-Vue 组件（二）：父子组件通信/" rel="next" title="Vue 组件（二）：父子组件通信">Vue 组件（二）：父子组件通信&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top"><i class="fa fa-th-large"></i>Catalog</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#单向绑定和双向绑定"><span class="toc-text">单向绑定和双向绑定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单向数据流"><span class="toc-text">单向数据流</span></a></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"mm",pageSize:10,visitor:!0})</script></section></main><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - 2019 My Blog</p><p class="a">Powered by <a href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/search.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":150,"height":300,"vOffset":-120,"hOffset":-5},"mobile":{"show":false},"react":{"opacityDefault":1000,"opacityOnHover":1000},"log":false});</script></body></html><!-- rebuild by neat -->

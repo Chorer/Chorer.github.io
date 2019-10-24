@@ -1,3 +1,3 @@
-// build time:Thu Oct 24 2019 13:37:04 GMT+0800 (GMT+08:00)
+// build time:Thu Oct 24 2019 19:19:55 GMT+0800 (GMT+08:00)
 var cards=document.querySelectorAll(".post-content");for(var j=0;j<cards.length;j++){if(cards[j].querySelectorAll("img").length>0){cards[j].classList.add("post-content-padding")}else{cards[j].classList.add("post-content-noimg")}if(cards[j].querySelectorAll("blockquote").length>0){cards[j].classList.add("post-content-quote")}if(!cards[j].querySelectorAll("p").length){cards[j].children[0].style.display="block"}}
 //rebuild by neat 

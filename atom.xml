@@ -6,10 +6,32 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-10-26T03:22:21.000Z</updated>
+  <updated>2019-10-26T08:45:51.661Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用 Vue 脚手架搭建项目</title>
+    <link href="https://chorer.github.io/2019/10/26/F-%E4%BD%BF%E7%94%A8Vue%E8%84%9A%E6%89%8B%E6%9E%B6%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE./"/>
+    <id>https://chorer.github.io/2019/10/26/F-使用Vue脚手架搭建项目./</id>
+    <published>2019-10-25T16:00:00.000Z</published>
+    <updated>2019-10-26T08:45:51.661Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sat Oct 26 2019 16:46:35 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/vuecli-9.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+      <category term="Vue" scheme="https://chorer.github.io/categories/Front-end/Vue/"/>
+    
+    
+      <category term="Vue-cli" scheme="https://chorer.github.io/tags/Vue-cli/"/>
+    
+  </entry>
   
   <entry>
     <title>《如何成为优秀的用户体验设计师》</title>
@@ -58,11 +80,11 @@
     <link href="https://chorer.github.io/2019/10/20/F-Webpack%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E4%BD%BF%E7%94%A8%20loader/"/>
     <id>https://chorer.github.io/2019/10/20/F-Webpack（二）：使用 loader/</id>
     <published>2019-10-19T16:00:00.000Z</published>
-    <updated>2019-10-22T05:33:03.099Z</updated>
+    <updated>2019-10-26T05:25:27.574Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Thu Oct 24 2019 19:19:39 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Webpack：loader-0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Sat Oct 26 2019 16:46:35 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/Webpack：loader-0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -394,15 +416,15 @@
   </entry>
   
   <entry>
-    <title>Vue生命周期与钩子函数</title>
+    <title>Vue 生命周期与钩子函数</title>
     <link href="https://chorer.github.io/2019/09/08/F-Vue%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
     <id>https://chorer.github.io/2019/09/08/F-Vue 生命周期/</id>
     <published>2019-09-08T01:24:00.335Z</published>
-    <updated>2019-09-30T09:46:57.870Z</updated>
+    <updated>2019-10-26T08:21:12.888Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Thu Oct 24 2019 19:19:39 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0-1.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;!-- build time:Sat Oct 26 2019 16:46:35 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0-1.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -412,28 +434,6 @@
     
     
       <category term="Vue" scheme="https://chorer.github.io/tags/Vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据类型判断</title>
-    <link href="https://chorer.github.io/2019/08/06/F-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD/"/>
-    <id>https://chorer.github.io/2019/08/06/F-数据类型判断/</id>
-    <published>2019-08-06T15:29:29.817Z</published>
-    <updated>2019-10-24T05:12:56.718Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Thu Oct 24 2019 19:19:39 GMT+0800 (GMT+08:00) --&gt;
-    
-    </summary>
-    
-      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
-    
-      <category term="JavaScript" scheme="https://chorer.github.io/categories/Front-end/JavaScript/"/>
-    
-    
-      <category term="数据类型" scheme="https://chorer.github.io/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
     
   </entry>
   

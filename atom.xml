@@ -6,24 +6,30 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-11-11T01:29:30.365Z</updated>
+  <updated>2019-11-11T01:37:18.799Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>AJAX 与跨域通信（三）：跨域解决方案</title>
     <link href="https://chorer.github.io/2019/11/09/F-AJAX%E4%B8%8E%E8%B7%A8%E5%9F%9F%E9%80%9A%E4%BF%A1%EF%BC%88%E4%B8%89%EF%BC%89/"/>
     <id>https://chorer.github.io/2019/11/09/F-AJAX与跨域通信（三）/</id>
     <published>2019-11-09T13:16:43.775Z</published>
-    <updated>2019-11-11T01:29:30.365Z</updated>
+    <updated>2019-11-11T01:37:18.799Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Mon Nov 11 2019 09:30:27 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;-–&lt;/p&gt;&lt;p&gt;title: AJAX 与跨域通信（三）：跨域解决方案&lt;/p&gt;&lt;p&gt;categories:&lt;/p&gt;&lt;p&gt;- Front-end&lt;/p&gt;&lt;p&gt;tags:&lt;/p&gt;&lt;p&gt;- AJAX&lt;/p&gt;&lt;p&gt;- 跨域&lt;/p&gt;&lt;p&gt;-–&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/AJAX%20%E4%B8%8E%E8%B7%A8%E5%9F%9F%E9%80%9A%E4%BF%A1%EF%BC%88%E4%B8%89%EF%BC%89/AJAX%E4%B8%8E%E8%B7%A8%E5%9F%9F%E9%80%9A%E4%BF%A1%EF%BC%88%E4%B8%89%EF%BC%89-0.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Mon Nov 11 2019 09:37:25 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/AJAX%20%E4%B8%8E%E8%B7%A8%E5%9F%9F%E9%80%9A%E4%BF%A1%EF%BC%88%E4%B8%89%EF%BC%89/AJAX%E4%B8%8E%E8%B7%A8%E5%9F%9F%E9%80%9A%E4%BF%A1%EF%BC%88%E4%B8%89%EF%BC%89-0.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+    
+      <category term="AJAX" scheme="https://chorer.github.io/tags/AJAX/"/>
+    
+      <category term="跨域" scheme="https://chorer.github.io/tags/%E8%B7%A8%E5%9F%9F/"/>
     
   </entry>
   

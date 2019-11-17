@@ -6,10 +6,30 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-11-11T01:37:18.799Z</updated>
+  <updated>2019-11-17T02:33:32.290Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue-router 学习笔记</title>
+    <link href="https://chorer.github.io/2019/11/13/F-Vue-router%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://chorer.github.io/2019/11/13/F-Vue-router 学习笔记/</id>
+    <published>2019-11-13T12:52:01.723Z</published>
+    <updated>2019-11-17T02:33:32.290Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun Nov 17 2019 10:34:47 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue-router/Vue-router-1.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+      <category term="Vue" scheme="https://chorer.github.io/categories/Front-end/Vue/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>AJAX 与跨域通信（三）：跨域解决方案</title>
@@ -416,26 +436,6 @@
     
       <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>深入理解计算机系统cp2：定点数的表示和运算</title>
-    <link href="https://chorer.github.io/2019/09/20/CB-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9Fcp2/"/>
-    <id>https://chorer.github.io/2019/09/20/CB-深入理解计算机系统cp2/</id>
-    <published>2019-09-19T16:00:00.000Z</published>
-    <updated>2019-11-02T04:24:16.250Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Sat Nov 09 2019 21:34:34 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9Fcp2%EF%BC%9A%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9Fcp2%EF%BC%9A%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Computer System" scheme="https://chorer.github.io/categories/Computer-System/"/>
-    
-    
-      <category term="计算机系统" scheme="https://chorer.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   

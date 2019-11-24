@@ -6,21 +6,61 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-11-17T02:54:12.519Z</updated>
+  <updated>2019-11-22T12:28:07.712Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Vue-router 学习笔记</title>
-    <link href="https://chorer.github.io/2019/11/13/F-Vue-router%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://chorer.github.io/2019/11/13/F-Vue-router 学习笔记/</id>
-    <published>2019-11-13T12:52:01.723Z</published>
-    <updated>2019-11-17T02:54:12.519Z</updated>
+    <title>Vue 全家桶学习笔记：Vuex</title>
+    <link href="https://chorer.github.io/2019/11/22/F-Vuex%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://chorer.github.io/2019/11/22/F-Vuex 学习笔记/</id>
+    <published>2019-11-22T12:28:07.712Z</published>
+    <updated>2019-11-22T12:28:07.712Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Nov 17 2019 13:31:46 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue-router/Vue-router-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Sun Nov 24 2019 12:23:48 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;![(&lt;a href=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue-router/Vue-router-1.jpg&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue-router/Vue-router-1.jpg&lt;/a&gt;)&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+      <category term="Vue" scheme="https://chorer.github.io/categories/Front-end/Vue/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Vue 全家桶学习笔记：Vuex</title>
+    <link href="https://chorer.github.io/2019/11/21/F-Vue%20%E5%85%A8%E5%AE%B6%E6%A1%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9AVuex%20/"/>
+    <id>https://chorer.github.io/2019/11/21/F-Vue 全家桶学习笔记：Vuex /</id>
+    <published>2019-11-21T11:19:59.491Z</published>
+    <updated>2019-11-24T04:22:48.547Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun Nov 24 2019 12:23:48 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E5%85%A8%E5%AE%B6%E6%A1%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9AVuex/Vue%20%E5%85%A8%E5%AE%B6%E6%A1%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9AVuex%20-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+      <category term="Vue" scheme="https://chorer.github.io/categories/Front-end/Vue/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Vue 全家桶学习笔记：Vue-router</title>
+    <link href="https://chorer.github.io/2019/11/13/F-Vue%20%E5%85%A8%E5%AE%B6%E6%A1%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9AVue-router%20/"/>
+    <id>https://chorer.github.io/2019/11/13/F-Vue 全家桶学习笔记：Vue-router /</id>
+    <published>2019-11-13T12:52:01.723Z</published>
+    <updated>2019-11-22T12:28:25.646Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun Nov 24 2019 12:23:48 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue-router/Vue-router-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -396,46 +436,6 @@
       <category term="数据结构" scheme="https://chorer.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="算法" scheme="https://chorer.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构与算法笔记 cp2-1：线性表</title>
-    <link href="https://chorer.github.io/2019/09/22/CB-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0cp2-1/"/>
-    <id>https://chorer.github.io/2019/09/22/CB-数据结构与算法笔记cp2-1/</id>
-    <published>2019-09-21T16:00:00.000Z</published>
-    <updated>2019-11-02T04:20:07.248Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Sun Nov 17 2019 13:31:46 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%20cp2-2%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0cp2%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Data Structures/Algorithms" scheme="https://chorer.github.io/categories/Data-Structures-Algorithms/"/>
-    
-    
-      <category term="数据结构" scheme="https://chorer.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="算法" scheme="https://chorer.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>「译」提升 Web 开发效率的 VS Code 扩展</title>
-    <link href="https://chorer.github.io/2019/09/21/Trs-%E6%8F%90%E5%8D%87%20Web%20%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E7%9A%84vs%20code%20%E6%89%A9%E5%B1%95/"/>
-    <id>https://chorer.github.io/2019/09/21/Trs-提升 Web 开发效率的vs code 扩展/</id>
-    <published>2019-09-20T16:00:00.000Z</published>
-    <updated>2019-11-02T04:22:57.960Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Sun Nov 17 2019 13:31:47 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt;原文地址：&lt;a href=&quot;https://medium.com/better-programming/vs-code-extension-for-web-dev-productivity-fa541654161f&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;VS Code Extensions For Web Dev Productivity&lt;/a&gt;&lt;/li&gt;&lt;li&gt;原文作者：Deepak Gupta&lt;/li&gt;&lt;li&gt;译者：Chor
-    
-    </summary>
-    
-      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
-    
     
   </entry>
   

@@ -6,10 +6,30 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-11-24T04:31:31.889Z</updated>
+  <updated>2019-12-03T11:55:10.851Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「译」如何设计出访问性更佳的搜索栏</title>
+    <link href="https://chorer.github.io/2019/11/30/Trs-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E6%9B%B4%E5%A5%BD%E7%9A%84%E6%90%9C%E7%B4%A2%E6%A0%8F/"/>
+    <id>https://chorer.github.io/2019/11/30/Trs-如何设计更好的搜索栏/</id>
+    <published>2019-11-30T13:55:01.139Z</published>
+    <updated>2019-12-03T11:55:10.851Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Tue Dec 03 2019 19:55:28 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/5120/1*FktjmwRuoZkDKGo5ClHgJQ.jpeg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
+    
+    
+      <category term="设计" scheme="https://chorer.github.io/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue 全家桶学习笔记：Vuex</title>
@@ -403,28 +423,6 @@
     <id>https://chorer.github.io/2019/09/23/CB-数据结构与算法笔记cp2-2/</id>
     <published>2019-09-22T16:00:00.000Z</published>
     <updated>2019-11-02T04:16:48.550Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Sun Nov 24 2019 12:51:35 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%20cp2-2%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0cp2%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Data Structures/Algorithms" scheme="https://chorer.github.io/categories/Data-Structures-Algorithms/"/>
-    
-    
-      <category term="数据结构" scheme="https://chorer.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="算法" scheme="https://chorer.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构与算法笔记 cp2-1：线性表</title>
-    <link href="https://chorer.github.io/2019/09/22/CB-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0cp2-1/"/>
-    <id>https://chorer.github.io/2019/09/22/CB-数据结构与算法笔记cp2-1/</id>
-    <published>2019-09-21T16:00:00.000Z</published>
-    <updated>2019-11-02T04:20:07.248Z</updated>
     
     <summary type="html">
     

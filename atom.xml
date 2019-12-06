@@ -6,10 +6,30 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-12-03T11:57:21.458Z</updated>
+  <updated>2019-12-06T13:55:25.193Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「译」按钮文本设计的五大原则</title>
+    <link href="https://chorer.github.io/2019/12/06/Trs-%E6%8C%89%E9%92%AE%E6%96%87%E6%9C%AC%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%BA%94%E5%A4%A7%E5%8E%9F%E5%88%99/"/>
+    <id>https://chorer.github.io/2019/12/06/Trs-按钮文本设计的五大原则/</id>
+    <published>2019-12-06T11:38:10.935Z</published>
+    <updated>2019-12-06T13:55:25.193Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Fri Dec 06 2019 22:11:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/563/0*YZARLN5K4qDexpcb.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
+    
+    
+      <category term="设计" scheme="https://chorer.github.io/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>「译」如何设计出访问性更佳的搜索栏</title>
@@ -414,28 +434,6 @@
     
     
       <category term="Vue" scheme="https://chorer.github.io/tags/Vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构与算法笔记 cp2-2：线性表</title>
-    <link href="https://chorer.github.io/2019/09/23/CB-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0cp2-2/"/>
-    <id>https://chorer.github.io/2019/09/23/CB-数据结构与算法笔记cp2-2/</id>
-    <published>2019-09-22T16:00:00.000Z</published>
-    <updated>2019-11-02T04:16:48.550Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Sun Nov 24 2019 12:51:35 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%20cp2-2%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0cp2%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8-0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Data Structures/Algorithms" scheme="https://chorer.github.io/categories/Data-Structures-Algorithms/"/>
-    
-    
-      <category term="数据结构" scheme="https://chorer.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="算法" scheme="https://chorer.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   

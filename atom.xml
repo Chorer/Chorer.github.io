@@ -6,21 +6,45 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2019-12-22T00:40:58.965Z</updated>
+  <updated>2019-12-28T11:26:40.015Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「译」黑暗模式的过去、现在和未来</title>
+    <link href="https://chorer.github.io/2019/12/27/Trs-%E9%BB%91%E6%9A%97%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%BF%87%E5%8E%BB%E3%80%81%E7%8E%B0%E5%9C%A8%E5%92%8C%E6%9C%AA%E6%9D%A5/"/>
+    <id>https://chorer.github.io/2019/12/27/Trs-黑暗模式的过去、现在和未来/</id>
+    <published>2019-12-27T11:54:45.878Z</published>
+    <updated>2019-12-28T11:26:40.015Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;!-- build time:Sat Dec 28 2019 19:27:39 GMT+0800 (GMT+08:00)
+        
+      
+    
+    </summary>
+    
+      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>「译」无处不在的微浏览器</title>
     <link href="https://chorer.github.io/2019/12/21/Trs-%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E5%BE%AE%E5%9E%8B%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
     <id>https://chorer.github.io/2019/12/21/Trs-无处不在的微型浏览器/</id>
     <published>2019-12-21T07:06:11.703Z</published>
-    <updated>2019-12-22T00:40:58.965Z</updated>
+    <updated>2019-12-26T08:28:59.671Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Dec 22 2019 08:41:55 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/12/21/sRwab9BfKF6L7W1.png&quot; alt=&quot;0_Nw8RqyDEXedR7V68.png&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Sat Dec 28 2019 19:27:39 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E5%BE%AE%E5%9E%8B%E6%B5%8F%E8%A7%88%E5%99%A8/%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E5%BE%AE%E5%9E%8B%E6%B5%8F%E8%A7%88%E5%99%A8-1.png&quot; alt=&quot;0_Nw8RqyDEXedR7V68.png&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -397,30 +421,6 @@
     <summary type="html">
     
       &lt;!-- build time:Sun Dec 15 2019 21:39:27 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1-0.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
-    
-      <category term="Vue" scheme="https://chorer.github.io/categories/Front-end/Vue/"/>
-    
-    
-      <category term="Vue" scheme="https://chorer.github.io/tags/Vue/"/>
-    
-      <category term="组件" scheme="https://chorer.github.io/tags/%E7%BB%84%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue 组件（一）：组件的基本使用</title>
-    <link href="https://chorer.github.io/2019/10/02/F-Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
-    <id>https://chorer.github.io/2019/10/02/F-Vue 组件（一）：组件的基本使用/</id>
-    <published>2019-10-01T16:00:00.000Z</published>
-    <updated>2019-11-02T04:09:03.180Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Sun Dec 15 2019 21:39:27 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/Vue%20%E7%BB%84%E4%BB%B6%E5%8C%96%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5-8.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     

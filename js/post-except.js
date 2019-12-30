@@ -1,3 +1,3 @@
-// build time:Sun Dec 15 2019 21:39:36 GMT+0800 (GMT+08:00)
-var cards=document.querySelectorAll(".post-content");for(var j=0;j<cards.length;j++){if(cards[j].querySelectorAll("img").length>0){cards[j].classList.add("post-content-padding")}else{cards[j].classList.add("post-content-noimg")}if(cards[j].querySelectorAll("blockquote").length>0){cards[j].classList.add("post-content-quote")}if(!cards[j].querySelectorAll("p").length){cards[j].children[0].style.display="block"}}
+// build time:Mon Dec 30 2019 12:37:10 GMT+0800 (GMT+08:00)
+var cards=document.querySelectorAll(".post-content");for(var j=0;j<cards.length;j++){if(cards[j].querySelectorAll("img").length>0){cards[j].classList.add("post-content-padding")}else{cards[j].classList.add("post-content-noimg")}if(cards[j].querySelectorAll("blockquote").length>0){cards[j].classList.add("post-content-quote")}if(!cards[j].querySelectorAll("p").length){cards[j].children[0].children[0].style.display="block"}}
 //rebuild by neat 

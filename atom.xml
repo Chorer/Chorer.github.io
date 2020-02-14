@@ -6,10 +6,32 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2020-02-11T13:30:24.347Z</updated>
+  <updated>2020-02-14T13:01:36.710Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Chrome 调试技巧简记</title>
+    <link href="https://chorer.github.io/2020/02/14/F-Chrome%20%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7%E7%AE%80%E8%AE%B0/"/>
+    <id>https://chorer.github.io/2020/02/14/F-Chrome 调试技巧简记/</id>
+    <published>2020-02-13T16:00:00.000Z</published>
+    <updated>2020-02-14T13:01:36.710Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Fri Feb 14 2020 21:01:48 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Chrome%20%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7%E7%AE%80%E8%AE%B0/Chrome%20%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7%E7%AE%80%E8%AE%B0-0.webp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+    
+      <category term="Chrome" scheme="https://chorer.github.io/tags/Chrome/"/>
+    
+      <category term="debugger" scheme="https://chorer.github.io/tags/debugger/"/>
+    
+  </entry>
   
   <entry>
     <title>稍纵即逝的大二</title>
@@ -274,28 +296,6 @@
   </entry>
   
   <entry>
-    <title>使用 Vue 脚手架搭建项目</title>
-    <link href="https://chorer.github.io/2019/10/26/F-%E4%BD%BF%E7%94%A8Vue%E8%84%9A%E6%89%8B%E6%9E%B6%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
-    <id>https://chorer.github.io/2019/10/26/F-使用Vue脚手架搭建项目/</id>
-    <published>2019-10-25T16:00:00.000Z</published>
-    <updated>2019-11-02T03:15:30.106Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Wed Feb 12 2020 21:38:52 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E4%BD%BF%E7%94%A8vue%E8%84%9A%E6%89%8B%E6%9E%B6%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/vuecli-9.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
-    
-      <category term="Vue" scheme="https://chorer.github.io/categories/Front-end/Vue/"/>
-    
-    
-      <category term="Vue-cli" scheme="https://chorer.github.io/tags/Vue-cli/"/>
-    
-  </entry>
-  
-  <entry>
     <title>《如何成为优秀的用户体验设计师》</title>
     <link href="https://chorer.github.io/2019/10/26/T-%E3%80%8A%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%BC%98%E7%A7%80%E7%9A%84%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%E8%AE%BE%E8%AE%A1%E5%B8%88%E3%80%8B/"/>
     <id>https://chorer.github.io/2019/10/26/T-《如何成为优秀的用户体验设计师》/</id>
@@ -314,6 +314,28 @@
       <category term="读书笔记" scheme="https://chorer.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="用户体验" scheme="https://chorer.github.io/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Vue 脚手架搭建项目</title>
+    <link href="https://chorer.github.io/2019/10/26/F-%E4%BD%BF%E7%94%A8Vue%E8%84%9A%E6%89%8B%E6%9E%B6%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
+    <id>https://chorer.github.io/2019/10/26/F-使用Vue脚手架搭建项目/</id>
+    <published>2019-10-25T16:00:00.000Z</published>
+    <updated>2019-11-02T03:15:30.106Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Wed Feb 12 2020 21:38:52 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E4%BD%BF%E7%94%A8vue%E8%84%9A%E6%89%8B%E6%9E%B6%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/vuecli-9.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+      <category term="Vue" scheme="https://chorer.github.io/categories/Front-end/Vue/"/>
+    
+    
+      <category term="Vue-cli" scheme="https://chorer.github.io/tags/Vue-cli/"/>
     
   </entry>
   
@@ -396,24 +418,6 @@
     
     
       <category term="模块化" scheme="https://chorer.github.io/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>file 协议导致的跨域问题以及解决方案</title>
-    <link href="https://chorer.github.io/2019/10/13/F-file%20%E5%8D%8F%E8%AE%AE%E5%AF%BC%E8%87%B4%E7%9A%84%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    <id>https://chorer.github.io/2019/10/13/F-file 协议导致的跨域问题以及解决方案/</id>
-    <published>2019-10-12T16:00:00.000Z</published>
-    <updated>2019-11-02T03:57:23.970Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Wed Feb 12 2020 21:38:52 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/file%20%E5%8D%8F%E8%AE%AE%E5%AF%BC%E8%87%B4%E7%9A%84%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/file%E5%8D%8F%E8%AE%AE%E5%AF%BC%E8%87%B4%E7%9A%84%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98-0.webp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Thinking" scheme="https://chorer.github.io/categories/Thinking/"/>
-    
     
   </entry>
   

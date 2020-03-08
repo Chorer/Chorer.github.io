@@ -6,21 +6,21 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2020-03-08T07:56:47.491Z</updated>
+  <updated>2020-03-08T08:28:03.148Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
     <title>在项目中使用 vue-awesome-swiper 遇到的问题</title>
-    <link href="https://chorer.github.io/2020/03/08/%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%20vue-awesome-swiper%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>https://chorer.github.io/2020/03/08/在项目中使用 vue-awesome-swiper遇到的问题/</id>
+    <link href="https://chorer.github.io/2020/03/08/F-%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%20vue-awesome-swiper%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://chorer.github.io/2020/03/08/F-在项目中使用 vue-awesome-swiper遇到的问题/</id>
     <published>2020-03-07T16:00:00.000Z</published>
-    <updated>2020-03-08T07:56:47.491Z</updated>
+    <updated>2020-03-08T08:28:03.148Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Mar 08 2020 15:57:24 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%20vue-awesome-swiper%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%20vue-awesome-swiper%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98-0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Sun Mar 08 2020 16:28:14 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%20vue-awesome-swiper%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%20vue-awesome-swiper%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98-0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     

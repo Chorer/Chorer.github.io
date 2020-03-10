@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2020-03-10T10:25:04.802Z</updated>
+  <updated>2020-03-10T10:31:59.537Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
@@ -16,11 +16,11 @@
     <link href="https://chorer.github.io/2020/03/10/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"/>
     <id>https://chorer.github.io/2020/03/10/OS-操作系统学习笔记-1：基础概念/</id>
     <published>2020-03-10T10:25:29.562Z</published>
-    <updated>2020-03-10T10:25:04.802Z</updated>
+    <updated>2020-03-10T10:31:59.537Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Tue Mar 10 2020 18:26:09 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5-00.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Tue Mar 10 2020 18:32:07 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5-00.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -352,28 +352,6 @@
   </entry>
   
   <entry>
-    <title>《如何成为优秀的用户体验设计师》</title>
-    <link href="https://chorer.github.io/2019/10/26/T-%E3%80%8A%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%BC%98%E7%A7%80%E7%9A%84%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%E8%AE%BE%E8%AE%A1%E5%B8%88%E3%80%8B/"/>
-    <id>https://chorer.github.io/2019/10/26/T-《如何成为优秀的用户体验设计师》/</id>
-    <published>2019-10-25T16:00:00.000Z</published>
-    <updated>2019-11-02T03:04:56.611Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Sun Mar 08 2020 15:57:24 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%BC%98%E7%A7%80%E7%9A%84%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%E8%AE%BE%E8%AE%A1%E5%B8%88/T-%E3%80%8A%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%BC%98%E7%A7%80%E7%9A%84%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%E8%AE%BE%E8%AE%A1%E5%B8%88%E3%80%8B-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Thinking" scheme="https://chorer.github.io/categories/Thinking/"/>
-    
-    
-      <category term="读书笔记" scheme="https://chorer.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="用户体验" scheme="https://chorer.github.io/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/"/>
-    
-  </entry>
-  
-  <entry>
     <title>使用 Vue 脚手架搭建项目</title>
     <link href="https://chorer.github.io/2019/10/26/F-%E4%BD%BF%E7%94%A8Vue%E8%84%9A%E6%89%8B%E6%9E%B6%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
     <id>https://chorer.github.io/2019/10/26/F-使用Vue脚手架搭建项目/</id>
@@ -392,6 +370,28 @@
     
     
       <category term="Vue-cli" scheme="https://chorer.github.io/tags/Vue-cli/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《如何成为优秀的用户体验设计师》</title>
+    <link href="https://chorer.github.io/2019/10/26/T-%E3%80%8A%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%BC%98%E7%A7%80%E7%9A%84%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%E8%AE%BE%E8%AE%A1%E5%B8%88%E3%80%8B/"/>
+    <id>https://chorer.github.io/2019/10/26/T-《如何成为优秀的用户体验设计师》/</id>
+    <published>2019-10-25T16:00:00.000Z</published>
+    <updated>2019-11-02T03:04:56.611Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun Mar 08 2020 15:57:24 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%BC%98%E7%A7%80%E7%9A%84%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%E8%AE%BE%E8%AE%A1%E5%B8%88/T-%E3%80%8A%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%BC%98%E7%A7%80%E7%9A%84%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%E8%AE%BE%E8%AE%A1%E5%B8%88%E3%80%8B-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Thinking" scheme="https://chorer.github.io/categories/Thinking/"/>
+    
+    
+      <category term="读书笔记" scheme="https://chorer.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="用户体验" scheme="https://chorer.github.io/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/"/>
     
   </entry>
   

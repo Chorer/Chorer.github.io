@@ -6,10 +6,30 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2020-03-26T06:04:07.651Z</updated>
+  <updated>2020-03-28T04:15:26.337Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>谷歌搜索的变化正在扼杀自己</title>
+    <link href="https://chorer.github.io/2020/03/27/Trs-%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E7%9A%84%E5%8F%98%E5%8C%96%E6%AD%A3%E5%9C%A8%E6%89%BC%E6%9D%80%E8%87%AA%E5%B7%B1/"/>
+    <id>https://chorer.github.io/2020/03/27/Trs-谷歌搜索的变化正在扼杀自己/</id>
+    <published>2020-03-27T11:28:41.328Z</published>
+    <updated>2020-03-28T04:15:26.337Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sat Mar 28 2020 12:41:11 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;p&gt;最近在 Medium 阅读到了这篇文章，虽然文章的切入点很小，但其实延伸出了一个很大的命题供读者探讨。本文会分为两个部分，第一部分是原文，第二部分是我的一些看法。&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E7%9A%84%E5%8F%98%E5%8C%96%E6%AD%A3%E5%9C%A8%E6%89%BC%E6%9D%80%E8%87%AA%E5%B7%B1/Trs-%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E7%9A%84%E5%8F%98%E5%8C%96%E6%AD%A3%E5%9C%A8%E6%89%BC%E6%9D%80%E8%87%AA%E5%B7%B1-3.jpg&quot; alt=&quot;Google’s original user landing page, simple and clean&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
+    
+    
+      <category term="设计" scheme="https://chorer.github.io/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>OS-操作系统学习笔记-5：进程同步与进程互斥（二）：信号量机制</title>
@@ -368,26 +388,6 @@
     
     
       <category term="设计" scheme="https://chorer.github.io/tags/%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue 全家桶学习笔记：Vuex</title>
-    <link href="https://chorer.github.io/2019/11/21/F-Vue%E5%85%A8%E5%AE%B6%E6%A1%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9AVuex/"/>
-    <id>https://chorer.github.io/2019/11/21/F-Vue全家桶学习笔记：Vuex/</id>
-    <published>2019-11-21T11:19:59.491Z</published>
-    <updated>2019-11-24T04:31:31.889Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Fri Mar 27 2020 12:10:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E5%85%A8%E5%AE%B6%E6%A1%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9AVuex/Vue%20%E5%85%A8%E5%AE%B6%E6%A1%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9AVuex%20-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
-    
-      <category term="Vue" scheme="https://chorer.github.io/categories/Front-end/Vue/"/>
-    
     
   </entry>
   

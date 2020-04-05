@@ -6,21 +6,59 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2020-03-29T11:36:07.894Z</updated>
+  <updated>2020-04-04T13:06:53.733Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统学习笔记-7：进程通信</title>
+    <link href="https://chorer.github.io/2020/04/04/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-7%EF%BC%9A%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/"/>
+    <id>https://chorer.github.io/2020/04/04/OS-操作系统学习笔记-7：进程通信/</id>
+    <published>2020-04-04T13:07:10.650Z</published>
+    <updated>2020-04-04T13:06:53.733Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun Apr 05 2020 13:30:30 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-7%EF%BC%9A%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-7%EF%BC%9A%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1-0.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="OS" scheme="https://chorer.github.io/categories/OS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>谷歌首页20年发展史</title>
+    <link href="https://chorer.github.io/2020/03/30/Trs-%E8%B0%B7%E6%AD%8C%E9%A6%96%E9%A1%B520%E5%B9%B4%E5%8F%91%E5%B1%95%E5%8F%B2/"/>
+    <id>https://chorer.github.io/2020/03/30/Trs-谷歌首页20年发展史/</id>
+    <published>2020-03-30T04:56:58.980Z</published>
+    <updated>2020-04-04T04:32:47.637Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun Apr 05 2020 13:30:30 GMT+0800 (GMT+08:00) --&gt;&lt;blockquote&gt;&lt;p&gt;在上一篇文章中，谷歌搜索在设计上的变化引发了我们对于获取信息这件事的思考。不过，谷歌也有很多让人津津乐道的设计。举个例子，你有没有想过，每天打开谷歌首页看到的 logo 在 5 年前、10 年前、甚至是 20 年前的模样呢？这篇文章将会带你穿越历史长河，把谷歌这些年来首页的变化向你娓娓道来。&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/5403/0*6yy_FTkG3UekmZKw&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
+    
+    
+      <category term="设计" scheme="https://chorer.github.io/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>操作系统学习笔记-6：进程同步与进程互斥（三）：经典问题</title>
     <link href="https://chorer.github.io/2020/03/28/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-6%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8E%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98/"/>
     <id>https://chorer.github.io/2020/03/28/OS-操作系统学习笔记-6：进程同步与进程互斥（三）：经典问题/</id>
     <published>2020-03-28T07:43:58.683Z</published>
-    <updated>2020-03-29T11:36:07.894Z</updated>
+    <updated>2020-03-30T07:43:25.626Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Mar 29 2020 19:49:14 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-6%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8E%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-6%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8E%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Sun Apr 05 2020 13:30:30 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-6%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8E%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-6%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8E%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -346,46 +384,6 @@
     
       <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>「译」无处不在的微浏览器</title>
-    <link href="https://chorer.github.io/2019/12/21/Trs-%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E5%BE%AE%E5%9E%8B%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
-    <id>https://chorer.github.io/2019/12/21/Trs-无处不在的微型浏览器/</id>
-    <published>2019-12-21T07:06:11.703Z</published>
-    <updated>2019-12-26T08:28:59.671Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Fri Mar 27 2020 12:10:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E5%BE%AE%E5%9E%8B%E6%B5%8F%E8%A7%88%E5%99%A8/%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E5%BE%AE%E5%9E%8B%E6%B5%8F%E8%A7%88%E5%99%A8-1.png&quot; alt=&quot;0_Nw8RqyDEXedR7V68.png&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
-    
-    
-      <category term="设计" scheme="https://chorer.github.io/tags/%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>「译」按钮文本设计的五大原则</title>
-    <link href="https://chorer.github.io/2019/12/06/Trs-%E6%8C%89%E9%92%AE%E6%96%87%E6%9C%AC%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%BA%94%E5%A4%A7%E5%8E%9F%E5%88%99/"/>
-    <id>https://chorer.github.io/2019/12/06/Trs-按钮文本设计的五大原则/</id>
-    <published>2019-12-06T11:38:10.935Z</published>
-    <updated>2019-12-06T13:55:25.193Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Fri Mar 27 2020 12:10:56 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/563/0*YZARLN5K4qDexpcb.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
-    
-    
-      <category term="设计" scheme="https://chorer.github.io/tags/%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   

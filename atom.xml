@@ -50,6 +50,24 @@
   </entry>
   
   <entry>
+    <title>操作系统学习笔记-8：线程</title>
+    <link href="https://chorer.github.io/2020/03/29/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-8%EF%BC%9A%E7%BA%BF%E7%A8%8B/"/>
+    <id>https://chorer.github.io/2020/03/29/OS-操作系统学习笔记-8：线程/</id>
+    <published>2020-03-29T11:49:07.065Z</published>
+    <updated>2020-04-04T16:52:02.262Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun Apr 05 2020 16:21:08 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-8%EF%BC%9A%E7%BA%BF%E7%A8%8B/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-8%EF%BC%9A%E7%BA%BF%E7%A8%8B-0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="OS" scheme="https://chorer.github.io/categories/OS/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>操作系统学习笔记-6：进程同步与进程互斥（三）：经典问题</title>
     <link href="https://chorer.github.io/2020/03/28/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-6%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8E%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98/"/>
     <id>https://chorer.github.io/2020/03/28/OS-操作系统学习笔记-6：进程同步与进程互斥（三）：经典问题/</id>
@@ -366,24 +384,6 @@
     
     
       <category term="设计" scheme="https://chorer.github.io/tags/%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>「译」黑暗模式的过去、现在和未来</title>
-    <link href="https://chorer.github.io/2019/12/27/Trs-%E9%BB%91%E6%9A%97%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%BF%87%E5%8E%BB%E3%80%81%E7%8E%B0%E5%9C%A8%E5%92%8C%E6%9C%AA%E6%9D%A5/"/>
-    <id>https://chorer.github.io/2019/12/27/Trs-黑暗模式的过去、现在和未来/</id>
-    <published>2019-12-27T11:54:45.878Z</published>
-    <updated>2019-12-28T11:31:59.033Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Fri Mar 27 2020 12:10:57 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/2575/1*3d5EpEVF5V4d6jV27WRoRQ.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
-    
     
   </entry>
   

@@ -6,10 +6,46 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2020-04-11T15:54:08.294Z</updated>
+  <updated>2020-04-14T07:19:35.588Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu下如何更快地安装gcc编译器</title>
+    <link href="https://chorer.github.io/2020/04/14/OS-Ubuntu%20%E4%B8%8B%E5%AE%89%E8%A3%85gcc%E7%BC%96%E8%AF%91%E5%99%A8/"/>
+    <id>https://chorer.github.io/2020/04/14/OS-Ubuntu 下安装gcc编译器/</id>
+    <published>2020-04-13T16:00:00.000Z</published>
+    <updated>2020-04-14T07:19:35.588Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Tue Apr 14 2020 15:20:12 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/OS-Ubuntu%E4%B8%8B%E5%A6%82%E4%BD%95%E6%9B%B4%E5%BF%AB%E5%9C%B0%E5%AE%89%E8%A3%85gcc%E7%BC%96%E8%AF%91%E5%99%A8/Ubuntu%E4%B8%8B%E5%A6%82%E4%BD%95%E6%9B%B4%E5%BF%AB%E5%9C%B0%E5%AE%89%E8%A3%85gcc%E7%BC%96%E8%AF%91%E5%99%A8-0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="OS" scheme="https://chorer.github.io/categories/OS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>操作系统学习笔记-9：调度</title>
+    <link href="https://chorer.github.io/2020/04/11/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-9%EF%BC%9A%E8%B0%83%E5%BA%A6/"/>
+    <id>https://chorer.github.io/2020/04/11/OS-操作系统学习笔记-9：调度/</id>
+    <published>2020-04-10T16:00:00.000Z</published>
+    <updated>2020-04-13T08:15:48.396Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Tue Apr 14 2020 15:20:12 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-9%EF%BC%9A%E8%B0%83%E5%BA%A6/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-9%EF%BC%9A%E8%B0%83%E5%BA%A6-0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="OS" scheme="https://chorer.github.io/categories/OS/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>编译原理学习笔记-3：词法分析(一)基本过程、正规式和有限自动机</title>
@@ -25,24 +61,6 @@
     </summary>
     
       <category term="Compile principle" scheme="https://chorer.github.io/categories/Compile-principle/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统学习笔记-9：调度</title>
-    <link href="https://chorer.github.io/2020/04/11/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-9%EF%BC%9A%E8%B0%83%E5%BA%A6/"/>
-    <id>https://chorer.github.io/2020/04/11/OS-操作系统学习笔记-9：调度/</id>
-    <published>2020-04-10T16:00:00.000Z</published>
-    <updated>2020-04-12T11:19:07.913Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Mon Apr 13 2020 12:56:20 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-9%EF%BC%9A%E8%B0%83%E5%BA%A6/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-9%EF%BC%9A%E8%B0%83%E5%BA%A6-0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="OS" scheme="https://chorer.github.io/categories/OS/"/>
     
     
   </entry>
@@ -360,28 +378,6 @@
     
       <category term="Thinking" scheme="https://chorer.github.io/categories/Thinking/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>【译】这些理由告诉你，你早就该放弃支持IE了</title>
-    <link href="https://chorer.github.io/2020/01/07/Trs-%E8%BF%99%E4%BA%9B%E7%90%86%E7%94%B1%E5%91%8A%E8%AF%89%E4%BD%A0%EF%BC%8C%E4%BD%A0%E6%97%A9%E5%B0%B1%E8%AF%A5%E6%94%BE%E5%BC%83%E6%94%AF%E6%8C%81IE%E4%BA%86/"/>
-    <id>https://chorer.github.io/2020/01/07/Trs-这些理由告诉你，你早就该放弃支持IE了/</id>
-    <published>2020-01-06T16:00:00.000Z</published>
-    <updated>2020-02-03T05:12:03.882Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Mon Apr 13 2020 12:56:20 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1495923742073-b1c7b7dab81c?ixlib=rb-1.2.1&amp;amp;q=80&amp;amp;fm=jpg&amp;amp;crop=entropy&amp;amp;cs=tinysrgb&amp;amp;w=2000&amp;amp;fit=max&amp;amp;ixid=eyJhcHBfaWQiOjExNzczfQ&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
-    
-    
-      <category term="IE" scheme="https://chorer.github.io/tags/IE/"/>
-    
-      <category term="浏览器" scheme="https://chorer.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
     
   </entry>
   

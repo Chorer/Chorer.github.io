@@ -6,10 +6,28 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2020-04-14T07:19:35.588Z</updated>
+  <updated>2020-04-18T17:07:43.035Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「译」谁动了我的按钮？ 🧀</title>
+    <link href="https://chorer.github.io/2020/04/18/Trs-%E8%B0%81%E5%8A%A8%E4%BA%86%E6%88%91%E7%9A%84%E6%8C%89%E9%92%AE%EF%BC%9F/"/>
+    <id>https://chorer.github.io/2020/04/18/Trs-谁动了我的按钮？/</id>
+    <published>2020-04-17T16:00:00.000Z</published>
+    <updated>2020-04-18T17:07:43.035Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun Apr 19 2020 01:08:59 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/2810/1*OKylkAMLnabOwEMYOddREQ.jpeg&quot; alt=&quot;A diagram showing how users’ emotions dip to negative for some time right after a change is introduced to them.&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Ubuntu下如何更快地安装gcc编译器</title>
@@ -360,24 +378,6 @@
       <category term="Chrome" scheme="https://chorer.github.io/tags/Chrome/"/>
     
       <category term="debugger" scheme="https://chorer.github.io/tags/debugger/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>稍纵即逝的大二</title>
-    <link href="https://chorer.github.io/2020/01/18/T-%E7%A8%8D%E7%BA%B5%E5%8D%B3%E9%80%9D%E7%9A%84%E5%A4%A7%E4%BA%8C/"/>
-    <id>https://chorer.github.io/2020/01/18/T-稍纵即逝的大二/</id>
-    <published>2020-01-17T16:00:00.000Z</published>
-    <updated>2020-02-17T09:07:43.267Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Mon Apr 13 2020 12:56:20 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E5%A4%A7%E4%BA%8C%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/%E7%A8%8D%E7%BA%B5%E5%8D%B3%E9%80%9D%E7%9A%84%E5%A4%A7%E4%BA%8C-0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Thinking" scheme="https://chorer.github.io/categories/Thinking/"/>
-    
     
   </entry>
   

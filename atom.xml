@@ -6,10 +6,28 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2020-04-18T17:07:43.035Z</updated>
+  <updated>2020-04-21T10:41:43.476Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统学习笔记-10：死锁</title>
+    <link href="https://chorer.github.io/2020/04/21/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-10%EF%BC%9A%E6%AD%BB%E9%94%81/"/>
+    <id>https://chorer.github.io/2020/04/21/OS-操作系统学习笔记-10：死锁/</id>
+    <published>2020-04-20T16:00:00.000Z</published>
+    <updated>2020-04-21T10:41:43.476Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Tue Apr 21 2020 22:17:56 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-10%EF%BC%9A%E6%AD%BB%E9%94%81/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-10%EF%BC%9A%E6%AD%BB%E9%94%81-0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="OS" scheme="https://chorer.github.io/categories/OS/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>「译」谁动了我的按钮？ 🧀</title>
@@ -48,24 +66,6 @@
   </entry>
   
   <entry>
-    <title>编译原理学习笔记-3：词法分析(一)基本过程、正规式和有限自动机</title>
-    <link href="https://chorer.github.io/2020/04/11/CP-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://chorer.github.io/2020/04/11/CP-编译原理学习笔记-3：词法分析（一）/</id>
-    <published>2020-04-10T16:00:00.000Z</published>
-    <updated>2020-04-11T15:54:08.294Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Mon Apr 20 2020 11:08:22 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Compile principle" scheme="https://chorer.github.io/categories/Compile-principle/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>操作系统学习笔记-9：调度</title>
     <link href="https://chorer.github.io/2020/04/11/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-9%EF%BC%9A%E8%B0%83%E5%BA%A6/"/>
     <id>https://chorer.github.io/2020/04/11/OS-操作系统学习笔记-9：调度/</id>
@@ -79,6 +79,24 @@
     </summary>
     
       <category term="OS" scheme="https://chorer.github.io/categories/OS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>编译原理学习笔记-3：词法分析(一)基本过程、正规式和有限自动机</title>
+    <link href="https://chorer.github.io/2020/04/11/CP-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://chorer.github.io/2020/04/11/CP-编译原理学习笔记-3：词法分析（一）/</id>
+    <published>2020-04-10T16:00:00.000Z</published>
+    <updated>2020-04-11T15:54:08.294Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Mon Apr 20 2020 11:08:22 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Compile principle" scheme="https://chorer.github.io/categories/Compile-principle/"/>
     
     
   </entry>
@@ -356,28 +374,6 @@
     
     
       <category term="ES6" scheme="https://chorer.github.io/tags/ES6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Chrome 调试技巧简记</title>
-    <link href="https://chorer.github.io/2020/02/14/F-Chrome%20%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7%E7%AE%80%E8%AE%B0/"/>
-    <id>https://chorer.github.io/2020/02/14/F-Chrome 调试技巧简记/</id>
-    <published>2020-02-13T16:00:00.000Z</published>
-    <updated>2020-02-21T07:22:31.877Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Mon Apr 20 2020 11:08:21 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Chrome%20%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7%E7%AE%80%E8%AE%B0/Chrome%20%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7%E7%AE%80%E8%AE%B0-0.webp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
-    
-    
-      <category term="Chrome" scheme="https://chorer.github.io/tags/Chrome/"/>
-    
-      <category term="debugger" scheme="https://chorer.github.io/tags/debugger/"/>
     
   </entry>
   

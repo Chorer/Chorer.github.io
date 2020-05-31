@@ -6,10 +6,32 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2020-05-14T01:52:25.401Z</updated>
+  <updated>2020-05-31T12:12:02.428Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于 Git 的那些事</title>
+    <link href="https://chorer.github.io/2020/05/26/%E5%85%B3%E4%BA%8E%20Git%20%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/"/>
+    <id>https://chorer.github.io/2020/05/26/关于 Git 的那些事/</id>
+    <published>2020-05-25T16:00:00.000Z</published>
+    <updated>2020-05-31T12:12:02.428Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun May 31 2020 20:15:09 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Git" scheme="https://chorer.github.io/categories/Git/"/>
+    
+    
+      <category term="工具" scheme="https://chorer.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="多人协作" scheme="https://chorer.github.io/tags/%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>记两道关于事件循环的题</title>
@@ -34,11 +56,11 @@
     <link href="https://chorer.github.io/2020/05/09/CP-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-5%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/"/>
     <id>https://chorer.github.io/2020/05/09/CP-编译原理学习笔记-5：自顶向下语法分析/</id>
     <published>2020-05-08T16:00:00.000Z</published>
-    <updated>2020-05-09T15:24:40.940Z</updated>
+    <updated>2020-05-18T05:43:09.129Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Thu May 14 2020 09:46:26 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-5/0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Sun May 31 2020 20:15:09 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-5/0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -210,24 +232,6 @@
   </entry>
   
   <entry>
-    <title>编译原理学习笔记-3：词法分析(一)基本过程、正规式和有限自动机</title>
-    <link href="https://chorer.github.io/2020/04/11/CP-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://chorer.github.io/2020/04/11/CP-编译原理学习笔记-3：词法分析（一）/</id>
-    <published>2020-04-10T16:00:00.000Z</published>
-    <updated>2020-04-11T15:54:08.294Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Thu May 14 2020 09:46:27 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Compile principle" scheme="https://chorer.github.io/categories/Compile-principle/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>操作系统学习笔记-9：调度</title>
     <link href="https://chorer.github.io/2020/04/11/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-9%EF%BC%9A%E8%B0%83%E5%BA%A6/"/>
     <id>https://chorer.github.io/2020/04/11/OS-操作系统学习笔记-9：调度/</id>
@@ -241,6 +245,24 @@
     </summary>
     
       <category term="OS" scheme="https://chorer.github.io/categories/OS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>编译原理学习笔记-3：词法分析(一)基本过程、正规式和有限自动机</title>
+    <link href="https://chorer.github.io/2020/04/11/CP-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://chorer.github.io/2020/04/11/CP-编译原理学习笔记-3：词法分析（一）/</id>
+    <published>2020-04-10T16:00:00.000Z</published>
+    <updated>2020-04-11T15:54:08.294Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Thu May 14 2020 09:46:27 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Compile principle" scheme="https://chorer.github.io/categories/Compile-principle/"/>
     
     
   </entry>
@@ -349,24 +371,6 @@
     <summary type="html">
     
       &lt;!-- build time:Thu May 14 2020 09:46:27 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-5%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8E%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%BA%E5%88%B6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-5%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8E%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%BA%E5%88%B6-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="OS" scheme="https://chorer.github.io/categories/OS/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统学习笔记-4：进程同步与进程互斥（一）</title>
-    <link href="https://chorer.github.io/2020/03/23/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-4%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8E%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://chorer.github.io/2020/03/23/OS-操作系统学习笔记-4：进程同步与进程互斥（一）/</id>
-    <published>2020-03-23T10:58:37.124Z</published>
-    <updated>2020-04-14T07:44:42.861Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Thu May 14 2020 09:46:26 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-4%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E3%80%81%E4%BA%92%E6%96%A5%E5%92%8C%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-4%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E3%80%81%E4%BA%92%E6%96%A5%E5%92%8C%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1-0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     

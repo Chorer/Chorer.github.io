@@ -6,43 +6,25 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2020-07-26T10:52:28.033Z</updated>
+  <updated>2020-07-26T13:22:14.973Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Promise 链式调用踩坑记录</title>
-    <link href="https://chorer.github.io/2020/07/26/F-Promise%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/"/>
-    <id>https://chorer.github.io/2020/07/26/F-Promise链式调用踩坑记录/</id>
+    <title>聊一聊：一道Promise链式调用的题目</title>
+    <link href="https://chorer.github.io/2020/07/26/F-%E8%81%8A%E4%B8%80%E8%81%8A%EF%BC%9A%E4%B8%80%E9%81%93Promise%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8%E7%9A%84%E9%A2%98%E7%9B%AE/"/>
+    <id>https://chorer.github.io/2020/07/26/F-聊一聊：一道Promise链式调用的题目/</id>
     <published>2020-07-25T16:00:00.000Z</published>
-    <updated>2020-07-26T10:52:28.033Z</updated>
+    <updated>2020-07-26T13:22:14.973Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Jul 26 2020 18:54:51 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Promise%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Sun Jul 26 2020 21:22:43 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Promise%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
       <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>关于大二下的总结</title>
-    <link href="https://chorer.github.io/2020/07/22/T-%E5%85%B3%E4%BA%8E%E5%A4%A7%E4%BA%8C%E4%B8%8B%E7%9A%84%E6%80%BB%E7%BB%93/"/>
-    <id>https://chorer.github.io/2020/07/22/T-关于大二下的总结/</id>
-    <published>2020-07-21T16:00:00.000Z</published>
-    <updated>2020-07-24T06:00:06.420Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Sun Jul 26 2020 18:54:51 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E8%BF%91%E6%9C%9F%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/%E8%BF%91%E6%9C%9F%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83-0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Thinking" scheme="https://chorer.github.io/categories/Thinking/"/>
     
     
   </entry>
@@ -61,6 +43,24 @@
     </summary>
     
       <category term="Tool" scheme="https://chorer.github.io/categories/Tool/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于大二下的总结</title>
+    <link href="https://chorer.github.io/2020/07/22/T-%E5%85%B3%E4%BA%8E%E5%A4%A7%E4%BA%8C%E4%B8%8B%E7%9A%84%E6%80%BB%E7%BB%93/"/>
+    <id>https://chorer.github.io/2020/07/22/T-关于大二下的总结/</id>
+    <published>2020-07-21T16:00:00.000Z</published>
+    <updated>2020-07-24T06:00:06.420Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun Jul 26 2020 18:54:51 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E8%BF%91%E6%9C%9F%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/%E8%BF%91%E6%9C%9F%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83-0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Thinking" scheme="https://chorer.github.io/categories/Thinking/"/>
     
     
   </entry>

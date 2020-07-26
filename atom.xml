@@ -6,10 +6,46 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2020-07-22T09:51:00.038Z</updated>
+  <updated>2020-07-26T10:52:28.033Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Promise 链式调用踩坑记录</title>
+    <link href="https://chorer.github.io/2020/07/26/F-Promise%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/"/>
+    <id>https://chorer.github.io/2020/07/26/F-Promise链式调用踩坑记录/</id>
+    <published>2020-07-25T16:00:00.000Z</published>
+    <updated>2020-07-26T10:52:28.033Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun Jul 26 2020 18:54:51 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Promise%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于大二下的总结</title>
+    <link href="https://chorer.github.io/2020/07/22/T-%E5%85%B3%E4%BA%8E%E5%A4%A7%E4%BA%8C%E4%B8%8B%E7%9A%84%E6%80%BB%E7%BB%93/"/>
+    <id>https://chorer.github.io/2020/07/22/T-关于大二下的总结/</id>
+    <published>2020-07-21T16:00:00.000Z</published>
+    <updated>2020-07-24T06:00:06.420Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Sun Jul 26 2020 18:54:51 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E8%BF%91%E6%9C%9F%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/%E8%BF%91%E6%9C%9F%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83-0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Thinking" scheme="https://chorer.github.io/categories/Thinking/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>如何用开源项目申请 JetBrains 产品的 license</title>
@@ -339,42 +375,6 @@
     </summary>
     
       <category term="Compile principle" scheme="https://chorer.github.io/categories/Compile-principle/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统学习笔记-9：调度</title>
-    <link href="https://chorer.github.io/2020/04/11/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-9%EF%BC%9A%E8%B0%83%E5%BA%A6/"/>
-    <id>https://chorer.github.io/2020/04/11/OS-操作系统学习笔记-9：调度/</id>
-    <published>2020-04-10T16:00:00.000Z</published>
-    <updated>2020-04-14T07:43:32.189Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Thu Jul 16 2020 12:28:16 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-9%EF%BC%9A%E8%B0%83%E5%BA%A6/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-9%EF%BC%9A%E8%B0%83%E5%BA%A6-0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="OS" scheme="https://chorer.github.io/categories/OS/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统学习笔记-8：线程</title>
-    <link href="https://chorer.github.io/2020/04/05/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-8%EF%BC%9A%E7%BA%BF%E7%A8%8B/"/>
-    <id>https://chorer.github.io/2020/04/05/OS-操作系统学习笔记-8：线程/</id>
-    <published>2020-04-04T16:00:00.000Z</published>
-    <updated>2020-04-14T07:44:16.480Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Thu Jul 16 2020 12:28:16 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-8%EF%BC%9A%E7%BA%BF%E7%A8%8B/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-8%EF%BC%9A%E7%BA%BF%E7%A8%8B-0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="OS" scheme="https://chorer.github.io/categories/OS/"/>
     
     
   </entry>

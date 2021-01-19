@@ -6,21 +6,39 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2020-09-19T15:15:07.863Z</updated>
+  <updated>2021-01-19T14:37:44.959Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Chor 的 2020 年终总结 | 再见，2020；你好，2021</title>
+    <link href="https://chorer.github.io/2021/01/08/T-Chor%20%E7%9A%842020%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    <id>https://chorer.github.io/2021/01/08/T-Chor 的2020 年终总结/</id>
+    <published>2021-01-07T16:00:00.000Z</published>
+    <updated>2021-01-19T14:37:44.959Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- build time:Tue Jan 19 2021 22:38:06 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/2020%20summary/0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Thinking" scheme="https://chorer.github.io/categories/Thinking/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>如何基于心智模型打造更棒的用户体验</title>
-    <link href="https://chorer.github.io/2020/09/18/Trs-%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8E%E5%BF%83%E6%99%BA%E6%A8%A1%E5%9E%8B%E6%89%93%E9%80%A0%E6%9B%B4%E6%A3%92%E7%9A%84%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%20/"/>
-    <id>https://chorer.github.io/2020/09/18/Trs-如何基于心智模型打造更棒的用户体验 /</id>
+    <link href="https://chorer.github.io/2020/09/18/Trs-%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8E%E5%BF%83%E6%99%BA%E6%A8%A1%E5%9E%8B%E6%89%93%E9%80%A0%E6%9B%B4%E6%A3%92%E7%9A%84%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/"/>
+    <id>https://chorer.github.io/2020/09/18/Trs-如何基于心智模型打造更棒的用户体验/</id>
     <published>2020-09-17T16:00:00.000Z</published>
     <updated>2020-09-19T15:15:07.863Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Sun Sep 20 2020 08:06:23 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://assets.justinmind.com/wp-content/uploads/2020/06/mental-models-ui-ux-design-tips-examples.png&quot; alt=&quot;Mental models in UI-UX design - examples and tips&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Sun Sep 20 2020 14:24:26 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://assets.justinmind.com/wp-content/uploads/2020/06/mental-models-ui-ux-design-tips-examples.png&quot; alt=&quot;Mental models in UI-UX design - examples and tips&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -182,11 +200,11 @@
     <link href="https://chorer.github.io/2020/07/04/Trs-%E8%B0%88%E4%B8%80%E8%B0%88JavaScript%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"/>
     <id>https://chorer.github.io/2020/07/04/Trs-谈一谈JavaScript的内存模型/</id>
     <published>2020-07-03T16:00:00.000Z</published>
-    <updated>2020-07-05T07:20:22.426Z</updated>
+    <updated>2020-10-18T13:26:58.529Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Thu Jul 16 2020 12:28:16 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/JavaScript%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/0.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Tue Jan 19 2021 22:34:07 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/JavaScript%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/0.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -218,11 +236,11 @@
     <link href="https://chorer.github.io/2020/05/26/F-%E5%85%B3%E4%BA%8E%20Git%20%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/"/>
     <id>https://chorer.github.io/2020/05/26/F-关于 Git 的那些事/</id>
     <published>2020-05-25T16:00:00.000Z</published>
-    <updated>2020-05-31T12:12:02.428Z</updated>
+    <updated>2020-11-14T05:36:31.141Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Thu Jul 16 2020 12:28:16 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Tue Jan 19 2021 22:34:07 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -348,33 +366,15 @@
     <link href="https://chorer.github.io/2020/04/25/OS-Linux%20%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/"/>
     <id>https://chorer.github.io/2020/04/25/OS-Linux 系统操作/</id>
     <published>2020-04-24T16:00:00.000Z</published>
-    <updated>2020-04-25T06:02:50.957Z</updated>
+    <updated>2020-09-20T02:50:31.713Z</updated>
     
     <summary type="html">
     
-      &lt;!-- build time:Thu Jul 16 2020 12:28:16 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Linux%20%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/OS-Linux%20%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;!-- build time:Sun Sep 20 2020 14:24:26 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Linux%20%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/OS-Linux%20%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
       <category term="OS" scheme="https://chorer.github.io/categories/OS/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>编译原理学习笔记-4：词法分析(二)等价转换与DFA的化简</title>
-    <link href="https://chorer.github.io/2020/04/24/CP-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-4%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>https://chorer.github.io/2020/04/24/CP-编译原理学习笔记-4：词法分析（二）/</id>
-    <published>2020-04-23T16:00:00.000Z</published>
-    <updated>2020-04-25T06:07:07.603Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- build time:Thu Jul 16 2020 12:28:15 GMT+0800 (GMT+08:00) --&gt;&lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-4/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-4-00.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Compile principle" scheme="https://chorer.github.io/categories/Compile-principle/"/>
     
     
   </entry>

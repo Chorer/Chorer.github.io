@@ -1,23 +1,23 @@
-<!-- build time:Sun Sep 05 2021 14:05:20 GMT+0800 (中国标准时间) --><!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Focus on FE learning</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third%20party/pace-theme-flash.css"><link rel="icon" href="/images/kour.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
+<!-- build time:Sun Sep 05 2021 14:32:51 GMT+0800 (中国标准时间) --><!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Focus on FE learning</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third%20party/pace-theme-flash.css"><link rel="icon" href="/images/kour.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script></head><body><header class="header"><div class="header_top"><span class="theme"><a href="/">Chor's blog</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">首页</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">分类</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">归档</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">标签</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">关于</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue" class="logo">Focus on FE learning</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div><div class="blog-down"><a href="javascript:void(0);"><i class="fa fa-angle-double-down fa-2x"></i></a></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">记两道关于事件循环的题</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2020-05-13&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp2.2k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp9 mins&nbsp&nbsp&nbsp</span><div class="post-tags"></div></div><div class="post-content"><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF-1.png"></div><a id="more"></a><h3 id="其一">其一</h3><p>群里看到的一道事件循环的题：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async <span class="kw">function</span> <span class="at">async1</span>() <span class="op">{</span>
+<script src="/js/prism-line-numbers.min.js"></script></head><body><header class="header"><div class="header_top"><span class="theme"><a href="/">Chor's blog</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">首页</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">分类</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">归档</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">标签</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">关于</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue" class="logo">Focus on FE learning</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div><div class="blog-down"><a href="javascript:void(0);"><i class="fa fa-angle-double-down fa-2x"></i></a></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">记两道关于事件循环的题</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2020-05-13&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp2.3k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp9 mins&nbsp&nbsp&nbsp</span><div class="post-tags"></div></div><div class="post-content"><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF-1.png"></div><span id="more"></span><h3 id="其一">其一</h3><p>群里看到的一道事件循环的题：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async <span class="kw">function</span> <span class="at">async1</span>() <span class="op">&#123;</span>
   <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;async1 start&quot;</span>)<span class="op">;</span>
   await <span class="at">async2</span>()<span class="op">;</span>
   <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;async1 end&quot;</span>)<span class="op">;</span>
-  <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;timer1&#39;</span>)
-  <span class="op">},</span> <span class="dv">0</span>)
-<span class="op">}</span>
-async <span class="kw">function</span> <span class="at">async2</span>() <span class="op">{</span>
-  <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="op">&#125;,</span> <span class="dv">0</span>)
+<span class="op">&#125;</span>
+async <span class="kw">function</span> <span class="at">async2</span>() <span class="op">&#123;</span>
+  <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;timer2&#39;</span>)
-  <span class="op">},</span> <span class="dv">0</span>)
+  <span class="op">&#125;,</span> <span class="dv">0</span>)
   <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;async2&quot;</span>)<span class="op">;</span>
-<span class="op">}</span>
+<span class="op">&#125;</span>
 <span class="at">async1</span>()<span class="op">;</span>
-<span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
+<span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
   <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;timer3&#39;</span>)
-<span class="op">},</span> <span class="dv">0</span>)
+<span class="op">&#125;,</span> <span class="dv">0</span>)
 <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;start&quot;</span>)</code></pre></div><p>看到这里，你可以猜想一下输出结果是什么 .......</p><p>正确答案应该是：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async1 start
 async2
 start
@@ -30,126 +30,126 @@ async1 end
 start
 timer2
 timer1
-timer3</code></pre></div><p>这里的关键其实是搞清楚 <code>await async2()</code> 做了什么事情。我以为在 <code>async1</code> 内部，<code>async2</code> 被调用之后，就会继续往后执行，因此是先打印 <code>async1 end</code> ，再回到主栈打印 <code>start</code>。然而 <code>async2</code> 里面包含了一个异步操作，在异步操作得到结果之前，其实是会跳出当前 <code>async1</code> 函数的执行栈，优先去执行同步任务的，所以这里其实会先执行 <code>start</code>，再去执行 <code>async1 end</code>。具体地说：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async <span class="kw">function</span> <span class="at">f</span>()<span class="op">{</span>
+timer3</code></pre></div><p>这里的关键其实是搞清楚 <code>await async2()</code> 做了什么事情。我以为在 <code>async1</code> 内部，<code>async2</code> 被调用之后，就会继续往后执行，因此是先打印 <code>async1 end</code> ，再回到主栈打印 <code>start</code>。然而 <code>async2</code> 里面包含了一个异步操作，在异步操作得到结果之前，其实是会跳出当前 <code>async1</code> 函数的执行栈，优先去执行同步任务的，所以这里其实会先执行 <code>start</code>，再去执行 <code>async1 end</code>。具体地说：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async <span class="kw">function</span> <span class="at">f</span>()<span class="op">&#123;</span>
     await p1
     <span class="co">// some operations</span>
-<span class="op">}</span>
+<span class="op">&#125;</span>
 <span class="co">// 可以近似理解为</span>
-<span class="kw">function</span> <span class="at">f</span>()<span class="op">{</span>
-    <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(p1).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
+<span class="kw">function</span> <span class="at">f</span>()<span class="op">&#123;</span>
+    <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(p1).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
         <span class="co">//some operations</span>
-    <span class="op">}</span>)
-<span class="op">}</span></code></pre></div><p>所以原来的代码可以近似理解为：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async <span class="kw">function</span> <span class="at">async1</span>() <span class="op">{</span>
+    <span class="op">&#125;</span>)
+<span class="op">&#125;</span></code></pre></div><p>所以原来的代码可以近似理解为：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async <span class="kw">function</span> <span class="at">async1</span>() <span class="op">&#123;</span>
   <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;async1 start&quot;</span>)<span class="op">;</span>
-  <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="at">async2</span>()).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="at">async2</span>()).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
       <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;async1 end&quot;</span>)<span class="op">;</span>
-      <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
+      <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
         <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;timer1&#39;</span>)
-      <span class="op">},</span><span class="dv">0</span>)
-  <span class="op">}</span>)  
-<span class="op">}</span>
-async <span class="kw">function</span> <span class="at">async2</span>() <span class="op">{</span>
-  <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
+      <span class="op">&#125;,</span><span class="dv">0</span>)
+  <span class="op">&#125;</span>)  
+<span class="op">&#125;</span>
+async <span class="kw">function</span> <span class="at">async2</span>() <span class="op">&#123;</span>
+  <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;timer2&#39;</span>)
-  <span class="op">},</span> <span class="dv">0</span>)
+  <span class="op">&#125;,</span> <span class="dv">0</span>)
   <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;async2&quot;</span>)<span class="op">;</span>
-<span class="op">}</span>
+<span class="op">&#125;</span>
 <span class="at">async1</span>()<span class="op">;</span>
-<span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
+<span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
   <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;timer3&#39;</span>)
-<span class="op">},</span> <span class="dv">0</span>)
+<span class="op">&#125;,</span> <span class="dv">0</span>)
 <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;start&quot;</span>)</code></pre></div><p>接下来就可以像以前分析事件循环那样去理解了：</p><p><strong>第一轮事件循环：</strong></p><p>① 宏任务：整个代码块作为宏任务执行，调用 <code>async1</code> 函数，进入函数执行栈。打印 <code>async1 start</code>；<code>async2</code> 位于 Promise 的执行器中，因此立即执行，遇到了定时器 <code>timer2</code>，把其回调函数分发到宏任务队列，之后打印 <code>async2</code>；Promise 的 <code>then</code> 的回调函数被分发到微任务队列。 <code>async1</code> 执行完毕，返回到主栈，遇到了定时器 <code>timer3</code>，其回调函数被分发到宏任务队列。接着打印 <code>start</code>，主栈清空。</p><p>② 微任务：微任务队列中有 <code>then</code> 的回调函数，进入主栈并执行，打印 <code>async1 end</code>，之后遇到定时器 <code>timer1</code>，其回调函数注册到被分发到宏任务队列。之后，微任务队列中无任务，第二轮事件循环结束</p><p><strong>第二轮事件循环：</strong></p><p>① 宏任务：根据之前进队列的顺序，宏任务队列中依次有 <code>timer2</code>、<code>timer3</code> 和 <code>timer1</code> 这几个定时器的回调函数。<code>timer2</code> 的回调函数进入主栈并执行，打印 <code>timer2</code></p><p>② 微任务：微任务队列中无任务，第二轮事件循环结束</p><p><strong>第三轮事件循环：</strong></p><p>① 宏任务：宏任务队列中依次有 <code>timer3</code> 和 <code>timer1</code> 这两个定时器的回调函数。<code>timer3</code> 的回调函数进入主栈并执行，打印 <code>timer3</code></p><p>② 微任务：微任务队列中无任务，第三轮事件循环结束</p><p><strong>第四轮事件循环：</strong></p><p>① 宏任务：宏任务队列中只有 <code>timer1</code> 这个定时器的回调函数。<code>timer1</code> 的回调函数进入主栈并执行，打印 <code>timer1</code></p><p>② 微任务：微任务队列中无任务，第四轮事件循环结束</p><h3 id="其二">其二</h3><p>之后又看到这么一段代码（Nodejs）：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> fs <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;fs&#39;</span>)
-<span class="kw">function</span> <span class="at">readFile</span>(fileName) <span class="op">{</span>
-  <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>(<span class="kw">function</span> (resolve<span class="op">,</span>reject) <span class="op">{</span>
-    <span class="va">fs</span>.<span class="at">readFile</span>(fileName<span class="op">,</span><span class="kw">function</span> (error<span class="op">,</span>data) <span class="op">{</span>
+<span class="kw">function</span> <span class="at">readFile</span>(fileName) <span class="op">&#123;</span>
+  <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>(<span class="kw">function</span> (resolve<span class="op">,</span>reject) <span class="op">&#123;</span>
+    <span class="va">fs</span>.<span class="at">readFile</span>(fileName<span class="op">,</span><span class="kw">function</span> (error<span class="op">,</span>data) <span class="op">&#123;</span>
       <span class="cf">if</span>(error) <span class="cf">return</span> <span class="at">reject</span>(error)
       <span class="at">resolve</span>(data)
-    <span class="op">}</span>)
-  <span class="op">}</span>)
-<span class="op">}</span>
-async <span class="kw">function</span> <span class="at">readAll</span>(paths)<span class="op">{</span>
-  <span class="kw">const</span> promises <span class="op">=</span> <span class="va">paths</span>.<span class="at">map</span>(async path <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="op">&#125;</span>)
+  <span class="op">&#125;</span>)
+<span class="op">&#125;</span>
+async <span class="kw">function</span> <span class="at">readAll</span>(paths)<span class="op">&#123;</span>
+  <span class="kw">const</span> promises <span class="op">=</span> <span class="va">paths</span>.<span class="at">map</span>(async path <span class="op">=&gt;</span> <span class="op">&#123;</span>
      <span class="kw">const</span> res <span class="op">=</span> await <span class="at">readFile</span>(path)
      <span class="cf">return</span> <span class="va">res</span>.<span class="at">toString</span>()
-  <span class="op">}</span>)
-  <span class="cf">for</span>(promise of promises)<span class="op">{</span>
+  <span class="op">&#125;</span>)
+  <span class="cf">for</span>(promise of promises)<span class="op">&#123;</span>
       <span class="va">console</span>.<span class="at">log</span>(<span class="dv">4</span>)
       <span class="va">console</span>.<span class="at">log</span>(await promise)
-  <span class="op">}</span>
-<span class="op">}</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span>
 <span class="at">readAll</span>([<span class="st">&#39;1.txt&#39;</span><span class="op">,</span><span class="st">&#39;2.txt&#39;</span><span class="op">,</span><span class="st">&#39;3.txt&#39;</span>]) </code></pre></div><p>这段代码异步读取本地文件，假设三个 txt 的内容分别是 123，最后会输出什么呢？</p><p>答案是 <code>4 1 4 2 4 3</code>。确实是道很简单的题 ...... 问的不过是 <code>async</code> 和 <code>await</code> 的常规用法，而且语义上相比 Promise 已经清晰不少了。不过我的老毛病又犯了，想着想着就绕了进去：既然 <code>for...of</code> 是个同步操作，打印 <code>4</code> 的时候不应该能拿到异步读取文件的结果，所以我以为应该是输出：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="dv">4</span>
 Promise <span class="op">&lt;</span>pending<span class="op">&gt;</span>
 <span class="dv">4</span>
 Promise <span class="op">&lt;</span>pending<span class="op">&gt;</span>
 <span class="dv">4</span>
-Promise <span class="op">&lt;</span>pending<span class="op">&gt;</span></code></pre></div><p>不过从实际结果来看，却很像是同步打印 <code>4</code> 和文件内容，为什么会这样呢？ —— 其实只是看起来像而已！毕竟 <code>async await</code> 所做的就是让我们用同步的方式编写异步代码，但其实，<strong>在第一次打印 <code>4</code> 之后，往后的打印操作其实是被放在一个异步的回调里面的</strong>。</p><p>这么说可能不清楚，不妨仿照第一道题的方式，看能不能用同样的方法分析这段代码。前面说过，<code>await</code> 后面的操作可以放在一个 <code>then</code> 的回调里，所以可以把 <code>readAll</code> 函数近似改写为：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async <span class="kw">function</span> <span class="at">readAll</span>(paths)<span class="op">{</span>
-  <span class="kw">const</span> promises <span class="op">=</span> <span class="va">paths</span>.<span class="at">map</span>(async path <span class="op">=&gt;</span> <span class="op">{</span>
-     <span class="cf">return</span> <span class="at">Promise</span>(<span class="at">readFile</span>(path)).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
+Promise <span class="op">&lt;</span>pending<span class="op">&gt;</span></code></pre></div><p>不过从实际结果来看，却很像是同步打印 <code>4</code> 和文件内容，为什么会这样呢？ —— 其实只是看起来像而已！毕竟 <code>async await</code> 所做的就是让我们用同步的方式编写异步代码，但其实，<strong>在第一次打印 <code>4</code> 之后，往后的打印操作其实是被放在一个异步的回调里面的</strong>。</p><p>这么说可能不清楚，不妨仿照第一道题的方式，看能不能用同样的方法分析这段代码。前面说过，<code>await</code> 后面的操作可以放在一个 <code>then</code> 的回调里，所以可以把 <code>readAll</code> 函数近似改写为：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async <span class="kw">function</span> <span class="at">readAll</span>(paths)<span class="op">&#123;</span>
+  <span class="kw">const</span> promises <span class="op">=</span> <span class="va">paths</span>.<span class="at">map</span>(async path <span class="op">=&gt;</span> <span class="op">&#123;</span>
+     <span class="cf">return</span> <span class="at">Promise</span>(<span class="at">readFile</span>(path)).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
          <span class="cf">return</span> <span class="va">res</span>.<span class="at">toString</span>()
-     <span class="op">}</span>)
-  <span class="op">}</span>)
+     <span class="op">&#125;</span>)
+  <span class="op">&#125;</span>)
     <span class="va">console</span>.<span class="at">log</span>(<span class="dv">4</span>)
     <span class="va">console</span>.<span class="at">log</span>(await promise[<span class="dv">0</span>])
     <span class="va">console</span>.<span class="at">log</span>(<span class="dv">4</span>)
     <span class="va">console</span>.<span class="at">log</span>(await promise[<span class="dv">1</span>])
     <span class="va">console</span>.<span class="at">log</span>(<span class="dv">4</span>)
     <span class="va">console</span>.<span class="at">log</span>(await promise[<span class="dv">2</span>])
-  <span class="op">}</span>
-}</code></pre></div><p>再进一步改写为：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async <span class="kw">function</span> <span class="at">readAll</span>(paths)<span class="op">{</span>
-  <span class="kw">const</span> promises <span class="op">=</span> <span class="va">paths</span>.<span class="at">map</span>(async path <span class="op">=&gt;</span> <span class="op">{</span>
-     <span class="cf">return</span> <span class="at">Promise</span>(<span class="at">readFile</span>(path)).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="op">&#125;</span>
+&#125;</code></pre></div><p>再进一步改写为：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async <span class="kw">function</span> <span class="at">readAll</span>(paths)<span class="op">&#123;</span>
+  <span class="kw">const</span> promises <span class="op">=</span> <span class="va">paths</span>.<span class="at">map</span>(async path <span class="op">=&gt;</span> <span class="op">&#123;</span>
+     <span class="cf">return</span> <span class="at">Promise</span>(<span class="at">readFile</span>(path)).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
          <span class="cf">return</span> <span class="va">res</span>.<span class="at">toString</span>()
-     <span class="op">}</span>)
-  <span class="op">}</span>)
+     <span class="op">&#125;</span>)
+  <span class="op">&#125;</span>)
     <span class="va">console</span>.<span class="at">log</span>(<span class="dv">4</span>)
-    <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(promise[<span class="dv">0</span>]).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(promise[<span class="dv">0</span>]).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
         <span class="va">console</span>.<span class="at">log</span>(res)
         <span class="va">console</span>.<span class="at">log</span>(<span class="dv">4</span>)
-        <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(promise[<span class="dv">1</span>]).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
+        <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(promise[<span class="dv">1</span>]).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
             <span class="va">console</span>.<span class="at">log</span>(res)
             <span class="va">console</span>.<span class="at">log</span>(<span class="dv">4</span>)
-            <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(promise[<span class="dv">2</span>]).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
+            <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(promise[<span class="dv">2</span>]).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
                 <span class="va">console</span>.<span class="at">log</span>(res)
-            <span class="op">}</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span>)
-  <span class="op">}</span>
-}</code></pre></div><p>这是按照前面规则改写的结果，但是好像又退回了 <code>callback hell</code> 的恶心形式，所以这里要再改为 Promise 的链式调用：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async <span class="kw">function</span> <span class="at">readAll</span>(paths)<span class="op">{</span>
-  <span class="kw">const</span> promises <span class="op">=</span> <span class="va">paths</span>.<span class="at">map</span>(async path <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="at">readFile</span>(path)).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
+            <span class="op">&#125;</span>)
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>)
+  <span class="op">&#125;</span>
+&#125;</code></pre></div><p>这是按照前面规则改写的结果，但是好像又退回了 <code>callback hell</code> 的恶心形式，所以这里要再改为 Promise 的链式调用：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async <span class="kw">function</span> <span class="at">readAll</span>(paths)<span class="op">&#123;</span>
+  <span class="kw">const</span> promises <span class="op">=</span> <span class="va">paths</span>.<span class="at">map</span>(async path <span class="op">=&gt;</span> <span class="op">&#123;</span>
+    <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="at">readFile</span>(path)).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
       <span class="kw">const</span> r <span class="op">=</span> res
       <span class="cf">return</span> <span class="va">r</span>.<span class="at">toString</span>()
-    <span class="op">}</span>)    
-  <span class="op">}</span>)
+    <span class="op">&#125;</span>)    
+  <span class="op">&#125;</span>)
   <span class="va">console</span>.<span class="at">log</span>(<span class="dv">4</span>)
-  <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(promises[<span class="dv">0</span>]).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(promises[<span class="dv">0</span>]).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="va">console</span>.<span class="at">log</span>(res)
     <span class="va">console</span>.<span class="at">log</span>(<span class="dv">4</span>)
     <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(promises[<span class="dv">1</span>])
-  <span class="op">}</span>).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="op">&#125;</span>).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="va">console</span>.<span class="at">log</span>(res)
     <span class="va">console</span>.<span class="at">log</span>(<span class="dv">4</span>)
     <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(promises[<span class="dv">2</span>])
-  <span class="op">}</span>).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="op">&#125;</span>).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="va">console</span>.<span class="at">log</span>(res)
-  <span class="op">}</span>)
-<span class="op">}</span></code></pre></div><p>然后我们再按照事件循环去分析：</p><p><strong>第一轮事件循环：</strong></p><p>① 宏任务： 整个代码块作为宏任务执行，调用 <code>readAll</code> 函数，进入函数执行栈；通过 <code>map</code> 迭代数组，每一次迭代会立即执行 Promise 中的执行器，进而执行 <code>readFile</code> 函数，由于 <code>resolve</code> 是位于异步回调函数中（尚未执行），所以这里返回的是一个处于 <code>pending</code> 状态的 Promise；此外，每一次迭代也会将 <code>then</code> 中的回调分发到微任务队列。在回调执行前，我们是拿不到文件内容的。 <code>readAll</code> 执行完毕，返回到主栈，第一次打印 <code>4</code>。接着遇到了 <code>Promise.resolve(promises[0])</code>，这里实际上也是一个处于 <code>pending</code> 状态的 Promise，调用它的 <code>then</code> 方法的时候，会把回调分发到微任务队列。这里有三个 <code>then</code> ，每一个 <code>then</code> 里的回调都会依次进入微任务队列。</p><p>② 微任务：现在的微任务队列中其实有 6 个任务，依次是返回文件内容的三个回调函数，以及上面所说的三个 <code>then</code> 的回调。从队头任务开始，6 个任务依次进入主栈并顺序执行。这里就会发现，前三个任务的执行负责返回三个文件的内容，后三个任务的执行，每次都会打印一个文件的内容和一个 <code>4</code>。所以我们看到的打印就是：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="dv">4</span>
+  <span class="op">&#125;</span>)
+<span class="op">&#125;</span></code></pre></div><p>然后我们再按照事件循环去分析：</p><p><strong>第一轮事件循环：</strong></p><p>① 宏任务： 整个代码块作为宏任务执行，调用 <code>readAll</code> 函数，进入函数执行栈；通过 <code>map</code> 迭代数组，每一次迭代会立即执行 Promise 中的执行器，进而执行 <code>readFile</code> 函数，由于 <code>resolve</code> 是位于异步回调函数中（尚未执行），所以这里返回的是一个处于 <code>pending</code> 状态的 Promise；此外，每一次迭代也会将 <code>then</code> 中的回调分发到微任务队列。在回调执行前，我们是拿不到文件内容的。 <code>readAll</code> 执行完毕，返回到主栈，第一次打印 <code>4</code>。接着遇到了 <code>Promise.resolve(promises[0])</code>，这里实际上也是一个处于 <code>pending</code> 状态的 Promise，调用它的 <code>then</code> 方法的时候，会把回调分发到微任务队列。这里有三个 <code>then</code> ，每一个 <code>then</code> 里的回调都会依次进入微任务队列。</p><p>② 微任务：现在的微任务队列中其实有 6 个任务，依次是返回文件内容的三个回调函数，以及上面所说的三个 <code>then</code> 的回调。从队头任务开始，6 个任务依次进入主栈并顺序执行。这里就会发现，前三个任务的执行负责返回三个文件的内容，后三个任务的执行，每次都会打印一个文件的内容和一个 <code>4</code>。所以我们看到的打印就是：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="dv">4</span>
 <span class="dv">1</span>
 <span class="dv">4</span>
 <span class="dv">2</span>
 <span class="dv">4</span>
-<span class="dv">3</span></code></pre></div><p>看起来就很像是同步打印 <code>4</code> 和文件内容，不过其实里面做的仍然是异步操作，这就是 <code>async await</code> 一个强大的地方了。</p><p>当然，这里即便用前面带有嵌套回调的代码来分析，也会得出相同的结果，其实这里要保证的主要就是进微任务队列的顺序。不过，为什么一开始会猜想出错误的结果呢？= = 其实是因为忘记对 <code>for...of</code> 中的 <code>await</code> 进行转化（被自己菜哭）。</p><p>如果非要得到那个错误的结果的话，代码其实是这样的：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async <span class="kw">function</span> <span class="at">readAll</span>(paths)<span class="op">{</span>
-  <span class="kw">const</span> promises <span class="op">=</span> <span class="va">paths</span>.<span class="at">map</span>(async path <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="at">readFile</span>(path)).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
+<span class="dv">3</span></code></pre></div><p>看起来就很像是同步打印 <code>4</code> 和文件内容，不过其实里面做的仍然是异步操作，这就是 <code>async await</code> 一个强大的地方了。</p><p>当然，这里即便用前面带有嵌套回调的代码来分析，也会得出相同的结果，其实这里要保证的主要就是进微任务队列的顺序。不过，为什么一开始会猜想出错误的结果呢？= = 其实是因为忘记对 <code>for...of</code> 中的 <code>await</code> 进行转化（被自己菜哭）。</p><p>如果非要得到那个错误的结果的话，代码其实是这样的：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">async <span class="kw">function</span> <span class="at">readAll</span>(paths)<span class="op">&#123;</span>
+  <span class="kw">const</span> promises <span class="op">=</span> <span class="va">paths</span>.<span class="at">map</span>(async path <span class="op">=&gt;</span> <span class="op">&#123;</span>
+    <span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="at">readFile</span>(path)).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
       <span class="kw">const</span> r <span class="op">=</span> res
       <span class="cf">return</span> <span class="va">r</span>.<span class="at">toString</span>()
-    <span class="op">}</span>)    
-  <span class="op">}</span>)
-  <span class="cf">for</span>(promise of promises)<span class="op">{</span>
+    <span class="op">&#125;</span>)    
+  <span class="op">&#125;</span>)
+  <span class="cf">for</span>(promise of promises)<span class="op">&#123;</span>
      <span class="va">console</span>.<span class="at">log</span>(<span class="dv">4</span>)
      <span class="va">console</span>.<span class="at">log</span>(promise)
-  <span class="op">}</span>
-<span class="op">}</span></code></pre></div><p>注意这里的 <code>promise</code> 前面没有加上 <code>await</code>，所以 <code>for...of</code> 里面的代码就是彻底的同步代码了，在每一次打印 <code>4</code> 之后，<code>promise</code> 也是紧跟着打印出来的，经过前面的分析可以知道，这个时候的 <code>promise</code> 还处于 <code>pending</code> 状态，所以打印结果自然会是：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="dv">4</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><p>注意这里的 <code>promise</code> 前面没有加上 <code>await</code>，所以 <code>for...of</code> 里面的代码就是彻底的同步代码了，在每一次打印 <code>4</code> 之后，<code>promise</code> 也是紧跟着打印出来的，经过前面的分析可以知道，这个时候的 <code>promise</code> 还处于 <code>pending</code> 状态，所以打印结果自然会是：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="dv">4</span>
 Promise <span class="op">&lt;</span>pending<span class="op">&gt;</span>
 <span class="dv">4</span>
 Promise <span class="op">&lt;</span>pending<span class="op">&gt;</span>

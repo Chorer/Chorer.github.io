@@ -1,704 +1,704 @@
-<!-- build time:Sun Sep 05 2021 14:05:20 GMT+0800 (中国标准时间) --><!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Focus on FE learning</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third%20party/pace-theme-flash.css"><link rel="icon" href="/images/kour.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
+<!-- build time:Sun Sep 05 2021 14:32:51 GMT+0800 (中国标准时间) --><!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Focus on FE learning</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third%20party/pace-theme-flash.css"><link rel="icon" href="/images/kour.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script></head><body><header class="header"><div class="header_top"><span class="theme"><a href="/">Chor's blog</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">首页</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">分类</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">归档</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">标签</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">关于</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue" class="logo">Focus on FE learning</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div><div class="blog-down"><a href="javascript:void(0);"><i class="fa fa-angle-double-down fa-2x"></i></a></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">JS 原生方法原理探究（十）：如何手写实现 Promise/A+ 及相关方法？</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2021-08-01&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp7.9k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp34 mins&nbsp&nbsp&nbsp</span><div class="post-tags"></div></div><div class="post-content"><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/JS%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0%E7%B3%BB%E5%88%97/5.jpeg"></div><a id="more"></a><blockquote><p>这是 JS 原生方法原理探究系列的第十篇文章。本文会介绍如何手写一个符合 <a href="https://promisesaplus.com/" target="_blank" rel="noopener">Promise A+ 规范</a>的 Promise，并顺带实现 Promise 的相关方法</p></blockquote><h2 id="实现-promisea">实现 Promise/A+</h2><h3 id="术语">术语</h3><p>为了更好地阅读本文，先约定一些术语和说法：</p><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/JS%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0%E7%B3%BB%E5%88%97/6.jpeg"></div><ul><li>promise 初始的时候状态还没有落定，处于 pending 状态；它可以落定为 resolved 状态（fulfilled 状态），用 value 表示它 resolve 的值；也可以落定为 rejected 状态，用 reason（拒因）表示它 reject 的值。</li><li>then 方法接受的成功回调函数称为 onFulfilled，失败回调函数称为 onRejected</li></ul><h3 id="实现-promise-构造函数">实现 Promise 构造函数</h3><p>我们先尝试实现一个基础的 Promise 构造函数。</p><p>首先，用三个常量表示 promise 实例的状态：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">const</span> PENDING <span class="op">=</span> <span class="st">&#39;pending&#39;</span>
+<script src="/js/prism-line-numbers.min.js"></script></head><body><header class="header"><div class="header_top"><span class="theme"><a href="/">Chor's blog</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">首页</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">分类</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">归档</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">标签</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">关于</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue" class="logo">Focus on FE learning</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div><div class="blog-down"><a href="javascript:void(0);"><i class="fa fa-angle-double-down fa-2x"></i></a></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">JS 原生方法原理探究（十）：如何手写实现 Promise/A+ 及相关方法？</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2021-08-01&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp8.5k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp37 mins&nbsp&nbsp&nbsp</span><div class="post-tags"></div></div><div class="post-content"><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/JS%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0%E7%B3%BB%E5%88%97/5.jpeg"></div><span id="more"></span><blockquote><p>这是 JS 原生方法原理探究系列的第十篇文章。本文会介绍如何手写一个符合 <a target="_blank" rel="noopener" href="https://promisesaplus.com/">Promise A+ 规范</a>的 Promise，并顺带实现 Promise 的相关方法</p></blockquote><h2 id="实现-promisea">实现 Promise/A+</h2><h3 id="术语">术语</h3><p>为了更好地阅读本文，先约定一些术语和说法：</p><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/JS%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0%E7%B3%BB%E5%88%97/6.jpeg"></div><ul><li>promise 初始的时候状态还没有落定，处于 pending 状态；它可以落定为 resolved 状态（fulfilled 状态），用 value 表示它 resolve 的值；也可以落定为 rejected 状态，用 reason（拒因）表示它 reject 的值。</li><li>then 方法接受的成功回调函数称为 onFulfilled，失败回调函数称为 onRejected</li></ul><h3 id="实现-promise-构造函数">实现 Promise 构造函数</h3><p>我们先尝试实现一个基础的 Promise 构造函数。</p><p>首先，用三个常量表示 promise 实例的状态：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">const</span> PENDING <span class="op">=</span> <span class="st">&#39;pending&#39;</span>
 <span class="kw">const</span> FULFILLED <span class="op">=</span> <span class="st">&#39;fulfilled&#39;</span>
-<span class="kw">const</span> REJECTED <span class="op">=</span> <span class="st">&#39;rejected&#39;</span></code></pre></div><p>Promise 构造函数的作用是创建一个 promise 实例。对于一个 promise 实例来说，它会有几个基本的属性：status 记录 promise 的状态（初始为 pending），value 记录 promise resolve 的值（初始为 null），reason 记录 promise reject 的值（初始为 null）。</p><p>我们分别在 Promise 构造函数中进行定义：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Promise</span>()<span class="op">{</span>
+<span class="kw">const</span> REJECTED <span class="op">=</span> <span class="st">&#39;rejected&#39;</span></code></pre></div><p>Promise 构造函数的作用是创建一个 promise 实例。对于一个 promise 实例来说，它会有几个基本的属性：status 记录 promise 的状态（初始为 pending），value 记录 promise resolve 的值（初始为 null），reason 记录 promise reject 的值（初始为 null）。</p><p>我们分别在 Promise 构造函数中进行定义：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Promise</span>()<span class="op">&#123;</span>
     <span class="kw">this</span>.<span class="at">status</span> <span class="op">=</span> PENDING
     <span class="kw">this</span>.<span class="at">value</span> <span class="op">=</span> <span class="kw">null</span>
     <span class="kw">this</span>.<span class="at">reason</span> <span class="op">=</span> <span class="kw">null</span>
-<span class="op">}</span></code></pre></div><p>在 new 调用 Promise 构造函数的时候，会往构造函数中传入一个执行器函数 executor，这个执行器函数会马上执行，并且它本身接受 resovle 函数和 reject 函数作为参数。resolve 函数和 reject 函数负责实际改变 promise 的状态，它们的调用时机取决于开发者自己定义的执行器函数的逻辑，我们只需要编写调用执行器函数的代码即可。</p><p>所以代码进一步拓展如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Promise</span>(executor)<span class="op">{</span>
+<span class="op">&#125;</span></code></pre></div><p>在 new 调用 Promise 构造函数的时候，会往构造函数中传入一个执行器函数 executor，这个执行器函数会马上执行，并且它本身接受 resovle 函数和 reject 函数作为参数。resolve 函数和 reject 函数负责实际改变 promise 的状态，它们的调用时机取决于开发者自己定义的执行器函数的逻辑，我们只需要编写调用执行器函数的代码即可。</p><p>所以代码进一步拓展如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Promise</span>(executor)<span class="op">&#123;</span>
     <span class="co">// 保存 promise 实例的引用，方便在 resolve 函数和 reject 函数中访问</span>
     <span class="kw">let</span> self <span class="op">=</span> <span class="kw">this</span>
     <span class="va">self</span>.<span class="at">status</span> <span class="op">=</span> PENDING
     <span class="va">self</span>.<span class="at">value</span> <span class="op">=</span> <span class="kw">null</span>
     <span class="va">self</span>.<span class="at">reason</span> <span class="op">=</span> <span class="kw">null</span>
     <span class="co">// 定义 resolve 函数</span>
-    <span class="kw">function</span> <span class="at">resolve</span>()<span class="op">{</span> ... <span class="op">}</span>
+    <span class="kw">function</span> <span class="at">resolve</span>()<span class="op">&#123;</span> ... <span class="op">&#125;</span>
     <span class="co">// 定义 reject 函数</span>
-    <span class="kw">function</span> <span class="at">reject</span>()<span class="op">{</span> ... <span class="op">}</span>
+    <span class="kw">function</span> <span class="at">reject</span>()<span class="op">&#123;</span> ... <span class="op">&#125;</span>
     <span class="co">// 调用执行器函数</span>
     <span class="at">executor</span>(resolve<span class="op">,</span>reject)
-<span class="op">}</span></code></pre></div><p>resolve 函数和 reject 函数的作用是分别接受 value 和 reason 作为参数，并基于这两个值改变 promise 的状态，但为了确保 promise 状态的不可逆，必须在确定 promise 状态为 pending 的时候，才能修改其状态。所以 resolve 函数和 reject 函数定义如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">resolve</span>(value)<span class="op">{</span>
-    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">{</span>
+<span class="op">&#125;</span></code></pre></div><p>resolve 函数和 reject 函数的作用是分别接受 value 和 reason 作为参数，并基于这两个值改变 promise 的状态，但为了确保 promise 状态的不可逆，必须在确定 promise 状态为 pending 的时候，才能修改其状态。所以 resolve 函数和 reject 函数定义如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">resolve</span>(value)<span class="op">&#123;</span>
+    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">&#123;</span>
         <span class="va">self</span>.<span class="at">status</span> <span class="op">=</span> FULFILLED
         <span class="va">self</span>.<span class="at">value</span> <span class="op">=</span> value
-    <span class="op">}</span>
-<span class="op">}</span>
-<span class="kw">function</span> <span class="at">reject</span>(reason)<span class="op">{</span>
-    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">{</span>
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span>
+<span class="kw">function</span> <span class="at">reject</span>(reason)<span class="op">&#123;</span>
+    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">&#123;</span>
         <span class="va">self</span>.<span class="at">status</span> <span class="op">=</span> REJECTED
         <span class="va">self</span>.<span class="at">reason</span> <span class="op">=</span> reason
-    <span class="op">}</span>
-<span class="op">}</span></code></pre></div><p>开发者会给 Promise 构造函数传入一个自定义的 executor，executor 中可能会调用 resolve 或者 reject，从而最终创建一个状态落定的 promise 实例。但根据规范的说法，<strong>executor 本身执行的时候可能是会抛出异常的</strong>，如果是这样，需要捕获异常并返回一个 reject 该异常的 promise 实例。所以修改代码如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Promise</span>(executor)<span class="op">{</span>
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><p>开发者会给 Promise 构造函数传入一个自定义的 executor，executor 中可能会调用 resolve 或者 reject，从而最终创建一个状态落定的 promise 实例。但根据规范的说法，<strong>executor 本身执行的时候可能是会抛出异常的</strong>，如果是这样，需要捕获异常并返回一个 reject 该异常的 promise 实例。所以修改代码如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Promise</span>(executor)<span class="op">&#123;</span>
     <span class="kw">let</span> self <span class="op">=</span> <span class="kw">this</span>
     
     <span class="va">self</span>.<span class="at">status</span> <span class="op">=</span> PENDING
     <span class="va">self</span>.<span class="at">value</span> <span class="op">=</span> <span class="kw">null</span>
     <span class="va">self</span>.<span class="at">reason</span> <span class="op">=</span> reason
     
-    <span class="kw">function</span> <span class="at">resolve</span>(value)<span class="op">{</span>
-        <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">{</span>
+    <span class="kw">function</span> <span class="at">resolve</span>(value)<span class="op">&#123;</span>
+        <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">&#123;</span>
             <span class="va">self</span>.<span class="at">status</span> <span class="op">=</span> FULFILLED
             <span class="va">self</span>.<span class="at">value</span> <span class="op">=</span> value
-        <span class="op">}</span>
-    <span class="op">}</span>
-    <span class="kw">function</span> <span class="at">reject</span>(reason)<span class="op">{</span>
-        <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">{</span>
+        <span class="op">&#125;</span>
+    <span class="op">&#125;</span>
+    <span class="kw">function</span> <span class="at">reject</span>(reason)<span class="op">&#123;</span>
+        <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">&#123;</span>
             <span class="va">self</span>.<span class="at">status</span> <span class="op">=</span> REJECTED
             <span class="va">self</span>.<span class="at">reason</span> <span class="op">=</span> reason
-        <span class="op">}</span>
-    <span class="op">}</span>
+        <span class="op">&#125;</span>
+    <span class="op">&#125;</span>
     <span class="co">// 捕获调用 executor 的时候可能出现的异常</span>
-    <span class="cf">try</span><span class="op">{</span>
+    <span class="cf">try</span><span class="op">&#123;</span>
         <span class="at">executor</span>(resolve<span class="op">,</span>reject)
-    <span class="op">}</span> <span class="cf">catch</span>(e) <span class="op">{</span>
+    <span class="op">&#125;</span> <span class="cf">catch</span>(e) <span class="op">&#123;</span>
         <span class="at">reject</span>(e)
-    <span class="op">}</span>
-<span class="op">}</span></code></pre></div><h3 id="实现-promise-实例的-then-方法">实现 promise 实例的 then 方法</h3><h4 id="初步实现-then-方法">1）初步实现 then 方法</h4><p>所有的 promise 实例都可以调用 then 方法。then 方法负责对状态落定的 promise 作进一步的处理，它接受成功回调函数 onFulfilled 和失败回调函数 onRejected 作为参数，而 onFulfilled 和 onRejected 又分别接受 promise 的 value 和 reason 作为参数。</p><p><strong>then 方法始终是同步执行的</strong>，根据执行 then 方法的时候 promise 状态的不同，会有不同的处理逻辑：</p><p>（1）如果 promise 是 resolved 状态，则执行 onFulfilled 函数</p><p>（2）如果 promise 是 rejected 状态，则执行 onRejected 函数</p><p>（3）如果 promise 是 pending 状态，则暂时不会执行 onFulfilled 函数和 onRejected 函数，而是先将这两个函数分别放到一个缓存数组中，等到将来 promise 状态落定的时候，再从数组中取出对应的回调函数执行</p><p>（<strong>注意：</strong>实际上，onFulfilled 和 onRejected 的执行是异步的，但目前我们暂时认为它们是同步执行）</p><p>无论是以上哪一种情况，调用 then 方法之后最终都会返回一个新的 promise 实例，这是 then 方法可以实现链式调用的一个关键。</p><p>按照上面的说法，初步实现的 then 方法如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">then</span> <span class="op">=</span> <span class="kw">function</span> (onFulfilled<span class="op">,</span>onRejected) <span class="op">{</span>
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><h3 id="实现-promise-实例的-then-方法">实现 promise 实例的 then 方法</h3><h4 id="初步实现-then-方法">1）初步实现 then 方法</h4><p>所有的 promise 实例都可以调用 then 方法。then 方法负责对状态落定的 promise 作进一步的处理，它接受成功回调函数 onFulfilled 和失败回调函数 onRejected 作为参数，而 onFulfilled 和 onRejected 又分别接受 promise 的 value 和 reason 作为参数。</p><p><strong>then 方法始终是同步执行的</strong>，根据执行 then 方法的时候 promise 状态的不同，会有不同的处理逻辑：</p><p>（1）如果 promise 是 resolved 状态，则执行 onFulfilled 函数</p><p>（2）如果 promise 是 rejected 状态，则执行 onRejected 函数</p><p>（3）如果 promise 是 pending 状态，则暂时不会执行 onFulfilled 函数和 onRejected 函数，而是先将这两个函数分别放到一个缓存数组中，等到将来 promise 状态落定的时候，再从数组中取出对应的回调函数执行</p><p>（<strong>注意：</strong>实际上，onFulfilled 和 onRejected 的执行是异步的，但目前我们暂时认为它们是同步执行）</p><p>无论是以上哪一种情况，调用 then 方法之后最终都会返回一个新的 promise 实例，这是 then 方法可以实现链式调用的一个关键。</p><p>按照上面的说法，初步实现的 then 方法如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">then</span> <span class="op">=</span> <span class="kw">function</span> (onFulfilled<span class="op">,</span>onRejected) <span class="op">&#123;</span>
     <span class="co">// 因为是 promise 实例调用 then 方法，所以 this 指向实例，这里保存以备后用</span>
     <span class="kw">let</span> self <span class="op">=</span> <span class="kw">this</span>
     <span class="co">// 最终返回的 promise</span>
     <span class="kw">let</span> promise2
     <span class="co">// 1）如果是 fulfilled 状态</span>
-    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> FULFILLED)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> FULFILLED)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
             <span class="at">onFulfilled</span>(<span class="va">self</span>.<span class="at">value</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span>
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
     <span class="co">// 2）如果是 rejected 状态</span>
-    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> REJECTED)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> REJECTED)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
             <span class="at">onRejected</span>(<span class="va">self</span>.<span class="at">reason</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span>
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
     <span class="co">// 3）如果是 pending 状态</span>
-    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
                 <span class="at">onFulfilled</span>(<span class="va">self</span>.<span class="at">value</span>)
-            <span class="op">}</span>)
-            <span class="va">self</span>.<span class="va">onRejectedCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
+            <span class="op">&#125;</span>)
+            <span class="va">self</span>.<span class="va">onRejectedCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
                 <span class="at">onRejected</span>(<span class="va">self</span>.<span class="at">reason</span>)
-            <span class="op">}</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span>
-<span class="op">}</span></code></pre></div><h4 id="修改-promise-构造函数新增两个缓存数组">2）修改 Promise 构造函数：新增两个缓存数组</h4><p>可以看到，这里多了两个缓存数组：<code>onFulfilledCallbacks</code> 和 <code>onRejectedCallbacks</code>，它们实际上也是挂载到 promise 实例上的，因此修改一下 Promise 构造函数：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Promise</span>(executor)<span class="op">{</span>
+            <span class="op">&#125;</span>)
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><h4 id="修改-promise-构造函数新增两个缓存数组">2）修改 Promise 构造函数：新增两个缓存数组</h4><p>可以看到，这里多了两个缓存数组：<code>onFulfilledCallbacks</code> 和 <code>onRejectedCallbacks</code>，它们实际上也是挂载到 promise 实例上的，因此修改一下 Promise 构造函数：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Promise</span>(executor)<span class="op">&#123;</span>
     <span class="co">// ...省略其它代码...</span>
     <span class="co">// 新增两个缓存数组</span>
     <span class="va">self</span>.<span class="at">onFulfilledCallbacks</span> <span class="op">=</span> []
     <span class="va">self</span>.<span class="at">onRejectedCallbacks</span> <span class="op">=</span> []
-<span class="op">}</span></code></pre></div><h4 id="修改-resolve-和-reject-函数执行缓存数组中的回调函数">3）修改 resolve 和 reject 函数：执行缓存数组中的回调函数</h4><p>因为执行 then 方法的时候，前面 promise 的状态还没有落定，我们并不知道应该执行哪个回调函数，因此选择把成功回调和失败回调先存入缓存数组中。那么什么时候应该执行回调函数呢？必然是 promise 状态落定的时候，又由于 promise 状态的落定依靠的是 resolve 函数和 reject 函数，因此这两个函数执行的时机，正是缓存数组中的回调函数执行的时机。</p><p>修改一下 resolve 函数和 reject 函数：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">resolve</span>(value)<span class="op">{</span>
-    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">{</span>
+<span class="op">&#125;</span></code></pre></div><h4 id="修改-resolve-和-reject-函数执行缓存数组中的回调函数">3）修改 resolve 和 reject 函数：执行缓存数组中的回调函数</h4><p>因为执行 then 方法的时候，前面 promise 的状态还没有落定，我们并不知道应该执行哪个回调函数，因此选择把成功回调和失败回调先存入缓存数组中。那么什么时候应该执行回调函数呢？必然是 promise 状态落定的时候，又由于 promise 状态的落定依靠的是 resolve 函数和 reject 函数，因此这两个函数执行的时机，正是缓存数组中的回调函数执行的时机。</p><p>修改一下 resolve 函数和 reject 函数：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">resolve</span>(value)<span class="op">&#123;</span>
+    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">&#123;</span>
         <span class="va">self</span>.<span class="at">status</span> <span class="op">=</span> FULFILLED
         <span class="va">self</span>.<span class="at">value</span> <span class="op">=</span> value
         <span class="co">// 遍历缓存数组，取出所有成功回调函数执行</span>
         <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">forEach</span>(fn <span class="op">=&gt;</span> <span class="at">fn</span>())
-    <span class="op">}</span>
-<span class="op">}</span>
-<span class="kw">function</span> <span class="at">reject</span>(reason)<span class="op">{</span>
-    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">{</span>
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span>
+<span class="kw">function</span> <span class="at">reject</span>(reason)<span class="op">&#123;</span>
+    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">&#123;</span>
         <span class="va">self</span>.<span class="at">status</span> <span class="op">=</span> REJECTED
         <span class="va">self</span>.<span class="at">reason</span> <span class="op">=</span> reason
         <span class="co">// 遍历缓存数组，取出所有成功回调函数执行</span>
         <span class="va">self</span>.<span class="va">onRejectedCallbacks</span>.<span class="at">forEach</span>(fn <span class="op">=&gt;</span> <span class="at">fn</span>())
-    <span class="op">}</span>  
-<span class="op">}</span></code></pre></div><h4 id="改进-then-方法异常捕获">4）改进 then 方法：异常捕获</h4><p>根据规范的说法，在执行成功回调或者失败回调的时候，回调本身可能抛出异常，如果是这样，则需要捕获该异常，并且最终返回一个 reject 该异常的 promise 实例。</p><p>因此在所有执行回调的地方包裹上 <code>try...catch</code>，改进 then 方法如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">then</span> <span class="op">=</span> <span class="kw">function</span> (onFulfilled<span class="op">,</span>onRejected) <span class="op">{</span>
+    <span class="op">&#125;</span>  
+<span class="op">&#125;</span></code></pre></div><h4 id="改进-then-方法异常捕获">4）改进 then 方法：异常捕获</h4><p>根据规范的说法，在执行成功回调或者失败回调的时候，回调本身可能抛出异常，如果是这样，则需要捕获该异常，并且最终返回一个 reject 该异常的 promise 实例。</p><p>因此在所有执行回调的地方包裹上 <code>try...catch</code>，改进 then 方法如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">then</span> <span class="op">=</span> <span class="kw">function</span> (onFulfilled<span class="op">,</span>onRejected) <span class="op">&#123;</span>
     <span class="co">// 因为是 promise 实例调用 then 方法，所以 this 指向实例，这里保存以备后用</span>
     <span class="kw">let</span> self <span class="op">=</span> <span class="kw">this</span>
     <span class="co">// 最终返回的 promise</span>
     <span class="kw">let</span> promise2
-    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> FULFILLED)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="cf">try</span> <span class="op">{</span>
+    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> FULFILLED)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="cf">try</span> <span class="op">&#123;</span>
                 <span class="at">onFulfilled</span>(<span class="va">self</span>.<span class="at">value</span>)
-            <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+            <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                 <span class="at">reject</span>(e)
-            <span class="op">}</span>
-        <span class="op">}</span>)
-    <span class="op">}</span>
-    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> REJECTED)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="cf">try</span> <span class="op">{</span>
+            <span class="op">&#125;</span>
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
+    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> REJECTED)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="cf">try</span> <span class="op">&#123;</span>
                 <span class="at">onRejected</span>(<span class="va">self</span>.<span class="at">reason</span>)
-            <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+            <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                 <span class="at">reject</span>(e)
-            <span class="op">}</span>
-        <span class="op">}</span>)
-    <span class="op">}</span>
-    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                <span class="cf">try</span> <span class="op">{</span>
+            <span class="op">&#125;</span>
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
+    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                <span class="cf">try</span> <span class="op">&#123;</span>
                     <span class="at">onFulfilled</span>(<span class="va">self</span>.<span class="at">value</span>)
-                <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                     <span class="at">reject</span>(e)
-                <span class="op">}</span>
-            <span class="op">}</span>)
-            <span class="va">self</span>.<span class="va">onRejectedCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                 <span class="cf">try</span> <span class="op">{</span>
+                <span class="op">&#125;</span>
+            <span class="op">&#125;</span>)
+            <span class="va">self</span>.<span class="va">onRejectedCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                 <span class="cf">try</span> <span class="op">&#123;</span>
                     <span class="at">onRejected</span>(<span class="va">self</span>.<span class="at">reason</span>)
-                <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                     <span class="at">reject</span>(e)
-                <span class="op">}</span>
-            <span class="op">}</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span>
-<span class="op">}</span></code></pre></div><h4 id="改进-then-方法实现值的穿透">5）改进 then 方法：实现值的穿透</h4><p>有时候，可能不会给 then 方法传函数类型的参数，或者根本没有传参数，比如：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">// 传入非函数类型的参数</span>
-<span class="va">Promise</span>.<span class="at">reject</span>(<span class="dv">1</span>).<span class="at">then</span>(<span class="kw">null</span><span class="op">,{}</span>).<span class="at">then</span>(<span class="kw">null</span><span class="op">,</span>err <span class="op">=&gt;</span> <span class="op">{</span>
+                <span class="op">&#125;</span>
+            <span class="op">&#125;</span>)
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><h4 id="改进-then-方法实现值的穿透">5）改进 then 方法：实现值的穿透</h4><p>有时候，可能不会给 then 方法传函数类型的参数，或者根本没有传参数，比如：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">// 传入非函数类型的参数</span>
+<span class="va">Promise</span>.<span class="at">reject</span>(<span class="dv">1</span>).<span class="at">then</span>(<span class="kw">null</span><span class="op">,&#123;&#125;</span>).<span class="at">then</span>(<span class="kw">null</span><span class="op">,</span>err <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="va">console</span>.<span class="at">log</span>(err)                <span class="co">// 依然正常打印 1</span>
-<span class="op">}</span>)
+<span class="op">&#125;</span>)
 
 <span class="co">// 没有传参数</span>
-<span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">1</span>).<span class="at">then</span>().<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
+<span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">1</span>).<span class="at">then</span>().<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="va">console</span>.<span class="at">log</span>(res)                <span class="co">// 依然正常打印 1</span>
-<span class="op">}</span>)</code></pre></div><p>但即便如此，初始 promise 的 value 或者 reason 依然可以穿透 then 方法，往下传递，这就是 promise 值穿透的特性。要实现这个特性，实际上可以先判断传给 then 方法的参数是不是函数，如果不是（包含没有传参的情况），那么就自定义一个回调函数：</p><ul><li>onFulfilled 如果不是函数：定义一个返回 value 的函数，将 value 往下传递，由后面的成功回调捕获</li><li>onRejected 如果不是函数：定义一个抛出 reason 的函数，将 reason 往下传递，由后面的失败回调捕获</li></ul><p>因此改进 then 方法如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">then</span> <span class="op">=</span> <span class="kw">function</span> (onFulfilled<span class="op">,</span> onRejected) <span class="op">{</span>
+<span class="op">&#125;</span>)</code></pre></div><p>但即便如此，初始 promise 的 value 或者 reason 依然可以穿透 then 方法，往下传递，这就是 promise 值穿透的特性。要实现这个特性，实际上可以先判断传给 then 方法的参数是不是函数，如果不是（包含没有传参的情况），那么就自定义一个回调函数：</p><ul><li>onFulfilled 如果不是函数：定义一个返回 value 的函数，将 value 往下传递，由后面的成功回调捕获</li><li>onRejected 如果不是函数：定义一个抛出 reason 的函数，将 reason 往下传递，由后面的失败回调捕获</li></ul><p>因此改进 then 方法如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">then</span> <span class="op">=</span> <span class="kw">function</span> (onFulfilled<span class="op">,</span> onRejected) <span class="op">&#123;</span>
     onFulfilled <span class="op">=</span> <span class="kw">typeof</span> onFulfilled <span class="op">===</span> <span class="st">&#39;function&#39;</span> <span class="op">?</span> 
         onFulfilled : value <span class="op">=&gt;</span> value
     onRejected <span class="op">=</span> <span class="kw">typeof</span> onRejected <span class="op">===</span> <span class="st">&#39;function&#39;</span> <span class="op">?</span> 
-        onRejected : reason <span class="op">=&gt;</span> <span class="op">{</span> <span class="cf">throw</span> reason <span class="op">}</span>
+        onRejected : reason <span class="op">=&gt;</span> <span class="op">&#123;</span> <span class="cf">throw</span> reason <span class="op">&#125;</span>
     <span class="co">// ...省略其它代码...</span>
-<span class="op">}</span></code></pre></div><h4 id="改进-then-方法确定-then-方法的返回值">6）改进 then 方法：确定 then 方法的返回值</h4><p>目前为止，我们还没有实现最关键的逻辑，也就是确定 then 方法的返回值 —— 虽然前面的代码已经让 then 方法返回了一个 promise，但是我们并没有确定这个 promise 的状态。</p><p><strong>调用 then 之后返回的 promise 的状态，取决于回调函数的返回值</strong>，这部分的逻辑比较复杂，我们会用一个 resolvePromise 函数单独进行处理，而 then 方法内部只负责调用这个方法。</p><p>改进 then 方法如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">then</span> <span class="op">=</span> <span class="kw">function</span> (onFulfilled<span class="op">,</span>onRejected) <span class="op">{</span>
+<span class="op">&#125;</span></code></pre></div><h4 id="改进-then-方法确定-then-方法的返回值">6）改进 then 方法：确定 then 方法的返回值</h4><p>目前为止，我们还没有实现最关键的逻辑，也就是确定 then 方法的返回值 —— 虽然前面的代码已经让 then 方法返回了一个 promise，但是我们并没有确定这个 promise 的状态。</p><p><strong>调用 then 之后返回的 promise 的状态，取决于回调函数的返回值</strong>，这部分的逻辑比较复杂，我们会用一个 resolvePromise 函数单独进行处理，而 then 方法内部只负责调用这个方法。</p><p>改进 then 方法如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">then</span> <span class="op">=</span> <span class="kw">function</span> (onFulfilled<span class="op">,</span>onRejected) <span class="op">&#123;</span>
     onFulfilled <span class="op">=</span> <span class="kw">typeof</span> onFulfilled <span class="op">===</span> <span class="st">&#39;function&#39;</span> <span class="op">?</span> 
         onFulfilled : value <span class="op">=&gt;</span> value
     onRejected <span class="op">=</span> <span class="kw">typeof</span> onRejected <span class="op">===</span> <span class="st">&#39;function&#39;</span> <span class="op">?</span> 
-        onRejected : reason <span class="op">=&gt;</span> <span class="op">{</span> <span class="cf">throw</span> reason <span class="op">}</span>
+        onRejected : reason <span class="op">=&gt;</span> <span class="op">&#123;</span> <span class="cf">throw</span> reason <span class="op">&#125;</span>
     
     <span class="kw">let</span> self <span class="op">=</span> <span class="kw">this</span>
     
     <span class="co">// 最终返回的 promise</span>
     <span class="kw">let</span> promise2
-    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> FULFILLED)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="cf">try</span> <span class="op">{</span>
+    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> FULFILLED)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="cf">try</span> <span class="op">&#123;</span>
                 <span class="kw">let</span> x <span class="op">=</span> <span class="at">onFulfilled</span>(<span class="va">self</span>.<span class="at">value</span>)
                 <span class="co">// 用 resolvePromise 处理 then 的返回值</span>
                 <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-            <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+            <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                 <span class="at">reject</span>(e)
-            <span class="op">}</span>
-        <span class="op">}</span>)
-    <span class="op">}</span>
-    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> REJECTED)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="cf">try</span> <span class="op">{</span>
+            <span class="op">&#125;</span>
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
+    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> REJECTED)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="cf">try</span> <span class="op">&#123;</span>
                 <span class="kw">let</span> x <span class="op">=</span> <span class="at">onRejected</span>(<span class="va">self</span>.<span class="at">reason</span>)
                 <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-            <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+            <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                 <span class="at">reject</span>(e)
-            <span class="op">}</span>
-        <span class="op">}</span>)
-    <span class="op">}</span>
-    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                <span class="cf">try</span> <span class="op">{</span>
+            <span class="op">&#125;</span>
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
+    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                <span class="cf">try</span> <span class="op">&#123;</span>
                     <span class="kw">let</span> x <span class="op">=</span> <span class="at">onFulfilled</span>(<span class="va">self</span>.<span class="at">value</span>)
                     <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-                <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                     <span class="at">reject</span>(e)
-                <span class="op">}</span>
-            <span class="op">}</span>)
-            <span class="va">self</span>.<span class="va">onRejectedCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                 <span class="cf">try</span> <span class="op">{</span>
+                <span class="op">&#125;</span>
+            <span class="op">&#125;</span>)
+            <span class="va">self</span>.<span class="va">onRejectedCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                 <span class="cf">try</span> <span class="op">&#123;</span>
                     <span class="kw">let</span> x <span class="op">=</span> <span class="at">onRejected</span>(<span class="va">self</span>.<span class="at">reason</span>)
                     <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-                <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                     <span class="at">reject</span>(e)
-                <span class="op">}</span>
-            <span class="op">}</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span>
-<span class="op">}</span></code></pre></div><h3 id="实现-resolvepromise-方法">实现 resolvePromise 方法</h3><blockquote><p>始终要记住 resolvePromise 的目标是<strong>基于回调函数返回值确定调用 then 之后返回的 promise 的状态</strong>，因此 resolvePromise 中的 resolve 调用或者 reject 调用将会决定最终返回的 promise 的状态</p></blockquote><h4 id="大致思路">1）大致思路</h4><p>实现 resolvePromise 方法的大致思路如下：</p><ol style="list-style-type:decimal"><li>首先判断回调函数的返回值 x 是否等于调用 then 之后的返回值 promise2，如果相等，则直接返回一个 reject，拒因（reason）是一个 TypeError。这是因为，promise2 的状态取决于 x，如果两者是同一个对象，说明它需要自己决定自己的状态，这是做不到的。</li></ol><p><code>js // 这样是会报错的，因为 then 的返回值等于回调函数的返回值 let p = Promise.resolve(1).then(res =&gt; p)</code></p><ol start="2" style="list-style-type:decimal"><li><p>接着判断 x 是不是一个非 null 对象或者函数：</p></li><li>如果不是：则 x 绝不可能是一个 thenable，此时直接 resolve x 即可</li><li>如果是，再判断 <code>x.then</code> 是不是一个函数：<ol style="list-style-type:decimal"><li>如果是：则 x 是一个 thenable，往后继续处理</li><li>如果不是：则 x 是一个非 thenable 的对象或函数，直接 resolve x 即可</li></ol></li></ol><p>按照这个思路实现的代码如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)<span class="op">{</span>
+                <span class="op">&#125;</span>
+            <span class="op">&#125;</span>)
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><h3 id="实现-resolvepromise-方法">实现 resolvePromise 方法</h3><blockquote><p>始终要记住 resolvePromise 的目标是<strong>基于回调函数返回值确定调用 then 之后返回的 promise 的状态</strong>，因此 resolvePromise 中的 resolve 调用或者 reject 调用将会决定最终返回的 promise 的状态</p></blockquote><h4 id="大致思路">1）大致思路</h4><p>实现 resolvePromise 方法的大致思路如下：</p><ol style="list-style-type:decimal"><li>首先判断回调函数的返回值 x 是否等于调用 then 之后的返回值 promise2，如果相等，则直接返回一个 reject，拒因（reason）是一个 TypeError。这是因为，promise2 的状态取决于 x，如果两者是同一个对象，说明它需要自己决定自己的状态，这是做不到的。</li></ol><p><code>js // 这样是会报错的，因为 then 的返回值等于回调函数的返回值 let p = Promise.resolve(1).then(res =&gt; p)</code></p><ol start="2" style="list-style-type:decimal"><li><p>接着判断 x 是不是一个非 null 对象或者函数：</p></li><li>如果不是：则 x 绝不可能是一个 thenable，此时直接 resolve x 即可</li><li>如果是，再判断 <code>x.then</code> 是不是一个函数：<ol style="list-style-type:decimal"><li>如果是：则 x 是一个 thenable，往后继续处理</li><li>如果不是：则 x 是一个非 thenable 的对象或函数，直接 resolve x 即可</li></ol></li></ol><p>按照这个思路实现的代码如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)<span class="op">&#123;</span>
     <span class="co">// 如果 promise2 和 x 是同一个对象，则会导致死循环</span>
-    <span class="cf">if</span>(promise2 <span class="op">===</span> x)<span class="op">{</span>
+    <span class="cf">if</span>(promise2 <span class="op">===</span> x)<span class="op">&#123;</span>
         <span class="cf">return</span> <span class="at">reject</span>(<span class="kw">new</span> <span class="at">TypeError</span>(<span class="st">&#39;Chaining cycle&#39;</span>))
-    <span class="op">}</span>
+    <span class="op">&#125;</span>
     <span class="co">// 如果 x 是对象或者函数</span>
-    <span class="cf">if</span>(x <span class="op">!==</span> <span class="kw">null</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;object&#39;</span> <span class="op">||</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;function&#39;</span>)<span class="op">{</span>
+    <span class="cf">if</span>(x <span class="op">!==</span> <span class="kw">null</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;object&#39;</span> <span class="op">||</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;function&#39;</span>)<span class="op">&#123;</span>
         <span class="co">// 如果 x 是一个 thenable</span>
-        <span class="cf">if</span>(<span class="kw">typeof</span> <span class="va">x</span>.<span class="at">then</span> <span class="op">===</span> <span class="st">&#39;function&#39;</span>)<span class="op">{</span>
+        <span class="cf">if</span>(<span class="kw">typeof</span> <span class="va">x</span>.<span class="at">then</span> <span class="op">===</span> <span class="st">&#39;function&#39;</span>)<span class="op">&#123;</span>
             <span class="co">//...继续处理...</span>
-        <span class="op">}</span> 
+        <span class="op">&#125;</span> 
         <span class="co">// 否则</span>
-        <span class="cf">else</span> <span class="op">{</span>
+        <span class="cf">else</span> <span class="op">&#123;</span>
             <span class="at">resolve</span>(x)
-        <span class="op">}</span>
-    <span class="op">}</span>
+        <span class="op">&#125;</span>
+    <span class="op">&#125;</span>
     <span class="co">// 否则</span>
-    <span class="cf">else</span> <span class="op">{</span>
+    <span class="cf">else</span> <span class="op">&#123;</span>
         <span class="at">resolve</span>(x)
-    <span class="op">}</span>
-<span class="op">}</span></code></pre></div><h4 id="如何处理-x-是-thenable-的情况">2）如何处理 x 是 thenable 的情况</h4><p>如果 x 是一个 thenable（包括 x 是 promise 的情况），应该怎么处理呢？先看一个例子：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> p1 <span class="op">=</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">1</span>).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><h4 id="如何处理-x-是-thenable-的情况">2）如何处理 x 是 thenable 的情况</h4><p>如果 x 是一个 thenable（包括 x 是 promise 的情况），应该怎么处理呢？先看一个例子：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> p1 <span class="op">=</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">1</span>).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
+    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
         <span class="at">resolve</span>(<span class="dv">2</span>)
-    <span class="op">}</span>)
-<span class="op">}</span>)
-<span class="kw">let</span> p2 <span class="op">=</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">1</span>).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="op">&#125;</span>)
+<span class="op">&#125;</span>)
+<span class="kw">let</span> p2 <span class="op">=</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">1</span>).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
+    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
         <span class="at">reject</span>(<span class="dv">2</span>)
-    <span class="op">}</span>)
-<span class="op">}</span>)
+    <span class="op">&#125;</span>)
+<span class="op">&#125;</span>)
 <span class="co">// 打印 p1 和 p2 的结果，分别是：</span>
 Promise <span class="op">&lt;</span>fulfilled<span class="op">&gt;</span> <span class="dv">2</span>
-Promise <span class="op">&lt;</span>rejected<span class="op">&gt;</span> <span class="dv">2</span></code></pre></div><p>可以看到，回调函数的返回值 x 是一个 thenable 的时候，调用 then 之后返回的 promise 会沿用 x 的 value 或者 reason。</p><p>因此我们要做的事情其实很简单，那就是在判断 x 是一个 thenable 之后，<strong>马上调用它的 then 方法，并且传入 resolve 和 reject 作为成功回调和失败回调</strong>。不管 x 的状态是否落定，它总会在某一个时刻基于自己的状态去调用 resolve 或者 reject，而且也会传入 x 的 value 或者 reason，这样就相当于我们调用了 <code>resolve(value)</code> 或者 <code>reject(reason)</code>，因此得以确定调用 then 之后返回的 promise 的状态。</p><p><strong>但是这里有一个问题</strong>，考虑下面的代码：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> p1 <span class="op">=</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">1</span>).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-        <span class="at">resolve</span>(<span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
+Promise <span class="op">&lt;</span>rejected<span class="op">&gt;</span> <span class="dv">2</span></code></pre></div><p>可以看到，回调函数的返回值 x 是一个 thenable 的时候，调用 then 之后返回的 promise 会沿用 x 的 value 或者 reason。</p><p>因此我们要做的事情其实很简单，那就是在判断 x 是一个 thenable 之后，<strong>马上调用它的 then 方法，并且传入 resolve 和 reject 作为成功回调和失败回调</strong>。不管 x 的状态是否落定，它总会在某一个时刻基于自己的状态去调用 resolve 或者 reject，而且也会传入 x 的 value 或者 reason，这样就相当于我们调用了 <code>resolve(value)</code> 或者 <code>reject(reason)</code>，因此得以确定调用 then 之后返回的 promise 的状态。</p><p><strong>但是这里有一个问题</strong>，考虑下面的代码：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> p1 <span class="op">=</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">1</span>).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
+    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+        <span class="at">resolve</span>(<span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
             <span class="at">resolve</span>(<span class="dv">2</span>)
-        <span class="op">}</span>))
-    <span class="op">}</span>)
-<span class="op">}</span>)
-<span class="kw">let</span> p2 <span class="op">=</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">1</span>).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-        <span class="at">reject</span>(<span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
+        <span class="op">&#125;</span>))
+    <span class="op">&#125;</span>)
+<span class="op">&#125;</span>)
+<span class="kw">let</span> p2 <span class="op">=</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">1</span>).<span class="at">then</span>(res <span class="op">=&gt;</span> <span class="op">&#123;</span>
+    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+        <span class="at">reject</span>(<span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
             <span class="at">resolve</span>(<span class="dv">2</span>)
-        <span class="op">}</span>))
-    <span class="op">}</span>)
-<span class="op">}</span>)
+        <span class="op">&#125;</span>))
+    <span class="op">&#125;</span>)
+<span class="op">&#125;</span>)
 <span class="co">// 打印 p1 和 p2 的结果，分别是：</span>
-Promise <span class="op">{</span> <span class="op">&lt;</span>fulfilled<span class="op">&gt;</span> <span class="op">:</span> <span class="dv">2</span><span class="op">}</span>
-Promise <span class="op">{</span> <span class="op">&lt;</span>rejected<span class="op">&gt;</span> <span class="op">:</span> Promise <span class="op">}</span></code></pre></div><p>这里的区别在于，虽然回调函数也是返回一个 promise，但是这个 promise 内部 resolve 的还是一个 promise。如果按照先前的说法直接调用 <code>resolve(value)</code>，则最终返回的 promise 是一个 resolve promise 的 promise，但实际上，它应该是一个 resolve 最里层 value（本例是 2）的 promise。所以，这里不能直接使用 <code>resolve(value)</code>，而应该递归调用 <code>resolvePromise(promise2,value,resolve,reject)</code>，直到找到最里层的基础值作为最终 resolve 的值。</p><p>不过，如果回调函数返回的 promise 内部 reject 的还是一个 promise，则最终返回的 promise 也是一个 reject promise 的 promise，这种情况并不需要递归调用找到最里层的基础值。</p><p>因此，这部分的代码如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)<span class="op">{</span>
-    <span class="cf">if</span>(promise2 <span class="op">===</span> x)<span class="op">{</span>
+Promise <span class="op">&#123;</span> <span class="op">&lt;</span>fulfilled<span class="op">&gt;</span> <span class="op">:</span> <span class="dv">2</span><span class="op">&#125;</span>
+Promise <span class="op">&#123;</span> <span class="op">&lt;</span>rejected<span class="op">&gt;</span> <span class="op">:</span> Promise <span class="op">&#125;</span></code></pre></div><p>这里的区别在于，虽然回调函数也是返回一个 promise，但是这个 promise 内部 resolve 的还是一个 promise。如果按照先前的说法直接调用 <code>resolve(value)</code>，则最终返回的 promise 是一个 resolve promise 的 promise，但实际上，它应该是一个 resolve 最里层 value（本例是 2）的 promise。所以，这里不能直接使用 <code>resolve(value)</code>，而应该递归调用 <code>resolvePromise(promise2,value,resolve,reject)</code>，直到找到最里层的基础值作为最终 resolve 的值。</p><p>不过，如果回调函数返回的 promise 内部 reject 的还是一个 promise，则最终返回的 promise 也是一个 reject promise 的 promise，这种情况并不需要递归调用找到最里层的基础值。</p><p>因此，这部分的代码如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)<span class="op">&#123;</span>
+    <span class="cf">if</span>(promise2 <span class="op">===</span> x)<span class="op">&#123;</span>
         <span class="cf">return</span> <span class="at">reject</span>(<span class="kw">new</span> <span class="at">TypeError</span>(<span class="st">&#39;Chaining cycle&#39;</span>))
-    <span class="op">}</span>
-    <span class="cf">if</span>(x <span class="op">!==</span> <span class="kw">null</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;object&#39;</span> <span class="op">||</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;function&#39;</span>)<span class="op">{</span>
-        <span class="cf">if</span>(<span class="kw">typeof</span> <span class="va">x</span>.<span class="at">then</span> <span class="op">===</span> <span class="st">&#39;function&#39;</span>)<span class="op">{</span>
+    <span class="op">&#125;</span>
+    <span class="cf">if</span>(x <span class="op">!==</span> <span class="kw">null</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;object&#39;</span> <span class="op">||</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;function&#39;</span>)<span class="op">&#123;</span>
+        <span class="cf">if</span>(<span class="kw">typeof</span> <span class="va">x</span>.<span class="at">then</span> <span class="op">===</span> <span class="st">&#39;function&#39;</span>)<span class="op">&#123;</span>
             <span class="va">x</span>.<span class="at">then</span>(
-                (y) <span class="op">=&gt;</span> <span class="op">{</span>
+                (y) <span class="op">=&gt;</span> <span class="op">&#123;</span>
                     <span class="at">resolvePromise</span>(promise2<span class="op">,</span>y<span class="op">,</span>resolve<span class="op">,</span>reject)
-                <span class="op">},</span>
-                (r) <span class="op">=&gt;</span> <span class="op">{</span>
+                <span class="op">&#125;,</span>
+                (r) <span class="op">=&gt;</span> <span class="op">&#123;</span>
                     <span class="at">reject</span>(r)
-                <span class="op">}</span>)
-        <span class="op">}</span>  <span class="cf">else</span> <span class="op">{</span>
+                <span class="op">&#125;</span>)
+        <span class="op">&#125;</span>  <span class="cf">else</span> <span class="op">&#123;</span>
             <span class="at">resolve</span>(x)
-        <span class="op">}</span>
-    <span class="op">}</span>  <span class="cf">else</span> <span class="op">{</span>
+        <span class="op">&#125;</span>
+    <span class="op">&#125;</span>  <span class="cf">else</span> <span class="op">&#123;</span>
         <span class="at">resolve</span>(x)
-    <span class="op">}</span>
-<span class="op">}</span></code></pre></div><h4 id="其它需要注意的要点">3）其它需要注意的要点</h4><p>参照规范可以发现，我们的 resolvePromise 函数还有不少需要改进的地方：</p><p>1）Promise 有很多不同版本的实现，它们的具体行为可能会有差异。为了保证不同版本的 Promise 实现可以互操作，提高兼容性，在 resolvePromise 方法中会处理一些比较特殊的情况。包括：</p><ul><li>x 的 then 属性可能通过 <code>Object.defineProperty</code> 定义了一个 getter，并且每次 get 的时候会抛出异常。因此一开始需要先尝试获取 <code>x.then</code> ，并捕获可能出现的异常 —— 一旦捕获到，就 reject 该异常（这代表最终返回的是一个 reject 该异常的 promise）</li><li>在调用 then 的时候，不会通过 <code>x.then</code> 调用，而是通过 <code>then.call(x)</code> 调用。这是为什么呢？首先，我们已经在前面通过 <code>let then = x.then</code> 拿到 then 方法的引用了，所以这里考虑的是不要再重复去获取，而是直接使用 <code>then</code> 变量，但直接使用又会导致它丢失 this 指向，所以需要用 <code>call</code> 绑定 this 为 x。</li></ul><p>2）传给 then 的成功回调和失败回调可能会执行多次，如果是这样，应该以最先执行的回调为准，其它的执行会被忽略。因此会用变量 <code>called</code> 标志某个回调是否已被执行</p><p>3）调用 then 的时候可能也会抛出异常，如果是这样，也要 reject 这个异常。但如果捕获异常的时候已经调用了成功回调或者失败回调，则不需要再 reject 了。</p><p>根据上面提到的要点进行改进，最后的 resolvePromise 函数如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">resolvePromise</span> (promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject) <span class="op">{</span>
-    <span class="cf">if</span>(promise2 <span class="op">===</span> x)<span class="op">{</span>
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><h4 id="其它需要注意的要点">3）其它需要注意的要点</h4><p>参照规范可以发现，我们的 resolvePromise 函数还有不少需要改进的地方：</p><p>1）Promise 有很多不同版本的实现，它们的具体行为可能会有差异。为了保证不同版本的 Promise 实现可以互操作，提高兼容性，在 resolvePromise 方法中会处理一些比较特殊的情况。包括：</p><ul><li>x 的 then 属性可能通过 <code>Object.defineProperty</code> 定义了一个 getter，并且每次 get 的时候会抛出异常。因此一开始需要先尝试获取 <code>x.then</code> ，并捕获可能出现的异常 —— 一旦捕获到，就 reject 该异常（这代表最终返回的是一个 reject 该异常的 promise）</li><li>在调用 then 的时候，不会通过 <code>x.then</code> 调用，而是通过 <code>then.call(x)</code> 调用。这是为什么呢？首先，我们已经在前面通过 <code>let then = x.then</code> 拿到 then 方法的引用了，所以这里考虑的是不要再重复去获取，而是直接使用 <code>then</code> 变量，但直接使用又会导致它丢失 this 指向，所以需要用 <code>call</code> 绑定 this 为 x。</li></ul><p>2）传给 then 的成功回调和失败回调可能会执行多次，如果是这样，应该以最先执行的回调为准，其它的执行会被忽略。因此会用变量 <code>called</code> 标志某个回调是否已被执行</p><p>3）调用 then 的时候可能也会抛出异常，如果是这样，也要 reject 这个异常。但如果捕获异常的时候已经调用了成功回调或者失败回调，则不需要再 reject 了。</p><p>根据上面提到的要点进行改进，最后的 resolvePromise 函数如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">resolvePromise</span> (promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject) <span class="op">&#123;</span>
+    <span class="cf">if</span>(promise2 <span class="op">===</span> x)<span class="op">&#123;</span>
         <span class="cf">return</span> <span class="at">reject</span>(<span class="kw">new</span> <span class="at">TypeError</span>(<span class="st">&#39;Chaining cycle&#39;</span>))
-    <span class="op">}</span>
-    <span class="cf">if</span>(x <span class="op">!==</span> <span class="kw">null</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;object&#39;</span> <span class="op">||</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;function&#39;</span>)<span class="op">{</span>
+    <span class="op">&#125;</span>
+    <span class="cf">if</span>(x <span class="op">!==</span> <span class="kw">null</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;object&#39;</span> <span class="op">||</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;function&#39;</span>)<span class="op">&#123;</span>
         <span class="kw">let</span> then
         <span class="kw">let</span> called <span class="op">=</span> <span class="kw">false</span>
-        <span class="cf">try</span> <span class="op">{</span>
+        <span class="cf">try</span> <span class="op">&#123;</span>
             then <span class="op">=</span> <span class="va">x</span>.<span class="at">then</span>
-        <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+        <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
             <span class="cf">return</span> <span class="at">reject</span>(e)
-        <span class="op">}</span>
-        <span class="cf">if</span> (<span class="kw">typeof</span> then <span class="op">===</span> <span class="st">&#39;function&#39;</span>) <span class="op">{</span>
-           <span class="cf">try</span> <span class="op">{</span>
-               <span class="va">then</span>.<span class="at">call</span>(x<span class="op">,</span>(y) <span class="op">=&gt;</span> <span class="op">{</span>
+        <span class="op">&#125;</span>
+        <span class="cf">if</span> (<span class="kw">typeof</span> then <span class="op">===</span> <span class="st">&#39;function&#39;</span>) <span class="op">&#123;</span>
+           <span class="cf">try</span> <span class="op">&#123;</span>
+               <span class="va">then</span>.<span class="at">call</span>(x<span class="op">,</span>(y) <span class="op">=&gt;</span> <span class="op">&#123;</span>
                    <span class="cf">if</span>(called) <span class="cf">return</span> 
                    called <span class="op">=</span> <span class="kw">true</span>
                    <span class="at">resolvePromise</span>(promise2<span class="op">,</span>y<span class="op">,</span>resolve<span class="op">,</span>reject)
-               <span class="op">},</span>(r) <span class="op">=&gt;</span> <span class="op">{</span>
+               <span class="op">&#125;,</span>(r) <span class="op">=&gt;</span> <span class="op">&#123;</span>
                    <span class="cf">if</span>(called) <span class="cf">return</span> 
                    called <span class="op">=</span> <span class="kw">true</span>
                    <span class="at">reject</span>(r)
-               <span class="op">}</span>)
-           <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+               <span class="op">&#125;</span>)
+           <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                <span class="cf">if</span>(called) <span class="cf">return</span>
                <span class="at">reject</span>(e)
-           <span class="op">}</span>
-        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+           <span class="op">&#125;</span>
+        <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span>
             <span class="at">resolve</span>(x)
-        <span class="op">}</span>
-    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+        <span class="op">&#125;</span>
+    <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span>
         <span class="at">resolve</span>(x)
-    <span class="op">}</span>
-<span class="op">}</span></code></pre></div><h3 id="实现回调函数的异步执行">实现回调函数的异步执行</h3><p>最后，还需要注意的是 then 的回调函数的执行时机。</p><p>如果只看前面代码的实现，会认为在 promise 状态落定的情况下，执行 then 就会同步执行里面的回调，但实际上并非如此 —— <strong>then 里面的回调是异步执行的</strong>。这点规范也有提到：</p><blockquote><p>In practice, this requirement ensures that <code>onFulfilled</code> and <code>onRejected</code> execute asynchronously.</p></blockquote><p>具体地说，执行 then 的时候：</p><ul><li>如果前面的 promise 状态落定：那么会先把 then 的回调推入任务队列，等同步代码执行完毕再从队列中取出回调执行。</li><li>如果前面的 promise 状态未落定：那么会先把 then 的回调存入对应的缓存数组中，等 promise 的状态落定后，再从对应的数组中取出回调，推入任务队列中，等同步代码执行完毕再从队列中取出回调执行。</li></ul><p>那么问题来了，回调函数的执行是属于微任务还是宏任务呢？</p><p>可以看一下规范的说法：</p><blockquote><p>This can be implemented with either a “macro-task” mechanism such as <code>setTimeout</code> or <code>setImmediate</code>, or with a “micro-task” mechanism such as <code>MutationObserver</code> or <code>process.nextTick</code>.</p></blockquote><p>说得很清楚了，A+ 规范只是明确了回调函数必须是异步执行的，并没有要求它必须是微任务或者宏任务。也就是说，依赖宏任务去实现 Promise 也是没有问题的，理论上也可以通过 A+ 测试。真正要求 Promise 必须依赖微任务去实现的是 HTML 标准，这在相关的文档中也可以查得到。</p><p>所以，如果要模拟回调函数的异步执行，也有两种方式。第一种就是基于宏任务去实现，用 <code>setTimeout</code> 包裹回调函数的执行；第二种则是基于微任务去实现，可以考虑使用 <code>queueMicrotask</code> 或者 <code>process.nextTick</code>。</p><h4 id="基于宏任务的实现">1）基于宏任务的实现</h4><p>回调函数的执行逻辑是在 then 方法中编写的，因此只需要修改 then 方法，在原先执行回调函数的逻辑外面包裹上一个 <code>setTimeout</code> 即可：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">then</span> <span class="op">=</span> <span class="kw">function</span> (onFulfilled<span class="op">,</span>onRejected) <span class="op">{</span>
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><h3 id="实现回调函数的异步执行">实现回调函数的异步执行</h3><p>最后，还需要注意的是 then 的回调函数的执行时机。</p><p>如果只看前面代码的实现，会认为在 promise 状态落定的情况下，执行 then 就会同步执行里面的回调，但实际上并非如此 —— <strong>then 里面的回调是异步执行的</strong>。这点规范也有提到：</p><blockquote><p>In practice, this requirement ensures that <code>onFulfilled</code> and <code>onRejected</code> execute asynchronously.</p></blockquote><p>具体地说，执行 then 的时候：</p><ul><li>如果前面的 promise 状态落定：那么会先把 then 的回调推入任务队列，等同步代码执行完毕再从队列中取出回调执行。</li><li>如果前面的 promise 状态未落定：那么会先把 then 的回调存入对应的缓存数组中，等 promise 的状态落定后，再从对应的数组中取出回调，推入任务队列中，等同步代码执行完毕再从队列中取出回调执行。</li></ul><p>那么问题来了，回调函数的执行是属于微任务还是宏任务呢？</p><p>可以看一下规范的说法：</p><blockquote><p>This can be implemented with either a “macro-task” mechanism such as <code>setTimeout</code> or <code>setImmediate</code>, or with a “micro-task” mechanism such as <code>MutationObserver</code> or <code>process.nextTick</code>.</p></blockquote><p>说得很清楚了，A+ 规范只是明确了回调函数必须是异步执行的，并没有要求它必须是微任务或者宏任务。也就是说，依赖宏任务去实现 Promise 也是没有问题的，理论上也可以通过 A+ 测试。真正要求 Promise 必须依赖微任务去实现的是 HTML 标准，这在相关的文档中也可以查得到。</p><p>所以，如果要模拟回调函数的异步执行，也有两种方式。第一种就是基于宏任务去实现，用 <code>setTimeout</code> 包裹回调函数的执行；第二种则是基于微任务去实现，可以考虑使用 <code>queueMicrotask</code> 或者 <code>process.nextTick</code>。</p><h4 id="基于宏任务的实现">1）基于宏任务的实现</h4><p>回调函数的执行逻辑是在 then 方法中编写的，因此只需要修改 then 方法，在原先执行回调函数的逻辑外面包裹上一个 <code>setTimeout</code> 即可：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">then</span> <span class="op">=</span> <span class="kw">function</span> (onFulfilled<span class="op">,</span>onRejected) <span class="op">&#123;</span>
     onFulfilled <span class="op">=</span> <span class="kw">typeof</span> onFulfilled <span class="op">===</span> <span class="st">&#39;function&#39;</span> <span class="op">?</span> 
         onFulfilled : value <span class="op">=&gt;</span> value
     onRejected <span class="op">=</span> <span class="kw">typeof</span> onRejected <span class="op">===</span> <span class="st">&#39;function&#39;</span> <span class="op">?</span> 
-        onRejected : reason <span class="op">=&gt;</span> <span class="op">{</span> <span class="cf">throw</span> reason <span class="op">}</span>
+        onRejected : reason <span class="op">=&gt;</span> <span class="op">&#123;</span> <span class="cf">throw</span> reason <span class="op">&#125;</span>
     
     <span class="kw">let</span> self <span class="op">=</span> <span class="kw">this</span>
     
     <span class="co">// 最终返回的 promise</span>
     <span class="kw">let</span> promise2
-    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> FULFILLED)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                <span class="cf">try</span> <span class="op">{</span>
+    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> FULFILLED)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                <span class="cf">try</span> <span class="op">&#123;</span>
                     <span class="kw">let</span> x <span class="op">=</span> <span class="at">onFulfilled</span>(<span class="va">self</span>.<span class="at">value</span>)
                     <span class="co">// 用 resolvePromise 处理 then 的返回值</span>
                     <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-                <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                     <span class="at">reject</span>(e)
-                <span class="op">}</span>
-            <span class="op">}</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span>
-    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> REJECTED)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                <span class="cf">try</span> <span class="op">{</span>
+                <span class="op">&#125;</span>
+            <span class="op">&#125;</span>)
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
+    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> REJECTED)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                <span class="cf">try</span> <span class="op">&#123;</span>
                     <span class="kw">let</span> x <span class="op">=</span> <span class="at">onRejected</span>(<span class="va">self</span>.<span class="at">reason</span>)
                     <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-                <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                     <span class="at">reject</span>(e)
-                <span class="op">}</span>
-            <span class="op">}</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span>
-    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                    <span class="cf">try</span> <span class="op">{</span>
+                <span class="op">&#125;</span>
+            <span class="op">&#125;</span>)
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
+    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                    <span class="cf">try</span> <span class="op">&#123;</span>
                         <span class="kw">let</span> x <span class="op">=</span> <span class="at">onFulfilled</span>(<span class="va">self</span>.<span class="at">value</span>)
                         <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-                    <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                    <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                         <span class="at">reject</span>(e)
-                    <span class="op">}</span>
-                <span class="op">}</span>)
-            <span class="op">}</span>)
-            <span class="va">self</span>.<span class="va">onRejectedCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-               <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                    <span class="cf">try</span> <span class="op">{</span>
+                    <span class="op">&#125;</span>
+                <span class="op">&#125;</span>)
+            <span class="op">&#125;</span>)
+            <span class="va">self</span>.<span class="va">onRejectedCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+               <span class="at">setTimeout</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                    <span class="cf">try</span> <span class="op">&#123;</span>
                         <span class="kw">let</span> x <span class="op">=</span> <span class="at">onRejected</span>(<span class="va">self</span>.<span class="at">reason</span>)
                         <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-                    <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                    <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                         <span class="at">reject</span>(e)
-                    <span class="op">}</span>
-               <span class="op">}</span>)
-            <span class="op">}</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span>
-<span class="op">}</span></code></pre></div><p>这样，调用 <code>setTimeout</code> 的时候，只会把传给它的回调函数放入宏任务队列，可以认为就是把成功回调或者失败回调放入宏任务队列。</p><h4 id="基于微任务的实现">2）基于微任务的实现</h4><p>同样的，如果想要基于微任务去实现 Promise，可以用 <code>queueMicrotask</code> 去包裹回调函数的执行，这样可以将其执行放到一个微任务队列中。</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">then</span> <span class="op">=</span> <span class="kw">function</span> (onFulfilled<span class="op">,</span>onRejected) <span class="op">{</span>
+                    <span class="op">&#125;</span>
+               <span class="op">&#125;</span>)
+            <span class="op">&#125;</span>)
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><p>这样，调用 <code>setTimeout</code> 的时候，只会把传给它的回调函数放入宏任务队列，可以认为就是把成功回调或者失败回调放入宏任务队列。</p><h4 id="基于微任务的实现">2）基于微任务的实现</h4><p>同样的，如果想要基于微任务去实现 Promise，可以用 <code>queueMicrotask</code> 去包裹回调函数的执行，这样可以将其执行放到一个微任务队列中。</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">then</span> <span class="op">=</span> <span class="kw">function</span> (onFulfilled<span class="op">,</span>onRejected) <span class="op">&#123;</span>
     onFulfilled <span class="op">=</span> <span class="kw">typeof</span> onFulfilled <span class="op">===</span> <span class="st">&#39;function&#39;</span> <span class="op">?</span> 
         onFulfilled : value <span class="op">=&gt;</span> value
     onRejected <span class="op">=</span> <span class="kw">typeof</span> onRejected <span class="op">===</span> <span class="st">&#39;function&#39;</span> <span class="op">?</span> 
-        onRejected : reason <span class="op">=&gt;</span> <span class="op">{</span> <span class="cf">throw</span> reason <span class="op">}</span>
+        onRejected : reason <span class="op">=&gt;</span> <span class="op">&#123;</span> <span class="cf">throw</span> reason <span class="op">&#125;</span>
     
     <span class="kw">let</span> self <span class="op">=</span> <span class="kw">this</span>
     
     <span class="co">// 最终返回的 promise</span>
     <span class="kw">let</span> promise2
-    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> FULFILLED)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                <span class="cf">try</span> <span class="op">{</span>
+    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> FULFILLED)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                <span class="cf">try</span> <span class="op">&#123;</span>
                     <span class="kw">let</span> x <span class="op">=</span> <span class="at">onFulfilled</span>(<span class="va">self</span>.<span class="at">value</span>)
                     <span class="co">// 用 resolvePromise 处理 then 的返回值</span>
                     <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-                <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                     <span class="at">reject</span>(e)
-                <span class="op">}</span>
-            <span class="op">}</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span>
-    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> REJECTED)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                <span class="cf">try</span> <span class="op">{</span>
+                <span class="op">&#125;</span>
+            <span class="op">&#125;</span>)
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
+    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> REJECTED)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                <span class="cf">try</span> <span class="op">&#123;</span>
                     <span class="kw">let</span> x <span class="op">=</span> <span class="at">onRejected</span>(<span class="va">self</span>.<span class="at">reason</span>)
                     <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-                <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                     <span class="at">reject</span>(e)
-                <span class="op">}</span>
-            <span class="op">}</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span>
-    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                    <span class="cf">try</span> <span class="op">{</span>
+                <span class="op">&#125;</span>
+            <span class="op">&#125;</span>)
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
+    <span class="cf">else</span> <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                    <span class="cf">try</span> <span class="op">&#123;</span>
                         <span class="kw">let</span> x <span class="op">=</span> <span class="at">onFulfilled</span>(<span class="va">self</span>.<span class="at">value</span>)
                         <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-                    <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                    <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                         <span class="at">reject</span>(e)
-                    <span class="op">}</span>
-                <span class="op">}</span>)
-            <span class="op">}</span>)
-            <span class="va">self</span>.<span class="va">onRejectedCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-               <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                    <span class="cf">try</span> <span class="op">{</span>
+                    <span class="op">&#125;</span>
+                <span class="op">&#125;</span>)
+            <span class="op">&#125;</span>)
+            <span class="va">self</span>.<span class="va">onRejectedCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+               <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                    <span class="cf">try</span> <span class="op">&#123;</span>
                         <span class="kw">let</span> x <span class="op">=</span> <span class="at">onRejected</span>(<span class="va">self</span>.<span class="at">reason</span>)
                         <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-                    <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                    <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                         <span class="at">reject</span>(e)
-                    <span class="op">}</span>
-               <span class="op">}</span>)
-            <span class="op">}</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span>
-<span class="op">}</span></code></pre></div><p>在 Node 环境下，还可以使用 <code>process.nextTick()</code> 代替 <code>queueMicrotask</code>。</p><p>PS：另外需要注意的是，Node v11 之后才引入了 <code>queueMicrotask</code> 方法，因此要注意升级 Node 的版本，否则会无法通过 A+ 测试。</p><h3 id="完善-resolve-函数">完善 resolve 函数</h3><p>实际上，我们当前的代码已经可以通过 A+ 测试了，不过，我们的 resolve 函数还有需要完善的地方。</p><p>先看 reject 函数。new Promise 创建实例的时候，如果 reject 函数接受的参数也是一个 promise，那么最终返回的 实例会是怎么样的呢？使用原生 Promise 试一下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> p1 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="at">reject</span>(<span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
+                    <span class="op">&#125;</span>
+               <span class="op">&#125;</span>)
+            <span class="op">&#125;</span>)
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><p>在 Node 环境下，还可以使用 <code>process.nextTick()</code> 代替 <code>queueMicrotask</code>。</p><p>PS：另外需要注意的是，Node v11 之后才引入了 <code>queueMicrotask</code> 方法，因此要注意升级 Node 的版本，否则会无法通过 A+ 测试。</p><h3 id="完善-resolve-函数">完善 resolve 函数</h3><p>实际上，我们当前的代码已经可以通过 A+ 测试了，不过，我们的 resolve 函数还有需要完善的地方。</p><p>先看 reject 函数。new Promise 创建实例的时候，如果 reject 函数接受的参数也是一个 promise，那么最终返回的 实例会是怎么样的呢？使用原生 Promise 试一下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> p1 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+    <span class="at">reject</span>(<span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
         <span class="at">resolve</span>(<span class="dv">123</span>)
-    <span class="op">}</span>))
-<span class="op">}</span>)
-<span class="kw">let</span> p2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="at">reject</span>(<span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="op">&#125;</span>))
+<span class="op">&#125;</span>)
+<span class="kw">let</span> p2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+    <span class="at">reject</span>(<span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
         <span class="at">reject</span>(<span class="dv">123</span>)
-    <span class="op">}</span>))
-<span class="op">}</span>)
-<span class="co">// 打印 Promise {fulfilled: 123}</span>
-<span class="va">p1</span>.<span class="at">then</span>(<span class="kw">null</span><span class="op">,</span>e <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="op">&#125;</span>))
+<span class="op">&#125;</span>)
+<span class="co">// 打印 Promise &#123;fulfilled: 123&#125;</span>
+<span class="va">p1</span>.<span class="at">then</span>(<span class="kw">null</span><span class="op">,</span>e <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="va">console</span>.<span class="at">log</span>(e)              
-<span class="op">}</span>)
-<span class="co">// 打印 Promise {rejected: 123}</span>
-<span class="va">p2</span>.<span class="at">then</span>(<span class="kw">null</span><span class="op">,</span>e <span class="op">=&gt;</span> <span class="op">{</span>
+<span class="op">&#125;</span>)
+<span class="co">// 打印 Promise &#123;rejected: 123&#125;</span>
+<span class="va">p2</span>.<span class="at">then</span>(<span class="kw">null</span><span class="op">,</span>e <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="va">console</span>.<span class="at">log</span>(e)              
-<span class="op">}</span>)</code></pre></div><p>可以看到，即使 reject 函数接受的参数是一个 promise，它也会以这一整个 promise 作为 reason，返回一个 rejected 状态的 promise。而我们前面实现的 reject 函数的逻辑也正是这样的，这说明这个函数的实现没有问题。</p><hr><p>但 resolve 函数就不一样了。使用原生 Promise 试一下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> p1 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="at">resolve</span>(<span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
+<span class="op">&#125;</span>)</code></pre></div><p>可以看到，即使 reject 函数接受的参数是一个 promise，它也会以这一整个 promise 作为 reason，返回一个 rejected 状态的 promise。而我们前面实现的 reject 函数的逻辑也正是这样的，这说明这个函数的实现没有问题。</p><hr><p>但 resolve 函数就不一样了。使用原生 Promise 试一下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> p1 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+    <span class="at">resolve</span>(<span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
         <span class="at">resolve</span>(<span class="dv">123</span>)
-    <span class="op">}</span>))
-<span class="op">}</span>)
-<span class="kw">let</span> p2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="at">resolve</span>(<span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="op">&#125;</span>))
+<span class="op">&#125;</span>)
+<span class="kw">let</span> p2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+    <span class="at">resolve</span>(<span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
         <span class="at">reject</span>(<span class="dv">123</span>)
-    <span class="op">}</span>))
-<span class="op">}</span>)
+    <span class="op">&#125;</span>))
+<span class="op">&#125;</span>)
 <span class="co">// 打印 value 123</span>
 <span class="va">p1</span>.<span class="at">then</span>(
-    (value) <span class="op">=&gt;</span> <span class="op">{</span><span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;value&#39;</span><span class="op">,</span>value)<span class="op">},</span>
-    (reason) <span class="op">=&gt;</span> <span class="op">{</span><span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;reason&#39;</span><span class="op">,</span>reason)<span class="op">}</span>
+    (value) <span class="op">=&gt;</span> <span class="op">&#123;</span><span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;value&#39;</span><span class="op">,</span>value)<span class="op">&#125;,</span>
+    (reason) <span class="op">=&gt;</span> <span class="op">&#123;</span><span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;reason&#39;</span><span class="op">,</span>reason)<span class="op">&#125;</span>
 )
 <span class="co">// 打印 reason 123</span>
 <span class="va">p2</span>.<span class="at">then</span>(
-    (value) <span class="op">=&gt;</span> <span class="op">{</span><span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;value&#39;</span><span class="op">,</span>value)<span class="op">},</span>
-    (reason) <span class="op">=&gt;</span> <span class="op">{</span><span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;reason&#39;</span><span class="op">,</span>reason)<span class="op">}</span>
-)</code></pre></div><p>可以看到，如果给 resolve 函数传入的是 resolved 状态的 promise（这里嵌套多少层 resolved 状态的 promise 都一样），则最终会返回一个 resolve 最里层 value 的 promise；如果传入的是 rejected 状态的 promise，则最终会返回一个和它“一样的” promise（状态一样，reason 也一样）。</p><p>但是按照我们前面实现的 resolve 函数的逻辑，我们统一将传给 resolve 的参数作为 value，并始终返回一个 resolved 状态的 promise。很明显，这和原生的行为是不符合的（注意，没有说这是错误的，因为 A+ 规范对这一点并没有提出要求）。那么应该怎么修改呢？</p><p>其实也很简单，那就是检测传给 resolve 的参数是不是 promise，如果是的话，就通过这个参数继续调用 then 方法。这样，如果参数是 rejected 状态的 promise，则调用 then 意味着调用失败回调函数 reject，并传入参数的 reason，从而确保最终返回的是一个和参数状态相同、reason 也相同的 promise；而如果参数是 resolved 状态的 promise，则调用 then 意味着调用成功回调函数 resolve，并传入参数的 value，从而确保最终返回的是一个和参数状态相同、value 也相同的 promise —— 即使存在多个 resolved 状态的 promise 的嵌套也没关系，反正我们最后总可以拿到最里层 resolve 的值。</p><p>所以，修改后的 resolve 函数如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">resolve</span>(value)<span class="op">{</span>
-    <span class="cf">if</span> (value <span class="kw">instanceof</span> Promise) <span class="op">{</span>
+    (value) <span class="op">=&gt;</span> <span class="op">&#123;</span><span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;value&#39;</span><span class="op">,</span>value)<span class="op">&#125;,</span>
+    (reason) <span class="op">=&gt;</span> <span class="op">&#123;</span><span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;reason&#39;</span><span class="op">,</span>reason)<span class="op">&#125;</span>
+)</code></pre></div><p>可以看到，如果给 resolve 函数传入的是 resolved 状态的 promise（这里嵌套多少层 resolved 状态的 promise 都一样），则最终会返回一个 resolve 最里层 value 的 promise；如果传入的是 rejected 状态的 promise，则最终会返回一个和它“一样的” promise（状态一样，reason 也一样）。</p><p>但是按照我们前面实现的 resolve 函数的逻辑，我们统一将传给 resolve 的参数作为 value，并始终返回一个 resolved 状态的 promise。很明显，这和原生的行为是不符合的（注意，没有说这是错误的，因为 A+ 规范对这一点并没有提出要求）。那么应该怎么修改呢？</p><p>其实也很简单，那就是检测传给 resolve 的参数是不是 promise，如果是的话，就通过这个参数继续调用 then 方法。这样，如果参数是 rejected 状态的 promise，则调用 then 意味着调用失败回调函数 reject，并传入参数的 reason，从而确保最终返回的是一个和参数状态相同、reason 也相同的 promise；而如果参数是 resolved 状态的 promise，则调用 then 意味着调用成功回调函数 resolve，并传入参数的 value，从而确保最终返回的是一个和参数状态相同、value 也相同的 promise —— 即使存在多个 resolved 状态的 promise 的嵌套也没关系，反正我们最后总可以拿到最里层 resolve 的值。</p><p>所以，修改后的 resolve 函数如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">resolve</span>(value)<span class="op">&#123;</span>
+    <span class="cf">if</span> (value <span class="kw">instanceof</span> Promise) <span class="op">&#123;</span>
        <span class="cf">return</span> <span class="va">value</span>.<span class="at">then</span>(resolve<span class="op">,</span>reject) 
-    <span class="op">}</span>
-    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">{</span>
+    <span class="op">&#125;</span>
+    <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">&#123;</span>
         <span class="va">self</span>.<span class="at">status</span> <span class="op">=</span> FULFILLED
         <span class="va">self</span>.<span class="at">value</span> <span class="op">=</span> value
         <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">forEach</span>(fn <span class="op">=&gt;</span> <span class="at">fn</span>())
-    <span class="op">}</span>
-<span class="op">}</span></code></pre></div><h3 id="最终的代码">最终的代码</h3><p>最终实现的代码如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">// promise.js</span>
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><h3 id="最终的代码">最终的代码</h3><p>最终实现的代码如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">// promise.js</span>
 
 <span class="kw">const</span> PENDING <span class="op">=</span> <span class="st">&#39;pending&#39;</span>
 <span class="kw">const</span> FULFILLED <span class="op">=</span> <span class="st">&#39;fulfilled&#39;</span>
 <span class="kw">const</span> REJECTED <span class="op">=</span> <span class="st">&#39;rejected&#39;</span>
 
-<span class="kw">function</span> <span class="at">Promise</span> (executor) <span class="op">{</span>
+<span class="kw">function</span> <span class="at">Promise</span> (executor) <span class="op">&#123;</span>
     <span class="kw">let</span> self <span class="op">=</span> <span class="kw">this</span>
     <span class="va">self</span>.<span class="at">status</span> <span class="op">=</span> PENDING
     <span class="va">self</span>.<span class="at">value</span> <span class="op">=</span> <span class="kw">null</span>
     <span class="va">self</span>.<span class="at">reason</span> <span class="op">=</span> <span class="kw">null</span>
     <span class="va">self</span>.<span class="at">onFulfilledCallbacks</span> <span class="op">=</span> []
     <span class="va">self</span>.<span class="at">onRejectedCallbacks</span> <span class="op">=</span> []
-    <span class="kw">function</span> <span class="at">resolve</span>(value)<span class="op">{</span>
-        <span class="cf">if</span> (value <span class="kw">instanceof</span> Promise) <span class="op">{</span>
+    <span class="kw">function</span> <span class="at">resolve</span>(value)<span class="op">&#123;</span>
+        <span class="cf">if</span> (value <span class="kw">instanceof</span> Promise) <span class="op">&#123;</span>
             <span class="cf">return</span> <span class="va">value</span>.<span class="at">then</span>(resolve<span class="op">,</span>reject) 
-        <span class="op">}</span>
-        <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">{</span>
+        <span class="op">&#125;</span>
+        <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">&#123;</span>
             <span class="va">self</span>.<span class="at">status</span> <span class="op">=</span> FULFILLED
             <span class="va">self</span>.<span class="at">value</span> <span class="op">=</span> value
             <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">forEach</span>(fn <span class="op">=&gt;</span> <span class="at">fn</span>())
-        <span class="op">}</span>
-    <span class="op">}</span>
-    <span class="kw">function</span> <span class="at">reject</span>(reason)<span class="op">{</span>
-        <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">{</span>
+        <span class="op">&#125;</span>
+    <span class="op">&#125;</span>
+    <span class="kw">function</span> <span class="at">reject</span>(reason)<span class="op">&#123;</span>
+        <span class="cf">if</span>(<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING)<span class="op">&#123;</span>
             <span class="va">self</span>.<span class="at">status</span> <span class="op">=</span> REJECTED
             <span class="va">self</span>.<span class="at">reason</span> <span class="op">=</span> reason
             <span class="va">self</span>.<span class="va">onRejectedCallbacks</span>.<span class="at">forEach</span>(fn <span class="op">=&gt;</span> <span class="at">fn</span>())
-        <span class="op">}</span>
-    <span class="op">}</span>
-    <span class="cf">try</span> <span class="op">{</span>
+        <span class="op">&#125;</span>
+    <span class="op">&#125;</span>
+    <span class="cf">try</span> <span class="op">&#123;</span>
         <span class="at">executor</span>(resolve<span class="op">,</span>reject)
-    <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+    <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
         <span class="at">reject</span>(e)
-    <span class="op">}</span>
-<span class="op">}</span>
-<span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">then</span> <span class="op">=</span> <span class="kw">function</span> (onFulfilled<span class="op">,</span>onRejected) <span class="op">{</span>
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span>
+<span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">then</span> <span class="op">=</span> <span class="kw">function</span> (onFulfilled<span class="op">,</span>onRejected) <span class="op">&#123;</span>
     onFulfilled <span class="op">=</span> <span class="kw">typeof</span> onFulfilled <span class="op">===</span> <span class="st">&#39;function&#39;</span> <span class="op">?</span> onFulfilled : v <span class="op">=&gt;</span> v
-    onRejected <span class="op">=</span> <span class="kw">typeof</span> onRejected <span class="op">===</span> <span class="st">&#39;function&#39;</span> <span class="op">?</span> onRejected : e <span class="op">=&gt;</span> <span class="op">{</span> <span class="cf">throw</span> e <span class="op">}</span>
+    onRejected <span class="op">=</span> <span class="kw">typeof</span> onRejected <span class="op">===</span> <span class="st">&#39;function&#39;</span> <span class="op">?</span> onRejected : e <span class="op">=&gt;</span> <span class="op">&#123;</span> <span class="cf">throw</span> e <span class="op">&#125;</span>
     <span class="kw">let</span> self <span class="op">=</span> <span class="kw">this</span>
     <span class="kw">let</span> promise2
-    <span class="cf">if</span> (<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> FULFILLED) <span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                <span class="cf">try</span> <span class="op">{</span>
+    <span class="cf">if</span> (<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> FULFILLED) <span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                <span class="cf">try</span> <span class="op">&#123;</span>
                     <span class="kw">let</span> x <span class="op">=</span> <span class="at">onFulfilled</span>(<span class="va">self</span>.<span class="at">value</span>)
                     <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-                <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                     <span class="at">reject</span>(e)
-                <span class="op">}</span>
-            <span class="op">}</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span> 
-    <span class="cf">else</span> <span class="cf">if</span> (<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> REJECTED) <span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                <span class="cf">try</span> <span class="op">{</span>
+                <span class="op">&#125;</span>
+            <span class="op">&#125;</span>)
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span> 
+    <span class="cf">else</span> <span class="cf">if</span> (<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> REJECTED) <span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                <span class="cf">try</span> <span class="op">&#123;</span>
                     <span class="kw">let</span> x <span class="op">=</span> <span class="at">onRejected</span>(<span class="va">self</span>.<span class="at">reason</span>)
                     <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-                <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                     <span class="at">reject</span>(e)
-                <span class="op">}</span>
-            <span class="op">}</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span> 
-    <span class="cf">else</span> <span class="cf">if</span> (<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING) <span class="op">{</span>
-        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-            <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                    <span class="cf">try</span> <span class="op">{</span>
+                <span class="op">&#125;</span>
+            <span class="op">&#125;</span>)
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span> 
+    <span class="cf">else</span> <span class="cf">if</span> (<span class="va">self</span>.<span class="at">status</span> <span class="op">===</span> PENDING) <span class="op">&#123;</span>
+        <span class="cf">return</span> promise2 <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+            <span class="va">self</span>.<span class="va">onFulfilledCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                    <span class="cf">try</span> <span class="op">&#123;</span>
                         <span class="kw">let</span> x <span class="op">=</span> <span class="at">onFulfilled</span>(<span class="va">self</span>.<span class="at">value</span>)
                         <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-                    <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                    <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                         <span class="at">reject</span>(e)
-                    <span class="op">}</span>
-                <span class="op">}</span>)
-            <span class="op">}</span>)
-            <span class="va">self</span>.<span class="va">onRejectedCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">{</span>
-                    <span class="cf">try</span> <span class="op">{</span>
+                    <span class="op">&#125;</span>
+                <span class="op">&#125;</span>)
+            <span class="op">&#125;</span>)
+            <span class="va">self</span>.<span class="va">onRejectedCallbacks</span>.<span class="at">push</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                <span class="at">queueMicrotask</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span>
+                    <span class="cf">try</span> <span class="op">&#123;</span>
                         <span class="kw">let</span> x <span class="op">=</span> <span class="at">onRejected</span>(<span class="va">self</span>.<span class="at">reason</span>)
                         <span class="at">resolvePromise</span>(promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject)
-                    <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                    <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                         <span class="at">reject</span>(e)
-                    <span class="op">}</span>
-                <span class="op">}</span>)
-            <span class="op">}</span>)
-        <span class="op">}</span>)
-    <span class="op">}</span>
-<span class="op">}</span>
-<span class="kw">function</span> <span class="at">resolvePromise</span> (promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject) <span class="op">{</span>
-    <span class="cf">if</span>(promise2 <span class="op">===</span> x)<span class="op">{</span>
+                    <span class="op">&#125;</span>
+                <span class="op">&#125;</span>)
+            <span class="op">&#125;</span>)
+        <span class="op">&#125;</span>)
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span>
+<span class="kw">function</span> <span class="at">resolvePromise</span> (promise2<span class="op">,</span>x<span class="op">,</span>resolve<span class="op">,</span>reject) <span class="op">&#123;</span>
+    <span class="cf">if</span>(promise2 <span class="op">===</span> x)<span class="op">&#123;</span>
         <span class="cf">return</span> <span class="at">reject</span>(<span class="kw">new</span> <span class="at">TypeError</span>(<span class="st">&#39;Chaining cycle!&#39;</span>))
-    <span class="op">}</span>
-    <span class="cf">if</span> (x <span class="op">!==</span> <span class="kw">null</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;object&#39;</span> <span class="op">||</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;function&#39;</span>) <span class="op">{</span>
+    <span class="op">&#125;</span>
+    <span class="cf">if</span> (x <span class="op">!==</span> <span class="kw">null</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;object&#39;</span> <span class="op">||</span> <span class="kw">typeof</span> x <span class="op">===</span> <span class="st">&#39;function&#39;</span>) <span class="op">&#123;</span>
         <span class="kw">let</span> then 
-        <span class="cf">try</span> <span class="op">{</span>
+        <span class="cf">try</span> <span class="op">&#123;</span>
             then <span class="op">=</span> <span class="va">x</span>.<span class="at">then</span>
-        <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+        <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
             <span class="at">reject</span>(x)
-        <span class="op">}</span>
-        <span class="cf">if</span> (<span class="kw">typeof</span> then <span class="op">===</span> <span class="st">&#39;function&#39;</span>) <span class="op">{</span>
+        <span class="op">&#125;</span>
+        <span class="cf">if</span> (<span class="kw">typeof</span> then <span class="op">===</span> <span class="st">&#39;function&#39;</span>) <span class="op">&#123;</span>
             <span class="kw">let</span> call <span class="op">=</span> <span class="kw">false</span>
-            <span class="cf">try</span> <span class="op">{</span>
-                <span class="va">then</span>.<span class="at">call</span>(x<span class="op">,</span>(y) <span class="op">=&gt;</span> <span class="op">{</span>
+            <span class="cf">try</span> <span class="op">&#123;</span>
+                <span class="va">then</span>.<span class="at">call</span>(x<span class="op">,</span>(y) <span class="op">=&gt;</span> <span class="op">&#123;</span>
                     <span class="cf">if</span>(called) <span class="cf">return</span>
                     called <span class="op">=</span> <span class="kw">true</span>
                     <span class="at">resolvePromise</span>(promise2<span class="op">,</span>y<span class="op">,</span>resolve<span class="op">,</span>reject)
-                <span class="op">},</span>(r) <span class="op">=&gt;</span> <span class="op">{</span>
+                <span class="op">&#125;,</span>(r) <span class="op">=&gt;</span> <span class="op">&#123;</span>
                     <span class="cf">if</span>(called) <span class="cf">return</span>
                     called <span class="op">=</span> <span class="kw">true</span>
                     <span class="at">reject</span>(r)
-                <span class="op">}</span>)
-            <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+                <span class="op">&#125;</span>)
+            <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
                 <span class="cf">if</span>(called) <span class="cf">return</span>
                 <span class="at">reject</span>(e)
-            <span class="op">}</span>
-        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+            <span class="op">&#125;</span>
+        <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span>
             <span class="at">resolve</span>(x)
-        <span class="op">}</span>
-    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+        <span class="op">&#125;</span>
+    <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span>
         <span class="at">resolve</span>(x)
-    <span class="op">}</span>
-<span class="op">}</span></code></pre></div><h3 id="promise-a-测试">Promise A+ 测试</h3><p>可以借助 <a href="https://github.com/promises-aplus/promises-tests" target="_blank" rel="noopener">promises-aplus-test</a> 这个库对我们实现的 Promise 进行测试。</p><p>先通过 npm 安装：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">npm install promises<span class="op">-</span>aplus<span class="op">-</span>test <span class="op">-</span>D</code></pre></div><p>接着在 <code>promise.js</code> 文件中添加：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">// promise.js</span>
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><h3 id="promise-a-测试">Promise A+ 测试</h3><p>可以借助 <a target="_blank" rel="noopener" href="https://github.com/promises-aplus/promises-tests">promises-aplus-test</a> 这个库对我们实现的 Promise 进行测试。</p><p>先通过 npm 安装：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">npm install promises<span class="op">-</span>aplus<span class="op">-</span>test <span class="op">-</span>D</code></pre></div><p>接着在 <code>promise.js</code> 文件中添加：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">// promise.js</span>
 
-<span class="va">Promise</span>.<span class="at">defer</span> <span class="op">=</span> <span class="va">Promise</span>.<span class="at">deferred</span> <span class="op">=</span> <span class="kw">function</span> () <span class="op">{</span>
-    <span class="kw">let</span> dfd <span class="op">=</span> <span class="op">{};</span>
-    <span class="va">dfd</span>.<span class="at">promise</span> <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span> reject) <span class="op">=&gt;</span> <span class="op">{</span>
+<span class="va">Promise</span>.<span class="at">defer</span> <span class="op">=</span> <span class="va">Promise</span>.<span class="at">deferred</span> <span class="op">=</span> <span class="kw">function</span> () <span class="op">&#123;</span>
+    <span class="kw">let</span> dfd <span class="op">=</span> <span class="op">&#123;&#125;;</span>
+    <span class="va">dfd</span>.<span class="at">promise</span> <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span> reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
         <span class="va">dfd</span>.<span class="at">resolve</span> <span class="op">=</span> resolve<span class="op">;</span>
         <span class="va">dfd</span>.<span class="at">reject</span> <span class="op">=</span> reject<span class="op">;</span>
-    <span class="op">}</span>)<span class="op">;</span>
+    <span class="op">&#125;</span>)<span class="op">;</span>
     <span class="cf">return</span> dfd<span class="op">;</span>
-<span class="op">}</span>
+<span class="op">&#125;</span>
 
-<span class="va">module</span>.<span class="at">exports</span> <span class="op">=</span> Promise<span class="op">;</span></code></pre></div><p>最后运行测试：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">promises<span class="op">-</span>aplus<span class="op">-</span><span class="va">test</span> ./<span class="va">promise</span>.<span class="at">js</span></code></pre></div><p>测试结果如下：</p><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/JS%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0%E7%B3%BB%E5%88%97/7.jpeg"></div><p>成功通过 872 个测试用例，说明我们实现的 Promise 是符合 A+ 规范的。如果某些测试用例没有通过，可以再对照规范改一改。</p><h2 id="实现-promise-的静态方法和原型方法">实现 Promise 的静态方法和原型方法</h2><p>Promise A+ 规范并没有对 Promise 的静态方法和原型方法（除了 then 方法）的实现提出要求，但是有了前面的基础，实现这些方法也并不难。下面我们一个一个来实现。</p><h3 id="promise.resolve"><code>Promise.resolve()</code></h3><p><code>Promise.resolve</code> 接受的参数如果是一个 promise，则最终将这个 promise 原样返回；如果是一个 thenable，则返回一个采用该 thenable 状态的 promise；其它情况下，一律返回 resolve 给定参数的 promise。</p><p>实现如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="at">resolve</span> <span class="op">=</span> (param) <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="cf">if</span>(param <span class="kw">instanceof</span> Promise)<span class="op">{</span>
+<span class="va">module</span>.<span class="at">exports</span> <span class="op">=</span> Promise<span class="op">;</span></code></pre></div><p>最后运行测试：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">promises<span class="op">-</span>aplus<span class="op">-</span><span class="va">test</span> ./<span class="va">promise</span>.<span class="at">js</span></code></pre></div><p>测试结果如下：</p><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/JS%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0%E7%B3%BB%E5%88%97/7.jpeg"></div><p>成功通过 872 个测试用例，说明我们实现的 Promise 是符合 A+ 规范的。如果某些测试用例没有通过，可以再对照规范改一改。</p><h2 id="实现-promise-的静态方法和原型方法">实现 Promise 的静态方法和原型方法</h2><p>Promise A+ 规范并没有对 Promise 的静态方法和原型方法（除了 then 方法）的实现提出要求，但是有了前面的基础，实现这些方法也并不难。下面我们一个一个来实现。</p><h3 id="promise.resolve"><code>Promise.resolve()</code></h3><p><code>Promise.resolve</code> 接受的参数如果是一个 promise，则最终将这个 promise 原样返回；如果是一个 thenable，则返回一个采用该 thenable 状态的 promise；其它情况下，一律返回 resolve 给定参数的 promise。</p><p>实现如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="at">resolve</span> <span class="op">=</span> (param) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+    <span class="cf">if</span>(param <span class="kw">instanceof</span> Promise)<span class="op">&#123;</span>
         <span class="cf">return</span> param
-    <span class="op">}</span> 
-    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="op">&#125;</span> 
+    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
         <span class="co">// 如果是 thenable</span>
-        <span class="cf">if</span>(param <span class="op">&amp;&amp;</span> <span class="va">param</span>.<span class="at">then</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> <span class="va">param</span>.<span class="at">then</span> <span class="op">===</span> <span class="st">&#39;function&#39;</span>)<span class="op">{</span>
+        <span class="cf">if</span>(param <span class="op">&amp;&amp;</span> <span class="va">param</span>.<span class="at">then</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> <span class="va">param</span>.<span class="at">then</span> <span class="op">===</span> <span class="st">&#39;function&#39;</span>)<span class="op">&#123;</span>
             <span class="va">param</span>.<span class="at">then</span>(resolve<span class="op">,</span>reject)
-        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+        <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span>
             <span class="at">resolve</span>(param)
-        <span class="op">}</span>
-    <span class="op">}</span>)
-<span class="op">}</span></code></pre></div><p>PS：为什么调用 <code>param.then(resolve,reject)</code> 可以让返回的 promise 沿用 param 的状态呢？因为 param 总会在某一个时刻执行 then 里面的某个回调，并且传入对应的参数 —— 也就是执行 <code>resolve(value)</code> 或者 <code>reject(reason)</code>，而这个执行是在返回的 promise 内部进行的，所以返回的 promise 一定会沿用 param 的状态。</p><h3 id="promise.reject"><code>Promise.reject()</code></h3><p>任何情况下，<code>Promise.reject()</code> 都会返回一个 reject 给定参数的 promise：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="at">reject</span> <span class="op">=</span> (param) <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
+        <span class="op">&#125;</span>
+    <span class="op">&#125;</span>)
+<span class="op">&#125;</span></code></pre></div><p>PS：为什么调用 <code>param.then(resolve,reject)</code> 可以让返回的 promise 沿用 param 的状态呢？因为 param 总会在某一个时刻执行 then 里面的某个回调，并且传入对应的参数 —— 也就是执行 <code>resolve(value)</code> 或者 <code>reject(reason)</code>，而这个执行是在返回的 promise 内部进行的，所以返回的 promise 一定会沿用 param 的状态。</p><h3 id="promise.reject"><code>Promise.reject()</code></h3><p>任何情况下，<code>Promise.reject()</code> 都会返回一个 reject 给定参数的 promise：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="at">reject</span> <span class="op">=</span> (param) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
         <span class="at">reject</span>(param)
-    <span class="op">}</span>)
-<span class="op">}</span></code></pre></div><h3 id="promise.all"><code>Promise.all()</code></h3><p><code>Promise.all()</code> 接受的参数：</p><ul><li>不可迭代时，返回一个 rejected 状态的 promise；</li><li>可迭代时，如果是空的可迭代对象，则返回一个 resolve 空数组的 promise；</li><li>可迭代时，如果是非空的可迭代对象：</li><li>不包含 rejected 状态和 pending 状态的 promise，则返回一个 resolve 结果数组的 promise，结果数组中包含各个 promise 的 resolved 值</li><li>包含一个 rejected 状态的 promise，返回一个相同的 promise</li><li>不包含 rejected 状态的 promise，但包含 pending 状态的 promise，则返回一个 pending 状态的 promise</li></ul><p>PS：可迭代对象中的每个成员都会被 <code>Promise.resolve()</code> 包装成一个 promise</p><p>因此实现的代码如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="at">all</span> <span class="op">=</span> (promises) <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="op">&#125;</span>)
+<span class="op">&#125;</span></code></pre></div><h3 id="promise.all"><code>Promise.all()</code></h3><p><code>Promise.all()</code> 接受的参数：</p><ul><li>不可迭代时，返回一个 rejected 状态的 promise；</li><li>可迭代时，如果是空的可迭代对象，则返回一个 resolve 空数组的 promise；</li><li>可迭代时，如果是非空的可迭代对象：</li><li>不包含 rejected 状态和 pending 状态的 promise，则返回一个 resolve 结果数组的 promise，结果数组中包含各个 promise 的 resolved 值</li><li>包含一个 rejected 状态的 promise，返回一个相同的 promise</li><li>不包含 rejected 状态的 promise，但包含 pending 状态的 promise，则返回一个 pending 状态的 promise</li></ul><p>PS：可迭代对象中的每个成员都会被 <code>Promise.resolve()</code> 包装成一个 promise</p><p>因此实现的代码如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="at">all</span> <span class="op">=</span> (promises) <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="co">// 判断是否可迭代</span>
     <span class="kw">let</span> isIterable <span class="op">=</span> (params) <span class="op">=&gt;</span> <span class="kw">typeof</span> params[<span class="va">Symbol</span>.<span class="at">iterator</span>] <span class="op">===</span> <span class="st">&#39;function&#39;</span>
-    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
         <span class="co">// 如果不可迭代</span>
-        <span class="cf">if</span>(<span class="op">!</span><span class="at">isIterable</span>(promises)) <span class="op">{</span>
-            <span class="at">reject</span>(<span class="kw">new</span> <span class="at">TypeError</span>(<span class="vs">`</span><span class="sc">${</span>promises<span class="sc">}</span><span class="vs"> is not iterable!`</span>))
-        <span class="op">}</span>  <span class="cf">else</span> <span class="op">{</span>
+        <span class="cf">if</span>(<span class="op">!</span><span class="at">isIterable</span>(promises)) <span class="op">&#123;</span>
+            <span class="at">reject</span>(<span class="kw">new</span> <span class="at">TypeError</span>(<span class="vs">`</span><span class="sc">$&#123;</span>promises<span class="sc">&#125;</span><span class="vs"> is not iterable!`</span>))
+        <span class="op">&#125;</span>  <span class="cf">else</span> <span class="op">&#123;</span>
             <span class="kw">let</span> result <span class="op">=</span> []
             <span class="kw">let</span> count <span class="op">=</span> <span class="dv">0</span>
-            <span class="cf">if</span>(<span class="va">promises</span>.<span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>)<span class="op">{</span>
+            <span class="cf">if</span>(<span class="va">promises</span>.<span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>)<span class="op">&#123;</span>
                 <span class="at">resolve</span>(result)
-            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
-                <span class="cf">for</span>(<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>i <span class="op">&lt;</span> <span class="va">promises</span>.<span class="at">length</span><span class="op">;</span>i<span class="op">++</span>)<span class="op">{</span>
-                    <span class="va">Promise</span>.<span class="at">resolve</span>(promises[i]).<span class="at">then</span>((value) <span class="op">=&gt;</span> <span class="op">{</span>
+            <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span>
+                <span class="cf">for</span>(<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>i <span class="op">&lt;</span> <span class="va">promises</span>.<span class="at">length</span><span class="op">;</span>i<span class="op">++</span>)<span class="op">&#123;</span>
+                    <span class="va">Promise</span>.<span class="at">resolve</span>(promises[i]).<span class="at">then</span>((value) <span class="op">=&gt;</span> <span class="op">&#123;</span>
                         count<span class="op">++</span>
                         result[i] <span class="op">=</span> value
                         <span class="cf">if</span>(count <span class="op">===</span> <span class="va">promises</span>.<span class="at">length</span>)<span class="op">;</span><span class="at">resolve</span>(result)
-                    <span class="op">},</span>reject)
-                <span class="op">}</span>
-            <span class="op">}</span>
-        <span class="op">}</span>
-    <span class="op">}</span>)
-<span class="op">}</span></code></pre></div><p>可以看到，我们会遍历 <code>promises</code> 中的每一个成员，用 count 记录 resolved 状态的 promise 的个数，并把它们的 value 存入结果数组中，只要发现所有成员都是 resolved 状态的 promise，就会返回一个 resolve 结果数组的 promise；而只要发现有一个 rejected 状态的 promise，就会以它的 reason 作为 reason，返回一个 rejected 状态的 promise；如果存在 pending 状态的 promise，则必不可能执行 resolve 或者 reject，因此最后会返回一个同样是 pending 状态的 promise。</p><h3 id="promise.race"><code>Promise.race()</code></h3><p>和 <code>Promise.all()</code> 类似，但 <code>Promise.race()</code> 只要求有一个 promise 状态落定即可，并且最终会返回一个和它一样的 promise。如果传入的是一个空的可迭代对象，则意味着它永远无法得到一个期望的状态落定的 promise，但是，它还是会继续等待下去，因此最终会返回一个 pending 状态的 promise。</p><p>实现代码如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="at">race</span> <span class="op">=</span> (promises) <span class="op">=&gt;</span> <span class="op">{</span>
+                    <span class="op">&#125;,</span>reject)
+                <span class="op">&#125;</span>
+            <span class="op">&#125;</span>
+        <span class="op">&#125;</span>
+    <span class="op">&#125;</span>)
+<span class="op">&#125;</span></code></pre></div><p>可以看到，我们会遍历 <code>promises</code> 中的每一个成员，用 count 记录 resolved 状态的 promise 的个数，并把它们的 value 存入结果数组中，只要发现所有成员都是 resolved 状态的 promise，就会返回一个 resolve 结果数组的 promise；而只要发现有一个 rejected 状态的 promise，就会以它的 reason 作为 reason，返回一个 rejected 状态的 promise；如果存在 pending 状态的 promise，则必不可能执行 resolve 或者 reject，因此最后会返回一个同样是 pending 状态的 promise。</p><h3 id="promise.race"><code>Promise.race()</code></h3><p>和 <code>Promise.all()</code> 类似，但 <code>Promise.race()</code> 只要求有一个 promise 状态落定即可，并且最终会返回一个和它一样的 promise。如果传入的是一个空的可迭代对象，则意味着它永远无法得到一个期望的状态落定的 promise，但是，它还是会继续等待下去，因此最终会返回一个 pending 状态的 promise。</p><p>实现代码如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="at">race</span> <span class="op">=</span> (promises) <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="kw">let</span> isIterable <span class="op">=</span> (param) <span class="op">=&gt;</span> <span class="kw">typeof</span> param[<span class="va">Symbol</span>.<span class="at">iterator</span>] <span class="op">===</span> <span class="st">&#39;function&#39;</span>
-    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-        <span class="cf">if</span> (<span class="op">!</span><span class="at">isIterable</span>(promises)) <span class="op">{</span>
-            <span class="at">reject</span>(<span class="kw">new</span> <span class="at">TypeError</span>(<span class="vs">`</span><span class="sc">${</span>promises<span class="sc">}</span><span class="vs"> is not iterable!`</span>))
-        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
-            <span class="cf">for</span>(<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>i <span class="op">&lt;</span> <span class="va">promises</span>.<span class="at">length</span><span class="op">;</span>i<span class="op">++</span>)<span class="op">{</span>
+    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+        <span class="cf">if</span> (<span class="op">!</span><span class="at">isIterable</span>(promises)) <span class="op">&#123;</span>
+            <span class="at">reject</span>(<span class="kw">new</span> <span class="at">TypeError</span>(<span class="vs">`</span><span class="sc">$&#123;</span>promises<span class="sc">&#125;</span><span class="vs"> is not iterable!`</span>))
+        <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span>
+            <span class="cf">for</span>(<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>i <span class="op">&lt;</span> <span class="va">promises</span>.<span class="at">length</span><span class="op">;</span>i<span class="op">++</span>)<span class="op">&#123;</span>
                 <span class="va">Promise</span>.<span class="at">resolve</span>(promises[i]).<span class="at">then</span>(resolve<span class="op">,</span>reject)    
-            <span class="op">}</span>
-        <span class="op">}</span>        
-    <span class="op">}</span>)
-<span class="op">}</span></code></pre></div><p>其实大体上来说只有两种情况：</p><ul><li>一种是 promises 中至少有一个状态落定的 promise，那么遇到这个 promise 的时候，就会通过它去调用 then，进而调用 resolve 或者 reject，使最终返回的 promise 状态落定。即使此后又遇到了其它状态落定的 promise 并且执行相应的 resolve 或者 reject，也没有关系，因为 promise 的状态是不可逆的</li><li>另一种是所有 promise 的状态都未落定，这意味着永远不可能执行 then 里面的回调，也即不可能执行 resolve 或者 reject，因此最终返回的是一个 pending 状态的 promise</li></ul><h3 id="promise.allsettled"><code>Promise.allSettled()</code></h3><p>和 <code>Promise.all()</code> 类似，也会返回一个 resolve 结果数组的 promise，但是结果数组中会包含各个 promise 的 resolved 值或者 rejected 值，类似于这样：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">[
-    <span class="op">{</span><span class="dt">status</span><span class="op">:</span> <span class="st">&quot;fulfilled&quot;</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">11</span><span class="op">}</span>
-    <span class="op">{</span><span class="dt">status</span><span class="op">:</span> <span class="st">&quot;rejected&quot;</span><span class="op">,</span> <span class="dt">reason</span><span class="op">:</span> <span class="dv">22</span><span class="op">}</span>
-    <span class="op">{</span><span class="dt">status</span><span class="op">:</span> <span class="st">&quot;fulfilled&quot;</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">33</span><span class="op">}</span>
-]</code></pre></div><p>如果 promises 中存在 pending 状态的 promise，则无法达到真正的 “allSettled”（全部落定），最终会返回一个 pending 状态的 promise。</p><p>实现代码如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="at">allSettled</span> <span class="op">=</span> (promises) <span class="op">=&gt;</span> <span class="op">{</span>
+            <span class="op">&#125;</span>
+        <span class="op">&#125;</span>        
+    <span class="op">&#125;</span>)
+<span class="op">&#125;</span></code></pre></div><p>其实大体上来说只有两种情况：</p><ul><li>一种是 promises 中至少有一个状态落定的 promise，那么遇到这个 promise 的时候，就会通过它去调用 then，进而调用 resolve 或者 reject，使最终返回的 promise 状态落定。即使此后又遇到了其它状态落定的 promise 并且执行相应的 resolve 或者 reject，也没有关系，因为 promise 的状态是不可逆的</li><li>另一种是所有 promise 的状态都未落定，这意味着永远不可能执行 then 里面的回调，也即不可能执行 resolve 或者 reject，因此最终返回的是一个 pending 状态的 promise</li></ul><h3 id="promise.allsettled"><code>Promise.allSettled()</code></h3><p>和 <code>Promise.all()</code> 类似，也会返回一个 resolve 结果数组的 promise，但是结果数组中会包含各个 promise 的 resolved 值或者 rejected 值，类似于这样：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">[
+    <span class="op">&#123;</span><span class="dt">status</span><span class="op">:</span> <span class="st">&quot;fulfilled&quot;</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">11</span><span class="op">&#125;</span>
+    <span class="op">&#123;</span><span class="dt">status</span><span class="op">:</span> <span class="st">&quot;rejected&quot;</span><span class="op">,</span> <span class="dt">reason</span><span class="op">:</span> <span class="dv">22</span><span class="op">&#125;</span>
+    <span class="op">&#123;</span><span class="dt">status</span><span class="op">:</span> <span class="st">&quot;fulfilled&quot;</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">33</span><span class="op">&#125;</span>
+]</code></pre></div><p>如果 promises 中存在 pending 状态的 promise，则无法达到真正的 “allSettled”（全部落定），最终会返回一个 pending 状态的 promise。</p><p>实现代码如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="at">allSettled</span> <span class="op">=</span> (promises) <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="kw">let</span> isIterable <span class="op">=</span> param <span class="op">=&gt;</span> <span class="kw">typeof</span> param[<span class="va">Symbol</span>.<span class="at">iterator</span>] <span class="op">===</span> <span class="st">&#39;function&#39;</span>
-    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">{</span>
-        <span class="cf">if</span> (<span class="op">!</span><span class="at">isIterable</span>(promises)) <span class="op">{</span>
-           <span class="at">reject</span>(<span class="kw">new</span> <span class="at">TypeError</span>(<span class="vs">`</span><span class="sc">${</span>promises<span class="sc">}</span><span class="vs"> is not iterable!`</span>)) 
-        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span>reject) <span class="op">=&gt;</span> <span class="op">&#123;</span>
+        <span class="cf">if</span> (<span class="op">!</span><span class="at">isIterable</span>(promises)) <span class="op">&#123;</span>
+           <span class="at">reject</span>(<span class="kw">new</span> <span class="at">TypeError</span>(<span class="vs">`</span><span class="sc">$&#123;</span>promises<span class="sc">&#125;</span><span class="vs"> is not iterable!`</span>)) 
+        <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span>
             <span class="kw">let</span> result <span class="op">=</span> []
             <span class="kw">let</span> count <span class="op">=</span> <span class="dv">0</span>
-            <span class="cf">if</span>(<span class="va">promises</span>.<span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="op">{</span>
+            <span class="cf">if</span>(<span class="va">promises</span>.<span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="op">&#123;</span>
                 <span class="at">resolve</span>(result)
-            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
-                <span class="cf">for</span>(<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>i <span class="op">&lt;</span> <span class="va">promises</span>.<span class="at">length</span><span class="op">;</span>i<span class="op">++</span>)<span class="op">{</span>
+            <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span>
+                <span class="cf">for</span>(<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>i <span class="op">&lt;</span> <span class="va">promises</span>.<span class="at">length</span><span class="op">;</span>i<span class="op">++</span>)<span class="op">&#123;</span>
                     <span class="va">Promise</span>.<span class="at">resolve</span>(promises[i]).<span class="at">then</span>(
-                        value <span class="op">=&gt;</span> <span class="op">{</span>
+                        value <span class="op">=&gt;</span> <span class="op">&#123;</span>
                             count<span class="op">++</span>
-                            result[i] <span class="op">=</span> <span class="op">{</span>
+                            result[i] <span class="op">=</span> <span class="op">&#123;</span>
                                 <span class="dt">status</span><span class="op">:</span> <span class="st">&#39;fulfilled&#39;</span><span class="op">,</span>
                                 value
-                            <span class="op">}</span>
+                            <span class="op">&#125;</span>
                             <span class="cf">if</span>(count <span class="op">===</span> <span class="va">promises</span>.<span class="at">length</span>) <span class="at">resolve</span>(result)
-                        <span class="op">},</span>
-                        reason <span class="op">=&gt;</span> <span class="op">{</span>
+                        <span class="op">&#125;,</span>
+                        reason <span class="op">=&gt;</span> <span class="op">&#123;</span>
                             count<span class="op">++</span>
-                            result[i] <span class="op">=</span> <span class="op">{</span>
+                            result[i] <span class="op">=</span> <span class="op">&#123;</span>
                                 <span class="dt">status</span><span class="op">:</span> <span class="st">&#39;rejected&#39;</span><span class="op">,</span>
                                 reason
-                            <span class="op">}</span>
+                            <span class="op">&#125;</span>
                             <span class="cf">if</span>(count <span class="op">===</span> <span class="va">promises</span>.<span class="at">length</span>) <span class="at">resolve</span>(result)
-                        <span class="op">}</span>
+                        <span class="op">&#125;</span>
                     )
-                <span class="op">}</span>
-            <span class="op">}</span>
-        <span class="op">}</span>
-    <span class="op">}</span>)
-<span class="op">}</span></code></pre></div><h3 id="promise.prototype.catch"><code>Promise.prototype.catch()</code></h3><p>如果前面的 promise 落定为 rejected 状态，则会执行 catch 方法，因此 catch 方法可以看作是没有传入成功回调作为参数的 then 方法：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">catch</span> <span class="op">=</span> (onRejected) <span class="op">=&gt;</span> <span class="op">{</span>
+                <span class="op">&#125;</span>
+            <span class="op">&#125;</span>
+        <span class="op">&#125;</span>
+    <span class="op">&#125;</span>)
+<span class="op">&#125;</span></code></pre></div><h3 id="promise.prototype.catch"><code>Promise.prototype.catch()</code></h3><p>如果前面的 promise 落定为 rejected 状态，则会执行 catch 方法，因此 catch 方法可以看作是没有传入成功回调作为参数的 then 方法：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">catch</span> <span class="op">=</span> (onRejected) <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="cf">return</span> <span class="kw">this</span>.<span class="at">then</span>(<span class="kw">null</span><span class="op">,</span>onRejected)
-<span class="op">}</span></code></pre></div><h3 id="promise.prototype.finally"><code>Promise.prototype.finally()</code></h3><p>finally 方法的特点有两个：</p><ul><li>不管前面的 promise 是 resolved 状态还是 rejected 状态，传给 finally 的回调函数都可以执行</li><li>finally 最后也会返回一个 promise，这个 promise 一般会沿用调用 finally 的 promise 的状态。除非 finally 的回调函数返回了一个 rejected 状态的 promise</li></ul><p>最终的实现如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">finally</span> <span class="op">=</span> (fn) <span class="op">=&gt;</span> <span class="op">{</span>
+<span class="op">&#125;</span></code></pre></div><h3 id="promise.prototype.finally"><code>Promise.prototype.finally()</code></h3><p>finally 方法的特点有两个：</p><ul><li>不管前面的 promise 是 resolved 状态还是 rejected 状态，传给 finally 的回调函数都可以执行</li><li>finally 最后也会返回一个 promise，这个 promise 一般会沿用调用 finally 的 promise 的状态。除非 finally 的回调函数返回了一个 rejected 状态的 promise</li></ul><p>最终的实现如下：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="va">prototype</span>.<span class="at">finally</span> <span class="op">=</span> (fn) <span class="op">=&gt;</span> <span class="op">&#123;</span>
     <span class="kw">let</span> P <span class="op">=</span> <span class="kw">this</span>.<span class="at">constructor</span>
     <span class="cf">return</span> <span class="kw">this</span>.<span class="at">then</span>(
         value  <span class="op">=&gt;</span> <span class="va">P</span>.<span class="at">resolve</span>(<span class="at">fn</span>()).<span class="at">then</span>(() <span class="op">=&gt;</span> value)<span class="op">,</span>
-        reason <span class="op">=&gt;</span> <span class="va">P</span>.<span class="at">resolve</span>(<span class="at">fn</span>()).<span class="at">then</span>(() <span class="op">=&gt;</span> <span class="op">{</span> <span class="cf">throw</span> reason <span class="op">}</span>)
+        reason <span class="op">=&gt;</span> <span class="va">P</span>.<span class="at">resolve</span>(<span class="at">fn</span>()).<span class="at">then</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span> <span class="cf">throw</span> reason <span class="op">&#125;</span>)
     )
-<span class="op">}</span></code></pre></div><p>注意几个要点：</p><p>1）这里不直接使用 <code>Promise.resolve()</code>，是因为如果这样写，那么这个 finally 方法就只能兼容我们的 Promise 版本了；而通过 promise 实例的 constructor 则始终可以获取该实例对应的 Promise 版本</p><p>2）因为调用 finally 后返回的 promise 的状态依赖于调用 finally 的 promise 实例，所以返回一个 <code>this.then(...)</code> ，方便获取 promise 实例的 value 或者 reason</p><p>3）在 then 的成功回调和失败回调中，不仅执行了 fn，而且还将其执行结果用 <code>P.resolve()</code> 包装起来，这主要是为了处理 fn 执行结果可能为 promise 的情况 —— 在这种情况下，它可能会影响到最后返回的 promise 的状态。</p><p>通过两个例子来理解这样写的目的。比如说：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">1</span>).<span class="at">finally</span>(() <span class="op">=&gt;</span> <span class="op">{</span><span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">2</span>)<span class="op">}</span>)</code></pre></div><p>按照我们的代码，调用 finally 之后将会返回 <code>Promise.resolve(1).then(...)</code>，走成功回调的逻辑，获取的 value 就是 1。而 <code>P.resolve(fn())</code> 将会返回 <code>fn()</code>，也就是 <code>Promise.resolve(2)</code>，走成功回调的逻辑，回调返回 value。最终调用 finally 返回的就恰好是一个 resolve 1 的 promise。</p><p>但如果是：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">1</span>).<span class="at">finally</span>(() <span class="op">=&gt;</span> <span class="op">{</span><span class="cf">return</span> <span class="va">Promise</span>.<span class="at">reject</span>(<span class="dv">2</span>)<span class="op">}</span>)</code></pre></div><p>注意这里回调返回的虽然也是 promise，但它是 rejected 状态的。那么调用 finally 之后将会返回 <code>Promise.resolve(1).then(...)</code>，走成功回调的逻辑，获取的 value 就是 1。而 <code>P.resolve(fn())</code> 将会返回 <code>fn()</code>，也就是 <code>Promise.reject(2)</code>，走失败回调的逻辑，<strong>注意这里我们没有声明失败回调</strong>，所以会采用默认的失败回调， 接受前面 promise reject 掉的 2，并将这个 2 抛出去，所以最终调用 finally 返回的就恰好是一个 reject 2 的 promise。这种情况下，最终的 promise 并没有沿用调用 finally 的 promise 的状态，而是依赖于 finally 回调的执行结果。</p></div><div class="post-nav"><div class="post-nav-prev"><a href="/2021/09/05/F-%E4%B8%87%E5%AD%97%E6%A2%B3%E7%90%86%20%20Webpack%20%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/" rel="prev" title="万字梳理 Webpack 常用配置和优化方案"><i class="fa fa-angle-double-left"></i>&nbsp万字梳理 Webpack 常用配置和优化方案</a></div><div class="post-nav-next"><a href="/2021/07/09/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D%EF%BC%9F/" rel="next" title="JS 原生方法原理探究（九）：如何手写实现浅拷贝和深拷贝？">JS 原生方法原理探究（九）：如何手写实现浅拷贝和深拷贝？&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-promisea"><span class="toc-text">实现 Promise&#x2F;A+</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AF%E8%AF%AD"><span class="toc-text">术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-promise-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">实现 Promise 构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-promise-%E5%AE%9E%E4%BE%8B%E7%9A%84-then-%E6%96%B9%E6%B3%95"><span class="toc-text">实现 promise 实例的 then 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E6%AD%A5%E5%AE%9E%E7%8E%B0-then-%E6%96%B9%E6%B3%95"><span class="toc-text">1）初步实现 then 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-promise-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%96%B0%E5%A2%9E%E4%B8%A4%E4%B8%AA%E7%BC%93%E5%AD%98%E6%95%B0%E7%BB%84"><span class="toc-text">2）修改 Promise 构造函数：新增两个缓存数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-resolve-%E5%92%8C-reject-%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E7%BC%93%E5%AD%98%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-text">3）修改 resolve 和 reject 函数：执行缓存数组中的回调函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B-then-%E6%96%B9%E6%B3%95%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7"><span class="toc-text">4）改进 then 方法：异常捕获</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B-then-%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%80%BC%E7%9A%84%E7%A9%BF%E9%80%8F"><span class="toc-text">5）改进 then 方法：实现值的穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B-then-%E6%96%B9%E6%B3%95%E7%A1%AE%E5%AE%9A-then-%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-text">6）改进 then 方法：确定 then 方法的返回值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-resolvepromise-%E6%96%B9%E6%B3%95"><span class="toc-text">实现 resolvePromise 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E8%87%B4%E6%80%9D%E8%B7%AF"><span class="toc-text">1）大致思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86-x-%E6%98%AF-thenable-%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-text">2）如何处理 x 是 thenable 的情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E8%A6%81%E7%82%B9"><span class="toc-text">3）其它需要注意的要点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E7%9A%84%E5%BC%82%E6%AD%A5%E6%89%A7%E8%A1%8C"><span class="toc-text">实现回调函数的异步执行</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%AE%8F%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">1）基于宏任务的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%BE%AE%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">2）基于微任务的实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E5%96%84-resolve-%E5%87%BD%E6%95%B0"><span class="toc-text">完善 resolve 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-text">最终的代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise-a-%E6%B5%8B%E8%AF%95"><span class="toc-text">Promise A+ 测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-promise-%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E5%92%8C%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="toc-text">实现 Promise 的静态方法和原型方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#promise.resolve"><span class="toc-text">Promise.resolve()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise.reject"><span class="toc-text">Promise.reject()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise.all"><span class="toc-text">Promise.all()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise.race"><span class="toc-text">Promise.race()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise.allsettled"><span class="toc-text">Promise.allSettled()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise.prototype.catch"><span class="toc-text">Promise.prototype.catch()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise.prototype.finally"><span class="toc-text">Promise.prototype.finally()</span></a></li></ol></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"retro",pageSize:10,visitor:!0})</script></section></main><script>var user=[1,2,3,4]</script><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - <span>2021</span> My Blog</p><p class="a">Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/search.js"></script><script src="/js/post-except.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script></body></html><!-- rebuild by neat -->
+<span class="op">&#125;</span></code></pre></div><p>注意几个要点：</p><p>1）这里不直接使用 <code>Promise.resolve()</code>，是因为如果这样写，那么这个 finally 方法就只能兼容我们的 Promise 版本了；而通过 promise 实例的 constructor 则始终可以获取该实例对应的 Promise 版本</p><p>2）因为调用 finally 后返回的 promise 的状态依赖于调用 finally 的 promise 实例，所以返回一个 <code>this.then(...)</code> ，方便获取 promise 实例的 value 或者 reason</p><p>3）在 then 的成功回调和失败回调中，不仅执行了 fn，而且还将其执行结果用 <code>P.resolve()</code> 包装起来，这主要是为了处理 fn 执行结果可能为 promise 的情况 —— 在这种情况下，它可能会影响到最后返回的 promise 的状态。</p><p>通过两个例子来理解这样写的目的。比如说：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">1</span>).<span class="at">finally</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span><span class="cf">return</span> <span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">2</span>)<span class="op">&#125;</span>)</code></pre></div><p>按照我们的代码，调用 finally 之后将会返回 <code>Promise.resolve(1).then(...)</code>，走成功回调的逻辑，获取的 value 就是 1。而 <code>P.resolve(fn())</code> 将会返回 <code>fn()</code>，也就是 <code>Promise.resolve(2)</code>，走成功回调的逻辑，回调返回 value。最终调用 finally 返回的就恰好是一个 resolve 1 的 promise。</p><p>但如果是：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Promise</span>.<span class="at">resolve</span>(<span class="dv">1</span>).<span class="at">finally</span>(() <span class="op">=&gt;</span> <span class="op">&#123;</span><span class="cf">return</span> <span class="va">Promise</span>.<span class="at">reject</span>(<span class="dv">2</span>)<span class="op">&#125;</span>)</code></pre></div><p>注意这里回调返回的虽然也是 promise，但它是 rejected 状态的。那么调用 finally 之后将会返回 <code>Promise.resolve(1).then(...)</code>，走成功回调的逻辑，获取的 value 就是 1。而 <code>P.resolve(fn())</code> 将会返回 <code>fn()</code>，也就是 <code>Promise.reject(2)</code>，走失败回调的逻辑，<strong>注意这里我们没有声明失败回调</strong>，所以会采用默认的失败回调， 接受前面 promise reject 掉的 2，并将这个 2 抛出去，所以最终调用 finally 返回的就恰好是一个 reject 2 的 promise。这种情况下，最终的 promise 并没有沿用调用 finally 的 promise 的状态，而是依赖于 finally 回调的执行结果。</p></div><div class="post-nav"><div class="post-nav-prev"><a href="/2021/09/05/F-%E4%B8%87%E5%AD%97%E6%A2%B3%E7%90%86%20%20Webpack%20%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/" rel="prev" title="万字梳理 Webpack 常用配置和优化方案"><i class="fa fa-angle-double-left"></i>&nbsp万字梳理 Webpack 常用配置和优化方案</a></div><div class="post-nav-next"><a href="/2021/07/09/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D%EF%BC%9F/" rel="next" title="JS 原生方法原理探究（九）：如何手写实现浅拷贝和深拷贝？">JS 原生方法原理探究（九）：如何手写实现浅拷贝和深拷贝？&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-promisea"><span class="toc-text">实现 Promise&#x2F;A+</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AF%E8%AF%AD"><span class="toc-text">术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-promise-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">实现 Promise 构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-promise-%E5%AE%9E%E4%BE%8B%E7%9A%84-then-%E6%96%B9%E6%B3%95"><span class="toc-text">实现 promise 实例的 then 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E6%AD%A5%E5%AE%9E%E7%8E%B0-then-%E6%96%B9%E6%B3%95"><span class="toc-text">1）初步实现 then 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-promise-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%96%B0%E5%A2%9E%E4%B8%A4%E4%B8%AA%E7%BC%93%E5%AD%98%E6%95%B0%E7%BB%84"><span class="toc-text">2）修改 Promise 构造函数：新增两个缓存数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-resolve-%E5%92%8C-reject-%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E7%BC%93%E5%AD%98%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-text">3）修改 resolve 和 reject 函数：执行缓存数组中的回调函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B-then-%E6%96%B9%E6%B3%95%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7"><span class="toc-text">4）改进 then 方法：异常捕获</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B-then-%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%80%BC%E7%9A%84%E7%A9%BF%E9%80%8F"><span class="toc-text">5）改进 then 方法：实现值的穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B-then-%E6%96%B9%E6%B3%95%E7%A1%AE%E5%AE%9A-then-%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-text">6）改进 then 方法：确定 then 方法的返回值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-resolvepromise-%E6%96%B9%E6%B3%95"><span class="toc-text">实现 resolvePromise 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E8%87%B4%E6%80%9D%E8%B7%AF"><span class="toc-text">1）大致思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86-x-%E6%98%AF-thenable-%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-text">2）如何处理 x 是 thenable 的情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E8%A6%81%E7%82%B9"><span class="toc-text">3）其它需要注意的要点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E7%9A%84%E5%BC%82%E6%AD%A5%E6%89%A7%E8%A1%8C"><span class="toc-text">实现回调函数的异步执行</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%AE%8F%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">1）基于宏任务的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%BE%AE%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">2）基于微任务的实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E5%96%84-resolve-%E5%87%BD%E6%95%B0"><span class="toc-text">完善 resolve 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-text">最终的代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise-a-%E6%B5%8B%E8%AF%95"><span class="toc-text">Promise A+ 测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-promise-%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E5%92%8C%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="toc-text">实现 Promise 的静态方法和原型方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#promise.resolve"><span class="toc-text">Promise.resolve()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise.reject"><span class="toc-text">Promise.reject()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise.all"><span class="toc-text">Promise.all()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise.race"><span class="toc-text">Promise.race()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise.allsettled"><span class="toc-text">Promise.allSettled()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise.prototype.catch"><span class="toc-text">Promise.prototype.catch()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise.prototype.finally"><span class="toc-text">Promise.prototype.finally()</span></a></li></ol></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"retro",pageSize:10,visitor:!0})</script></section></main><script>var user=[1,2,3,4]</script><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - <span>2021</span> My Blog</p><p class="a">Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/search.js"></script><script src="/js/post-except.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script></body></html><!-- rebuild by neat -->

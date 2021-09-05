@@ -1,6 +1,6 @@
-<!-- build time:Sun Sep 05 2021 14:05:21 GMT+0800 (中国标准时间) --><!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Focus on FE learning</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third%20party/pace-theme-flash.css"><link rel="icon" href="/images/kour.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
+<!-- build time:Sun Sep 05 2021 14:32:52 GMT+0800 (中国标准时间) --><!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Focus on FE learning</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third%20party/pace-theme-flash.css"><link rel="icon" href="/images/kour.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script></head><body><header class="header"><div class="header_top"><span class="theme"><a href="/">Chor's blog</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">首页</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">分类</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">归档</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">标签</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">关于</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue" class="logo">Focus on FE learning</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div><div class="blog-down"><a href="javascript:void(0);"><i class="fa fa-angle-double-down fa-2x"></i></a></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">Vue 组件（二）：父子组件通信</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2019-10-03&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp2.7k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp11 mins&nbsp&nbsp&nbsp</span><div class="post-tags"><i class="fa fa-tags"></i> <a href="/tags/Vue/">Vue</a> <a href="/tags/组件/">组件</a></div></div><div class="post-content"><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1-0.png"><a id="more"></a></p><p>子组件是不能直接访问父组件中的数据的，但有时候父子组件之间需要进行数据交互，这就涉及到了父子组件通信的问题。简单来说，父组件向子组件通信是通过 <strong><code>props</code></strong> 进行的，而子组件向父组件通信则是通过<strong>自定义事件</strong>进行的。</p><p>我们用一个简易的 todolist 案例来理解这两个过程。</p><h2 id="todolist-案例">1.todolist 案例</h2><h3 id="父传子">1.1 父传子</h3><p>假定我们现在有一个需求：在输入框中输入待办事项，点击添加按钮可以将事项展现在页面上。如下图所示：</p><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1-1.gif"></div><p>分析：页面分为两个部分，一部分是操作区，一部分是展示区。展示区可以用 <code>li</code>，那么这些 <code>li</code> 就可以看作是可复用的子组件，而其它部分则看作是父组件，我们在父组件中操作，结果却是在子组件中显示的，所以这里是父组件向子组件通信的问题。</p><p>首先将根实例作为父组件，然后注册一个子组件，写好大概的结构：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!--父组件模板--&gt;</span>
+<script src="/js/prism-line-numbers.min.js"></script></head><body><header class="header"><div class="header_top"><span class="theme"><a href="/">Chor's blog</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">首页</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">分类</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">归档</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">标签</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">关于</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue" class="logo">Focus on FE learning</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div><div class="blog-down"><a href="javascript:void(0);"><i class="fa fa-angle-double-down fa-2x"></i></a></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">Vue 组件（二）：父子组件通信</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2019-10-03&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp2.8k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp11 mins&nbsp&nbsp&nbsp</span><div class="post-tags"><i class="fa fa-tags"></i> <a href="/tags/Vue/">Vue</a> <a href="/tags/组件/">组件</a></div></div><div class="post-content"><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1-0.png"> <span id="more"></span></p><p>子组件是不能直接访问父组件中的数据的，但有时候父子组件之间需要进行数据交互，这就涉及到了父子组件通信的问题。简单来说，父组件向子组件通信是通过 <strong><code>props</code></strong> 进行的，而子组件向父组件通信则是通过<strong>自定义事件</strong>进行的。</p><p>我们用一个简易的 todolist 案例来理解这两个过程。</p><h2 id="todolist-案例">1.todolist 案例</h2><h3 id="父传子">1.1 父传子</h3><p>假定我们现在有一个需求：在输入框中输入待办事项，点击添加按钮可以将事项展现在页面上。如下图所示：</p><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1-1.gif"></div><p>分析：页面分为两个部分，一部分是操作区，一部分是展示区。展示区可以用 <code>li</code>，那么这些 <code>li</code> 就可以看作是可复用的子组件，而其它部分则看作是父组件，我们在父组件中操作，结果却是在子组件中显示的，所以这里是父组件向子组件通信的问题。</p><p>首先将根实例作为父组件，然后注册一个子组件，写好大概的结构：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!--父组件模板--&gt;</span>
 <span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;app&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> v-model=</span><span class="st">&quot;newvalue&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;button</span> <span class="er">@click</span><span class="ot">=</span><span class="st">&quot;addItem&quot;</span><span class="kw">&gt;</span>点击添加<span class="kw">&lt;/button&gt;</span>
@@ -12,25 +12,25 @@
   <span class="kw">&lt;div&gt;</span>
     <span class="kw">&lt;ul&gt;&lt;/ul&gt;</span>
   <span class="kw">&lt;/div&gt;</span>
-<span class="kw">&lt;/template&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">const</span> cpn <span class="op">=</span> <span class="op">{</span>
+<span class="kw">&lt;/template&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">const</span> cpn <span class="op">=</span> <span class="op">&#123;</span>
   <span class="dt">template</span><span class="op">:</span><span class="st">&quot;#cpn&quot;</span>
-<span class="op">}</span>
-<span class="kw">const</span> app  <span class="op">=</span> <span class="kw">new</span> <span class="at">Vue</span>(<span class="op">{</span>
+<span class="op">&#125;</span>
+<span class="kw">const</span> app  <span class="op">=</span> <span class="kw">new</span> <span class="at">Vue</span>(<span class="op">&#123;</span>
   <span class="dt">el</span><span class="op">:</span><span class="st">&#39;#app&#39;</span><span class="op">,</span>
-  <span class="dt">data</span><span class="op">:{</span>
+  <span class="dt">data</span><span class="op">:&#123;</span>
     <span class="dt">newvalue</span><span class="op">:</span><span class="st">&#39;&#39;</span><span class="op">,</span>
     <span class="dt">list</span><span class="op">:</span>[]
-  <span class="op">},</span>
-  <span class="dt">methods</span><span class="op">:{</span>
-    <span class="at">addItem</span>()<span class="op">{</span>
+  <span class="op">&#125;,</span>
+  <span class="dt">methods</span><span class="op">:&#123;</span>
+    <span class="at">addItem</span>()<span class="op">&#123;</span>
       <span class="kw">this</span>.<span class="va">list</span>.<span class="at">push</span>(<span class="kw">this</span>.<span class="at">newvalue</span>)<span class="op">;</span>
       <span class="kw">this</span>.<span class="at">newvalue</span> <span class="op">=</span> <span class="st">&#39;&#39;</span>
-    <span class="op">}</span>
-  <span class="op">},</span>
-  <span class="dt">components</span><span class="op">:{</span>
+    <span class="op">&#125;</span>
+  <span class="op">&#125;,</span>
+  <span class="dt">components</span><span class="op">:&#123;</span>
     cpn
-  <span class="op">}</span>
-<span class="op">}</span>)</code></pre></div><p>表单元素需要双向数据绑定，所以我们这里使用 <code>v-model=&quot;newvalue&quot;</code>，<code>newvalue</code> 初始化的时候是空字符串，后面就代表我们输入的待办事项，监听按钮的点击事件并把它 <code>push</code> 到空数组中，之后为了用户操作方便（不需要手动删除输入框内容），我们再把 <code>newvalue</code> 置空。这时候，父组件的操作已经完成了，接下来要把数据传递给子组件并显示出来。</p><p><code>list</code> 是要传递的数据，首先把它交付给自定义属性 <code>list2</code>，对于子组件，它需要通过 <code>props</code> （可以是数组或者对象）去接收。之后，我们在子组件模板中进行列表的遍历，遍历的对象就是 list2 数组。</p><p>代码如下：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!--父组件模板--&gt;</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span>)</code></pre></div><p>表单元素需要双向数据绑定，所以我们这里使用 <code>v-model=&quot;newvalue&quot;</code>，<code>newvalue</code> 初始化的时候是空字符串，后面就代表我们输入的待办事项，监听按钮的点击事件并把它 <code>push</code> 到空数组中，之后为了用户操作方便（不需要手动删除输入框内容），我们再把 <code>newvalue</code> 置空。这时候，父组件的操作已经完成了，接下来要把数据传递给子组件并显示出来。</p><p><code>list</code> 是要传递的数据，首先把它交付给自定义属性 <code>list2</code>，对于子组件，它需要通过 <code>props</code> （可以是数组或者对象）去接收。之后，我们在子组件模板中进行列表的遍历，遍历的对象就是 list2 数组。</p><p>代码如下：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!--父组件模板--&gt;</span>
 <span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;app&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> v-model=</span><span class="st">&quot;newvalue&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;button</span> <span class="er">@click</span><span class="ot">=</span><span class="st">&quot;addItem&quot;</span><span class="kw">&gt;</span>点击添加<span class="kw">&lt;/button&gt;</span>
@@ -41,29 +41,29 @@
 <span class="kw">&lt;template</span><span class="ot"> id=</span><span class="st">&quot;cpn&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;div&gt;</span>
     <span class="kw">&lt;ul&gt;</span>
-      <span class="kw">&lt;li</span><span class="ot"> v-for=</span><span class="st">&quot;(item,index) in list2&quot;</span><span class="kw">&gt;</span><span class="co"></span><span class="kw">&lt;/li&gt;</span>
+      <span class="kw">&lt;li</span><span class="ot"> v-for=</span><span class="st">&quot;(item,index) in list2&quot;</span><span class="kw">&gt;</span><span class="co">&#123;&#123;item&#125;&#125;</span><span class="kw">&lt;/li&gt;</span>
     <span class="kw">&lt;/ul&gt;</span>
   <span class="kw">&lt;/div&gt;</span>
-<span class="kw">&lt;/template&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">const</span> cpn <span class="op">=</span> <span class="op">{</span>
+<span class="kw">&lt;/template&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">const</span> cpn <span class="op">=</span> <span class="op">&#123;</span>
   <span class="dt">template</span><span class="op">:</span><span class="st">&quot;#cpn&quot;</span><span class="op">,</span>
   <span class="dt">props</span><span class="op">:</span>[<span class="st">&quot;list2&quot;</span>]
-<span class="op">}</span>
-<span class="kw">const</span> app  <span class="op">=</span> <span class="kw">new</span> <span class="at">Vue</span>(<span class="op">{</span>
+<span class="op">&#125;</span>
+<span class="kw">const</span> app  <span class="op">=</span> <span class="kw">new</span> <span class="at">Vue</span>(<span class="op">&#123;</span>
   <span class="dt">el</span><span class="op">:</span><span class="st">&#39;#app&#39;</span><span class="op">,</span>
-  <span class="dt">data</span><span class="op">:{</span>
+  <span class="dt">data</span><span class="op">:&#123;</span>
     <span class="dt">newvalue</span><span class="op">:</span><span class="st">&#39;&#39;</span><span class="op">,</span>
     <span class="dt">list</span><span class="op">:</span>[]
-  <span class="op">},</span>
-  <span class="dt">methods</span><span class="op">:{</span>
-    <span class="at">addItem</span>()<span class="op">{</span>
+  <span class="op">&#125;,</span>
+  <span class="dt">methods</span><span class="op">:&#123;</span>
+    <span class="at">addItem</span>()<span class="op">&#123;</span>
       <span class="kw">this</span>.<span class="va">list</span>.<span class="at">push</span>(<span class="kw">this</span>.<span class="at">newvalue</span>)<span class="op">;</span>
       <span class="kw">this</span>.<span class="at">newvalue</span> <span class="op">=</span> <span class="st">&#39;&#39;</span>
-    <span class="op">}</span>
-  <span class="op">},</span>
-  <span class="dt">components</span><span class="op">:{</span>
+    <span class="op">&#125;</span>
+  <span class="op">&#125;,</span>
+  <span class="dt">components</span><span class="op">:&#123;</span>
     cpn
-  <span class="op">}</span>
-<span class="op">}</span>)</code></pre></div><blockquote><p>每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值。这意味着你不应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告。</p></blockquote><h3 id="子传父">1.2 子传父</h3><p>作为一个 todolist，除了添加之外应该还可以删除，所以接下来的需求是点击待办事项可以进行删除。如下图所示：</p><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1-2.1.gif"></div><p>分析：因为这里子组件只负责点击操作，实际的删除需要父组件自己去操作数据（类似于子组件打个电话告诉父组件该删除哪个东西了），所以这里涉及到了子组件向父组件通信的问题。</p><p>这里首先还是监听待办事项的点击事件，点击后调用函数，之后执行函数中的 <code>this.$emit('eventName',args)</code>，作用是由实例向外触发一个自定义事件（参数可选），之后父组件再监听这个自定义事件，一旦监听到事件就调用父组件（即根实例）下挂载的方法，来删除待办事项。</p><p>代码如下：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;app&quot;</span><span class="kw">&gt;</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span>)</code></pre></div><blockquote><p>每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值。这意味着你不应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告。</p></blockquote><h3 id="子传父">1.2 子传父</h3><p>作为一个 todolist，除了添加之外应该还可以删除，所以接下来的需求是点击待办事项可以进行删除。如下图所示：</p><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/Vue%20%E7%BB%84%E4%BB%B6%EF%BC%9A%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1-2.1.gif"></div><p>分析：因为这里子组件只负责点击操作，实际的删除需要父组件自己去操作数据（类似于子组件打个电话告诉父组件该删除哪个东西了），所以这里涉及到了子组件向父组件通信的问题。</p><p>这里首先还是监听待办事项的点击事件，点击后调用函数，之后执行函数中的 <code>this.$emit('eventName',args)</code>，作用是由实例向外触发一个自定义事件（参数可选），之后父组件再监听这个自定义事件，一旦监听到事件就调用父组件（即根实例）下挂载的方法，来删除待办事项。</p><p>代码如下：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;app&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> v-model=</span><span class="st">&quot;newvalue&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;button</span> <span class="er">@click</span><span class="ot">=</span><span class="st">&quot;addItem&quot;</span><span class="kw">&gt;</span>点击添加<span class="kw">&lt;/button&gt;</span>
   <span class="co">&lt;!-- 3.父组件监听到自定义事件 receive 后，调用 deleteItem --&gt;</span>
@@ -74,71 +74,71 @@
     <span class="kw">&lt;ul&gt;</span>
       <span class="co">&lt;!--1.监听点击事件--&gt;</span>
       <span class="kw">&lt;li</span><span class="ot"> v-for=</span><span class="st">&quot;(item,index) in list2&quot;</span> <span class="er">@click</span><span class="ot">=</span><span class="st">&quot;remove(index)&quot;</span><span class="kw">&gt;</span>
-        <span class="co"></span>
+        <span class="co">&#123;&#123;item&#125;&#125;</span>
       <span class="kw">&lt;/li&gt;</span>
     <span class="kw">&lt;/ul&gt;</span>
   <span class="kw">&lt;/div&gt;</span>
-<span class="kw">&lt;/template&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">const</span> cpn <span class="op">=</span> <span class="op">{</span>
+<span class="kw">&lt;/template&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">const</span> cpn <span class="op">=</span> <span class="op">&#123;</span>
   <span class="dt">template</span><span class="op">:</span><span class="st">&quot;#cpn&quot;</span><span class="op">,</span>
   <span class="dt">props</span><span class="op">:</span>[<span class="st">&quot;list2&quot;</span>]<span class="op">,</span>
-  <span class="dt">methods</span><span class="op">:{</span>
-    <span class="at">remove</span>(index)<span class="op">{</span>
+  <span class="dt">methods</span><span class="op">:&#123;</span>
+    <span class="at">remove</span>(index)<span class="op">&#123;</span>
       <span class="kw">this</span>.<span class="at">$emit</span>(<span class="st">&quot;receive&quot;</span><span class="op">,</span>index)  <span class="co">// 2.向外触发自定义事件 receive</span>
-    <span class="op">}</span>
-  <span class="op">}</span>
-<span class="op">}</span>
-<span class="kw">const</span> app  <span class="op">=</span> <span class="kw">new</span> <span class="at">Vue</span>(<span class="op">{</span>
+    <span class="op">&#125;</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span>
+<span class="kw">const</span> app  <span class="op">=</span> <span class="kw">new</span> <span class="at">Vue</span>(<span class="op">&#123;</span>
   <span class="dt">el</span><span class="op">:</span><span class="st">&#39;#app&#39;</span><span class="op">,</span>
-  <span class="dt">data</span><span class="op">:{</span>
+  <span class="dt">data</span><span class="op">:&#123;</span>
     <span class="dt">newvalue</span><span class="op">:</span><span class="st">&#39;&#39;</span><span class="op">,</span>
     <span class="dt">list</span><span class="op">:</span>[]
-  <span class="op">},</span>
-  <span class="dt">methods</span><span class="op">:{</span>
-    <span class="at">addItem</span>()<span class="op">{</span>
+  <span class="op">&#125;,</span>
+  <span class="dt">methods</span><span class="op">:&#123;</span>
+    <span class="at">addItem</span>()<span class="op">&#123;</span>
       <span class="kw">this</span>.<span class="va">list</span>.<span class="at">push</span>(<span class="kw">this</span>.<span class="at">newvalue</span>)<span class="op">;</span>
       <span class="kw">this</span>.<span class="at">newvalue</span> <span class="op">=</span> <span class="st">&#39;&#39;</span>
-    <span class="op">},</span>
+    <span class="op">&#125;,</span>
     <span class="co">// 4.执行 deleteItem 删除数组元素</span>
-    <span class="at">deleteItem</span>(index)<span class="op">{</span>
+    <span class="at">deleteItem</span>(index)<span class="op">&#123;</span>
       <span class="kw">this</span>.<span class="va">list</span>.<span class="at">splice</span>(index<span class="op">,</span><span class="dv">1</span>)
-    <span class="op">}</span>
-  <span class="op">},</span>
-  <span class="dt">components</span><span class="op">:{</span>
+    <span class="op">&#125;</span>
+  <span class="op">&#125;,</span>
+  <span class="dt">components</span><span class="op">:&#123;</span>
     cpn
-  <span class="op">}</span>
-<span class="op">}</span>)</code></pre></div><h2 id="props">2. <code>props</code></h2><p>前面使用的 <code>props</code> 是数组，实际开发中用的更多的其实是对象。作为对象的 <code>props</code> 可以配置高级选项，如类型检测、自定义校验和设置默认值等。</p><p>假定上面的子组件还接受了其它数据：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">const</span> cpn <span class="op">=</span> <span class="op">{</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span>)</code></pre></div><h2 id="props">2. <code>props</code></h2><p>前面使用的 <code>props</code> 是数组，实际开发中用的更多的其实是对象。作为对象的 <code>props</code> 可以配置高级选项，如类型检测、自定义校验和设置默认值等。</p><p>假定上面的子组件还接受了其它数据：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">const</span> cpn <span class="op">=</span> <span class="op">&#123;</span>
   <span class="dt">template</span><span class="op">:</span><span class="st">&quot;#cpn&quot;</span><span class="op">,</span>
-  <span class="dt">methods</span><span class="op">:{</span>
+  <span class="dt">methods</span><span class="op">:&#123;</span>
     .......
-  <span class="op">},</span>
-  <span class="dt">props</span><span class="op">:{</span>
+  <span class="op">&#125;,</span>
+  <span class="dt">props</span><span class="op">:&#123;</span>
     <span class="dt">propA</span><span class="op">:</span>Array<span class="op">,</span> <span class="co">// 接受的 propA 类型必须是数组。也可以指定自定义类型</span>
-    <span class="dt">propB</span><span class="op">:{</span>String<span class="op">,</span>Number<span class="op">},</span> <span class="co">// propB 必须是字符串或者数字</span>
-    <span class="dt">propC</span><span class="op">:{</span>
+    <span class="dt">propB</span><span class="op">:&#123;</span>String<span class="op">,</span>Number<span class="op">&#125;,</span> <span class="co">// propB 必须是字符串或者数字</span>
+    <span class="dt">propC</span><span class="op">:&#123;</span>
       <span class="dt">type</span><span class="op">:</span>String<span class="op">,</span>
       <span class="dt">required</span><span class="op">:</span><span class="kw">true</span>    <span class="co">// 必须接受 propC，否则报错</span>
-    <span class="op">},</span>
-    <span class="dt">propD</span><span class="op">:{</span>
+    <span class="op">&#125;,</span>
+    <span class="dt">propD</span><span class="op">:&#123;</span>
       <span class="dt">type</span><span class="op">:</span>String<span class="op">,</span>
       <span class="dt">default</span><span class="op">:</span><span class="st">&quot;demo&quot;</span>   <span class="co">// 没有接受到 propD 时使用这个默认值</span>
-    <span class="op">},</span>
-    <span class="dt">propD</span><span class="op">:{</span>
+    <span class="op">&#125;,</span>
+    <span class="dt">propD</span><span class="op">:&#123;</span>
       <span class="dt">type</span><span class="op">:</span>Object<span class="op">,</span>
-      <span class="dt">default</span><span class="op">:</span><span class="kw">function</span>()<span class="op">{</span>   <span class="co">// 数组或对象指定默认值时必须是一个函数</span>
-        <span class="cf">return</span> <span class="op">{</span><span class="dt">message</span><span class="op">:</span><span class="st">&quot;Hello&quot;</span><span class="op">}</span>
-      <span class="op">}</span>
-    <span class="op">},</span>
-    <span class="dt">propE</span><span class="op">:{</span>
-      <span class="at">validator</span>(value)<span class="op">{</span>
+      <span class="dt">default</span><span class="op">:</span><span class="kw">function</span>()<span class="op">&#123;</span>   <span class="co">// 数组或对象指定默认值时必须是一个函数</span>
+        <span class="cf">return</span> <span class="op">&#123;</span><span class="dt">message</span><span class="op">:</span><span class="st">&quot;Hello&quot;</span><span class="op">&#125;</span>
+      <span class="op">&#125;</span>
+    <span class="op">&#125;,</span>
+    <span class="dt">propE</span><span class="op">:&#123;</span>
+      <span class="at">validator</span>(value)<span class="op">&#123;</span>
         <span class="co">// 这个值必须匹配下列字符串中的一个</span>
-        <span class="cf">return</span> <span class="op">{</span><span class="st">&#39;aaa&#39;</span><span class="op">,</span><span class="st">&#39;bbb&#39;</span><span class="op">}</span>.<span class="at">indexOf</span>(value) <span class="op">!==</span> <span class="op">-</span><span class="dv">1</span>
-      <span class="op">}</span>
-    <span class="op">}</span>
-  <span class="op">}</span>
-<span class="op">}</span></code></pre></div><p>另外，还要注意一下 <code>prop</code> 的命名。引用官方文档的一段话：</p><blockquote><p>HTML 中的特性名是大小写不敏感的，所以浏览器会把所有大写字符解释为小写字符。这意味着当你使用 DOM 中的模板时，camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名：</p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Vue</span>.<span class="at">component</span>(<span class="st">&#39;blog-post&#39;</span><span class="op">,</span> <span class="op">{</span>
+        <span class="cf">return</span> <span class="op">&#123;</span><span class="st">&#39;aaa&#39;</span><span class="op">,</span><span class="st">&#39;bbb&#39;</span><span class="op">&#125;</span>.<span class="at">indexOf</span>(value) <span class="op">!==</span> <span class="op">-</span><span class="dv">1</span>
+      <span class="op">&#125;</span>
+    <span class="op">&#125;</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><p>另外，还要注意一下 <code>prop</code> 的命名。引用官方文档的一段话：</p><blockquote><p>HTML 中的特性名是大小写不敏感的，所以浏览器会把所有大写字符解释为小写字符。这意味着当你使用 DOM 中的模板时，camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名：</p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Vue</span>.<span class="at">component</span>(<span class="st">&#39;blog-post&#39;</span><span class="op">,</span> <span class="op">&#123;</span>
   <span class="dt">props</span><span class="op">:</span> [<span class="st">&#39;postTitle&#39;</span>]<span class="op">,</span>  <span class="co">// 在 JavaScript 中是 camelCase 的</span>
-  <span class="dt">template</span><span class="op">:</span> <span class="st">&#39;&lt;h3&gt;&lt;/h3&gt;&#39;</span>
-<span class="op">}</span>)</code></pre></div><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- 在 HTML 中是 kebab-case 的 --&gt;</span>
+  <span class="dt">template</span><span class="op">:</span> <span class="st">&#39;&lt;h3&gt;&#123;&#123; postTitle &#125;&#125;&lt;/h3&gt;&#39;</span>
+<span class="op">&#125;</span>)</code></pre></div><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- 在 HTML 中是 kebab-case 的 --&gt;</span>
 <span class="kw">&lt;blog-post</span><span class="ot"> post-title=</span><span class="st">&quot;hello!&quot;</span><span class="kw">&gt;&lt;/blog-post&gt;</span></code></pre></div><blockquote><p>重申一次，如果你使用<strong>字符串模板</strong>，那么这个限制就不存在了。</p></blockquote><h2 id="在组件中使用-v-model">3. 在组件中使用 <code>v-model</code></h2><h3 id="一般情况">3.1 一般情况</h3><p>首先要弄清楚一件事：<code>v-model</code> 其实是语法糖，本质上是 <code>v-bind:value</code> 和 <code>v-on:input</code> 的结合，也就是说：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="op">&lt;</span>input type<span class="op">=</span><span class="st">&quot;text&quot;</span> v<span class="op">-</span>model<span class="op">=</span><span class="st">&quot;test&quot;</span><span class="op">&gt;</span>
 <span class="co">// 等同于</span>
 <span class="op">&lt;</span>input type<span class="op">=</span><span class="st">&quot;text&quot;</span> <span class="op">:</span>value<span class="op">=</span><span class="st">&quot;test&quot;</span> @input<span class="op">=</span><span class="st">&quot;test=$event.target.value&quot;</span><span class="op">&gt;</span></code></pre></div><p>根据这点，<code>v-model</code> 除了实现双向数据绑定之外，也可以用在组件中，更方便地书写父子组件通信。</p><p>假如我们现在想要实现：点击父组件按钮，数据 +1；反过来，点击子组件按钮，数据 -1。 代码如下：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;app&quot;</span><span class="kw">&gt;</span>
@@ -147,41 +147,41 @@
 <span class="kw">&lt;/div&gt;</span>
 <span class="kw">&lt;template</span><span class="ot"> id=</span><span class="st">&quot;cpn&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;div&gt;</span>
-    <span class="kw">&lt;h2&gt;</span><span class="co"></span><span class="kw">&lt;/h2&gt;</span>
+    <span class="kw">&lt;h2&gt;</span><span class="co">&#123;&#123;value&#125;&#125;</span><span class="kw">&lt;/h2&gt;</span>
     <span class="kw">&lt;button</span> <span class="er">@click</span><span class="ot">=</span><span class="st">&quot;decrease&quot;</span><span class="kw">&gt;</span>-<span class="kw">&lt;/button&gt;</span>
   <span class="kw">&lt;/div&gt;</span>
-<span class="kw">&lt;/template&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">const</span> cpn <span class="op">=</span> <span class="op">{</span>
+<span class="kw">&lt;/template&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">const</span> cpn <span class="op">=</span> <span class="op">&#123;</span>
   <span class="dt">template</span><span class="op">:</span><span class="st">&quot;#cpn&quot;</span><span class="op">,</span>
   <span class="dt">props</span><span class="op">:</span>[<span class="st">&quot;value&quot;</span>]<span class="op">,</span>
-  <span class="dt">methods</span><span class="op">:</span> <span class="op">{</span>
-    <span class="at">decrease</span>()<span class="op">{</span>
+  <span class="dt">methods</span><span class="op">:</span> <span class="op">&#123;</span>
+    <span class="at">decrease</span>()<span class="op">&#123;</span>
       <span class="kw">this</span>.<span class="at">$emit</span>(<span class="st">&quot;input&quot;</span><span class="op">,</span> <span class="kw">this</span>.<span class="at">value</span><span class="op">-</span><span class="dv">1</span>)
-    <span class="op">}</span>
-  <span class="op">}</span>
-<span class="op">}</span>
-<span class="kw">const</span> app  <span class="op">=</span> <span class="kw">new</span> <span class="at">Vue</span>(<span class="op">{</span>
+    <span class="op">&#125;</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span>
+<span class="kw">const</span> app  <span class="op">=</span> <span class="kw">new</span> <span class="at">Vue</span>(<span class="op">&#123;</span>
   <span class="dt">el</span><span class="op">:</span><span class="st">&#39;#app&#39;</span><span class="op">,</span>
-  <span class="dt">data</span><span class="op">:{</span>
+  <span class="dt">data</span><span class="op">:&#123;</span>
     <span class="dt">total</span><span class="op">:</span><span class="dv">0</span>
-  <span class="op">},</span>
-  <span class="dt">methods</span><span class="op">:</span> <span class="op">{</span>
-    <span class="at">increase</span>() <span class="op">{</span>
+  <span class="op">&#125;,</span>
+  <span class="dt">methods</span><span class="op">:</span> <span class="op">&#123;</span>
+    <span class="at">increase</span>() <span class="op">&#123;</span>
         <span class="kw">this</span>.<span class="at">total</span><span class="op">++</span>
-    <span class="op">}</span>
-  <span class="op">},</span>
-  <span class="dt">components</span><span class="op">:{</span>
+    <span class="op">&#125;</span>
+  <span class="op">&#125;,</span>
+  <span class="dt">components</span><span class="op">:&#123;</span>
     cpn
-  <span class="op">}</span>
-<span class="op">}</span>)</code></pre></div><p>前面我们说过，<code>v-model</code> 是语法糖，因此：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;cpn</span><span class="ot"> v-model=</span><span class="st">&quot;total&quot;</span><span class="kw">&gt;&lt;/cpn&gt;</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span>)</code></pre></div><p>前面我们说过，<code>v-model</code> 是语法糖，因此：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;cpn</span><span class="ot"> v-model=</span><span class="st">&quot;total&quot;</span><span class="kw">&gt;&lt;/cpn&gt;</span>
 <span class="co">&lt;!--相当于下面的--&gt;</span>
-<span class="kw">&lt;cpn</span><span class="ot"> :value=</span><span class="st">&quot;total&quot;</span> <span class="er">@input</span><span class="ot">=</span><span class="st">&quot;total=arguments[0]&quot;</span><span class="kw">&gt;&lt;/cpn&gt;</span></code></pre></div><p>分析： 我们把父组件数据直接绑定到 <code>value</code> 上（而不是自定义属性），之后子组件用 <code>prop</code> 接受。点击 -1 按钮后向外触发 <code>input</code> 事件（而不是自定义事件），同时传 -1 后的值，父组件监听到事件后调用函数完成赋值。 这里 <code>arguments[0]</code> 就是回调函数第一个参数，也就是前面 -1 后的值。</p><h3 id="model-选项自定义">3.2 <code>model</code> 选项自定义</h3><p>不过，组件的 <code>v-model</code> 默认会利用名为 <code>value</code> 的 <code>prop</code> 和名为 <code>input</code> 的事件，但是像单选框、复选框等类型的输入控件可能不需要 <code>value</code>，需要的是 <code>checked</code>；不需要 <code>oninput</code> 事件，需要的是 <code>onchange</code> 事件。所以 Vue 提供了 <code>model</code> 选项让我们实现自定义：</p><p>假定父组件有一个数据 <code>lovingVue</code> 用于表示子组件的多选框是否勾选，那么可以这么写：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Vue</span>.<span class="at">component</span>(<span class="st">&#39;base-checkbox&#39;</span><span class="op">,</span> <span class="op">{</span>
-  <span class="dt">model</span><span class="op">:</span> <span class="op">{</span>
+<span class="kw">&lt;cpn</span><span class="ot"> :value=</span><span class="st">&quot;total&quot;</span> <span class="er">@input</span><span class="ot">=</span><span class="st">&quot;total=arguments[0]&quot;</span><span class="kw">&gt;&lt;/cpn&gt;</span></code></pre></div><p>分析： 我们把父组件数据直接绑定到 <code>value</code> 上（而不是自定义属性），之后子组件用 <code>prop</code> 接受。点击 -1 按钮后向外触发 <code>input</code> 事件（而不是自定义事件），同时传 -1 后的值，父组件监听到事件后调用函数完成赋值。 这里 <code>arguments[0]</code> 就是回调函数第一个参数，也就是前面 -1 后的值。</p><h3 id="model-选项自定义">3.2 <code>model</code> 选项自定义</h3><p>不过，组件的 <code>v-model</code> 默认会利用名为 <code>value</code> 的 <code>prop</code> 和名为 <code>input</code> 的事件，但是像单选框、复选框等类型的输入控件可能不需要 <code>value</code>，需要的是 <code>checked</code>；不需要 <code>oninput</code> 事件，需要的是 <code>onchange</code> 事件。所以 Vue 提供了 <code>model</code> 选项让我们实现自定义：</p><p>假定父组件有一个数据 <code>lovingVue</code> 用于表示子组件的多选框是否勾选，那么可以这么写：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Vue</span>.<span class="at">component</span>(<span class="st">&#39;base-checkbox&#39;</span><span class="op">,</span> <span class="op">&#123;</span>
+  <span class="dt">model</span><span class="op">:</span> <span class="op">&#123;</span>
     <span class="dt">prop</span><span class="op">:</span> <span class="st">&#39;checked&#39;</span><span class="op">,</span>
     <span class="dt">event</span><span class="op">:</span> <span class="st">&#39;change&#39;</span>
-  <span class="op">},</span>
-  <span class="dt">props</span><span class="op">:</span> <span class="op">{</span>
+  <span class="op">&#125;,</span>
+  <span class="dt">props</span><span class="op">:</span> <span class="op">&#123;</span>
     <span class="dt">checked</span><span class="op">:</span> Boolean
-  <span class="op">},</span>
+  <span class="op">&#125;,</span>
   <span class="dt">template</span><span class="op">:</span> <span class="vs">`</span>
 <span class="vs">    &lt;input</span>
 <span class="vs">      type=&quot;checkbox&quot;</span>
@@ -189,7 +189,7 @@
 <span class="vs">      v-on:change=&quot;$emit(&#39;change&#39;, $event.target.checked)&quot;</span>
 <span class="vs">    &gt;</span>
 <span class="vs">  `</span>
-<span class="op">}</span>)</code></pre></div><p>其中：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;base-checkbox</span><span class="ot"> v-model=</span><span class="st">&quot;lovingVue&quot;</span><span class="kw">&gt;&lt;/base-checkbox&gt;</span>
+<span class="op">&#125;</span>)</code></pre></div><p>其中：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;base-checkbox</span><span class="ot"> v-model=</span><span class="st">&quot;lovingVue&quot;</span><span class="kw">&gt;&lt;/base-checkbox&gt;</span>
 <span class="co">&lt;!--相当于下面的--&gt;</span>
 <span class="kw">&lt;base-checkbox</span><span class="ot"> :checked=</span><span class="st">&quot;lovingVue&quot;</span> <span class="er">@change</span><span class="ot">=</span><span class="st">&quot;lovingVue=arguments[0]&quot;</span><span class="kw">&gt;</span>
-<span class="kw">&lt;/base-checkbox&gt;</span></code></pre></div><p>这里的 <code>lovingVue</code> 的值将会传入这个名为 <code>checked</code> 的 <code>prop</code>。同时当 <code>&lt;base-checkbox&gt;</code> 触发一个 <code>change</code> 事件并附带一个新的值的时候，这个 <code>lovingVue</code> 将会被更新。</p><p>注意你仍然需要在组件的 <code>props</code> 选项里声明 <code>checked</code> 这个 <code>prop</code>。</p><p><strong>Tip：</strong> 上面这样写之后，看起来很像是子组件可以直接修改父组件数据，其实不是的，本质上还是 <code>prop</code> + <code>$emit</code> 的正常通信方式，只是书写更加方便了而已。</p><p><strong>要记住 Vue 是单向数据流的</strong>。所以上面这个例子，如果 <code>this.value-1</code> 写成 <code>this.value--</code> ，实际上会报错，因为这样写是试图通过子组件直接修改 <code>prop</code> 的值，这是不允许的。详情可以看 <a href="https://chorer.github.io/2019/10/04/F-Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%85%B3%E4%BA%8E%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/">Vue 组件（三）：关于单向数据流的简单理解</a>。</p><h2 id="总结">4. 总结</h2><p>到这里的话，父子组件之间的通信就已经结束了。使用 Vue 的时候应该避免直接去操作 dom，而是通过数据的改变让页面自动变化。 * 父组件向子组件传值：在父组件中通过 <code>v-on</code> 绑定自定义属性以存储父组件数据，然后子组件通过 <code>props</code> 接收，这样就可以拿到父组件中的数据； * 子组件向父组件通信：子组件监听到事件后，通过 <code>$emit</code> 向外触发自定义事件，父组件监听到该事件后操作数据。</p><p>另外还要注意 v-model` 在组件中的使用。</p><p>参考： <a href="https://mp.weixin.qq.com/s?__biz=MzI4OTc3NDgzNQ==&amp;mid=2247484841&amp;idx=1&amp;sn=e0da4a110702637a588e2841d789c047&amp;chksm=ec2b4835db5cc123d1d198ae0162602bc7c8e4b800c25df903786e0f6fcb268b6c5f95a7f106&amp;mpshare=1&amp;scene=1&amp;srcid=09308wnRwhQZFzAPgVuIEehY&amp;sharer_sharetime=1569850132732&amp;sharer_shareid=81500e217703532f9ee988933e5a0d57&amp;key=71a2e8417d7e834ec6296e870f0d6e86d5700587a4cff8c111c8a76851f8c3ca3a346c5c5f321e90241ac905f277a28d9a637eb1271ae02a5dadd74d1e53a4febeda441b7fabdecc8dedd3df8c4ae5fa&amp;ascene=1&amp;uin=MjM1NDgwNTkyMQ%3D%3D&amp;devicetype=Windows+10&amp;version=62070141&amp;lang=zh_CN&amp;pass_ticket=oSwdUFlqGo2g%2BmHS05Ck9%2FeoP289wm8ovqgJMZ4Tjf6qH8ivnnK7tY%2FHzDi5G4nB" target="_blank" rel="noopener">Vue.js中的组件以及父子组件间通信传值</a> <a href="https://www.cnblogs.com/jiaoyu121/p/7078445.html" target="_blank" rel="noopener">Vue 进阶教程之：详解 v-model</a> <a href="https://cn.vuejs.org/v2/guide/components-custom-events.html" target="_blank" rel="noopener">Vue.js - 自定义事件</a></p></div><div class="post-nav"><div class="post-nav-prev"><a href="/2019/10/04/F-Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%85%B3%E4%BA%8E%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/" rel="prev" title="Vue 组件（三）：关于单向数据流的简单理解"><i class="fa fa-angle-double-left"></i>&nbspVue 组件（三）：关于单向数据流的简单理解</a></div><div class="post-nav-next"><a href="/2019/10/02/F-Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" rel="next" title="Vue 组件（一）：组件的基本使用">Vue 组件（一）：组件的基本使用&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#todolist-%E6%A1%88%E4%BE%8B"><span class="toc-text">1.todolist 案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%B6%E4%BC%A0%E5%AD%90"><span class="toc-text">1.1 父传子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E4%BC%A0%E7%88%B6"><span class="toc-text">1.2 子传父</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#props"><span class="toc-text">2. props</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E7%BB%84%E4%BB%B6%E4%B8%AD%E4%BD%BF%E7%94%A8-v-model"><span class="toc-text">3. 在组件中使用 v-model</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%83%85%E5%86%B5"><span class="toc-text">3.1 一般情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#model-%E9%80%89%E9%A1%B9%E8%87%AA%E5%AE%9A%E4%B9%89"><span class="toc-text">3.2 model 选项自定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">4. 总结</span></a></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"retro",pageSize:10,visitor:!0})</script></section></main><script>var user=[1,2,3,4]</script><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - <span>2021</span> My Blog</p><p class="a">Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/search.js"></script><script src="/js/post-except.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script></body></html><!-- rebuild by neat -->
+<span class="kw">&lt;/base-checkbox&gt;</span></code></pre></div><p>这里的 <code>lovingVue</code> 的值将会传入这个名为 <code>checked</code> 的 <code>prop</code>。同时当 <code>&lt;base-checkbox&gt;</code> 触发一个 <code>change</code> 事件并附带一个新的值的时候，这个 <code>lovingVue</code> 将会被更新。</p><p>注意你仍然需要在组件的 <code>props</code> 选项里声明 <code>checked</code> 这个 <code>prop</code>。</p><p><strong>Tip：</strong> 上面这样写之后，看起来很像是子组件可以直接修改父组件数据，其实不是的，本质上还是 <code>prop</code> + <code>$emit</code> 的正常通信方式，只是书写更加方便了而已。</p><p><strong>要记住 Vue 是单向数据流的</strong>。所以上面这个例子，如果 <code>this.value-1</code> 写成 <code>this.value--</code> ，实际上会报错，因为这样写是试图通过子组件直接修改 <code>prop</code> 的值，这是不允许的。详情可以看 <a href="https://chorer.github.io/2019/10/04/F-Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%85%B3%E4%BA%8E%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/">Vue 组件（三）：关于单向数据流的简单理解</a>。</p><h2 id="总结">4. 总结</h2><p>到这里的话，父子组件之间的通信就已经结束了。使用 Vue 的时候应该避免直接去操作 dom，而是通过数据的改变让页面自动变化。 * 父组件向子组件传值：在父组件中通过 <code>v-on</code> 绑定自定义属性以存储父组件数据，然后子组件通过 <code>props</code> 接收，这样就可以拿到父组件中的数据； * 子组件向父组件通信：子组件监听到事件后，通过 <code>$emit</code> 向外触发自定义事件，父组件监听到该事件后操作数据。</p><p>另外还要注意 v-model` 在组件中的使用。</p><p>参考： <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI4OTc3NDgzNQ==&amp;mid=2247484841&amp;idx=1&amp;sn=e0da4a110702637a588e2841d789c047&amp;chksm=ec2b4835db5cc123d1d198ae0162602bc7c8e4b800c25df903786e0f6fcb268b6c5f95a7f106&amp;mpshare=1&amp;scene=1&amp;srcid=09308wnRwhQZFzAPgVuIEehY&amp;sharer_sharetime=1569850132732&amp;sharer_shareid=81500e217703532f9ee988933e5a0d57&amp;key=71a2e8417d7e834ec6296e870f0d6e86d5700587a4cff8c111c8a76851f8c3ca3a346c5c5f321e90241ac905f277a28d9a637eb1271ae02a5dadd74d1e53a4febeda441b7fabdecc8dedd3df8c4ae5fa&amp;ascene=1&amp;uin=MjM1NDgwNTkyMQ%3D%3D&amp;devicetype=Windows+10&amp;version=62070141&amp;lang=zh_CN&amp;pass_ticket=oSwdUFlqGo2g%2BmHS05Ck9%2FeoP289wm8ovqgJMZ4Tjf6qH8ivnnK7tY%2FHzDi5G4nB">Vue.js中的组件以及父子组件间通信传值</a> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/jiaoyu121/p/7078445.html">Vue 进阶教程之：详解 v-model</a> <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">Vue.js - 自定义事件</a></p></div><div class="post-nav"><div class="post-nav-prev"><a href="/2019/10/04/F-Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%85%B3%E4%BA%8E%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/" rel="prev" title="Vue 组件（三）：关于单向数据流的简单理解"><i class="fa fa-angle-double-left"></i>&nbspVue 组件（三）：关于单向数据流的简单理解</a></div><div class="post-nav-next"><a href="/2019/10/02/F-Vue%20%E7%BB%84%E4%BB%B6%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" rel="next" title="Vue 组件（一）：组件的基本使用">Vue 组件（一）：组件的基本使用&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#todolist-%E6%A1%88%E4%BE%8B"><span class="toc-text">1.todolist 案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%B6%E4%BC%A0%E5%AD%90"><span class="toc-text">1.1 父传子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E4%BC%A0%E7%88%B6"><span class="toc-text">1.2 子传父</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#props"><span class="toc-text">2. props</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E7%BB%84%E4%BB%B6%E4%B8%AD%E4%BD%BF%E7%94%A8-v-model"><span class="toc-text">3. 在组件中使用 v-model</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%83%85%E5%86%B5"><span class="toc-text">3.1 一般情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#model-%E9%80%89%E9%A1%B9%E8%87%AA%E5%AE%9A%E4%B9%89"><span class="toc-text">3.2 model 选项自定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">4. 总结</span></a></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"retro",pageSize:10,visitor:!0})</script></section></main><script>var user=[1,2,3,4]</script><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - <span>2021</span> My Blog</p><p class="a">Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/search.js"></script><script src="/js/post-except.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script></body></html><!-- rebuild by neat -->

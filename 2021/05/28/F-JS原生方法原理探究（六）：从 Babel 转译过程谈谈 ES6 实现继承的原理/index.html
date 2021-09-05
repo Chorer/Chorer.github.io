@@ -1,424 +1,424 @@
-<!-- build time:Sun Sep 05 2021 14:05:20 GMT+0800 (中国标准时间) --><!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Focus on FE learning</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third%20party/pace-theme-flash.css"><link rel="icon" href="/images/kour.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
+<!-- build time:Sun Sep 05 2021 14:32:51 GMT+0800 (中国标准时间) --><!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Focus on FE learning</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third%20party/pace-theme-flash.css"><link rel="icon" href="/images/kour.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script></head><body><header class="header"><div class="header_top"><span class="theme"><a href="/">Chor's blog</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">首页</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">分类</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">归档</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">标签</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">关于</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue" class="logo">Focus on FE learning</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div><div class="blog-down"><a href="javascript:void(0);"><i class="fa fa-angle-double-down fa-2x"></i></a></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">JS原生方法原理探究（六）从 Babel 转译过程浅谈 ES6 实现继承的原理</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2021-05-28&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp3.8k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp16 mins&nbsp&nbsp&nbsp</span><div class="post-tags"></div></div><div class="post-content"><a id="more"></a><p>这是JS 原生方法原理探究系列的第六篇文章。</p><p>都说 ES6 的 Class 是 ES5 的语法糖，那么 ES6 的 Class 是如何实现的呢？其实现继承的原理又是什么呢？不妨我们通过 Babel 转译代码的方式，看看其中有什么门道。</p><p>这篇文章会从最简单的代码入手，一步步剖析相关的原理以及每个函数的作用。代码的转译直接在 <a href="https://babeljs.io" target="_blank" rel="noopener">Babel 官网</a>进行即可。</p><h3 id="es6-的-class-是如何实现的">ES6 的 Class 是如何实现的</h3><p>先从最简单的一个 Parent 类看起：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">class</span> Parent<span class="op">{</span>
-    <span class="at">constructor</span>()<span class="op">{</span>
+<script src="/js/prism-line-numbers.min.js"></script></head><body><header class="header"><div class="header_top"><span class="theme"><a href="/">Chor's blog</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">首页</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">分类</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">归档</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">标签</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">关于</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue" class="logo">Focus on FE learning</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div><div class="blog-down"><a href="javascript:void(0);"><i class="fa fa-angle-double-down fa-2x"></i></a></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">JS原生方法原理探究（六）从 Babel 转译过程浅谈 ES6 实现继承的原理</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2021-05-28&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp4.1k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp18 mins&nbsp&nbsp&nbsp</span><div class="post-tags"></div></div><div class="post-content"><span id="more"></span><p>这是JS 原生方法原理探究系列的第六篇文章。</p><p>都说 ES6 的 Class 是 ES5 的语法糖，那么 ES6 的 Class 是如何实现的呢？其实现继承的原理又是什么呢？不妨我们通过 Babel 转译代码的方式，看看其中有什么门道。</p><p>这篇文章会从最简单的代码入手，一步步剖析相关的原理以及每个函数的作用。代码的转译直接在 <a target="_blank" rel="noopener" href="https://babeljs.io">Babel 官网</a>进行即可。</p><h3 id="es6-的-class-是如何实现的">ES6 的 Class 是如何实现的</h3><p>先从最简单的一个 Parent 类看起：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">class</span> Parent<span class="op">&#123;</span>
+    <span class="at">constructor</span>()<span class="op">&#123;</span>
         <span class="kw">this</span>.<span class="at">a</span> <span class="op">=</span> <span class="dv">1</span>
-        <span class="kw">this</span>.<span class="at">getA</span> <span class="op">=</span> <span class="kw">function</span>()<span class="op">{}</span>
-   <span class="op">}</span>
-<span class="op">}</span></code></pre></div><p>转译之后的结果是：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_classCallCheck</span>(instance<span class="op">,</span> Constructor) <span class="op">{</span>
-    <span class="cf">if</span> (<span class="op">!</span>(instance <span class="kw">instanceof</span> Constructor)) <span class="op">{</span>
+        <span class="kw">this</span>.<span class="at">getA</span> <span class="op">=</span> <span class="kw">function</span>()<span class="op">&#123;&#125;</span>
+   <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><p>转译之后的结果是：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_classCallCheck</span>(instance<span class="op">,</span> Constructor) <span class="op">&#123;</span>
+    <span class="cf">if</span> (<span class="op">!</span>(instance <span class="kw">instanceof</span> Constructor)) <span class="op">&#123;</span>
         <span class="cf">throw</span> <span class="kw">new</span> <span class="at">TypeError</span>(<span class="st">&quot;Cannot call a class as a function&quot;</span>)<span class="op">;</span>
-    <span class="op">}</span>
-<span class="op">}</span>
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span>
 
-<span class="kw">var</span> Parent <span class="op">=</span> <span class="kw">function</span> <span class="at">Parent</span>() <span class="op">{</span>
+<span class="kw">var</span> Parent <span class="op">=</span> <span class="kw">function</span> <span class="at">Parent</span>() <span class="op">&#123;</span>
     <span class="st">&quot;use strict&quot;</span><span class="op">;</span>
 
     <span class="at">_classCallCheck</span>(<span class="kw">this</span><span class="op">,</span> Parent)<span class="op">;</span>
     <span class="kw">this</span>.<span class="at">a</span> <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>
-    <span class="kw">this</span>.<span class="at">getA</span> <span class="op">=</span> <span class="kw">function</span> () <span class="op">{};</span>
-<span class="op">};</span></code></pre></div><p>可以看到，这里的类实质上就是 ES5 中的构造函数，除了添加实例属性和实例方法之外，它还调用了一个 <code>_classCallCheck</code> 函数。</p><blockquote><p><strong><code>_classCallCheck</code> 函数</strong></p></blockquote><p>这个函数会接受一个实例和构造函数作为参数，内部的 <code>instance instanceof Constructor</code> 用于判断这个类是不是通过 new 调用的，如果不是就抛出一个错误。</p><p>接下来我们尝试给这个类添加原型方法和静态方法：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">class</span> Parent<span class="op">{</span>
-   <span class="at">constructor</span>()<span class="op">{</span>
+    <span class="kw">this</span>.<span class="at">getA</span> <span class="op">=</span> <span class="kw">function</span> () <span class="op">&#123;&#125;;</span>
+<span class="op">&#125;;</span></code></pre></div><p>可以看到，这里的类实质上就是 ES5 中的构造函数，除了添加实例属性和实例方法之外，它还调用了一个 <code>_classCallCheck</code> 函数。</p><blockquote><p><strong><code>_classCallCheck</code> 函数</strong></p></blockquote><p>这个函数会接受一个实例和构造函数作为参数，内部的 <code>instance instanceof Constructor</code> 用于判断这个类是不是通过 new 调用的，如果不是就抛出一个错误。</p><p>接下来我们尝试给这个类添加原型方法和静态方法：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">class</span> Parent<span class="op">&#123;</span>
+   <span class="at">constructor</span>()<span class="op">&#123;</span>
      <span class="kw">this</span>.<span class="at">a</span> <span class="op">=</span> <span class="dv">1</span>
-     <span class="kw">this</span>.<span class="at">getA</span> <span class="op">=</span> <span class="kw">function</span>()<span class="op">{}</span>
-   <span class="op">}</span>
-   <span class="at">getB</span>()<span class="op">{}</span>
-   <span class="at">getC</span>()<span class="op">{}</span>
-   <span class="kw">static</span> <span class="at">getD</span>()<span class="op">{}</span>
-   <span class="kw">static</span> <span class="at">getE</span>()<span class="op">{}</span>
-<span class="op">}</span></code></pre></div><p>转译后得到：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_classCallCheck</span>(instance<span class="op">,</span> Constructor) <span class="op">{</span>
-  <span class="cf">if</span> (<span class="op">!</span>(instance <span class="kw">instanceof</span> Constructor)) <span class="op">{</span>
+     <span class="kw">this</span>.<span class="at">getA</span> <span class="op">=</span> <span class="kw">function</span>()<span class="op">&#123;&#125;</span>
+   <span class="op">&#125;</span>
+   <span class="at">getB</span>()<span class="op">&#123;&#125;</span>
+   <span class="at">getC</span>()<span class="op">&#123;&#125;</span>
+   <span class="kw">static</span> <span class="at">getD</span>()<span class="op">&#123;&#125;</span>
+   <span class="kw">static</span> <span class="at">getE</span>()<span class="op">&#123;&#125;</span>
+<span class="op">&#125;</span></code></pre></div><p>转译后得到：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_classCallCheck</span>(instance<span class="op">,</span> Constructor) <span class="op">&#123;</span>
+  <span class="cf">if</span> (<span class="op">!</span>(instance <span class="kw">instanceof</span> Constructor)) <span class="op">&#123;</span>
     <span class="cf">throw</span> <span class="kw">new</span> <span class="at">TypeError</span>(<span class="st">&quot;Cannot call a class as a function&quot;</span>)<span class="op">;</span>
-  <span class="op">}</span>
-<span class="op">}</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_defineProperties</span>(target<span class="op">,</span> props) <span class="op">{</span>
-  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="va">props</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span>
+<span class="kw">function</span> <span class="at">_defineProperties</span>(target<span class="op">,</span> props) <span class="op">&#123;</span>
+  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="va">props</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">&#123;</span>
     <span class="kw">var</span> descriptor <span class="op">=</span> props[i]<span class="op">;</span>
     <span class="va">descriptor</span>.<span class="at">enumerable</span> <span class="op">=</span> <span class="va">descriptor</span>.<span class="at">enumerable</span> <span class="op">||</span> <span class="kw">false</span><span class="op">;</span>
     <span class="va">descriptor</span>.<span class="at">configurable</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span>
     <span class="cf">if</span> (<span class="st">&quot;value&quot;</span> <span class="kw">in</span> descriptor) <span class="va">descriptor</span>.<span class="at">writable</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span>
     <span class="va">Object</span>.<span class="at">defineProperty</span>(target<span class="op">,</span> <span class="va">descriptor</span>.<span class="at">key</span><span class="op">,</span> descriptor)<span class="op">;</span>
-  <span class="op">}</span>
-<span class="op">}</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_createClass</span>(Constructor<span class="op">,</span> protoProps<span class="op">,</span> staticProps) <span class="op">{</span>
+<span class="kw">function</span> <span class="at">_createClass</span>(Constructor<span class="op">,</span> protoProps<span class="op">,</span> staticProps) <span class="op">&#123;</span>
   <span class="cf">if</span> (protoProps) <span class="at">_defineProperties</span>(<span class="va">Constructor</span>.<span class="at">prototype</span><span class="op">,</span> protoProps)<span class="op">;</span>
   <span class="cf">if</span> (staticProps) <span class="at">_defineProperties</span>(Constructor<span class="op">,</span> staticProps)<span class="op">;</span>
   <span class="cf">return</span> Constructor<span class="op">;</span>
-<span class="op">}</span>
+<span class="op">&#125;</span>
 
-<span class="kw">var</span> Parent <span class="op">=</span> <span class="co">/*#__PURE__*/</span> (<span class="kw">function</span> () <span class="op">{</span>
+<span class="kw">var</span> Parent <span class="op">=</span> <span class="co">/*#__PURE__*/</span> (<span class="kw">function</span> () <span class="op">&#123;</span>
   <span class="st">&quot;use strict&quot;</span><span class="op">;</span>
 
-  <span class="kw">function</span> <span class="at">Parent</span>() <span class="op">{</span>
+  <span class="kw">function</span> <span class="at">Parent</span>() <span class="op">&#123;</span>
     <span class="at">_classCallCheck</span>(<span class="kw">this</span><span class="op">,</span> Parent)<span class="op">;</span>
 
     <span class="kw">this</span>.<span class="at">a</span> <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>
 
-    <span class="kw">this</span>.<span class="at">getA</span> <span class="op">=</span> <span class="kw">function</span> () <span class="op">{};</span>
-  <span class="op">}</span>
+    <span class="kw">this</span>.<span class="at">getA</span> <span class="op">=</span> <span class="kw">function</span> () <span class="op">&#123;&#125;;</span>
+  <span class="op">&#125;</span>
 
   <span class="at">_createClass</span>(
     Parent<span class="op">,</span>
     [
-      <span class="op">{</span>
+      <span class="op">&#123;</span>
         <span class="dt">key</span><span class="op">:</span> <span class="st">&quot;getB&quot;</span><span class="op">,</span>
-        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getB</span>() <span class="op">{}</span>
-      <span class="op">},</span>
-      <span class="op">{</span>
+        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getB</span>() <span class="op">&#123;&#125;</span>
+      <span class="op">&#125;,</span>
+      <span class="op">&#123;</span>
         <span class="dt">key</span><span class="op">:</span> <span class="st">&quot;getC&quot;</span><span class="op">,</span>
-        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getC</span>() <span class="op">{}</span>
-      <span class="op">}</span>
+        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getC</span>() <span class="op">&#123;&#125;</span>
+      <span class="op">&#125;</span>
     ]<span class="op">,</span>
     [
-      <span class="op">{</span>
+      <span class="op">&#123;</span>
         <span class="dt">key</span><span class="op">:</span> <span class="st">&quot;getD&quot;</span><span class="op">,</span>
-        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getD</span>() <span class="op">{}</span>
-      <span class="op">},</span>
-      <span class="op">{</span>
+        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getD</span>() <span class="op">&#123;&#125;</span>
+      <span class="op">&#125;,</span>
+      <span class="op">&#123;</span>
         <span class="dt">key</span><span class="op">:</span> <span class="st">&quot;getE&quot;</span><span class="op">,</span>
-        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getE</span>() <span class="op">{}</span>
-      <span class="op">}</span>
+        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getE</span>() <span class="op">&#123;&#125;</span>
+      <span class="op">&#125;</span>
     ]
   )<span class="op">;</span>
 
   <span class="cf">return</span> Parent<span class="op">;</span>
-<span class="op">}</span>)()<span class="op">;</span></code></pre></div><p>emmm 看起来好像有点复杂，不过没关系，我们一个一个函数理清楚就行了。</p><p>可以看到，此时的 <code>Parent</code> 变成了一个 IIFE，IIFE 执行之后仍然是返回 Parent 类，但内部还封装了一个 <code>_createClass</code> 函数的调用。</p><blockquote><p><strong><code>_createClass</code> 函数</strong></p></blockquote><p><code>_createClass</code> 函数做了什么事呢？首先，它可以接受三个参数：</p><ul><li>第一个参数： 类（这里是 <code>Parent</code> 类）</li><li>第二个参数：存放对象的数组，每个对象都是关于类的原型方法的特性描述对象（这里是 <code>getB</code> 和 <code>getC</code>）</li><li>第三个参数：存放对象的数组，每个对象都是关于类的静态方法的特性描述对象（这里是 <code>getD</code> 和 <code>getE</code>）</li></ul><p>接着，它会依次检查是否有传第二个和第三个参数，如果有，就调用 <code>_defineProperties</code> 函数，分别为类的原型定义原型方法，为类本身定义静态方法。</p><blockquote><p><strong><code>_defineProperties</code> 函数</strong></p></blockquote><p><code>_defineProperties</code> 函数做了什么事呢？它接受类（或者类的原型）和一个存放对象的数组作为参数，之后遍历数组中的每个对象，定义每个方法的特性，并将它们逐一添加到类（或者类的原型）上面。这里涉及到的特性包括：</p><ul><li><code>enumberable</code>：该属性（方法）是否可枚举。如果方法本身已经定义了该特性，则采用该特性；如果没有定义，则定义该方法为不可枚举</li><li><code>configurable</code>：该属性（方法）是否可以配置</li><li><code>writable</code>：如果该属性是数据属性而不是访问器属性，那么会有一个 <code>value</code>，此时设置该属性为可写</li></ul><h3 id="es6-的继承是如何实现的">ES6 的继承是如何实现的</h3><p>好了，基本搞清楚一个 class 的原理之后，现在我们来看一下 ES6 是如何实现继承的。</p><p>将下面的代码进行转译：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">class</span> Parent<span class="op">{</span>
-   <span class="at">constructor</span>()<span class="op">{</span>
+<span class="op">&#125;</span>)()<span class="op">;</span></code></pre></div><p>emmm 看起来好像有点复杂，不过没关系，我们一个一个函数理清楚就行了。</p><p>可以看到，此时的 <code>Parent</code> 变成了一个 IIFE，IIFE 执行之后仍然是返回 Parent 类，但内部还封装了一个 <code>_createClass</code> 函数的调用。</p><blockquote><p><strong><code>_createClass</code> 函数</strong></p></blockquote><p><code>_createClass</code> 函数做了什么事呢？首先，它可以接受三个参数：</p><ul><li>第一个参数： 类（这里是 <code>Parent</code> 类）</li><li>第二个参数：存放对象的数组，每个对象都是关于类的原型方法的特性描述对象（这里是 <code>getB</code> 和 <code>getC</code>）</li><li>第三个参数：存放对象的数组，每个对象都是关于类的静态方法的特性描述对象（这里是 <code>getD</code> 和 <code>getE</code>）</li></ul><p>接着，它会依次检查是否有传第二个和第三个参数，如果有，就调用 <code>_defineProperties</code> 函数，分别为类的原型定义原型方法，为类本身定义静态方法。</p><blockquote><p><strong><code>_defineProperties</code> 函数</strong></p></blockquote><p><code>_defineProperties</code> 函数做了什么事呢？它接受类（或者类的原型）和一个存放对象的数组作为参数，之后遍历数组中的每个对象，定义每个方法的特性，并将它们逐一添加到类（或者类的原型）上面。这里涉及到的特性包括：</p><ul><li><code>enumberable</code>：该属性（方法）是否可枚举。如果方法本身已经定义了该特性，则采用该特性；如果没有定义，则定义该方法为不可枚举</li><li><code>configurable</code>：该属性（方法）是否可以配置</li><li><code>writable</code>：如果该属性是数据属性而不是访问器属性，那么会有一个 <code>value</code>，此时设置该属性为可写</li></ul><h3 id="es6-的继承是如何实现的">ES6 的继承是如何实现的</h3><p>好了，基本搞清楚一个 class 的原理之后，现在我们来看一下 ES6 是如何实现继承的。</p><p>将下面的代码进行转译：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">class</span> Parent<span class="op">&#123;</span>
+   <span class="at">constructor</span>()<span class="op">&#123;</span>
      <span class="kw">this</span>.<span class="at">a</span> <span class="op">=</span> <span class="dv">1</span> 
-     <span class="kw">this</span>.<span class="at">getA</span> <span class="op">=</span> <span class="kw">function</span>()<span class="op">{}</span> 
-   <span class="op">}</span>
-   <span class="at">getB</span>()<span class="op">{}</span>  
-   <span class="at">getC</span>()<span class="op">{}</span>
-   <span class="kw">static</span> <span class="at">getD</span>()<span class="op">{}</span>
-   <span class="kw">static</span> <span class="at">getE</span>()<span class="op">{}</span>
-<span class="op">}</span>
-<span class="kw">class</span> Son <span class="kw">extends</span> Parent<span class="op">{</span>
-    <span class="at">constructor</span>()<span class="op">{</span>
+     <span class="kw">this</span>.<span class="at">getA</span> <span class="op">=</span> <span class="kw">function</span>()<span class="op">&#123;&#125;</span> 
+   <span class="op">&#125;</span>
+   <span class="at">getB</span>()<span class="op">&#123;&#125;</span>  
+   <span class="at">getC</span>()<span class="op">&#123;&#125;</span>
+   <span class="kw">static</span> <span class="at">getD</span>()<span class="op">&#123;&#125;</span>
+   <span class="kw">static</span> <span class="at">getE</span>()<span class="op">&#123;&#125;</span>
+<span class="op">&#125;</span>
+<span class="kw">class</span> Son <span class="kw">extends</span> Parent<span class="op">&#123;</span>
+    <span class="at">constructor</span>()<span class="op">&#123;</span>
         <span class="kw">super</span>()      
-    <span class="op">}</span>
-<span class="op">}</span></code></pre></div><p>就得到了：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="st">&quot;use strict&quot;</span><span class="op">;</span>
+    <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><p>就得到了：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="st">&quot;use strict&quot;</span><span class="op">;</span>
 
-<span class="kw">function</span> <span class="at">_typeof</span>(obj) <span class="op">{</span>
+<span class="kw">function</span> <span class="at">_typeof</span>(obj) <span class="op">&#123;</span>
   <span class="st">&quot;@babel/helpers - typeof&quot;</span><span class="op">;</span>
-  <span class="cf">if</span> (<span class="kw">typeof</span> Symbol <span class="op">===</span> <span class="st">&quot;function&quot;</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> <span class="va">Symbol</span>.<span class="at">iterator</span> <span class="op">===</span> <span class="st">&quot;symbol&quot;</span>) <span class="op">{</span>
-    _typeof <span class="op">=</span> <span class="kw">function</span> <span class="at">_typeof</span>(obj) <span class="op">{</span>
+  <span class="cf">if</span> (<span class="kw">typeof</span> Symbol <span class="op">===</span> <span class="st">&quot;function&quot;</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> <span class="va">Symbol</span>.<span class="at">iterator</span> <span class="op">===</span> <span class="st">&quot;symbol&quot;</span>) <span class="op">&#123;</span>
+    _typeof <span class="op">=</span> <span class="kw">function</span> <span class="at">_typeof</span>(obj) <span class="op">&#123;</span>
       <span class="cf">return</span> <span class="kw">typeof</span> obj<span class="op">;</span>
-    <span class="op">};</span>
-  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
-    _typeof <span class="op">=</span> <span class="kw">function</span> <span class="at">_typeof</span>(obj) <span class="op">{</span>
+    <span class="op">&#125;;</span>
+  <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span>
+    _typeof <span class="op">=</span> <span class="kw">function</span> <span class="at">_typeof</span>(obj) <span class="op">&#123;</span>
       <span class="cf">return</span> obj <span class="op">&amp;&amp;</span>
         <span class="kw">typeof</span> Symbol <span class="op">===</span> <span class="st">&quot;function&quot;</span> <span class="op">&amp;&amp;</span>
         <span class="va">obj</span>.<span class="at">constructor</span> <span class="op">===</span> Symbol <span class="op">&amp;&amp;</span>
         obj <span class="op">!==</span> <span class="va">Symbol</span>.<span class="at">prototype</span>
         <span class="op">?</span> <span class="st">&quot;symbol&quot;</span>
         : <span class="kw">typeof</span> obj<span class="op">;</span>
-    <span class="op">};</span>
-  <span class="op">}</span>
+    <span class="op">&#125;;</span>
+  <span class="op">&#125;</span>
   <span class="cf">return</span> <span class="at">_typeof</span>(obj)<span class="op">;</span>
-<span class="op">}</span>
+<span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_inherits</span>(subClass<span class="op">,</span> superClass) <span class="op">{</span>
-  <span class="cf">if</span> (<span class="kw">typeof</span> superClass <span class="op">!==</span> <span class="st">&quot;function&quot;</span> <span class="op">&amp;&amp;</span> superClass <span class="op">!==</span> <span class="kw">null</span>) <span class="op">{</span>
+<span class="kw">function</span> <span class="at">_inherits</span>(subClass<span class="op">,</span> superClass) <span class="op">&#123;</span>
+  <span class="cf">if</span> (<span class="kw">typeof</span> superClass <span class="op">!==</span> <span class="st">&quot;function&quot;</span> <span class="op">&amp;&amp;</span> superClass <span class="op">!==</span> <span class="kw">null</span>) <span class="op">&#123;</span>
     <span class="cf">throw</span> <span class="kw">new</span> <span class="at">TypeError</span>(<span class="st">&quot;Super expression must either be null or a function&quot;</span>)<span class="op">;</span>
-  <span class="op">}</span>
-  <span class="va">subClass</span>.<span class="at">prototype</span> <span class="op">=</span> <span class="va">Object</span>.<span class="at">create</span>(superClass <span class="op">&amp;&amp;</span> <span class="va">superClass</span>.<span class="at">prototype</span><span class="op">,</span> <span class="op">{</span>
-    <span class="dt">constructor</span><span class="op">:</span> <span class="op">{</span> <span class="dt">value</span><span class="op">:</span> subClass<span class="op">,</span> <span class="dt">writable</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">configurable</span><span class="op">:</span> <span class="kw">true</span> <span class="op">}</span>
-  <span class="op">}</span>)<span class="op">;</span>
+  <span class="op">&#125;</span>
+  <span class="va">subClass</span>.<span class="at">prototype</span> <span class="op">=</span> <span class="va">Object</span>.<span class="at">create</span>(superClass <span class="op">&amp;&amp;</span> <span class="va">superClass</span>.<span class="at">prototype</span><span class="op">,</span> <span class="op">&#123;</span>
+    <span class="dt">constructor</span><span class="op">:</span> <span class="op">&#123;</span> <span class="dt">value</span><span class="op">:</span> subClass<span class="op">,</span> <span class="dt">writable</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">configurable</span><span class="op">:</span> <span class="kw">true</span> <span class="op">&#125;</span>
+  <span class="op">&#125;</span>)<span class="op">;</span>
   <span class="cf">if</span> (superClass) <span class="at">_setPrototypeOf</span>(subClass<span class="op">,</span> superClass)<span class="op">;</span>
-<span class="op">}</span>
+<span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_setPrototypeOf</span>(o<span class="op">,</span> p) <span class="op">{</span>
+<span class="kw">function</span> <span class="at">_setPrototypeOf</span>(o<span class="op">,</span> p) <span class="op">&#123;</span>
   _setPrototypeOf <span class="op">=</span>
     <span class="va">Object</span>.<span class="at">setPrototypeOf</span> <span class="op">||</span>
-    <span class="kw">function</span> <span class="at">_setPrototypeOf</span>(o<span class="op">,</span> p) <span class="op">{</span>
+    <span class="kw">function</span> <span class="at">_setPrototypeOf</span>(o<span class="op">,</span> p) <span class="op">&#123;</span>
       <span class="va">o</span>.<span class="at">__proto__</span> <span class="op">=</span> p<span class="op">;</span>
       <span class="cf">return</span> o<span class="op">;</span>
-    <span class="op">};</span>
+    <span class="op">&#125;;</span>
   <span class="cf">return</span> <span class="at">_setPrototypeOf</span>(o<span class="op">,</span> p)<span class="op">;</span>
-<span class="op">}</span>
+<span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_createSuper</span>(Derived) <span class="op">{</span>
+<span class="kw">function</span> <span class="at">_createSuper</span>(Derived) <span class="op">&#123;</span>
   <span class="kw">var</span> hasNativeReflectConstruct <span class="op">=</span> <span class="at">_isNativeReflectConstruct</span>()<span class="op">;</span>
-  <span class="cf">return</span> <span class="kw">function</span> <span class="at">_createSuperInternal</span>() <span class="op">{</span>
+  <span class="cf">return</span> <span class="kw">function</span> <span class="at">_createSuperInternal</span>() <span class="op">&#123;</span>
     <span class="kw">var</span> Super <span class="op">=</span> <span class="at">_getPrototypeOf</span>(Derived)<span class="op">,</span>
       result<span class="op">;</span>
-    <span class="cf">if</span> (hasNativeReflectConstruct) <span class="op">{</span>
+    <span class="cf">if</span> (hasNativeReflectConstruct) <span class="op">&#123;</span>
       <span class="kw">var</span> NewTarget <span class="op">=</span> <span class="at">_getPrototypeOf</span>(<span class="kw">this</span>).<span class="at">constructor</span><span class="op">;</span>
       result <span class="op">=</span> <span class="va">Reflect</span>.<span class="at">construct</span>(Super<span class="op">,</span> arguments<span class="op">,</span> NewTarget)<span class="op">;</span>
-    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+    <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span>
       result <span class="op">=</span> <span class="va">Super</span>.<span class="at">apply</span>(<span class="kw">this</span><span class="op">,</span> arguments)<span class="op">;</span>
-    <span class="op">}</span>
+    <span class="op">&#125;</span>
     <span class="cf">return</span> <span class="at">_possibleConstructorReturn</span>(<span class="kw">this</span><span class="op">,</span> result)<span class="op">;</span>
-  <span class="op">};</span>
-<span class="op">}</span>
+  <span class="op">&#125;;</span>
+<span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_possibleConstructorReturn</span>(self<span class="op">,</span> call) <span class="op">{</span>
-  <span class="cf">if</span> (call <span class="op">&amp;&amp;</span> (<span class="at">_typeof</span>(call) <span class="op">===</span> <span class="st">&quot;object&quot;</span> <span class="op">||</span> <span class="kw">typeof</span> call <span class="op">===</span> <span class="st">&quot;function&quot;</span>)) <span class="op">{</span>
+<span class="kw">function</span> <span class="at">_possibleConstructorReturn</span>(self<span class="op">,</span> call) <span class="op">&#123;</span>
+  <span class="cf">if</span> (call <span class="op">&amp;&amp;</span> (<span class="at">_typeof</span>(call) <span class="op">===</span> <span class="st">&quot;object&quot;</span> <span class="op">||</span> <span class="kw">typeof</span> call <span class="op">===</span> <span class="st">&quot;function&quot;</span>)) <span class="op">&#123;</span>
     <span class="cf">return</span> call<span class="op">;</span>
-  <span class="op">}</span>
+  <span class="op">&#125;</span>
   <span class="cf">return</span> <span class="at">_assertThisInitialized</span>(self)<span class="op">;</span>
-<span class="op">}</span>
+<span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_assertThisInitialized</span>(self) <span class="op">{</span>
-  <span class="cf">if</span> (self <span class="op">===</span> <span class="kw">void</span> <span class="dv">0</span>) <span class="op">{</span>
+<span class="kw">function</span> <span class="at">_assertThisInitialized</span>(self) <span class="op">&#123;</span>
+  <span class="cf">if</span> (self <span class="op">===</span> <span class="kw">void</span> <span class="dv">0</span>) <span class="op">&#123;</span>
     <span class="cf">throw</span> <span class="kw">new</span> <span class="at">ReferenceError</span>(
       <span class="st">&quot;this hasn&#39;t been initialised - super() hasn&#39;t been called&quot;</span>
     )<span class="op">;</span>
-  <span class="op">}</span>
+  <span class="op">&#125;</span>
   <span class="cf">return</span> self<span class="op">;</span>
-<span class="op">}</span>
+<span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_isNativeReflectConstruct</span>() <span class="op">{</span>
+<span class="kw">function</span> <span class="at">_isNativeReflectConstruct</span>() <span class="op">&#123;</span>
   <span class="cf">if</span> (<span class="kw">typeof</span> Reflect <span class="op">===</span> <span class="st">&quot;undefined&quot;</span> <span class="op">||</span> <span class="op">!</span><span class="va">Reflect</span>.<span class="at">construct</span>) <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span>
   <span class="cf">if</span> (<span class="va">Reflect</span>.<span class="va">construct</span>.<span class="at">sham</span>) <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span>
   <span class="cf">if</span> (<span class="kw">typeof</span> Proxy <span class="op">===</span> <span class="st">&quot;function&quot;</span>) <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span>
-  <span class="cf">try</span> <span class="op">{</span>
+  <span class="cf">try</span> <span class="op">&#123;</span>
     <span class="va">Boolean</span>.<span class="va">prototype</span>.<span class="va">valueOf</span>.<span class="at">call</span>(
-      <span class="va">Reflect</span>.<span class="at">construct</span>(Boolean<span class="op">,</span> []<span class="op">,</span> <span class="kw">function</span> () <span class="op">{}</span>)
+      <span class="va">Reflect</span>.<span class="at">construct</span>(Boolean<span class="op">,</span> []<span class="op">,</span> <span class="kw">function</span> () <span class="op">&#123;&#125;</span>)
     )<span class="op">;</span>
     <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span>
-  <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+  <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
     <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span>
-  <span class="op">}</span>
-<span class="op">}</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_getPrototypeOf</span>(o) <span class="op">{</span>
+<span class="kw">function</span> <span class="at">_getPrototypeOf</span>(o) <span class="op">&#123;</span>
   _getPrototypeOf <span class="op">=</span> <span class="va">Object</span>.<span class="at">setPrototypeOf</span>
     <span class="op">?</span> <span class="va">Object</span>.<span class="at">getPrototypeOf</span>
-    : <span class="kw">function</span> <span class="at">_getPrototypeOf</span>(o) <span class="op">{</span>
+    : <span class="kw">function</span> <span class="at">_getPrototypeOf</span>(o) <span class="op">&#123;</span>
         <span class="cf">return</span> <span class="va">o</span>.<span class="at">__proto__</span> <span class="op">||</span> <span class="va">Object</span>.<span class="at">getPrototypeOf</span>(o)<span class="op">;</span>
-      <span class="op">};</span>
+      <span class="op">&#125;;</span>
   <span class="cf">return</span> <span class="at">_getPrototypeOf</span>(o)<span class="op">;</span>
-<span class="op">}</span>
+<span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_classCallCheck</span>(instance<span class="op">,</span> Constructor) <span class="op">{</span>
-  <span class="cf">if</span> (<span class="op">!</span>(instance <span class="kw">instanceof</span> Constructor)) <span class="op">{</span>
+<span class="kw">function</span> <span class="at">_classCallCheck</span>(instance<span class="op">,</span> Constructor) <span class="op">&#123;</span>
+  <span class="cf">if</span> (<span class="op">!</span>(instance <span class="kw">instanceof</span> Constructor)) <span class="op">&#123;</span>
     <span class="cf">throw</span> <span class="kw">new</span> <span class="at">TypeError</span>(<span class="st">&quot;Cannot call a class as a function&quot;</span>)<span class="op">;</span>
-  <span class="op">}</span>
-<span class="op">}</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_defineProperties</span>(target<span class="op">,</span> props) <span class="op">{</span>
-  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="va">props</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span>
+<span class="kw">function</span> <span class="at">_defineProperties</span>(target<span class="op">,</span> props) <span class="op">&#123;</span>
+  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="va">props</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">&#123;</span>
     <span class="kw">var</span> descriptor <span class="op">=</span> props[i]<span class="op">;</span>
     <span class="va">descriptor</span>.<span class="at">enumerable</span> <span class="op">=</span> <span class="va">descriptor</span>.<span class="at">enumerable</span> <span class="op">||</span> <span class="kw">false</span><span class="op">;</span>
     <span class="va">descriptor</span>.<span class="at">configurable</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span>
     <span class="cf">if</span> (<span class="st">&quot;value&quot;</span> <span class="kw">in</span> descriptor) <span class="va">descriptor</span>.<span class="at">writable</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span>
     <span class="va">Object</span>.<span class="at">defineProperty</span>(target<span class="op">,</span> <span class="va">descriptor</span>.<span class="at">key</span><span class="op">,</span> descriptor)<span class="op">;</span>
-  <span class="op">}</span>
-<span class="op">}</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_createClass</span>(Constructor<span class="op">,</span> protoProps<span class="op">,</span> staticProps) <span class="op">{</span>
+<span class="kw">function</span> <span class="at">_createClass</span>(Constructor<span class="op">,</span> protoProps<span class="op">,</span> staticProps) <span class="op">&#123;</span>
   <span class="cf">if</span> (protoProps) <span class="at">_defineProperties</span>(<span class="va">Constructor</span>.<span class="at">prototype</span><span class="op">,</span> protoProps)<span class="op">;</span>
   <span class="cf">if</span> (staticProps) <span class="at">_defineProperties</span>(Constructor<span class="op">,</span> staticProps)<span class="op">;</span>
   <span class="cf">return</span> Constructor<span class="op">;</span>
-<span class="op">}</span>
+<span class="op">&#125;</span>
 
-<span class="kw">var</span> Parent <span class="op">=</span> <span class="co">/*#__PURE__*/</span> (<span class="kw">function</span> () <span class="op">{</span>
-  <span class="kw">function</span> <span class="at">Parent</span>() <span class="op">{</span>
+<span class="kw">var</span> Parent <span class="op">=</span> <span class="co">/*#__PURE__*/</span> (<span class="kw">function</span> () <span class="op">&#123;</span>
+  <span class="kw">function</span> <span class="at">Parent</span>() <span class="op">&#123;</span>
     <span class="at">_classCallCheck</span>(<span class="kw">this</span><span class="op">,</span> Parent)<span class="op">;</span>
 
     <span class="kw">this</span>.<span class="at">a</span> <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>
 
-    <span class="kw">this</span>.<span class="at">getA</span> <span class="op">=</span> <span class="kw">function</span> () <span class="op">{};</span>
-  <span class="op">}</span>
+    <span class="kw">this</span>.<span class="at">getA</span> <span class="op">=</span> <span class="kw">function</span> () <span class="op">&#123;&#125;;</span>
+  <span class="op">&#125;</span>
 
   <span class="at">_createClass</span>(
     Parent<span class="op">,</span>
     [
-      <span class="op">{</span>
+      <span class="op">&#123;</span>
         <span class="dt">key</span><span class="op">:</span> <span class="st">&quot;getB&quot;</span><span class="op">,</span>
-        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getB</span>() <span class="op">{}</span>
-      <span class="op">},</span>
-      <span class="op">{</span>
+        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getB</span>() <span class="op">&#123;&#125;</span>
+      <span class="op">&#125;,</span>
+      <span class="op">&#123;</span>
         <span class="dt">key</span><span class="op">:</span> <span class="st">&quot;getC&quot;</span><span class="op">,</span>
-        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getC</span>() <span class="op">{}</span>
-      <span class="op">}</span>
+        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getC</span>() <span class="op">&#123;&#125;</span>
+      <span class="op">&#125;</span>
     ]<span class="op">,</span>
     [
-      <span class="op">{</span>
+      <span class="op">&#123;</span>
         <span class="dt">key</span><span class="op">:</span> <span class="st">&quot;getD&quot;</span><span class="op">,</span>
-        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getD</span>() <span class="op">{}</span>
-      <span class="op">},</span>
-      <span class="op">{</span>
+        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getD</span>() <span class="op">&#123;&#125;</span>
+      <span class="op">&#125;,</span>
+      <span class="op">&#123;</span>
         <span class="dt">key</span><span class="op">:</span> <span class="st">&quot;getE&quot;</span><span class="op">,</span>
-        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getE</span>() <span class="op">{}</span>
-      <span class="op">}</span>
+        <span class="dt">value</span><span class="op">:</span> <span class="kw">function</span> <span class="at">getE</span>() <span class="op">&#123;&#125;</span>
+      <span class="op">&#125;</span>
     ]
   )<span class="op">;</span>
 
   <span class="cf">return</span> Parent<span class="op">;</span>
-<span class="op">}</span>)()<span class="op">;</span>
+<span class="op">&#125;</span>)()<span class="op">;</span>
 
-<span class="kw">var</span> Son <span class="op">=</span> <span class="co">/*#__PURE__*/</span> (<span class="kw">function</span> (_Parent) <span class="op">{</span>
+<span class="kw">var</span> Son <span class="op">=</span> <span class="co">/*#__PURE__*/</span> (<span class="kw">function</span> (_Parent) <span class="op">&#123;</span>
   <span class="at">_inherits</span>(Son<span class="op">,</span> _Parent)<span class="op">;</span>
 
   <span class="kw">var</span> _super <span class="op">=</span> <span class="at">_createSuper</span>(Son)<span class="op">;</span>
 
-  <span class="kw">function</span> <span class="at">Son</span>() <span class="op">{</span>
+  <span class="kw">function</span> <span class="at">Son</span>() <span class="op">&#123;</span>
     <span class="at">_classCallCheck</span>(<span class="kw">this</span><span class="op">,</span> Son)<span class="op">;</span>
 
     <span class="cf">return</span> <span class="va">_super</span>.<span class="at">call</span>(<span class="kw">this</span>)<span class="op">;</span>
-  <span class="op">}</span>
+  <span class="op">&#125;</span>
 
   <span class="cf">return</span> Son<span class="op">;</span>
-<span class="op">}</span>)(Parent)<span class="op">;</span></code></pre></div><p>emmm 好像越来越复杂了，没事，我们先稍稍简化一下（前面解释过的函数这里就直接略过了），再一个一个慢慢分析：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="st">&quot;use strict&quot;</span><span class="op">;</span>
+<span class="op">&#125;</span>)(Parent)<span class="op">;</span></code></pre></div><p>emmm 好像越来越复杂了，没事，我们先稍稍简化一下（前面解释过的函数这里就直接略过了），再一个一个慢慢分析：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="st">&quot;use strict&quot;</span><span class="op">;</span>
 
-<span class="kw">function</span> <span class="at">_typeof</span>(obj) <span class="op">{</span> ... <span class="op">}</span>
+<span class="kw">function</span> <span class="at">_typeof</span>(obj) <span class="op">&#123;</span> ... <span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_inherits</span>(subClass<span class="op">,</span> superClass) <span class="op">{</span> ... <span class="op">}</span>
+<span class="kw">function</span> <span class="at">_inherits</span>(subClass<span class="op">,</span> superClass) <span class="op">&#123;</span> ... <span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_setPrototypeOf</span>(o<span class="op">,</span> p) <span class="op">{</span> ... <span class="op">}</span>
+<span class="kw">function</span> <span class="at">_setPrototypeOf</span>(o<span class="op">,</span> p) <span class="op">&#123;</span> ... <span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_createSuper</span>(Derived) <span class="op">{</span> ... <span class="op">}</span>
+<span class="kw">function</span> <span class="at">_createSuper</span>(Derived) <span class="op">&#123;</span> ... <span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_possibleConstructorReturn</span>(self<span class="op">,</span> call) <span class="op">{</span> ... <span class="op">}</span>
+<span class="kw">function</span> <span class="at">_possibleConstructorReturn</span>(self<span class="op">,</span> call) <span class="op">&#123;</span> ... <span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_assertThisInitialized</span>(self) <span class="op">{</span> ... <span class="op">}</span>
+<span class="kw">function</span> <span class="at">_assertThisInitialized</span>(self) <span class="op">&#123;</span> ... <span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_isNativeReflectConstruct</span>() <span class="op">{</span> ... <span class="op">}</span>
+<span class="kw">function</span> <span class="at">_isNativeReflectConstruct</span>() <span class="op">&#123;</span> ... <span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_getPrototypeOf</span>(o) <span class="op">{</span> ... <span class="op">}</span>
+<span class="kw">function</span> <span class="at">_getPrototypeOf</span>(o) <span class="op">&#123;</span> ... <span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_classCallCheck</span>() <span class="op">{</span> ... <span class="op">}</span>
+<span class="kw">function</span> <span class="at">_classCallCheck</span>() <span class="op">&#123;</span> ... <span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_defineProperties</span>() <span class="op">{</span> ... <span class="op">}</span>
+<span class="kw">function</span> <span class="at">_defineProperties</span>() <span class="op">&#123;</span> ... <span class="op">&#125;</span>
 
-<span class="kw">function</span> <span class="at">_createClass</span>() <span class="op">{</span> ... <span class="op">}</span>
+<span class="kw">function</span> <span class="at">_createClass</span>() <span class="op">&#123;</span> ... <span class="op">&#125;</span>
 
-<span class="kw">var</span> Parent <span class="op">=</span> <span class="co">/*#__PURE__*/</span> (<span class="kw">function</span> () <span class="op">{</span>
-  <span class="kw">function</span> <span class="at">Parent</span>() <span class="op">{</span> ... <span class="op">}</span>
+<span class="kw">var</span> Parent <span class="op">=</span> <span class="co">/*#__PURE__*/</span> (<span class="kw">function</span> () <span class="op">&#123;</span>
+  <span class="kw">function</span> <span class="at">Parent</span>() <span class="op">&#123;</span> ... <span class="op">&#125;</span>
 
   <span class="at">_createClass</span>(...)<span class="op">;</span>
 
   <span class="cf">return</span> Parent<span class="op">;</span>
-<span class="op">}</span>)()<span class="op">;</span>
+<span class="op">&#125;</span>)()<span class="op">;</span>
 
-<span class="kw">var</span> Son <span class="op">=</span> <span class="co">/*#__PURE__*/</span> (<span class="kw">function</span> (_Parent) <span class="op">{</span>
+<span class="kw">var</span> Son <span class="op">=</span> <span class="co">/*#__PURE__*/</span> (<span class="kw">function</span> (_Parent) <span class="op">&#123;</span>
   <span class="at">_inherits</span>(Son<span class="op">,</span> _Parent)<span class="op">;</span>
 
   <span class="kw">var</span> _super <span class="op">=</span> <span class="at">_createSuper</span>(Son)<span class="op">;</span>
 
-  <span class="kw">function</span> <span class="at">Son</span>() <span class="op">{</span>
+  <span class="kw">function</span> <span class="at">Son</span>() <span class="op">&#123;</span>
     <span class="at">_classCallCheck</span>(<span class="kw">this</span><span class="op">,</span> Son)<span class="op">;</span>
 
     <span class="cf">return</span> <span class="va">_super</span>.<span class="at">call</span>(<span class="kw">this</span>)<span class="op">;</span>
-  <span class="op">}</span>
+  <span class="op">&#125;</span>
 
   <span class="cf">return</span> Son<span class="op">;</span>
-<span class="op">}</span>)(Parent)<span class="op">;</span></code></pre></div><p>这里多出了很多新的函数，有的函数不是我们讨论的重点，而且也完全可以单独拎出来分析，所以这里先简单把它们的作用介绍了，之后如果忘记了函数的作用，翻到这里来看即可。</p><blockquote><p><strong><code>_typeof(obj)</code></strong></p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_typeof</span>(obj) <span class="op">{</span>
+<span class="op">&#125;</span>)(Parent)<span class="op">;</span></code></pre></div><p>这里多出了很多新的函数，有的函数不是我们讨论的重点，而且也完全可以单独拎出来分析，所以这里先简单把它们的作用介绍了，之后如果忘记了函数的作用，翻到这里来看即可。</p><blockquote><p><strong><code>_typeof(obj)</code></strong></p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_typeof</span>(obj) <span class="op">&#123;</span>
   <span class="st">&quot;@babel/helpers - typeof&quot;</span><span class="op">;</span>
-  <span class="cf">if</span> (<span class="kw">typeof</span> Symbol <span class="op">===</span> <span class="st">&quot;function&quot;</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> <span class="va">Symbol</span>.<span class="at">iterator</span> <span class="op">===</span> <span class="st">&quot;symbol&quot;</span>) <span class="op">{</span>
-    _typeof <span class="op">=</span> <span class="kw">function</span> <span class="at">_typeof</span>(obj) <span class="op">{</span>
+  <span class="cf">if</span> (<span class="kw">typeof</span> Symbol <span class="op">===</span> <span class="st">&quot;function&quot;</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> <span class="va">Symbol</span>.<span class="at">iterator</span> <span class="op">===</span> <span class="st">&quot;symbol&quot;</span>) <span class="op">&#123;</span>
+    _typeof <span class="op">=</span> <span class="kw">function</span> <span class="at">_typeof</span>(obj) <span class="op">&#123;</span>
       <span class="cf">return</span> <span class="kw">typeof</span> obj<span class="op">;</span>
-    <span class="op">};</span>
-  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
-    _typeof <span class="op">=</span> <span class="kw">function</span> <span class="at">_typeof</span>(obj) <span class="op">{</span>
+    <span class="op">&#125;;</span>
+  <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span>
+    _typeof <span class="op">=</span> <span class="kw">function</span> <span class="at">_typeof</span>(obj) <span class="op">&#123;</span>
       <span class="cf">return</span> obj <span class="op">&amp;&amp;</span>
         <span class="kw">typeof</span> Symbol <span class="op">===</span> <span class="st">&quot;function&quot;</span> <span class="op">&amp;&amp;</span>
         <span class="va">obj</span>.<span class="at">constructor</span> <span class="op">===</span> Symbol <span class="op">&amp;&amp;</span>
         obj <span class="op">!==</span> <span class="va">Symbol</span>.<span class="at">prototype</span>
         <span class="op">?</span> <span class="st">&quot;symbol&quot;</span>
         : <span class="kw">typeof</span> obj<span class="op">;</span>
-    <span class="op">};</span>
-  <span class="op">}</span>
+    <span class="op">&#125;;</span>
+  <span class="op">&#125;</span>
   <span class="cf">return</span> <span class="at">_typeof</span>(obj)<span class="op">;</span>
-<span class="op">}</span></code></pre></div><p>这是 Babel 引入的一个工具函数，主要是为了对 <code>Symbol</code> 进行正确的处理。它首先会检查当前环境是否支持原生的 <code>Symbol</code>，如果支持就直接返回 <code>typeof obj</code> 表达式的计算结果；如果不支持，再检查 <code>obj</code> 是不是通过 polyfill 实现的 <code>Symbol</code> 的一个实例，如果是就返回它的类型（也就是返回 <code>&quot;symbol&quot;</code>），如果不是，就返回 <code>typeof obj</code> 的计算结果。在这里，这个函数假定了我们当前的环境是原生支持 <code>Symbol</code> 或者通过 polyfill 实现了支持的。</p><blockquote><p><strong><code>_setPrototypeOf()</code></strong></p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_setPrototypeOf</span>(o<span class="op">,</span> p) <span class="op">{</span>
+<span class="op">&#125;</span></code></pre></div><p>这是 Babel 引入的一个工具函数，主要是为了对 <code>Symbol</code> 进行正确的处理。它首先会检查当前环境是否支持原生的 <code>Symbol</code>，如果支持就直接返回 <code>typeof obj</code> 表达式的计算结果；如果不支持，再检查 <code>obj</code> 是不是通过 polyfill 实现的 <code>Symbol</code> 的一个实例，如果是就返回它的类型（也就是返回 <code>&quot;symbol&quot;</code>），如果不是，就返回 <code>typeof obj</code> 的计算结果。在这里，这个函数假定了我们当前的环境是原生支持 <code>Symbol</code> 或者通过 polyfill 实现了支持的。</p><blockquote><p><strong><code>_setPrototypeOf()</code></strong></p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_setPrototypeOf</span>(o<span class="op">,</span> p) <span class="op">&#123;</span>
   _setPrototypeOf <span class="op">=</span>
     <span class="va">Object</span>.<span class="at">setPrototypeOf</span> <span class="op">||</span>
-    <span class="kw">function</span> <span class="at">_setPrototypeOf</span>(o<span class="op">,</span> p) <span class="op">{</span>
+    <span class="kw">function</span> <span class="at">_setPrototypeOf</span>(o<span class="op">,</span> p) <span class="op">&#123;</span>
       <span class="va">o</span>.<span class="at">__proto__</span> <span class="op">=</span> p<span class="op">;</span>
       <span class="cf">return</span> o<span class="op">;</span>
-    <span class="op">};</span>
+    <span class="op">&#125;;</span>
   <span class="cf">return</span> <span class="at">_setPrototypeOf</span>(o<span class="op">,</span> p)<span class="op">;</span>
-<span class="op">}</span></code></pre></div><p>首先检查当前环境是否支持直接调用 <code>Object.setPrototypeOf()</code> 方法，如果不支持，就通过 <code>__proto__</code> 手动给实例建立原型关系（ <code>__proto__</code> 是一个暴露的内部属性，一般不提倡直接进行操作）。</p><blockquote><p><strong><code>_possibleConstructorReturn(self,call)</code></strong></p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_possibleConstructorReturn</span>(self<span class="op">,</span> call) <span class="op">{</span>
-  <span class="cf">if</span> (call <span class="op">&amp;&amp;</span> (<span class="at">_typeof</span>(call) <span class="op">===</span> <span class="st">&quot;object&quot;</span> <span class="op">||</span> <span class="kw">typeof</span> call <span class="op">===</span> <span class="st">&quot;function&quot;</span>)) <span class="op">{</span>
+<span class="op">&#125;</span></code></pre></div><p>首先检查当前环境是否支持直接调用 <code>Object.setPrototypeOf()</code> 方法，如果不支持，就通过 <code>__proto__</code> 手动给实例建立原型关系（ <code>__proto__</code> 是一个暴露的内部属性，一般不提倡直接进行操作）。</p><blockquote><p><strong><code>_possibleConstructorReturn(self,call)</code></strong></p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_possibleConstructorReturn</span>(self<span class="op">,</span> call) <span class="op">&#123;</span>
+  <span class="cf">if</span> (call <span class="op">&amp;&amp;</span> (<span class="at">_typeof</span>(call) <span class="op">===</span> <span class="st">&quot;object&quot;</span> <span class="op">||</span> <span class="kw">typeof</span> call <span class="op">===</span> <span class="st">&quot;function&quot;</span>)) <span class="op">&#123;</span>
     <span class="cf">return</span> call<span class="op">;</span>
-  <span class="op">}</span>
+  <span class="op">&#125;</span>
   <span class="cf">return</span> <span class="at">_assertThisInitialized</span>(self)<span class="op">;</span>
-<span class="op">}</span></code></pre></div><p>如果你看过 <code>new</code> 或者 <code>[[Construct]]</code> 的内部实现，就会知道，给构造函数指定了一个非空对象或者函数作为返回值之后，调用函数之后返回的将不是实例，而是这个对象或者函数。这里就是通过 <code>_possibleConstructorReturn</code> 这个函数来完成这件事的 —— 仔细看它的名字，意思不就是“构造函数可能返回的值”吗？</p><p>这个函数接受两个参数，<code>self</code> 代表构造函数的实例，<code>call</code> 代表构造函数的返回值。内部的判断也很简单，<code>call &amp;&amp; (_typeof(call) === &quot;object&quot; || typeof call === &quot;function&quot;)</code> 是检查 <code>call</code> 的类型，当它是一个对象（注意这里是使用 <code>typeof</code> 进行检查，需要排除可能为 <code>null</code> 的情况）或者函数的时候，直接将其作为返回值；否则就返回 <code>_assertThisInitialized(self)</code>。等等，怎么又来了一个新函数呢？不要急，我们接着就来看这个函数是干什么用的。</p><blockquote><p><strong><code>_assertThisInitialized(self)</code></strong></p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_assertThisInitialized</span>(self) <span class="op">{</span>
-  <span class="cf">if</span> (self <span class="op">===</span> <span class="kw">void</span> <span class="dv">0</span>) <span class="op">{</span>
+<span class="op">&#125;</span></code></pre></div><p>如果你看过 <code>new</code> 或者 <code>[[Construct]]</code> 的内部实现，就会知道，给构造函数指定了一个非空对象或者函数作为返回值之后，调用函数之后返回的将不是实例，而是这个对象或者函数。这里就是通过 <code>_possibleConstructorReturn</code> 这个函数来完成这件事的 —— 仔细看它的名字，意思不就是“构造函数可能返回的值”吗？</p><p>这个函数接受两个参数，<code>self</code> 代表构造函数的实例，<code>call</code> 代表构造函数的返回值。内部的判断也很简单，<code>call &amp;&amp; (_typeof(call) === &quot;object&quot; || typeof call === &quot;function&quot;)</code> 是检查 <code>call</code> 的类型，当它是一个对象（注意这里是使用 <code>typeof</code> 进行检查，需要排除可能为 <code>null</code> 的情况）或者函数的时候，直接将其作为返回值；否则就返回 <code>_assertThisInitialized(self)</code>。等等，怎么又来了一个新函数呢？不要急，我们接着就来看这个函数是干什么用的。</p><blockquote><p><strong><code>_assertThisInitialized(self)</code></strong></p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_assertThisInitialized</span>(self) <span class="op">&#123;</span>
+  <span class="cf">if</span> (self <span class="op">===</span> <span class="kw">void</span> <span class="dv">0</span>) <span class="op">&#123;</span>
     <span class="cf">throw</span> <span class="kw">new</span> <span class="at">ReferenceError</span>(
       <span class="st">&quot;this hasn&#39;t been initialised - super() hasn&#39;t been called&quot;</span>
     )<span class="op">;</span>
-  <span class="op">}</span>
+  <span class="op">&#125;</span>
   <span class="cf">return</span> self<span class="op">;</span>
-<span class="op">}</span></code></pre></div><p>看这个函数的名字 —— “断言 <code>this</code> 已经初始化”，也就是说，在调用这个方法的时候，我们期望的结果是 <code>this</code> 已经得到初始化了。这里如果检查发现 <code>this</code> 是 <code>undefined</code>，就会抛出一个错误，提示我们由于没有调用 <code>super()</code>，所以无法得到 <code>this</code>；否则就返回 <code>this</code> 。为什么要使用 <code>void 0</code> 而不是 <code>undefined</code> 呢？因为非严格模式下 <code>undefined</code> 可能会被重写，这里使用 <code>void 0</code> 更加保险。</p><blockquote><p><strong><code>_isNativeReflectConstruct()</code></strong></p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_isNativeReflectConstruct</span>() <span class="op">{</span>
+<span class="op">&#125;</span></code></pre></div><p>看这个函数的名字 —— “断言 <code>this</code> 已经初始化”，也就是说，在调用这个方法的时候，我们期望的结果是 <code>this</code> 已经得到初始化了。这里如果检查发现 <code>this</code> 是 <code>undefined</code>，就会抛出一个错误，提示我们由于没有调用 <code>super()</code>，所以无法得到 <code>this</code>；否则就返回 <code>this</code> 。为什么要使用 <code>void 0</code> 而不是 <code>undefined</code> 呢？因为非严格模式下 <code>undefined</code> 可能会被重写，这里使用 <code>void 0</code> 更加保险。</p><blockquote><p><strong><code>_isNativeReflectConstruct()</code></strong></p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_isNativeReflectConstruct</span>() <span class="op">&#123;</span>
   <span class="cf">if</span> (<span class="kw">typeof</span> Reflect <span class="op">===</span> <span class="st">&quot;undefined&quot;</span> <span class="op">||</span> <span class="op">!</span><span class="va">Reflect</span>.<span class="at">construct</span>) <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span>
   <span class="cf">if</span> (<span class="va">Reflect</span>.<span class="va">construct</span>.<span class="at">sham</span>) <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span>
   <span class="cf">if</span> (<span class="kw">typeof</span> Proxy <span class="op">===</span> <span class="st">&quot;function&quot;</span>) <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span>
-  <span class="cf">try</span> <span class="op">{</span>
+  <span class="cf">try</span> <span class="op">&#123;</span>
     <span class="va">Boolean</span>.<span class="va">prototype</span>.<span class="va">valueOf</span>.<span class="at">call</span>(
-      <span class="va">Reflect</span>.<span class="at">construct</span>(Boolean<span class="op">,</span> []<span class="op">,</span> <span class="kw">function</span> () <span class="op">{}</span>)
+      <span class="va">Reflect</span>.<span class="at">construct</span>(Boolean<span class="op">,</span> []<span class="op">,</span> <span class="kw">function</span> () <span class="op">&#123;&#125;</span>)
     )<span class="op">;</span>
     <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span>
-  <span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span>
+  <span class="op">&#125;</span> <span class="cf">catch</span> (e) <span class="op">&#123;</span>
     <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span>
-  <span class="op">}</span>
-<span class="op">}</span></code></pre></div><p>这个方法用于检测当前环境是否支持原生的 <code>Reflect</code>。为什么要做这个检查呢？后面我们再来解释。</p><p>好了，我们已经分析了这几个函数的作用，现在直接翻到最下面的代码，从 <code>Son</code> 子类看起：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">var</span> Son <span class="op">=</span> <span class="co">/*#__PURE__*/</span> (<span class="kw">function</span> (_Parent) <span class="op">{</span>
+  <span class="op">&#125;</span>
+<span class="op">&#125;</span></code></pre></div><p>这个方法用于检测当前环境是否支持原生的 <code>Reflect</code>。为什么要做这个检查呢？后面我们再来解释。</p><p>好了，我们已经分析了这几个函数的作用，现在直接翻到最下面的代码，从 <code>Son</code> 子类看起：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">var</span> Son <span class="op">=</span> <span class="co">/*#__PURE__*/</span> (<span class="kw">function</span> (_Parent) <span class="op">&#123;</span>
   <span class="at">_inherits</span>(Son<span class="op">,</span> _Parent)<span class="op">;</span>
 
   <span class="kw">var</span> _super <span class="op">=</span> <span class="at">_createSuper</span>(Son)<span class="op">;</span>
 
-  <span class="kw">function</span> <span class="at">Son</span>() <span class="op">{</span>
+  <span class="kw">function</span> <span class="at">Son</span>() <span class="op">&#123;</span>
     <span class="at">_classCallCheck</span>(<span class="kw">this</span><span class="op">,</span> Son)<span class="op">;</span>
 
     <span class="cf">return</span> <span class="va">_super</span>.<span class="at">call</span>(<span class="kw">this</span>)<span class="op">;</span>
-  <span class="op">}</span>
+  <span class="op">&#125;</span>
 
   <span class="cf">return</span> Son<span class="op">;</span>
-<span class="op">}</span>)(Parent)<span class="op">;</span></code></pre></div><p>这里的 <code>Son</code> 同样是一个 IIFE，并且实际上也是返回一个 <code>Son</code> 子类构造函数，不同的是，它内部还封装了其它方法的调用。我们逐一看一下这些方法的作用。</p><blockquote><p><strong><code>_inherits(Son,_Parent)</code></strong></p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_inherits</span>(subClass<span class="op">,</span> superClass) <span class="op">{</span>
-  <span class="cf">if</span> (<span class="kw">typeof</span> superClass <span class="op">!==</span> <span class="st">&quot;function&quot;</span> <span class="op">&amp;&amp;</span> superClass <span class="op">!==</span> <span class="kw">null</span>) <span class="op">{</span>
+<span class="op">&#125;</span>)(Parent)<span class="op">;</span></code></pre></div><p>这里的 <code>Son</code> 同样是一个 IIFE，并且实际上也是返回一个 <code>Son</code> 子类构造函数，不同的是，它内部还封装了其它方法的调用。我们逐一看一下这些方法的作用。</p><blockquote><p><strong><code>_inherits(Son,_Parent)</code></strong></p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_inherits</span>(subClass<span class="op">,</span> superClass) <span class="op">&#123;</span>
+  <span class="cf">if</span> (<span class="kw">typeof</span> superClass <span class="op">!==</span> <span class="st">&quot;function&quot;</span> <span class="op">&amp;&amp;</span> superClass <span class="op">!==</span> <span class="kw">null</span>) <span class="op">&#123;</span>
     <span class="cf">throw</span> <span class="kw">new</span> <span class="at">TypeError</span>(<span class="st">&quot;Super expression must either be null or a function&quot;</span>)<span class="op">;</span>
-  <span class="op">}</span>
-  <span class="va">subClass</span>.<span class="at">prototype</span> <span class="op">=</span> <span class="va">Object</span>.<span class="at">create</span>(superClass <span class="op">&amp;&amp;</span> <span class="va">superClass</span>.<span class="at">prototype</span><span class="op">,</span> <span class="op">{</span>
-    <span class="dt">constructor</span><span class="op">:</span> <span class="op">{</span> 
+  <span class="op">&#125;</span>
+  <span class="va">subClass</span>.<span class="at">prototype</span> <span class="op">=</span> <span class="va">Object</span>.<span class="at">create</span>(superClass <span class="op">&amp;&amp;</span> <span class="va">superClass</span>.<span class="at">prototype</span><span class="op">,</span> <span class="op">&#123;</span>
+    <span class="dt">constructor</span><span class="op">:</span> <span class="op">&#123;</span> 
         <span class="dt">value</span><span class="op">:</span> subClass<span class="op">,</span> 
         <span class="dt">writable</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> 
         <span class="dt">configurable</span><span class="op">:</span> <span class="kw">true</span> 
-    <span class="op">}</span>
-  <span class="op">}</span>)<span class="op">;</span>
+    <span class="op">&#125;</span>
+  <span class="op">&#125;</span>)<span class="op">;</span>
   <span class="cf">if</span> (superClass) <span class="at">_setPrototypeOf</span>(subClass<span class="op">,</span> superClass)<span class="op">;</span>
-<span class="op">}</span></code></pre></div><p><code>_inherit</code> 是实现继承的其中一个核心方法，可以说它的本质就是 ES5 中的寄生组合式继承。这个方法接受一个父类和子类作为参数，首先会检查父类是不是函数或者 <code>null</code>，如果不是，则抛出错误（为什么父类可以是 <code>null</code>？<a href="https://juejin.cn/post/6844903575613603853#heading-0" target="_blank" rel="noopener">从 extends 看 JS 继承</a>这篇文章进行了解释，这里我就不重复了）。</p><p>接着，调用 <code>Object.create</code> 设置父类的原型为子类原型的 <code>__proto__</code>。这里我们会看到还传入了第二个参数，这个参数是子类原型的属性的特性描述对象（descriptor），我们对 <code>constructor</code> 属性进行了设置，将它设置为可写、可配置，同时利用 <code>value</code> 修复了因重写子类原型而丢失的 <code>constructor</code> 指向。为什么不设置 <code>enumerable: false</code> 呢？因为默认就是不可枚举的，不设置也行。</p><p>最后，我们设置子类的 <code>__proto__</code> 指向父类，这是 ES5 中没有的，目的是让子类继承父类的静态方法（可以直接通过类调用的方法）。</p><p>可以看到，通过调用 <code>_inherit</code> 函数，我们已经成功让子类继承了父类的原型方法和静态方法。不过，实例上的属性怎么继承呢？这就要继续往下看了，接下来我们调用 <code>_createSuper()</code> 函数并传入派生类（子类），这不是重点，重点是它创建并返回的另一个函数 <code>_super</code>。</p><blockquote><p><strong><code>_super.call(this)</code></strong></p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_createSuper</span>(Derived) <span class="op">{</span>
+<span class="op">&#125;</span></code></pre></div><p><code>_inherit</code> 是实现继承的其中一个核心方法，可以说它的本质就是 ES5 中的寄生组合式继承。这个方法接受一个父类和子类作为参数，首先会检查父类是不是函数或者 <code>null</code>，如果不是，则抛出错误（为什么父类可以是 <code>null</code>？<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903575613603853#heading-0">从 extends 看 JS 继承</a>这篇文章进行了解释，这里我就不重复了）。</p><p>接着，调用 <code>Object.create</code> 设置父类的原型为子类原型的 <code>__proto__</code>。这里我们会看到还传入了第二个参数，这个参数是子类原型的属性的特性描述对象（descriptor），我们对 <code>constructor</code> 属性进行了设置，将它设置为可写、可配置，同时利用 <code>value</code> 修复了因重写子类原型而丢失的 <code>constructor</code> 指向。为什么不设置 <code>enumerable: false</code> 呢？因为默认就是不可枚举的，不设置也行。</p><p>最后，我们设置子类的 <code>__proto__</code> 指向父类，这是 ES5 中没有的，目的是让子类继承父类的静态方法（可以直接通过类调用的方法）。</p><p>可以看到，通过调用 <code>_inherit</code> 函数，我们已经成功让子类继承了父类的原型方法和静态方法。不过，实例上的属性怎么继承呢？这就要继续往下看了，接下来我们调用 <code>_createSuper()</code> 函数并传入派生类（子类），这不是重点，重点是它创建并返回的另一个函数 <code>_super</code>。</p><blockquote><p><strong><code>_super.call(this)</code></strong></p></blockquote><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">_createSuper</span>(Derived) <span class="op">&#123;</span>
   <span class="kw">var</span> hasNativeReflectConstruct <span class="op">=</span> <span class="at">_isNativeReflectConstruct</span>()<span class="op">;</span>
-  <span class="cf">return</span> <span class="kw">function</span> <span class="at">_createSuperInternal</span>() <span class="op">{</span>
+  <span class="cf">return</span> <span class="kw">function</span> <span class="at">_createSuperInternal</span>() <span class="op">&#123;</span>
     <span class="kw">var</span> Super <span class="op">=</span> <span class="at">_getPrototypeOf</span>(Derived)<span class="op">,</span>
       result<span class="op">;</span>
-    <span class="cf">if</span> (hasNativeReflectConstruct) <span class="op">{</span>
+    <span class="cf">if</span> (hasNativeReflectConstruct) <span class="op">&#123;</span>
       <span class="kw">var</span> NewTarget <span class="op">=</span> <span class="at">_getPrototypeOf</span>(<span class="kw">this</span>).<span class="at">constructor</span><span class="op">;</span>
       result <span class="op">=</span> <span class="va">Reflect</span>.<span class="at">construct</span>(Super<span class="op">,</span> arguments<span class="op">,</span> NewTarget)<span class="op">;</span>
-    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>
+    <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span>
       result <span class="op">=</span> <span class="va">Super</span>.<span class="at">apply</span>(<span class="kw">this</span><span class="op">,</span> arguments)<span class="op">;</span>
-    <span class="op">}</span>
+    <span class="op">&#125;</span>
     <span class="cf">return</span> <span class="at">_possibleConstructorReturn</span>(<span class="kw">this</span><span class="op">,</span> result)<span class="op">;</span>
-  <span class="op">};</span>
-<span class="op">}</span></code></pre></div><p>这里的 <code>_createSuperInternal</code> 就是 <code>_super</code>，调用的时候我们绑定了其内部的 <code>this</code> 为子类实例。</p><p>它首先会根据之前的 <code>_isNativeReflectConstruct</code> 检查当前环境是否支持 <code>Reflect</code>，如果支持，则执行 <code>result = Reflect.construct(Super, arguments, NewTarget)</code>，否则执行 <code>result = Super.apply(this, arguments)</code>。</p><p>解释一下这里为什么要优先使用 <code>Reflect</code>。当执行 <code>Reflect.construct(Super, arguments, NewTarget)</code>的时候，最终会返回一个基于 <code>Super</code> 父类构造函数创建的实例，相当于执行了 <code>new Super(...arguments)</code>，但是，<strong>这个实例的 <code>__proto__</code> 的 <code>constructor</code> 是 <code>NewTarget</code></strong>，因此在某种程度上，你也可以说这就是一个子类实例，不过它拥有父类实例的所有属性。</p><p>可能你会说，这和下面的 <code>Super.apply</code> （借用构造函数继承）不是没区别吗？非也。我们使用 <code>Super.apply</code> 的时候，其实 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new.target" target="_blank" rel="noopener">new.target</a> 属性是会丢失的，就像下面这样：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Super</span>()<span class="op">{</span>
+  <span class="op">&#125;;</span>
+<span class="op">&#125;</span></code></pre></div><p>这里的 <code>_createSuperInternal</code> 就是 <code>_super</code>，调用的时候我们绑定了其内部的 <code>this</code> 为子类实例。</p><p>它首先会根据之前的 <code>_isNativeReflectConstruct</code> 检查当前环境是否支持 <code>Reflect</code>，如果支持，则执行 <code>result = Reflect.construct(Super, arguments, NewTarget)</code>，否则执行 <code>result = Super.apply(this, arguments)</code>。</p><p>解释一下这里为什么要优先使用 <code>Reflect</code>。当执行 <code>Reflect.construct(Super, arguments, NewTarget)</code>的时候，最终会返回一个基于 <code>Super</code> 父类构造函数创建的实例，相当于执行了 <code>new Super(...arguments)</code>，但是，<strong>这个实例的 <code>__proto__</code> 的 <code>constructor</code> 是 <code>NewTarget</code></strong>，因此在某种程度上，你也可以说这就是一个子类实例，不过它拥有父类实例的所有属性。</p><p>可能你会说，这和下面的 <code>Super.apply</code> （借用构造函数继承）不是没区别吗？非也。我们使用 <code>Super.apply</code> 的时候，其实 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new.target">new.target</a> 属性是会丢失的，就像下面这样：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Super</span>()<span class="op">&#123;</span>
     <span class="va">console</span>.<span class="at">log</span>(<span class="kw">new</span>.<span class="at">target</span>)
-<span class="op">}</span>
+<span class="op">&#125;</span>
 <span class="kw">new</span> <span class="at">Super</span>()       <span class="co">// Super</span>
-<span class="va">Super</span>.<span class="at">apply</span>(<span class="op">{}</span>)   <span class="co">// undefined</span></code></pre></div><p>但是如果使用 <code>Reflect.consturct</code> 来创建对象，则 <code>new.target</code> 不会丢失：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Super1</span>()<span class="op">{</span>
+<span class="va">Super</span>.<span class="at">apply</span>(<span class="op">&#123;&#125;</span>)   <span class="co">// undefined</span></code></pre></div><p>但是如果使用 <code>Reflect.consturct</code> 来创建对象，则 <code>new.target</code> 不会丢失：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Super1</span>()<span class="op">&#123;</span>
     <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Super1&#39;</span>)
     <span class="va">console</span>.<span class="at">log</span>(<span class="kw">new</span>.<span class="at">target</span>)
-<span class="op">}</span>
-<span class="kw">function</span> <span class="at">Super2</span>()<span class="op">{</span>
+<span class="op">&#125;</span>
+<span class="kw">function</span> <span class="at">Super2</span>()<span class="op">&#123;</span>
     <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Super2&#39;</span>)
     <span class="va">console</span>.<span class="at">log</span>(<span class="kw">new</span>.<span class="at">target</span>)
-<span class="op">}</span>
-<span class="kw">const</span> obj1 <span class="op">=</span> <span class="va">Reflect</span>.<span class="at">construct</span>(Super1<span class="op">,{}</span>)              
+<span class="op">&#125;</span>
+<span class="kw">const</span> obj1 <span class="op">=</span> <span class="va">Reflect</span>.<span class="at">construct</span>(Super1<span class="op">,&#123;&#125;</span>)              
 <span class="co">// &#39;Super1&#39;</span>
 <span class="co">//  Super1</span>
-<span class="kw">const</span> obj2 <span class="op">=</span> <span class="va">Reflect</span>.<span class="at">construct</span>(Super1<span class="op">,{},</span>Super2)
+<span class="kw">const</span> obj2 <span class="op">=</span> <span class="va">Reflect</span>.<span class="at">construct</span>(Super1<span class="op">,&#123;&#125;,</span>Super2)
 <span class="co">// &#39;Super1&#39;</span>
-<span class="co">//  Super2</span></code></pre></div><p>可以看到，即便没有通过 <code>new</code> 去调用 <code>Super1</code>，<code>new.target</code> 也仍然指向 <code>Super1</code>；而在传了第三个参数之后，<code>new.target</code> 也没有丢失，只是指向了 <code>Super2</code>（前面我们说过了，某种程度上，可以说 <code>obj1</code> 就是 <code>Super2</code> 的实例）。</p><p>所以，这里优先使用 <code>Reflect</code>，是为了保证 <code>new.target</code> 不会丢失。</p><p>之后，<code>result</code> 可能有三种取值：</p><ul><li>一个继承了父类实例所有属性的子类实例</li><li>父类构造函数的调用结果，可能是父类构造函数中自定义返回的一个非空对象</li><li>父类构造函数的调用结果，可能是默认返回的 <code>undefined</code></li></ul><p>如何处理这些不同的情况呢？这里调用了前面讲过的 <code>_possibleConstructorReturn(this,result)</code>函数，如果判断 <code>result</code> 是一个非空对象，也就是第一种和第二种取值情况，那么就直接返回 <code>result</code>；否则就是第三种情况了，此时就对当初传进去的子类实例（已经通过 <code>Super.apply</code> 对它进行了增强），也就是 <code>this</code>，进行断言，然后返回出去。</p><p>现在，让我们再回到 <code>Son</code> 构造函数。可以看到，调用它之后返回的正是 <code>_super.call(this)</code>，也就是返回 <code>result</code> 或者经过增强的<code>this</code>。这里的 <code>result</code> 我们知道也有两种取值，如果是一个继承了父类实例所有属性的子类实例，那么实际上等价于经过增强的 <code>this</code>；如果是父类构造函数中自定义返回的一个非空对象，则意味着调用 <code>Son</code>构造函数之后返回的对象实际上并没有继承父类中声明的实例属性。类似下面这样：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Parent</span>()<span class="op">{</span>
+<span class="co">//  Super2</span></code></pre></div><p>可以看到，即便没有通过 <code>new</code> 去调用 <code>Super1</code>，<code>new.target</code> 也仍然指向 <code>Super1</code>；而在传了第三个参数之后，<code>new.target</code> 也没有丢失，只是指向了 <code>Super2</code>（前面我们说过了，某种程度上，可以说 <code>obj1</code> 就是 <code>Super2</code> 的实例）。</p><p>所以，这里优先使用 <code>Reflect</code>，是为了保证 <code>new.target</code> 不会丢失。</p><p>之后，<code>result</code> 可能有三种取值：</p><ul><li>一个继承了父类实例所有属性的子类实例</li><li>父类构造函数的调用结果，可能是父类构造函数中自定义返回的一个非空对象</li><li>父类构造函数的调用结果，可能是默认返回的 <code>undefined</code></li></ul><p>如何处理这些不同的情况呢？这里调用了前面讲过的 <code>_possibleConstructorReturn(this,result)</code>函数，如果判断 <code>result</code> 是一个非空对象，也就是第一种和第二种取值情况，那么就直接返回 <code>result</code>；否则就是第三种情况了，此时就对当初传进去的子类实例（已经通过 <code>Super.apply</code> 对它进行了增强），也就是 <code>this</code>，进行断言，然后返回出去。</p><p>现在，让我们再回到 <code>Son</code> 构造函数。可以看到，调用它之后返回的正是 <code>_super.call(this)</code>，也就是返回 <code>result</code> 或者经过增强的<code>this</code>。这里的 <code>result</code> 我们知道也有两种取值，如果是一个继承了父类实例所有属性的子类实例，那么实际上等价于经过增强的 <code>this</code>；如果是父类构造函数中自定义返回的一个非空对象，则意味着调用 <code>Son</code>构造函数之后返回的对象实际上并没有继承父类中声明的实例属性。类似下面这样：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">Parent</span>()<span class="op">&#123;</span>
     <span class="kw">this</span>.<span class="at">a</span> <span class="op">=</span> <span class="dv">1</span>
-    <span class="cf">return</span> <span class="op">{</span><span class="dt">b</span><span class="op">:</span><span class="dv">1</span><span class="op">}</span>
-<span class="op">}</span>
-<span class="kw">function</span> <span class="at">Son</span>()<span class="op">{</span>
+    <span class="cf">return</span> <span class="op">&#123;</span><span class="dt">b</span><span class="op">:</span><span class="dv">1</span><span class="op">&#125;</span>
+<span class="op">&#125;</span>
+<span class="kw">function</span> <span class="at">Son</span>()<span class="op">&#123;</span>
     <span class="cf">return</span> <span class="va">Parent</span>.<span class="at">call</span>(<span class="kw">this</span>)
-<span class="op">}</span>
+<span class="op">&#125;</span>
 <span class="va">Son</span>.<span class="va">prototype</span>.<span class="at">__proto__</span> <span class="op">=</span> <span class="va">Parent</span>.<span class="at">prortotype</span>
 <span class="kw">const</span> obj <span class="op">=</span> <span class="kw">new</span> <span class="at">Son</span>()
 <span class="va">console</span>.<span class="at">log</span>(obj)     
-<span class="co">// {b:1}      </span>
+<span class="co">// &#123;b:1&#125;      </span>
 <span class="co">// 这里 `Son` 同样也是返回父类 `Parent` 的调用结果（一个对象），它并没有继承在父类上声明的实例属性 `a`。</span></code></pre></div><p>到这里，我们的分析基本就结束了。希望你阅读完本文之后有所收获，若发现文章有错误，也欢迎评论区指正。</p><p>`</p></div><div class="post-nav"><div class="post-nav-prev"><a href="/2021/07/08/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%20Object.assign()%EF%BC%9F/" rel="prev" title="JS 原生方法原理探究（七）：如何实现 Object.assign()？"><i class="fa fa-angle-double-left"></i>&nbspJS 原生方法原理探究（七）：如何实现 Object.assign()？</a></div><div class="post-nav-next"><a href="/2021/05/26/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%20instanceof%EF%BC%9F/" rel="next" title="JS 原生方法原理探究（五）：如何实现 instanceof？">JS 原生方法原理探究（五）：如何实现 instanceof？&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top">Contents</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#es6-%E7%9A%84-class-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="toc-text">ES6 的 Class 是如何实现的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#es6-%E7%9A%84%E7%BB%A7%E6%89%BF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="toc-text">ES6 的继承是如何实现的</span></a></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"retro",pageSize:10,visitor:!0})</script></section></main><script>var user=[1,2,3,4]</script><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - <span>2021</span> My Blog</p><p class="a">Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/search.js"></script><script src="/js/post-except.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script></body></html><!-- rebuild by neat -->

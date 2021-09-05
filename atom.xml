@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Focus on FE learning</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://chorer.github.io/"/>
+  <updated>2021-09-05T05:01:23.559Z</updated>
+  <id>https://chorer.github.io/</id>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>万字梳理 Webpack 常用配置和优化方案</title>
+    <link href="https://chorer.github.io/2021/09/05/F-%E4%B8%87%E5%AD%97%E6%A2%B3%E7%90%86%20%20Webpack%20%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/"/>
+    <id>https://chorer.github.io/2021/09/05/F-万字梳理  Webpack 常用配置和优化方案/</id>
+    <published>2021-09-04T16:00:00.000Z</published>
+    <updated>2021-09-05T05:01:23.559Z</updated>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Webpack%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/webpack%E5%AD%A6%E4%B9%A0-0-1.png&quot; /&gt;
+
+&lt;/div&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+      <category term="Webpack" scheme="https://chorer.github.io/categories/Front-end/Webpack/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS 原生方法原理探究（十）：如何手写实现 Promise/A+ 及相关方法？</title>
+    <link href="https://chorer.github.io/2021/08/01/F-JS%20%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0%20PromiseA+%20%E5%8F%8A%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95%EF%BC%9F/"/>
+    <id>https://chorer.github.io/2021/08/01/F-JS 原生方法原理探究（十）：如何手写实现 PromiseA+ 及相关方法？/</id>
+    <published>2021-08-01T11:59:11.976Z</published>
+    <updated>2021-09-05T05:06:56.720Z</updated>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/JS%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0%E7%B3%BB%E5%88%97/5.jpeg&quot; /&gt;
+
+&lt;/div&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS 原生方法原理探究（九）：如何手写实现浅拷贝和深拷贝？</title>
+    <link href="https://chorer.github.io/2021/07/09/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D%EF%BC%9F/"/>
+    <id>https://chorer.github.io/2021/07/09/F-JS原生方法原理探究（九）：如何实现浅拷贝和深拷贝？/</id>
+    <published>2021-07-09T02:45:38.107Z</published>
+    <updated>2021-08-07T08:41:48.178Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这是JS 原生方法原理探究系列的第九篇文章。本文会介绍如何手写实现浅拷贝和深拷贝。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;实现浅拷贝&quot;&gt;实现浅拷贝&lt;/h2&gt;
+&lt;h3
+        
+      
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS 原生方法原理探究（八）：如何实现 JSON.stringify()？</title>
+    <link href="https://chorer.github.io/2021/07/08/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E5%85%AB%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%20JSON.stringify()%EF%BC%9F/"/>
+    <id>https://chorer.github.io/2021/07/08/F-JS原生方法原理探究（八）：如何实现 JSON.stringify()？/</id>
+    <published>2021-07-08T12:07:10.927Z</published>
+    <updated>2021-07-08T12:50:12.065Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;p&gt;这是JS 原生方法原理探究系列的第八篇文章。本文会介绍如何实现 &lt;code&gt;JSON.stringify()&lt;/code&gt; 方法。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;JSON.stringify()&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS 原生方法原理探究（七）：如何实现 Object.assign()？</title>
+    <link href="https://chorer.github.io/2021/07/08/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%20Object.assign()%EF%BC%9F/"/>
+    <id>https://chorer.github.io/2021/07/08/F-JS原生方法原理探究（七）：如何实现 Object.assign()？/</id>
+    <published>2021-07-08T12:06:02.399Z</published>
+    <updated>2021-07-08T12:16:12.702Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;p&gt;这是JS 原生方法原理探究系列的第七篇文章。本文会介绍如何实现 &lt;code&gt;Object.assign()&lt;/code&gt; 方法。&lt;/p&gt;
+&lt;h3
+        
+      
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS原生方法原理探究（六）从 Babel 转译过程浅谈 ES6 实现继承的原理</title>
+    <link href="https://chorer.github.io/2021/05/28/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E4%BB%8E%20Babel%20%E8%BD%AC%E8%AF%91%E8%BF%87%E7%A8%8B%E8%B0%88%E8%B0%88%20ES6%20%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF%E7%9A%84%E5%8E%9F%E7%90%86/"/>
+    <id>https://chorer.github.io/2021/05/28/F-JS原生方法原理探究（六）：从 Babel 转译过程谈谈 ES6 实现继承的原理/</id>
+    <published>2021-05-28T11:21:19.731Z</published>
+    <updated>2021-05-30T07:07:48.841Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;p&gt;这是JS 原生方法原理探究系列的第六篇文章。&lt;/p&gt;
+&lt;p&gt;都说 ES6 的 Class 是 ES5 的语法糖，那么 ES6 的 Class 是如何实现的呢？其实现继承的原理又是什么呢？不妨我们通过 Babel
+        
+      
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS 原生方法原理探究（五）：如何实现 instanceof？</title>
+    <link href="https://chorer.github.io/2021/05/26/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%20instanceof%EF%BC%9F/"/>
+    <id>https://chorer.github.io/2021/05/26/F-JS原生方法原理探究（五）：如何实现 instanceof？/</id>
+    <published>2021-05-26T12:07:14.625Z</published>
+    <updated>2021-05-30T07:08:04.895Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;p&gt;这是JS 原生方法原理探究系列的第五篇文章。本文会介绍如何实现 &lt;code&gt;instanceof&lt;/code&gt; 方法。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;typeof&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS 原生方法原理探究（四）：如何实现继承的几种方式？</title>
+    <link href="https://chorer.github.io/2021/05/26/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%9F/"/>
+    <id>https://chorer.github.io/2021/05/26/F-JS原生方法原理探究（四）：如何实现继承的几种方式？/</id>
+    <published>2021-05-26T03:05:26.400Z</published>
+    <updated>2021-05-30T07:08:29.207Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;p&gt;这是JS 原生方法原理探究系列的第四篇文章。本文会介绍如何实现 JS 中常见的几种继承方式，同时简要它们的优缺点。&lt;/p&gt;
+&lt;h3 id=&quot;实现继承的方法&quot;&gt;实现继承的方法&lt;/h3&gt;
+&lt;div
+        
+      
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS 原生方法原理探究（三）：如何实现 new 操作符？</title>
+    <link href="https://chorer.github.io/2021/05/26/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%20new%EF%BC%9F/"/>
+    <id>https://chorer.github.io/2021/05/26/F-JS原生方法原理探究（三）：如何实现 new？/</id>
+    <published>2021-05-26T03:04:43.704Z</published>
+    <updated>2021-05-30T07:08:41.857Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;p&gt;这是JS 原生方法原理探究系列的第三篇文章。本文会介绍如何模拟实现 &lt;code&gt;new&lt;/code&gt; 操作符。关于 &lt;code&gt;new&lt;/code&gt; 的具体用法，MDN
+        
+      
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS 原生方法原理探究（二）：如何实现 Object.create？</title>
+    <link href="https://chorer.github.io/2021/05/26/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%20Object.create()%EF%BC%9F/"/>
+    <id>https://chorer.github.io/2021/05/26/F-JS原生方法原理探究（二）：如何实现 Object.create()？/</id>
+    <published>2021-05-26T02:26:07.789Z</published>
+    <updated>2021-05-30T07:08:35.544Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;p&gt;这是JS 原生方法原理探究系列的第二篇文章。本文会介绍如何实现 &lt;code&gt;Object.create()&lt;/code&gt; 方法。关于这个方法的具体用法，MDN
+        
+      
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>你的手写 new 实现足够严谨吗？</title>
+    <link href="https://chorer.github.io/2021/05/25/F-%E4%BD%A0%E7%9A%84%E6%89%8B%E5%86%99new%E5%AE%9E%E7%8E%B0%E8%B6%B3%E5%A4%9F%E4%B8%A5%E8%B0%A8%E5%90%97%EF%BC%9F/"/>
+    <id>https://chorer.github.io/2021/05/25/F-你的手写new实现足够严谨吗？/</id>
+    <published>2021-05-25T13:04:28.043Z</published>
+    <updated>2021-05-30T07:05:52.071Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;p&gt;在开始阅读这篇文章之前，你可以对比下面这两段代码的输出结果是否一致（假设 &lt;code&gt;myNew&lt;/code&gt; 是你自己实现的 new 操作）：&lt;/p&gt;
+&lt;div class=&quot;sourceCode&quot;&gt;&lt;pre
+        
+      
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS 原生方法原理探究（一）：如何实现 call、apply 和 bind？</title>
+    <link href="https://chorer.github.io/2021/05/21/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0call%E3%80%81apply%20%E5%92%8C%20bind%EF%BC%9F/"/>
+    <id>https://chorer.github.io/2021/05/21/F-JS原生方法原理探究（一）：如何实现call、apply 和 bind？/</id>
+    <published>2021-05-21T12:01:30.349Z</published>
+    <updated>2021-06-03T04:53:59.976Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;p&gt;这是 JS 原生方法原理探究系列的第一篇文章。本文会介绍如何实现 call、apply 和 bind 方法。关于这几个方法的具体用法，MDN 已经描述得很清楚了，这里不再赘述。&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>「译」1984 年的苹果麦金塔电脑长什么样呢？</title>
+    <link href="https://chorer.github.io/2021/05/09/Trs-1984%20%E5%B9%B4%E7%9A%84%E8%8B%B9%E6%9E%9C%E9%BA%A6%E9%87%91%E5%A1%94%E7%94%B5%E8%84%91%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7%E5%91%A2%EF%BC%9F/"/>
+    <id>https://chorer.github.io/2021/05/09/Trs-1984 年的苹果麦金塔电脑长什么样呢？/</id>
+    <published>2021-05-09T07:54:45.178Z</published>
+    <updated>2021-05-30T07:09:08.691Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;原文链接：https://uxdesign.cc/the-1984-apple-macintosh-how-does-it-look-today-d08dde79da05&lt;/li&gt;
+&lt;li&gt;原作者：Dmitrii Eliuseev&lt;/li&gt;
+&lt;li&gt;译者：Chor&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>「译」Emoji之旅：从情绪表达工具到“百万美元商机”</title>
+    <link href="https://chorer.github.io/2021/05/09/Trs-Emoji%E4%B9%8B%E6%97%85%EF%BC%9A%E4%BB%8E%E6%83%85%E7%BB%AA%E8%A1%A8%E8%BE%BE%E5%B7%A5%E5%85%B7%E5%88%B0%E2%80%9C%E7%99%BE%E4%B8%87%E7%BE%8E%E5%85%83%E5%95%86%E6%9C%BA%E2%80%9D/"/>
+    <id>https://chorer.github.io/2021/05/09/Trs-Emoji之旅：从情绪表达工具到“百万美元商机”/</id>
+    <published>2021-05-09T04:57:54.044Z</published>
+    <updated>2021-07-08T13:12:18.630Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;原文链接：https://uxdesign.cc/emojis-journey-from-a-form-of-easier-self-expression-to-a-multi-million-dollar-business-822d3b17b07a&lt;/li&gt;
+&lt;li&gt;原作者：Brinda Koushik&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;C:\Users\Chor\Desktop\1_lJHVN_d9FCSItIxMsTqLVA.png&quot; /&gt;
+
+&lt;/div&gt;
+    
+    </summary>
+    
+      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈网络协议：HTTPS 篇</title>
+    <link href="https://chorer.github.io/2021/04/07/CN-%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9AHTTPS%E7%AF%87/"/>
+    <id>https://chorer.github.io/2021/04/07/CN-浅谈网络协议：HTTPS篇/</id>
+    <published>2021-04-07T12:36:31.468Z</published>
+    <updated>2021-04-07T12:53:20.300Z</updated>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-4.png&quot; /&gt;
+
+&lt;/div&gt;
+    
+    </summary>
+    
+      <category term="Computer network" scheme="https://chorer.github.io/categories/Computer-network/"/>
+    
+    
+      <category term="HTTPS" scheme="https://chorer.github.io/tags/HTTPS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈网络协议：HTTP 篇</title>
+    <link href="https://chorer.github.io/2021/04/07/CN-%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9AHTTP%E7%AF%87/"/>
+    <id>https://chorer.github.io/2021/04/07/CN-浅谈网络协议：HTTP篇/</id>
+    <published>2021-04-07T12:36:31.468Z</published>
+    <updated>2021-08-07T04:44:41.956Z</updated>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-3.png&quot; /&gt;
+
+&lt;/div&gt;
+    
+    </summary>
+    
+      <category term="Computer network" scheme="https://chorer.github.io/categories/Computer-network/"/>
+    
+    
+      <category term="HTTP" scheme="https://chorer.github.io/tags/HTTP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈网络协议：TCP 篇</title>
+    <link href="https://chorer.github.io/2021/04/07/CN-%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9ATCP%E7%AF%87/"/>
+    <id>https://chorer.github.io/2021/04/07/CN-浅谈网络协议：TCP篇/</id>
+    <published>2021-04-07T12:36:31.468Z</published>
+    <updated>2021-04-07T12:51:28.352Z</updated>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-2.png&quot; /&gt;
+
+&lt;/div&gt;
+    
+    </summary>
+    
+      <category term="Computer network" scheme="https://chorer.github.io/categories/Computer-network/"/>
+    
+    
+      <category term="TCP" scheme="https://chorer.github.io/tags/TCP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈网络协议：Web 安全篇</title>
+    <link href="https://chorer.github.io/2021/04/07/CN-%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9AWeb%20%E5%AE%89%E5%85%A8%E7%AF%87/"/>
+    <id>https://chorer.github.io/2021/04/07/CN-浅谈网络协议：Web 安全篇/</id>
+    <published>2021-04-07T12:36:31.468Z</published>
+    <updated>2021-04-10T00:48:08.614Z</updated>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-5.png&quot; /&gt;
+
+&lt;/div&gt;
+    
+    </summary>
+    
+      <category term="Computer network" scheme="https://chorer.github.io/categories/Computer-network/"/>
+    
+    
+      <category term="网络安全" scheme="https://chorer.github.io/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈网络协议：DNS 篇</title>
+    <link href="https://chorer.github.io/2021/04/07/CN-%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9ADNS%20%E7%AF%87/"/>
+    <id>https://chorer.github.io/2021/04/07/CN-浅谈网络协议：DNS 篇/</id>
+    <published>2021-04-07T12:28:33.240Z</published>
+    <updated>2021-04-17T08:20:59.846Z</updated>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;figure&quot;&gt;
+&lt;embed src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/%E6%B5%85%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-1.webp&quot; /&gt;
+
+&lt;/div&gt;
+    
+    </summary>
+    
+      <category term="Computer network" scheme="https://chorer.github.io/categories/Computer-network/"/>
+    
+    
+      <category term="DNS" scheme="https://chorer.github.io/tags/DNS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tailwind CSS （可能）是名过其实的</title>
+    <link href="https://chorer.github.io/2021/02/17/F-TailwindCSS%E5%8F%AF%E8%83%BD%E8%A2%AB%E5%90%B9%E8%BF%87%E5%A4%B4%E4%BA%86/"/>
+    <id>https://chorer.github.io/2021/02/17/F-TailwindCSS可能被吹过头了/</id>
+    <published>2021-02-16T16:00:00.000Z</published>
+    <updated>2021-02-17T11:25:07.807Z</updated>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/Tailwind%20CSS/0.jpg&quot; alt=&quot;Image for post&quot; /&gt;
+&lt;p class=&quot;caption&quot;&gt;Image for post&lt;/p&gt;
+&lt;/div&gt;
+    
+    </summary>
+    
+      <category term="Translation" scheme="https://chorer.github.io/categories/Translation/"/>
+    
+    
+  </entry>
+  
+</feed>

@@ -1,40 +1,284 @@
-<!-- build time:Sun Sep 05 2021 16:01:26 GMT+0800 (中国标准时间) --><!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Focus on FE learning</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third%20party/pace-theme-flash.css"><link rel="icon" href="/images/kour.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script></head><body><header class="header"><div class="header_top"><span class="theme"><a href="/">Chor's blog</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">首页</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">分类</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">归档</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">标签</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">关于</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue" class="logo">Focus on FE learning</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div><div class="blog-down"><a href="javascript:void(0);"><i class="fa fa-angle-double-down fa-2x"></i></a></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">「译」Flexbox 基本原理</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2019-06-07&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp3.9k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp15 mins&nbsp&nbsp&nbsp</span><div class="post-tags"><i class="fa fa-tags"></i> <a href="/tags/flex/">flex</a></div></div><div class="post-content"><blockquote><ul><li>原文地址：<a target="_blank" rel="noopener" href="https://marina-ferreira.github.io/tutorials/css/flexbox/">Flexbox Fundamentals</a></li><li>原文作者：<a target="_blank" rel="noopener" href="https://marina-ferreira.github.io/">Marina-ferreira</a></li><li>译文地址：<a target="_blank" rel="noopener" href="https://juejin.im/post/5cfb34316fb9a07eef69fec7">「译」Flexbox 基本原理</a></li><li>译者：Chor <span id="more"></span></li></ul></blockquote><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/0.png" alt="Flexbox"><p class="caption">Flexbox</p></div><p>整理自 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/bm/docs/Web">MDN web docs</a> 的笔记，同时参考了 <a target="_blank" rel="noopener" href="http://wesbos.com/">Web Bos</a> 上的<a target="_blank" rel="noopener" href="https://flexbox.io/">什么是 Flexbox</a>系列视频。</p><h2 id="介绍">介绍</h2><p>Flexbox 是 <code>Flexible Box Module</code> 的缩写。 它是一种布局模型，允许我们方便地控制 html 元素之间的空间分布和对齐 [2]。</p><p>Flexbox 一次只能控制一个维度的定位（行或者列）。二维定位的控制需要依靠网格布局 [2]。</p><p>给出以下模板：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;body&gt;</span>
-    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;container&quot;</span><span class="kw">&gt;</span>
-    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;box box-1&quot;</span><span class="kw">&gt;</span>1<span class="kw">&lt;/div&gt;</span>
-    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;box box-2&quot;</span><span class="kw">&gt;</span>2<span class="kw">&lt;/div&gt;</span>
-    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;box box-3&quot;</span><span class="kw">&gt;</span>3<span class="kw">&lt;/div&gt;</span>
-    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;box box-4&quot;</span><span class="kw">&gt;</span>4<span class="kw">&lt;/div&gt;</span>
-    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;box box-5&quot;</span><span class="kw">&gt;</span>5<span class="kw">&lt;/div&gt;</span>
-    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;box box-6&quot;</span><span class="kw">&gt;</span>6<span class="kw">&lt;/div&gt;</span>
-    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;box box-7&quot;</span><span class="kw">&gt;</span>7<span class="kw">&lt;/div&gt;</span>
-    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;box box-8&quot;</span><span class="kw">&gt;</span>8<span class="kw">&lt;/div&gt;</span>
-    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;box box-9&quot;</span><span class="kw">&gt;</span>9<span class="kw">&lt;/div&gt;</span>
-    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;box box-10&quot;</span><span class="kw">&gt;</span>10<span class="kw">&lt;/div&gt;</span>
-    <span class="kw">&lt;/div&gt;</span>
-<span class="kw">&lt;/body&gt;</span></code></pre></div><p>上面 div 的行为默认遵循正常的 html 文档流，因此从上到下、从左到右进行渲染，并且会占据整个 body 的宽度，因为它们的 <code>display</code> 属性默认是 <code>block</code>。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/2.png" alt="Normal document flow"><p class="caption">Normal document flow</p></div><h2 id="弹性项目">弹性项目</h2><p>当为 <code>.container</code>div 设置 <code>display: flex</code> 时，所有的直接子 div 将成为弹性项目，并且获得新的行为 [2]：</p><ul><li>由于 <code>flex-direction</code> 默认值为 <code>row</code>，因此它们会呈一行排列</li><li>它们将会从左到右排列</li></ul><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/3.png" alt="Display flex"><p class="caption">Display flex</p></div><ul><li>项目不会依靠伸展来适应整个宽度（主轴），相反，它们采用收缩的方式</li></ul><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/4.gif" alt="Items shrink to fit"><p class="caption">Items shrink to fit</p></div><ul><li><p>项目将会伸展以适应交叉轴（在这个例子中是高度）。如果各个项目的高度不同，它们将会伸展至与最高的那个项目等高。</p></li><li><p><code>flex-basis</code> 默认值为 <code>auto</code>(项目宽度将取决于其自身的内容)</p></li><li><p><code>flex-wrap</code> 默认值为 <code>nowrap</code>（如果容器的宽度不足以囊括所有的项目，则项目不会换行，只会溢出）</p></li></ul><p>出于可视化的目的，我们拉伸容器以占据整个高度。</p><h2 id="弹性容器">弹性容器</h2><p><code>display: flex</code> 使容器拓展整个可用宽度；与之相对的，<code>display: inline-flex</code> 使容器宽度塌陷至与内容宽度相等。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/5.png" alt="Display inline flex"><p class="caption">Display inline flex</p></div><h2 id="弹性方向">弹性方向</h2><p>一旦声明为弹性容器，我们就可以将元素看作位于两条轴中。一条是由 <code>flex-direction</code> 定义的主轴，一条是与前者垂直的交叉轴 [2]。</p><p><code>flex-direction</code> 属性有四个值: <code>row</code>, <code>row-reverse</code>, <code>column</code> 和 <code>column-reverse</code>.</p><p>默认值是 <code>row</code>，它将主轴设置为从左到右的水平方向，而交叉轴从上到下与之垂直相交。同理，<code>column</code> 将主轴设置为从上到下的垂直方向，而交叉轴则是从左到右。对这两个值添加 <code>reverse</code> ，则主轴将反转 180°，而交叉轴保持不变 [1][2]。</p><p>可以通过下图观察这些值对应的弹性项目行为：</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/6.gif" alt="Flex direction"><p class="caption">Flex direction</p></div><h2 id="弹性换行">弹性换行</h2><p>当容器空间不足以容纳全部弹性项目时，利用 <code>flex-wrap</code> 属性处理弹性项目 [3]。</p><p><code>flex-wrap</code> 的默认值为 <code>nowrap</code>，这意味着如果容器不能在保留项目原始宽度的同时将它们排列成一行的话，项目将会收缩以进行适应。如果由于某些原因无法收缩，则项目会溢出容器外 [1][3]。</p><p>通过给项目设置 300px 的宽度，<code>nowrap</code> 选项输出下面这个结果：</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/7.png" alt="flex-wrap: nowrap"><p class="caption">flex-wrap: nowrap</p></div><p>其中，每个项目收缩到大约 70px 以适应容器。</p><p>当属性值更新为 <code>wrap</code> 时，项目的宽度将等于原先的值，300px。当第一行的宽度不足以容纳 300px 时，项目不再溢出容器外，而是会换行 [3]。每一行都应该被视为是一个独立的弹性容器，任何一个容器内的空间分布均不会影响与之相邻的其他容器 [2]。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/8.png" alt="flex-wrap: wrap"><p class="caption">flex-wrap: wrap</p></div><p>但是为什么弹性项目会占据整个屏幕的高度呢？在第一部分，容器高度被设置为 100vh，因此可用空间被这四行平分以适应 300px 的项目。假如我们没有设置 100vh，则容器高度将等于项目内容的高度，如下图所示 [1]：</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/9.png" alt="Wrap/height unset"><p class="caption">Wrap/height unset</p></div><p>另一个选项是 <code>wrap-reverse</code>，它将会反转交叉轴。通过属性 <code>flex-direction</code> 设置的从上到下的方向会被 <code>wrap-reverse</code> 转化为从下到上 [1]。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/10.png" alt="flex-wrap: wrap-reverse"><p class="caption">flex-wrap: wrap-reverse</p></div><p>通过 <code>flex-direction: column</code> 反转主轴，容纳不下的元素将会换行至另一列，同时剩余空间会被平分 [1]。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/11.png" alt="flex-wrap/column"><p class="caption">flex-wrap/column</p></div><p><code>wrap-reverse</code> 选项与 <code>column</code> 方向搭配使用，则将反转交叉轴的方向为从右到左，产生如下输出：</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/12.png" alt="flex-wrap/column"><p class="caption">flex-wrap/column</p></div><p>弹性布局是一维布局，虽然在反转换行的时候，项目会从下到上排列（在方向为 row 的情况下），但是依然保持着从左到右的结构。改变的只有交叉轴。</p><h2 id="弹性流">弹性流</h2><p><code>flex-direction</code> 和 <code>flex-wrap</code> 可以在一个单属性中进行声明： <code>flex-flow: [direction] [wrap]</code> [2]。</p><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.flex-container</span> <span class="kw">&#123;</span>
-    <span class="kw">flex-flow</span> <span class="kw">:</span> column wrap<span class="kw">;</span>
-<span class="kw">&#125;</span></code></pre></div><h3 id="项目之间的空隙">项目之间的空隙</h3><p>回到主轴方向为 row 且进行换行的情况。通过给项目设置 <code>width: 33.3333%</code>，容器能够完全被填满。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/13.png" alt="item width: 33.33%"><p class="caption">item width: 33.33%</p></div><p>但是当你让子 div 之间有空隙时，它们将不会像预期的那样进行换行：</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/14.png" alt="Broken gutter"><p class="caption">Broken gutter</p></div><p>可以通过使用 CSS 函数 <code>calc()</code> 解决这个问题 [1]：</p><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.flex-item</span> <span class="kw">&#123;</span>
-    <span class="kw">width:</span> calc(<span class="dt">33.33333%</span> - <span class="dt">40px</span>)<span class="kw">;</span>
-    <span class="kw">margin:</span> <span class="dt">20px</span><span class="kw">;</span>
-<span class="kw">&#125;</span></code></pre></div><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/15.png" alt="Gutter"><p class="caption">Gutter</p></div><p>为了消除容器边缘的空间，这里对容器设置负外边距 [3]：</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/16.png" alt="Gutter no edge"><p class="caption">Gutter no edge</p></div><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.flex-container</span> <span class="kw">&#123;</span>
-    <span class="kw">margin:</span> <span class="dt">-20px</span><span class="kw">;</span>
-<span class="kw">&#125;</span></code></pre></div><h2 id="顺序">顺序</h2><p><code>order</code> 属性允许修改项目的呈现顺序。顺序是以组为单位进行分配的。默认情况下所有的弹性项目都设置为 <code>order：0</code> ，这意味着所有的项目位于同一组，并且它们会按照原始顺序进行定位。如果有两个或者两个以上的组，那么各组将会相对于它们的整数值进行排序 [4]。</p><p>在下面的例子中，有三个<code>顺序组</code>， <code>-1</code>， <code>0</code> 和 <code>1</code>，它们按照如下顺序排列。</p><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.box-3</span> <span class="kw">&#123;</span> <span class="kw">order:</span>  <span class="dt">1</span><span class="kw">;</span> <span class="kw">&#125;</span>
-<span class="fl">.box-7</span> <span class="kw">&#123;</span> <span class="kw">order:</span>  <span class="dt">1</span><span class="kw">;</span> <span class="kw">&#125;</span>
-<span class="fl">.box-8</span> <span class="kw">&#123;</span> <span class="kw">order:</span> <span class="dt">-1</span><span class="kw">;</span> <span class="kw">&#125;</span></code></pre></div><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/17.png" alt="Order"><p class="caption">Order</p></div><p>表面上，这个属性重新分配了项目，但在诸如使用 tab 键对它们进行遍历的交互中则依然保留它们的原始位置。如果项目顺序与可访问性有关的话，这一点是需要考虑的。同理， <code>flex-direction</code> 也是这样 [4]。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/18.gif" alt="Order and Accessibility"><p class="caption">Order and Accessibility</p></div><h2 id="对齐">对齐</h2><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/19.png" alt="Alignment Digest"><p class="caption">Alignment Digest</p></div><p>在弹性布局中，沿着轴的项目对齐和空间分布可以通过四个属性控制 [5]：</p><ul><li><code>justify-content</code>：将所有项目在主轴上对齐</li><li><code>align-items</code> ：将所有项目在交叉轴上对齐</li><li><code>align-self</code>：将单个项目在主轴上对齐</li><li><code>align-content</code>：控制交叉轴上各条线之间的空间</li></ul><h3 id="justify-content">justify-content</h3><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/20.png" alt="justify-content digest"><p class="caption">justify-content digest</p></div><p><code>justify-content</code> 是一个在主轴上处理项目的容器属性。最常用的 6 个值是： <code>flex-start</code>， <code>flex-end</code>， <code>center</code>， <code>space-around</code>， <code>space-between</code>， <code>space-evenly</code>。其中，默认值为 <code>flex-start</code>。</p><h3 id="align-items">align-items</h3><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/21.png" alt="align-items digest"><p class="caption">align-items digest</p></div><p><code>align-items</code> 同样是一个容器属性，它在交叉轴上处理项目的对齐。 默认值是 <code>stretch</code> ，其他值是 <code>flex-start</code>， <code>flex-end</code>， <code>center</code> 和 <code>baseline</code> [5]。</p><p>如果设置了容器高度，则 <code>stretch</code> 属性值会使所有的项目伸展至与容器等高；如果没有设置，则所有项目与最高的项目等高 [5]。上面第一张图片中容器高度设置为 <code>100vh</code>，第二张图片则没有设置高度。</p><h3 id="align-content">align-content</h3><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/22.png" alt="align-content digest"><p class="caption">align-content digest</p></div><p><code>align-content</code> 是第四个也是最后一个容器属性，它在交叉轴上分配各条线之间的空间。作为最后一个属性，它的初始值为 <code>stretch</code> ，并且和 <code>justify-content</code> 一样接受以下几个属性值：<code>flex-start</code>， <code>flex-end</code>， <code>center</code>， <code>space-around</code>， <code>space-between</code>， <code>space-evenly</code> [5]。</p><h3 id="align-self">align-self</h3><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/23.png" alt="align-self digest"><p class="caption">align-self digest</p></div><p><code>align-items</code> 属性实际上是通过给容器内的所有项目设置 <code>align-self</code> 而生效的。通过单独设置 <code>align-self</code>，可以覆盖先前设置的总的属性值。该属性和 <code>align-items</code> 拥有相同的可选值，但是还多了一个 ‘auto’ [5]。</p><p><code>auto</code> 会重置 <code>align-self</code> 的值，使之重新等于通过 <code>align-items</code> 给容器全局定义的值 [5]。</p><h2 id="弹性项目大小">弹性项目大小</h2><p>项目的大小和弹性可以通过三个属性控制：<code>flex-grow</code>，<code>flex-shrink</code> 和 <code>flex-basis</code>。这些属性都在主轴上发挥作用 [2]。</p><ul><li><code>flex-grow</code>：如果有额外空间，每个项目应该如何伸展</li><li><code>flex-shrink</code>：如果空间不足，每个项目应该如何收缩</li><li><code>flex-basis</code>：在设置以上两个属性之前项目的大小</li></ul><h3 id="flex-grow">flex-grow</h3><p>该属性设置的是<code>弹性增长系数</code>，这是一个用于处理项目之间相对大小的比率 [7]。</p><p>默认值是 0，这意味着如果有剩余空间，就把这个空间放在最后一个项目的后面 [1]。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/24.png" alt="flex-grow-default"><p class="caption">flex-grow-default</p></div><p>在上面的例子中，<code>direction</code> 设置为 <code>row</code>，每个弹性项目的宽度是 <code>60px</code>。由于容器的宽度是 <code>980px</code> ，因此有 <code>680px</code> 的可用空间，这个空间称为 <code>正向自由空间</code> [7]。</p><p>通过将 <code>flex-grow</code> 设置为 <code>1</code>，正向自由空间将会被弹性项目平分。每个项目的宽度都会增加 <code>136px</code>，总的宽度是 <code>196px</code> [7]。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/25.png" alt="flex-grow: 1"><p class="caption">flex-grow: 1</p></div><p>通过给第三个项目设置 <code>flex-grow: 2</code> ，它获得的可用正向自由空间是其他项目的两倍，即比起其他项目的 <code>173px</code> ，它的总宽度为 <code>286px</code> [7]。</p><p>下图中，项目的 <code>flex-grow</code> 属性设置为自身的内容值。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/26.png" alt="flex-grow: variable"><p class="caption">flex-grow: variable</p></div><h3 id="flex-shrink">flex-shrink</h3><p>当容器没有足够空间来容纳所有项目时，使用 <code>flex-shrink</code> 处理项目大小。因此，它通过收缩项目来处理它们的负向自由空间 [7]。</p><p>如下图所示，<code>980px</code> 的容器存放着 5 个 <code>300px</code> 宽度的容器。由于没有足够空间来容纳所需要的 <code>1500px</code>，默认的<code>弹性收缩系数</code> <code>1</code> 会使每个项目收缩至 <code>196px</code>。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/27.png" alt="flex-shrink-default"><p class="caption">flex-shrink-default</p></div><p>通过给第三个项目设置 <code>2</code> 的比率，它会比其它项目小两倍。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/28.png" alt="flex-shrink-1"><p class="caption">flex-shrink-1</p></div><p>下图中，每个项目以自身内容值作为弹性收缩比率。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/29.png" alt="flex-shrink-variable"><p class="caption">flex-shrink-variable</p></div><h3 id="flex-basis">flex-basis</h3><p><code>flex-basis</code> 属性会在实际设置可用空间之前检查每个项目应该具有的大小。默认值是 <code>auto</code>，项目宽度要么通过 <code>width</code> 显式设置，要么等于内容宽度。它同样也接受像素值 [7]。</p><p>下面的 gif 展示了一个 <code>800px</code> 宽度的容器和 5 个设置了 <code>flex-basis: 160px</code> 的弹性项目。这告诉浏览器：理想情况下有足够的空间放置所有的项目，项目的 <code>160px</code> 宽度将会得到保留，并且没有正向/负向自由空间。如果没有足够的空间，由于 <code>flex-shrink</code> 默认为 <code>1</code>，所有的项目会均匀地收缩。如果有剩余的空间，由于 <code>flex-grow</code> 默认为 <code>0</code>，剩余空间会放置在最后一个项目的后面。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/30.gif" alt="flex-basis"><p class="caption">flex-basis</p></div><p>下面的 gif 中，项目 1 设置为 <code>flex-shrink: 10</code>，项目 4 设置为 <code>flex-grow: 10</code>。对于负向自由空间，项目 1 减小的宽度是其它项目减小宽度的 10 倍；对于正向自由空间，项目 4 增加的宽度是其它项目增加宽度的 10 倍。</p><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/31.gif" alt="flex-basis"><p class="caption">flex-basis</p></div><p><code>flex-basis</code> 还可以接受值 <code>content</code>。此时，无论有没有设置 <code>width</code>，自由空间计算都只会基于项目内容去计算宽度。如果你不打算在计算时考虑项目宽度，则将其设置为 <code>0</code>。</p><h3 id="flex">flex</h3><p><code>flex</code> 是 <code>flex-grow</code>， <code>flex-shrink</code> 和 <code>flex-basis</code> 的简写属性 [2]。</p><p>它接受下面的预定于值：</p><ul><li><code>initial</code>：重置为弹性布局的默认值，与 flex: 0 1 auto 效果一样</li><li><code>auto</code>：弹性项目可以根据需要伸展/收缩，与 flex: 1 1 auto 效果一样</li><li><code>none</code>：使项目失去弹性，与 flex: 0 0 auto 效果一样</li><li><code>flex: 1</code>：弹性项目可以伸展/收缩，并且 <code>flex-basis</code> 设置为 0 ，与 flex: 1 1 0 效果一样</li></ul><h2 id="autoprefixer">Autoprefixer</h2><p>考虑到跨浏览器兼容性，给属性加上所有必要的前缀很重要，这可以确保提供全面的支持 [1]。</p><p>手动给每个属性添加前缀是一项非常繁琐的任务，并且还会徒增样式维护的难度。作为替代方法，<a target="_blank" rel="noopener" href="https://gulpjs.com/">Gulp</a> 可以自动化地完成这些任务。</p><p>要使用 Gulp，我们需要将其作为依赖项添加到项目中。这是通过 <code>package.json</code> 文件完成的，它负责跟踪依赖项及其版本。通过终端创建文件类型 [1]：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">    🌹  npm init</code></pre></div><p>在提示下输入信息，点击回车键进行确认。输出文件大概类似下面这样：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">
-<span class="op">&#123;</span>
-    <span class="st">&quot;name&quot;</span><span class="op">:</span> <span class="st">&quot;project-name&quot;</span><span class="op">,</span>
-    <span class="st">&quot;version&quot;</span><span class="op">:</span> <span class="st">&quot;1.0.0&quot;</span><span class="op">,</span>
-    <span class="st">&quot;description&quot;</span><span class="op">:</span> <span class="st">&quot;Project description&quot;</span><span class="op">,</span>
-    <span class="st">&quot;main&quot;</span><span class="op">:</span> <span class="st">&quot;index.js&quot;</span><span class="op">,</span>
-    <span class="st">&quot;scripts&quot;</span><span class="op">:</span> <span class="op">&#123;</span>
-    <span class="st">&quot;test&quot;</span><span class="op">:</span> <span class="st">&quot;echo </span><span class="sc">\&quot;</span><span class="st">Error: no test specified</span><span class="sc">\&quot;</span><span class="st"> &amp;&amp; exit 1&quot;</span>
-    <span class="op">&#125;,</span>
-    <span class="st">&quot;author&quot;</span><span class="op">:</span> <span class="st">&quot;Author Name&quot;</span><span class="op">,</span>
-    <span class="st">&quot;license&quot;</span><span class="op">:</span> <span class="st">&quot;ISC&quot;</span>
-<span class="op">&#125;</span>
-    </code></pre></div><p>全局安装 gulp ：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">    🌹  npm install gulp <span class="op">-</span>g</code></pre></div><p>安装 gulp 和 gulp-autoprefixer 作为项目的依赖性：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">    🌹  npm install gulp <span class="op">--</span>save<span class="op">-</span>dev
+<!-- build time:Sun Sep 05 2021 18:35:16 GMT+0800 (中国标准时间) --><!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Focus on FE learning</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third%20party/prism.css"><link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third%20party/pace-theme-flash.css"><link rel="icon" href="/images/kour.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"></head><body><header class="header"><div class="header_top"><span class="theme"><a href="/">Chor's blog</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">首页</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">分类</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">归档</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">标签</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">关于</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue" class="logo">Focus on FE learning</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div><div class="blog-down"><a href="javascript:void(0);"><i class="fa fa-angle-double-down fa-2x"></i></a></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">「译」Flexbox 基本原理</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2019-06-07&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp4.2k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp17 mins&nbsp&nbsp&nbsp</span><div class="post-tags"><i class="fa fa-tags"></i> <a href="/tags/flex/">flex</a></div></div><div class="post-content"><blockquote><ul><li>原文地址：<a target="_blank" rel="noopener" href="https://marina-ferreira.github.io/tutorials/css/flexbox/">Flexbox Fundamentals</a></li><li>原文作者：<a target="_blank" rel="noopener" href="https://marina-ferreira.github.io/">Marina-ferreira</a></li><li>译文地址：<a target="_blank" rel="noopener" href="https://juejin.im/post/5cfb34316fb9a07eef69fec7">「译」Flexbox 基本原理</a></li><li>译者：Chor <span id="more"></span></li></ul></blockquote><div class="figure"><img src="https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/0.png" alt="Flexbox"><p class="caption">Flexbox</p></div><p>整理自 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/bm/docs/Web">MDN web docs</a> 的笔记，同时参考了 <a target="_blank" rel="noopener" href="http://wesbos.com/">Web Bos</a> 上的<a target="_blank" rel="noopener" href="https://flexbox.io/">什么是 Flexbox</a>系列视频。</p><h2 id="介绍">介绍</h2><p>Flexbox 是 <code>Flexible Box Module</code> 的缩写。 它是一种布局模型，允许我们方便地控制 html 元素之间的空间分布和对齐 [2]。</p><p>Flexbox 一次只能控制一个维度的定位（行或者列）。二维定位的控制需要依靠网格布局 [2]。</p><p>给出以下模板：</p><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box box-1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box box-2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box box-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box box-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box box-5<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box box-6<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box box-7<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box box-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box box-9<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>9<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box box-10<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>10<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+```    
+
+上面 div 的行为默认遵循正常的 html 文档流，因此从上到下、从左到右进行渲染，并且会占据整个 body 的宽度，因为它们的 `display` 属性默认是 `block`。
+
+![Normal document flow](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/2.png)
+
+## 弹性项目
+
+当为 `.container`div 设置 `display: flex` 时，所有的直接子 div 将成为弹性项目，并且获得新的行为 [2]：
+
+* 由于 `flex-direction` 默认值为 `row`，因此它们会呈一行排列
+* 它们将会从左到右排列
+
+![Display flex](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/3.png)
+
+* 项目不会依靠伸展来适应整个宽度（主轴），相反，它们采用收缩的方式
+
+![Items shrink to fit](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/4.gif)
+
+* 项目将会伸展以适应交叉轴（在这个例子中是高度）。如果各个项目的高度不同，它们将会伸展至与最高的那个项目等高。
+    
+* `flex-basis` 默认值为 `auto`(项目宽度将取决于其自身的内容)
+    
+* `flex-wrap` 默认值为 `nowrap`（如果容器的宽度不足以囊括所有的项目，则项目不会换行，只会溢出）
+    
+出于可视化的目的，我们拉伸容器以占据整个高度。
+
+## 弹性容器
+
+`display: flex` 使容器拓展整个可用宽度；与之相对的，`display: inline-flex` 使容器宽度塌陷至与内容宽度相等。
+
+![Display inline flex](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/5.png)
+
+## 弹性方向
+
+一旦声明为弹性容器，我们就可以将元素看作位于两条轴中。一条是由 `flex-direction` 定义的主轴，一条是与前者垂直的交叉轴 [2]。
+
+`flex-direction` 属性有四个值: `row`, `row-reverse`, `column` 和 `column-reverse`.
+
+默认值是 `row`，它将主轴设置为从左到右的水平方向，而交叉轴从上到下与之垂直相交。同理，`column` 将主轴设置为从上到下的垂直方向，而交叉轴则是从左到右。对这两个值添加 `reverse` ，则主轴将反转 180°，而交叉轴保持不变 [1][2]。
+
+可以通过下图观察这些值对应的弹性项目行为：
+
+![Flex direction](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/6.gif)
+
+## 弹性换行
+
+当容器空间不足以容纳全部弹性项目时，利用 `flex-wrap` 属性处理弹性项目 [3]。
+
+`flex-wrap` 的默认值为 `nowrap`，这意味着如果容器不能在保留项目原始宽度的同时将它们排列成一行的话，项目将会收缩以进行适应。如果由于某些原因无法收缩，则项目会溢出容器外 [1][3]。
+
+通过给项目设置 300px 的宽度，`nowrap` 选项输出下面这个结果：
+
+![flex-wrap: nowrap](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/7.png)
+
+其中，每个项目收缩到大约 70px 以适应容器。
+
+当属性值更新为 `wrap` 时，项目的宽度将等于原先的值，300px。当第一行的宽度不足以容纳 300px 时，项目不再溢出容器外，而是会换行 [3]。每一行都应该被视为是一个独立的弹性容器，任何一个容器内的空间分布均不会影响与之相邻的其他容器 [2]。
+
+![flex-wrap: wrap](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/8.png)
+
+但是为什么弹性项目会占据整个屏幕的高度呢？在第一部分，容器高度被设置为 100vh，因此可用空间被这四行平分以适应 300px 的项目。假如我们没有设置 100vh，则容器高度将等于项目内容的高度，如下图所示 [1]：
+
+![Wrap/height unset](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/9.png)
+
+另一个选项是 `wrap-reverse`，它将会反转交叉轴。通过属性 `flex-direction` 设置的从上到下的方向会被 `wrap-reverse` 转化为从下到上 [1]。
+
+![flex-wrap: wrap-reverse](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/10.png)
+
+通过 `flex-direction: column` 反转主轴，容纳不下的元素将会换行至另一列，同时剩余空间会被平分 [1]。
+
+![flex-wrap/column](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/11.png)
+
+ `wrap-reverse` 选项与 `column` 方向搭配使用，则将反转交叉轴的方向为从右到左，产生如下输出：
+
+![flex-wrap/column](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/12.png)
+
+弹性布局是一维布局，虽然在反转换行的时候，项目会从下到上排列（在方向为 row 的情况下），但是依然保持着从左到右的结构。改变的只有交叉轴。
+
+## 弹性流
+
+`flex-direction` 和 `flex-wrap` 可以在一个单属性中进行声明： `flex-flow: [direction] [wrap]` [2]。
+```css
+.flex-container &#123;
+    flex-flow : column wrap;
+&#125;
+```    
+
+### 项目之间的空隙
+
+回到主轴方向为 row 且进行换行的情况。通过给项目设置 `width: 33.3333%`，容器能够完全被填满。
+
+![item width: 33.33%](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/13.png)
+
+但是当你让子 div 之间有空隙时，它们将不会像预期的那样进行换行：
+
+![Broken gutter](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/14.png)
+
+可以通过使用 CSS 函数 `calc()` 解决这个问题 [1]：
+```css
+.flex-item &#123;
+    width: calc(33.33333% - 40px);
+    margin: 20px;
+&#125;
+```    
+
+![Gutter](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/15.png)
+
+为了消除容器边缘的空间，这里对容器设置负外边距 [3]：
+
+![Gutter no edge](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/16.png)
+```css
+.flex-container &#123;
+    margin: -20px;
+&#125;
+```    
+
+## 顺序
+
+`order` 属性允许修改项目的呈现顺序。顺序是以组为单位进行分配的。默认情况下所有的弹性项目都设置为 `order：0` ，这意味着所有的项目位于同一组，并且它们会按照原始顺序进行定位。如果有两个或者两个以上的组，那么各组将会相对于它们的整数值进行排序 [4]。
+
+在下面的例子中，有三个`顺序组`， `-1`， `0` 和 `1`，它们按照如下顺序排列。 
+```css
+.box-3 &#123; order:  1; &#125;
+.box-7 &#123; order:  1; &#125;
+.box-8 &#123; order: -1; &#125;
+```   
+
+![Order](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/17.png)
+
+表面上，这个属性重新分配了项目，但在诸如使用 tab 键对它们进行遍历的交互中则依然保留它们的原始位置。如果项目顺序与可访问性有关的话，这一点是需要考虑的。同理， `flex-direction` 也是这样 [4]。
+
+![Order and Accessibility](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/18.gif)
+
+## 对齐
+
+![Alignment Digest](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/19.png)
+
+在弹性布局中，沿着轴的项目对齐和空间分布可以通过四个属性控制 [5]：
+
+* `justify-content`：将所有项目在主轴上对齐
+* `align-items` ：将所有项目在交叉轴上对齐
+* `align-self`：将单个项目在主轴上对齐
+* `align-content`：控制交叉轴上各条线之间的空间
+
+### justify-content
+
+![justify-content digest](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/20.png)
+
+`justify-content` 是一个在主轴上处理项目的容器属性。最常用的 6 个值是： `flex-start`， `flex-end`， `center`， `space-around`， `space-between`， `space-evenly`。其中，默认值为 `flex-start`。
+
+### align-items
+
+![align-items digest](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/21.png)
+
+`align-items` 同样是一个容器属性，它在交叉轴上处理项目的对齐。 默认值是 `stretch` ，其他值是 `flex-start`， `flex-end`， `center` 和 `baseline` [5]。
+
+如果设置了容器高度，则 `stretch` 属性值会使所有的项目伸展至与容器等高；如果没有设置，则所有项目与最高的项目等高 [5]。上面第一张图片中容器高度设置为 `100vh`，第二张图片则没有设置高度。
+
+### align-content
+
+![align-content digest](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/22.png)
+
+`align-content` 是第四个也是最后一个容器属性，它在交叉轴上分配各条线之间的空间。作为最后一个属性，它的初始值为 `stretch` ，并且和 `justify-content` 一样接受以下几个属性值：`flex-start`， `flex-end`， `center`， `space-around`， `space-between`， `space-evenly` [5]。
+
+### align-self
+
+![align-self digest](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/23.png)
+
+`align-items` 属性实际上是通过给容器内的所有项目设置 `align-self` 而生效的。通过单独设置 `align-self`，可以覆盖先前设置的总的属性值。该属性和 `align-items` 拥有相同的可选值，但是还多了一个 ‘auto’ [5]。
+
+`auto` 会重置 `align-self` 的值，使之重新等于通过 `align-items` 给容器全局定义的值 [5]。
+
+## 弹性项目大小
+
+项目的大小和弹性可以通过三个属性控制：`flex-grow`，`flex-shrink` 和 `flex-basis`。这些属性都在主轴上发挥作用 [2]。
+
+* `flex-grow`：如果有额外空间，每个项目应该如何伸展
+* `flex-shrink`：如果空间不足，每个项目应该如何收缩
+* `flex-basis`：在设置以上两个属性之前项目的大小
+
+### flex-grow
+
+该属性设置的是`弹性增长系数`，这是一个用于处理项目之间相对大小的比率 [7]。
+
+默认值是 0，这意味着如果有剩余空间，就把这个空间放在最后一个项目的后面 [1]。
+
+![flex-grow-default](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/24.png)
+
+在上面的例子中，`direction` 设置为 `row`，每个弹性项目的宽度是 `60px`。由于容器的宽度是 `980px` ，因此有 `680px` 的可用空间，这个空间称为 `正向自由空间` [7]。
+
+通过将 `flex-grow` 设置为 `1`，正向自由空间将会被弹性项目平分。每个项目的宽度都会增加  `136px`，总的宽度是 `196px` [7]。
+
+![flex-grow: 1](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/25.png)
+
+通过给第三个项目设置 `flex-grow: 2` ，它获得的可用正向自由空间是其他项目的两倍，即比起其他项目的 `173px` ，它的总宽度为 `286px` [7]。
+
+下图中，项目的 `flex-grow` 属性设置为自身的内容值。
+
+![flex-grow: variable](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/26.png)
+
+### flex-shrink
+
+当容器没有足够空间来容纳所有项目时，使用 `flex-shrink` 处理项目大小。因此，它通过收缩项目来处理它们的负向自由空间 [7]。
+
+如下图所示，`980px` 的容器存放着 5 个 `300px` 宽度的容器。由于没有足够空间来容纳所需要的 `1500px`，默认的`弹性收缩系数` `1` 会使每个项目收缩至 `196px`。
+
+![flex-shrink-default](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/27.png)
+
+通过给第三个项目设置 `2` 的比率，它会比其它项目小两倍。
+
+![flex-shrink-1](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/28.png)
+
+下图中，每个项目以自身内容值作为弹性收缩比率。
+
+![flex-shrink-variable](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/29.png)
+
+### flex-basis
+
+`flex-basis` 属性会在实际设置可用空间之前检查每个项目应该具有的大小。默认值是 `auto`，项目宽度要么通过 `width` 显式设置，要么等于内容宽度。它同样也接受像素值 [7]。
+
+下面的 gif 展示了一个 `800px` 宽度的容器和 5 个设置了 `flex-basis: 160px` 的弹性项目。这告诉浏览器：理想情况下有足够的空间放置所有的项目，项目的 `160px` 宽度将会得到保留，并且没有正向/负向自由空间。如果没有足够的空间，由于 `flex-shrink` 默认为 `1`，所有的项目会均匀地收缩。如果有剩余的空间，由于 `flex-grow` 默认为 `0`，剩余空间会放置在最后一个项目的后面。
+
+![flex-basis](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/30.gif)
+
+下面的 gif 中，项目 1 设置为 `flex-shrink: 10`，项目 4 设置为 `flex-grow: 10`。对于负向自由空间，项目 1 减小的宽度是其它项目减小宽度的 10 倍；对于正向自由空间，项目 4 增加的宽度是其它项目增加宽度的 10 倍。
+
+![flex-basis](https://raw.githubusercontent.com/Chorer/MyBlog-Pic/master/Myblogs/31.gif)
+
+`flex-basis` 还可以接受值 `content`。此时，无论有没有设置 `width`，自由空间计算都只会基于项目内容去计算宽度。如果你不打算在计算时考虑项目宽度，则将其设置为 `0`。
+
+### flex
+
+`flex` 是 `flex-grow`， `flex-shrink` 和 `flex-basis` 的简写属性 [2]。
+
+它接受下面的预定于值：
+
+* `initial`：重置为弹性布局的默认值，与 flex: 0 1 auto 效果一样
+* `auto`：弹性项目可以根据需要伸展/收缩，与 flex: 1 1 auto 效果一样
+* `none`：使项目失去弹性，与 flex: 0 0 auto 效果一样
+* `flex: 1`：弹性项目可以伸展/收缩，并且 `flex-basis` 设置为 0 ，与 flex: 1 1 0 效果一样
+
+## Autoprefixer
+
+考虑到跨浏览器兼容性，给属性加上所有必要的前缀很重要，这可以确保提供全面的支持 [1]。
+
+手动给每个属性添加前缀是一项非常繁琐的任务，并且还会徒增样式维护的难度。作为替代方法，[Gulp](https://gulpjs.com/) 可以自动化地完成这些任务。
+
+要使用 Gulp，我们需要将其作为依赖项添加到项目中。这是通过 `package.json` 文件完成的，它负责跟踪依赖项及其版本。通过终端创建文件类型 [1]：
+```js
+    🌹  npm init
+```    
+在提示下输入信息，点击回车键进行确认。输出文件大概类似下面这样：
+```js
+
+&#123;
+    "name": "project-name",
+    "version": "1.0.0",
+    "description": "Project description",
+    "main": "index.js",
+    "scripts": &#123;
+    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"
+    &#125;,
+    "author": "Author Name",
+    "license": "ISC"
+&#125;
+    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>全局安装 gulp ：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">    🌹  npm install gulp <span class="op">-</span>g</code></pre></div><p>安装 gulp 和 gulp-autoprefixer 作为项目的依赖性：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">    🌹  npm install gulp <span class="op">--</span>save<span class="op">-</span>dev
     🌹  npm install gulp<span class="op">-</span>autoprefixer <span class="op">--</span>save<span class="op">-</span>dev</code></pre></div><p>它们会出现在 <code>package.json</code> 文件的 <code>devDependencies</code> 键下。</p><p>创建一个 <code>gulpfile.js</code> 文件：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">    🌹  touch <span class="va">gulpfile</span>.<span class="at">js</span></code></pre></div><p>添加下面内容 [9]：</p><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//gulpfile.js</span>
 
 <span class="kw">var</span> gulp <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;gulp&#39;</span>)<span class="op">;</span>
@@ -44,4 +288,4 @@
     <span class="cf">return</span> <span class="va">gulp</span>.<span class="at">src</span>(<span class="st">&#39;./styles.css&#39;</span>)
         .<span class="at">pipe</span>(<span class="at">autoprefixer</span>(<span class="op">&#123;</span> <span class="dt">browsers</span><span class="op">:</span> [<span class="st">&#39;last 2 versions&#39;</span>]<span class="op">,</span> <span class="dt">cascade</span><span class="op">:</span> <span class="kw">false</span> <span class="op">&#125;</span>))
         .<span class="at">pipe</span>(<span class="va">gulp</span>.<span class="at">dest</span>(<span class="st">&#39;build&#39;</span>))<span class="op">;</span>
-<span class="op">&#125;</span>)<span class="op">;</span></code></pre></div><p><code>gulp</code> 从 <code>styles.css</code> 中提取内容并通过 <code>gulp-autoprefixer</code> 进行传递。输出文件保留在 <code>build</code> 文件夹下。</p><h2 id="引用">引用</h2><ul><li>[1] [What the Flexbox Course](https://flexbox.io/)</li><li>[2] [Basic concepts of flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) - 25/03/2018</li><li>[3] [Mastering Wrapping of Flex Items](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Mastering_Wrapping_of_Flex_Items) - 26/03/2018</li><li>[4] [Ordering Flex Items](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Ordering_Flex_Items) - 26/03/2018</li><li>[5] [Aligning Items in a Flex Container](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container) - 26/03/2018</li><li>[6] [StackOverflow](https://stackoverflow.com/questions/34606879/whats-the-difference-between-flex-start-and-baseline) - 27/03/2018</li><li>[7] [Controlling Ratios of Flex Items Along the Main Axis](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Controlling_Ratios_of_Flex_Items_Along_the_Main_Ax) - 28/03/2018</li><li>[8] [Gulp](https://gulpjs.com/)</li><li>[9] [Gulp Autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer)</li></ul><blockquote><p>译者注： 弹性项目：Flex Items 弹性容器：Flex Container 弹性方向：Flex Direction 弹性换行：Flex Wrap 弹性流：Flex Flow 弹性项目大小：Flexbox Sizing</p></blockquote><hr><p>关于一级标题翻不翻译的问题拿捏了很久，最后决定翻译。 如果有条件的话推荐阅读英文原文，因为翻译肯定是比不上原汁原味的文章。我觉得这篇博客的亮点在于：</p><ul><li>给出了大量图片和示例（其中不少是动图），对于理解很有帮助；</li><li>每一个引用的地方都带有注释，给读者追溯文章信息的源头提供了机会（这一点是第一次看到，值得学习）；</li><li>涉及到了一些细节，比如交叉轴的确定。一些文章说和顺时针、逆时针有关，其实这是错的。从文章中我们也知道了，交叉轴确实由主轴确定，但是它不一定就是由主轴按照一个方向旋转得到的</li></ul></div><div class="post-nav"><div class="post-nav-prev"><a href="/2019/06/15/Trs-%20%E4%BB%80%E4%B9%88%E6%98%AF%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91/" rel="prev" title="「译」什么是抽象语法树"><i class="fa fa-angle-double-left"></i>&nbsp「译」什么是抽象语法树</a></div><div class="post-nav-next"><a href="/2019/06/06/F-CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9Aflex%20%E5%B8%83%E5%B1%80/" rel="next" title="CSS 基础系列：flex 布局">CSS 基础系列：flex 布局&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%B9%E6%80%A7%E9%A1%B9%E7%9B%AE"><span class="toc-text">弹性项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%B9%E6%80%A7%E5%AE%B9%E5%99%A8"><span class="toc-text">弹性容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%B9%E6%80%A7%E6%96%B9%E5%90%91"><span class="toc-text">弹性方向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%B9%E6%80%A7%E6%8D%A2%E8%A1%8C"><span class="toc-text">弹性换行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%B9%E6%80%A7%E6%B5%81"><span class="toc-text">弹性流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%B9%8B%E9%97%B4%E7%9A%84%E7%A9%BA%E9%9A%99"><span class="toc-text">项目之间的空隙</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F"><span class="toc-text">顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E9%BD%90"><span class="toc-text">对齐</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#justify-content"><span class="toc-text">justify-content</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#align-items"><span class="toc-text">align-items</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#align-content"><span class="toc-text">align-content</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#align-self"><span class="toc-text">align-self</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%B9%E6%80%A7%E9%A1%B9%E7%9B%AE%E5%A4%A7%E5%B0%8F"><span class="toc-text">弹性项目大小</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-grow"><span class="toc-text">flex-grow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-shrink"><span class="toc-text">flex-shrink</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-basis"><span class="toc-text">flex-basis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex"><span class="toc-text">flex</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#autoprefixer"><span class="toc-text">Autoprefixer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-text">引用</span></a></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"retro",pageSize:10,visitor:!0})</script></section></main><script>var user=[1,2,3,4]</script><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - <span>2021</span> My Blog</p><p class="a">Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/search.js"></script><script src="/js/post-except.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script></body></html><!-- rebuild by neat -->
+<span class="op">&#125;</span>)<span class="op">;</span></code></pre></div><p><code>gulp</code> 从 <code>styles.css</code> 中提取内容并通过 <code>gulp-autoprefixer</code> 进行传递。输出文件保留在 <code>build</code> 文件夹下。</p><h2 id="引用">引用</h2><ul><li>[1] [What the Flexbox Course](https://flexbox.io/)</li><li>[2] [Basic concepts of flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) - 25/03/2018</li><li>[3] [Mastering Wrapping of Flex Items](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Mastering_Wrapping_of_Flex_Items) - 26/03/2018</li><li>[4] [Ordering Flex Items](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Ordering_Flex_Items) - 26/03/2018</li><li>[5] [Aligning Items in a Flex Container](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container) - 26/03/2018</li><li>[6] [StackOverflow](https://stackoverflow.com/questions/34606879/whats-the-difference-between-flex-start-and-baseline) - 27/03/2018</li><li>[7] [Controlling Ratios of Flex Items Along the Main Axis](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Controlling_Ratios_of_Flex_Items_Along_the_Main_Ax) - 28/03/2018</li><li>[8] [Gulp](https://gulpjs.com/)</li><li>[9] [Gulp Autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer)</li></ul><blockquote><p>译者注： 弹性项目：Flex Items 弹性容器：Flex Container 弹性方向：Flex Direction 弹性换行：Flex Wrap 弹性流：Flex Flow 弹性项目大小：Flexbox Sizing</p></blockquote><hr><p>关于一级标题翻不翻译的问题拿捏了很久，最后决定翻译。 如果有条件的话推荐阅读英文原文，因为翻译肯定是比不上原汁原味的文章。我觉得这篇博客的亮点在于：</p><ul><li>给出了大量图片和示例（其中不少是动图），对于理解很有帮助；</li><li>每一个引用的地方都带有注释，给读者追溯文章信息的源头提供了机会（这一点是第一次看到，值得学习）；</li><li>涉及到了一些细节，比如交叉轴的确定。一些文章说和顺时针、逆时针有关，其实这是错的。从文章中我们也知道了，交叉轴确实由主轴确定，但是它不一定就是由主轴按照一个方向旋转得到的</li></ul></div><div class="post-nav"><div class="post-nav-prev"><a href="/2019/06/15/Trs-%20%E4%BB%80%E4%B9%88%E6%98%AF%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91/" rel="prev" title="「译」什么是抽象语法树"><i class="fa fa-angle-double-left"></i>&nbsp「译」什么是抽象语法树</a></div><div class="post-nav-next"><a href="/2019/06/06/F-CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9Aflex%20%E5%B8%83%E5%B1%80/" rel="next" title="CSS 基础系列：flex 布局">CSS 基础系列：flex 布局&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-text">引用</span></a></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"retro",pageSize:10,visitor:!0})</script></section></main><script>var user=[1,2,3,4]</script><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - <span>2021</span> My Blog</p><p class="a">Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/search.js"></script><script src="/js/post-except.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script></body></html><!-- rebuild by neat -->

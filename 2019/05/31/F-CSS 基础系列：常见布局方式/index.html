@@ -1,310 +1,240 @@
-<!-- build time:Sat Jul 10 2021 15:31:41 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Focus on FE learning</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third%20party/pace-theme-flash.css"><link rel="icon" href="/images/kour.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css"><link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script><script src="/js/prism-line-numbers.min.js"></script><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
+<!-- build time:Sun Sep 05 2021 14:05:21 GMT+0800 (中国标准时间) --><!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Focus on FE learning</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third%20party/pace-theme-flash.css"><link rel="icon" href="/images/kour.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script></head><body><header class="header"><div class="header_top"><span class="theme"><a href="/">Chor's blog</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">首页</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">分类</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">归档</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">标签</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">关于</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a href="https://github.com/Chorer/hexo-theme-PureBlue" target="_blank" rel="noopener" class="logo">Focus on FE learning</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div><div class="blog-down"><a href="javascript:void(0);"><i class="fa fa-angle-double-down fa-2x"></i></a></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">CSS 基础系列：常见布局方式</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2019-05-31&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp3.1k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp12 mins&nbsp&nbsp&nbsp</span><div class="post-tags"></div></div><div class="post-content"><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F-1.jpg" alt=""></p><a id="more"></a><h2 id="1-单列布局"><a href="#1-单列布局" class="headerlink" title="1.单列布局"></a>1.单列布局</h2><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F-2.jpg" alt=""></p><p>常见的单列布局有两种：</p><ul><li>header、content、footer等宽</li><li>header、footer 等宽，content 略窄</li></ul><p><strong><i class="fa fa-hand-o-right"></i> 对于第一种：</strong></p><p>给 header、content、footer 设置相同的 width 或者 max-width（显示的宽度都一样，但是前者内容过长会溢出，后者会换行），再设置 margin 达到水平居中。</p><p>代码示例：</p><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>footer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.header</span></span><span class="token punctuation">{</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span><span class="token number">0</span> auto<span class="token punctuation">;</span> 
-    <span class="token property">max-width</span><span class="token punctuation">:</span> <span class="token number">960</span>px<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span><span class="token number">100</span>px<span class="token punctuation">;</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.content</span></span><span class="token punctuation">{</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> auto<span class="token punctuation">;</span>
-    <span class="token property">max-width</span><span class="token punctuation">:</span> <span class="token number">960</span>px<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">400</span>px<span class="token punctuation">;</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> aquamarine<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.footer</span></span><span class="token punctuation">{</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> auto<span class="token punctuation">;</span>
-    <span class="token property">max-width</span><span class="token punctuation">:</span> <span class="token number">960</span>px<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">100</span>px<span class="token punctuation">;</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> aqua<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong><i class="fa fa-hand-o-right"></i> 对于第二种：</strong></p><p>首先给 header 和 footer 共同的宽度（不设置宽度时默认撑满整个屏幕），之后给 content 和 header 子元素（比如头部的导航条）、footer 子元素一个共同的宽度。最后通过 margin 设置水平居中。</p><p>代码示例：</p><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>footer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.header</span></span><span class="token punctuation">{</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span><span class="token number">0</span> auto<span class="token punctuation">;</span>
-    <span class="token property">max-width</span><span class="token punctuation">:</span> <span class="token number">960</span>px<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span><span class="token number">100</span>px<span class="token punctuation">;</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.nav</span></span><span class="token punctuation">{</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> auto<span class="token punctuation">;</span>
-    <span class="token property">max-width</span><span class="token punctuation">:</span> <span class="token number">800</span>px<span class="token punctuation">;</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> darkgray<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">50</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.content</span></span><span class="token punctuation">{</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> auto<span class="token punctuation">;</span>
-    <span class="token property">max-width</span><span class="token punctuation">:</span> <span class="token number">800</span>px<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">400</span>px<span class="token punctuation">;</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> aquamarine<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.footer</span></span><span class="token punctuation">{</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> auto<span class="token punctuation">;</span>
-    <span class="token property">max-width</span><span class="token punctuation">:</span> <span class="token number">960</span>px<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">100</span>px<span class="token punctuation">;</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> aqua<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="2-两列自适应布局"><a href="#2-两列自适应布局" class="headerlink" title="2.两列自适应布局"></a>2.两列自适应布局</h2><p>两列自适应布局是指一列由内容撑开，另一列撑满剩余宽度的布局方式。有三种常用方式可以达到两列自适应布局</p><p><strong><i class="fa fa-hand-o-right"></i> float + BFC：</strong></p><p>左元素在没有固定宽度的情况下设置浮动，因此宽度由内容撑开；右元素激活 BFC（这里采用 <code>overflow:hidden</code>）后，可以防止被浮动元素盖住，且正是为了防止被盖住，右元素宽度才会由默认的撑满屏幕变为撑满剩余部分。这里还要注意一个点是：浮动元素的 margin 是相对于与自己同级的浮动兄弟元素来说的。</p><p>代码示例：</p><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>parent<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">background-color</span><span class="token punctuation">:</span> lightgrey<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">background-color</span><span class="token punctuation">:</span> lightblue<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>left<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name">  <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">background-color</span><span class="token punctuation">:</span> lightgreen<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>right<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>right<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>        
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.left</span> </span><span class="token punctuation">{</span>
-  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-  <span class="token property">margin-right</span><span class="token punctuation">:</span> <span class="token number">20</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.right</span> </span><span class="token punctuation">{</span>
-  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
-  <span class="token property">zoom</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 兼容 IE */</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong><i class="fa fa-hand-o-right"></i> flex 布局：</strong></p><p>设置父盒子为弹性盒后，子元素默认成一行显示，之后设置右元素 <code>flex:1</code>。该属性默认为 0，表示即使该行有额外空间也不会占满，设置为 1 表示右元素占满额外空间。</p><p>代码示例：</p><pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* html部分同上 */</span>
-<span class="token selector"><span class="token class">.parent</span> </span><span class="token punctuation">{</span>
-  <span class="token property">display</span><span class="token punctuation">:</span>flex<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>  
-<span class="token selector"><span class="token class">.right</span> </span><span class="token punctuation">{</span>
-  <span class="token property">margin-left</span><span class="token punctuation">:</span><span class="token number">20</span>px<span class="token punctuation">;</span> 
-  <span class="token property">flex</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">;</span>   
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong><i class="fa fa-hand-o-right"></i> grid 布局：</strong></p><p>代码示例：</p><pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* html部分同上 */</span>
-<span class="token selector"><span class="token class">.parent</span> </span><span class="token punctuation">{</span>
-  <span class="token property">display</span><span class="token punctuation">:</span>grid<span class="token punctuation">;</span>
-  <span class="token property">grid-template-columns</span><span class="token punctuation">:</span>auto <span class="token number">1</span>fr<span class="token punctuation">;</span>
-  <span class="token property">grid-gap</span><span class="token punctuation">:</span><span class="token number">20</span>px
-<span class="token punctuation">}</span> 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="3-三栏布局"><a href="#3-三栏布局" class="headerlink" title="3.三栏布局"></a>3.三栏布局</h2><p>即中间列自适应宽度，旁边两侧固定宽度的布局方式，最典型的是圣杯布局和双飞翼布局。</p><p><strong><i class="fa fa-hand-o-right"></i> 3.1 圣杯布局：</strong></p><p>3.1.1 代码示例：</p><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>article</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>article</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.body</span></span><span class="token punctuation">{</span>
-    <span class="token property">min-width</span><span class="token punctuation">:</span> <span class="token number">600</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.container</span> </span><span class="token punctuation">{</span>
-    <span class="token property">padding-left</span><span class="token punctuation">:</span> <span class="token number">220</span>px<span class="token punctuation">;</span>
-    <span class="token property">padding-right</span><span class="token punctuation">:</span> <span class="token number">220</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.left</span> </span><span class="token punctuation">{</span>
-    <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">400</span>px<span class="token punctuation">;</span>
-    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
-    <span class="token property">margin-left</span><span class="token punctuation">:</span> -<span class="token number">100%</span><span class="token punctuation">;</span>
-    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
-    <span class="token property">left</span><span class="token punctuation">:</span> -<span class="token number">220</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.center</span> </span><span class="token punctuation">{</span>
-    <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100%</span><span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">500</span>px<span class="token punctuation">;</span>
-    <span class="token property">background</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.right</span> </span><span class="token punctuation">{</span>
-    <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">400</span>px<span class="token punctuation">;</span>
-    <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
-    <span class="token property">margin-left</span><span class="token punctuation">:</span> -<span class="token number">200</span>px<span class="token punctuation">;</span>
-    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
-    <span class="token property">right</span><span class="token punctuation">:</span> -<span class="token number">220</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>3.1.2 实现步骤：</p><ul><li>首先我们想要优先加载 center 部分的内容，所以 dom 结构上先写 center</li><li>为了让三者共在一行，给它们设置浮动；为了让 center 自适应，给它设置宽度 100%。此时布局是这样的：</li></ul><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F-3.jpg" alt=""></p><p>这里要注意的点：块级元素在不显式设置宽度的情况下确实撑满整个屏幕，从这个角度来看，width 设置为 100% 似乎没有必要。但不要忘记了我们给它设置了浮动 —— 浮动元素具有包裹性，在不显式设置宽度的情况下由内容撑开。这里如果不设置 100% 宽度，且里面没有足够的内容，那么会导致布局崩坏。</p><ul><li>设置 left 和 right 的 margin-left 为负值，让它们回到与 center 同一行。此时布局是这样的：</li></ul><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F-4.jpg" alt=""></p><p>这里要注意的点：所有浮动元素可以看作位于同一个浮动流，利用负边距可以让某个元素在这个流中移动，并且会叠加到相应元素的上面。对于 left 来说，它需要左移父元素的总宽度，对于 right 来说，它需要左移自身宽度。</p><ul><li>设置父容器的左右 padding，使内部内容向中间挤压，从而使左右留白。此时布局是这样的：</li></ul><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F-5.jpg" alt=""></p><ul><li>给 left 和 right 设置绝对定位，让它们占据父元素的留白空间。最终得到的布局是这样的：</li></ul><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F-6.jpg" alt=""></p><ul><li>给页面设置 <code>min-width: 600px</code></li></ul><p>这里要注意的点：由于左右两列宽度固定，因此我们至少要给页面一个最小宽度，但这个最小宽度并不是简单的左右两列宽度之和 —— 别忘了，之前的 left 位于 center，left 是 relative 定位，所以在 center 上占据过的空间不会消失。所以页面最小宽度是 <code>left-width * 2 + right-width</code>。</p><p>3.1.3 缺点；</p><p>如果其中一列内容高度拉长，其他两列的背景并不会自动填充（后面介绍的等高布局可以解决这个问题）</p><p><strong><i class="fa fa-hand-o-right"></i> 3.2 双飞翼布局：</strong></p><p>双飞翼布局在圣杯布局基础上进一步优化，解决了圣杯布局错乱问题，实现了内容与布局的分离。而且任何一栏都可以是最高栏，不会出问题。</p><p>3.2.1 代码示例</p><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>inner<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>双飞翼布局<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.body</span> </span><span class="token punctuation">{</span>
-    <span class="token property">min-width</span><span class="token punctuation">:</span> <span class="token number">600</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.left</span> </span><span class="token punctuation">{</span>
-    <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">400</span>px<span class="token punctuation">;</span>
-    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
-    <span class="token property">margin-left</span><span class="token punctuation">:</span> -<span class="token number">100%</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.center</span> </span><span class="token punctuation">{</span>
-    <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100%</span><span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">500</span>px<span class="token punctuation">;</span>
-    <span class="token property">background</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.center</span> <span class="token class">.inner</span> </span><span class="token punctuation">{</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token number">200</span>px<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 主要区别 */</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.right</span> </span><span class="token punctuation">{</span>
-    <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">400</span>px<span class="token punctuation">;</span>
-    <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
-    <span class="token property">margin-left</span><span class="token punctuation">:</span> -<span class="token number">200</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>3.2.2 实现步骤</p><p>前两步与圣杯布局一样：</p><ul><li>三个部分都设定为左浮动，然后设置 center 的宽度为 100%，此时，left 和 right 部分会跳到下一行；</li><li>通过设置负 margin 让 left 和 right 部分回到与 center 部分同一行；</li></ul><p>这里开始有所不同：</p><ul><li>center 部分增加一个内层div，并设margin: 0 200px；</li><li>同样要给页面设置最小宽度，这里没有用定位，所以最小宽度可以直接等于左右两列宽度之和</li></ul><p>3.2.3 缺点：</p><p>多加一层 dom 树节点，增加渲染树生成的计算量。</p><p><strong><i class="fa fa-bell-o"></i> 两种布局的对比：</strong></p><ul><li>优先加载主列。</li><li>三列浮动，配合负外边距形成三列布局</li><li>两种布局方式的主要区别在于如何处理主列，从而让其内容不被覆盖。对于圣杯布局，它是利用父盒子的左右 padding 确保将主列内容挤到中间，在效果上表现为三个独立列；对于双飞翼布局，它是在主列里放置一个子盒子，利用子盒子的左右 margin 确保内容位于中间，在效果上表现为左右两列在主列上面。</li></ul><p><strong><i class="fa fa-hand-o-right"></i> 3.3 flex 布局：</strong></p><p>flex 布局是最简便的，而且在移动端应用广泛。</p><p>3.3.1 代码示例：</p><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.container</span></span><span class="token punctuation">{</span>
-    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.center</span></span><span class="token punctuation">{</span>
-    <span class="token property">height</span><span class="token punctuation">:</span><span class="token number">500</span>px<span class="token punctuation">;</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
-    <span class="token property">flex</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.left</span></span><span class="token punctuation">{</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>     
-    <span class="token property">background-color</span><span class="token punctuation">:</span>gray<span class="token punctuation">;</span> 
-    <span class="token property">order</span><span class="token punctuation">:</span> -<span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token property">flex</span><span class="token punctuation">:</span><span class="token number">0</span> <span class="token number">1</span> <span class="token number">100</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.right</span></span><span class="token punctuation">{</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
-    <span class="token property">flex</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token number">1</span> <span class="token number">100</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>3.3.2 实现步骤：</p><p>只说几个注意的点</p><ul><li><p>在不优先加载主列的情况下，dom 结构可以按照左中右顺序书写，这样不需要额外设置 order；因为我们这里要优先加载主列，所以 dom 结构还是先写主列，之后通过降低左列的 order 恢复顺序。</p></li><li><p>flex 只有一个值时，设置的是 <code>flex-grow</code>，代表弹性子元素对父元素剩余空间的分配，因为不设置的时候默认是 0，所以这里只有设置了 1 的主列参与分配剩余空间，从而实现宽度自适应。</p></li><li><p>flex 有三个值时，设置的是 <code>flex-grow</code>，<code>flex-shrink</code>，<code>flex-basis</code>。这里左右两列的 <code>flex-basis</code> 都是 100px，实际上为它们设置了固定宽度。</p></li></ul><h2 id="4-等高布局"><a href="#4-等高布局" class="headerlink" title="4.等高布局"></a>4.等高布局</h2><p>等高布局是指多个子元素在父元素中高度相等的布局方式。</p><p><strong><i class="fa fa-hand-o-right"></i> 4.1 正 padding + 负 margin：</strong></p><p>该方法可以解决圣杯布局各子元素高度不等的缺点。给各个子元素设置一个大数值的 <code>padding-bottom</code>，再设置相同数值的负的 <code>margin-bottom</code>，并给总的父盒子设置 <code>overflow:hidden</code>，把溢出背景切掉。假设某一列高度最大，则父盒子的高度会等于这一列高度，而其他列本来的留白部分由带背景色的 padding 补偿。<br>基本代码与圣杯布局一样，新增代码如下：</p><pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* 注意是三个都设置 */</span>
-<span class="token selector"><span class="token class">.center</span>,
-<span class="token class">.left</span>,
-<span class="token class">.right</span> </span><span class="token punctuation">{</span>
-    <span class="token property">padding-bottom</span><span class="token punctuation">:</span> <span class="token number">10000</span>px<span class="token punctuation">;</span>
-    <span class="token property">margin-bottom</span><span class="token punctuation">:</span> -<span class="token number">10000</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.container</span> </span><span class="token punctuation">{</span>
-    <span class="token property">padding-left</span><span class="token punctuation">:</span> <span class="token number">220</span>px<span class="token punctuation">;</span>
-    <span class="token property">padding-right</span><span class="token punctuation">:</span> <span class="token number">220</span>px<span class="token punctuation">;</span>
-    <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>关于原理，我暂时是这么理解的，不一定正确：可以看作 margin 负值是向内收缩至与 padding 高度相等处，虽然 padding 还在（所以有背景颜色），但是丧失了在空间上撑开父盒子的能力（因为此时被 margin 取代，margin 撑不开高度），即父盒子由最高列撑开，其他两列不足高度的部分由 padding 填充。</p><p><strong><i class="fa fa-hand-o-right"></i> 4.2 利用背景图片：</strong></p><p>这种方法是我们实现等高列最早使用的一种方法，就是使用背景图片，在列的父元素上使用这个背景图进行Y轴的铺放，从而实现一种等高列的假象。实现方法简单，兼容性强，不需要太多的css样式就可以轻松实现,但此方法不适合流体布局等高列的布局。</p><p>在制作样式之前需要一张类似下面的背景图：</p><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F-7.jpg" alt=""></p><p>代码示例：</p><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>”container</span> <span class="token attr-name">clearfix”</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>”left”</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span>  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>”content”</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>”right”</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.container</span> </span><span class="token punctuation">{</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url">url("column.png")</span> repeat-y<span class="token punctuation">;</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">960</span>px<span class="token punctuation">;</span>
-  <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> auto<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.left</span> </span><span class="token punctuation">{</span>
-  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">220</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.content</span> </span><span class="token punctuation">{</span>
-  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">480</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.right</span> </span><span class="token punctuation">{</span>
-  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">220</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong><i class="fa fa-hand-o-right"></i> 4.3 利用表格布局：</strong></p><p>这是一种非常简单，易于实现的方法。不过兼容性不好，低版本 IE 无法正常运行。</p><pre class="line-numbers language-css"><code class="language-css">&lt;div class=<span class="token string">"container table"</span>>
-    &lt;div class=<span class="token string">"containerInner tableRow"</span>>
-    <span class="token comment" spellcheck="true">/* 左列 */</span>
-    &lt;div class=<span class="token string">"column tableCell cell1"</span>>
-        &lt;div class=<span class="token string">"left aside"</span>>
-        <span class="token number">....</span>
-        &lt;/div>
-    &lt;/div>
-    <span class="token comment" spellcheck="true">/* 主列 */</span>
-    &lt;div class=<span class="token string">"column tableCell cell2"</span>>
-        &lt;div class=<span class="token string">"content section"</span>>
-        <span class="token number">...</span>
-        &lt;/div>
-    &lt;/div>
-    <span class="token comment" spellcheck="true">/* 右列 */</span>
-    &lt;div class=<span class="token string">"column tableCell cell3"</span>>
-        &lt;div class=<span class="token string">"right aside"</span>>
-        <span class="token number">...</span>
-        &lt;/div>
-    &lt;/div>
-    &lt;/div>
-&lt;/div>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.table</span> </span><span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
-  <span class="token property">min-width</span><span class="token punctuation">:</span> <span class="token number">1000</span>px<span class="token punctuation">;</span>
-  <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> auto<span class="token punctuation">;</span>
-  <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
-  <span class="token property">display</span><span class="token punctuation">:</span> table<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.tableRow</span> </span><span class="token punctuation">{</span>
-  <span class="token property">display</span><span class="token punctuation">:</span> table-row<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.tableCell</span> </span><span class="token punctuation">{</span>
-  <span class="token property">display</span><span class="token punctuation">:</span> table-cell<span class="token punctuation">;</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">33%</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.cell1</span> </span><span class="token punctuation">{</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token hexcode">#f00</span><span class="token punctuation">;</span>
-  <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">800</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.cell2</span> </span><span class="token punctuation">{</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token hexcode">#0f0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.cell3</span> </span><span class="token punctuation">{</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token hexcode">#00f</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong><i class="fa fa-hand-o-right"></i> 4.4 使用边框和定位：</strong></p><p>这种方法是使用边框和绝对定位来实现一个假的高度相等列的效果。结构简单，兼容各浏览器，容易掌握。假设你需要实现一个两列等高布局，侧栏高度要和主内容高度相等。</p><p>代码示例：</p><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrapper<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mainContent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sidebar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token id">#wrapper</span> </span><span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">960</span>px<span class="token punctuation">;</span>
-  <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> auto<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token id">#mainContent</span> </span><span class="token punctuation">{</span>
-  <span class="token property">border-right</span><span class="token punctuation">:</span> <span class="token number">220</span>px solid <span class="token hexcode">#dfdfdf</span><span class="token punctuation">;</span>
-  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">740</span>px<span class="token punctuation">;</span>
-  <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">800</span>px<span class="token punctuation">;</span>  
-  <span class="token property">background</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token id">#sidebar</span> </span><span class="token punctuation">{</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token hexcode">#dfdfdf</span><span class="token punctuation">;</span>
-  <span class="token property">margin-left</span><span class="token punctuation">:</span> <span class="token number">740</span>px<span class="token punctuation">;</span>
-  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
-  <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">800</span>px<span class="token punctuation">;</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">220</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong><i class="fa fa-hand-o-right"></i> 4.5 利用 flex 布局：</strong></p><p>最简单的方法就是直接设置父盒子为弹性盒。此时弹性子元素的 align-items 属性默认值是 stretch，也就是在 y 轴上将所有子元素拉伸为同一高度，从而达到等高布局。</p><h2 id="5-粘连布局"><a href="#5-粘连布局" class="headerlink" title="5.粘连布局"></a>5.粘连布局</h2><ul><li>内容区 <code>main</code> 高度足够长的时候，<code>footer</code> 紧跟在 <code>main</code>后面；</li><li>内容区 <code>main</code> 高度不够长的时候，<code>footer</code> 粘连在屏幕的底部</li></ul><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F-8.jpg" alt=""></p><p>5.1 代码示例：</p><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>main<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    main <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span>
-    main <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span>
-    main <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>footer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>footer<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-css"><code class="language-css"><span class="token selector">* </span><span class="token punctuation">{</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">html,
-body </span><span class="token punctuation">{</span>
-<span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">100%</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">/* 高度一层层继承下来 */</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token id">#wrap</span> </span><span class="token punctuation">{</span>
-    <span class="token property">min-height</span><span class="token punctuation">:</span> <span class="token number">100%</span><span class="token punctuation">;</span>
-    <span class="token property">background</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
-    <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
-    <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token id">#wrap</span> <span class="token class">.main</span> </span><span class="token punctuation">{</span>
-    <span class="token property">padding-bottom</span><span class="token punctuation">:</span> <span class="token number">50</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token id">#footer</span> </span><span class="token punctuation">{</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">50</span>px<span class="token punctuation">;</span>
-    <span class="token property">line-height</span><span class="token punctuation">:</span> <span class="token number">50</span>px<span class="token punctuation">;</span>
-    <span class="token property">background</span><span class="token punctuation">:</span> deeppink<span class="token punctuation">;</span>
-    <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
-    <span class="token property">margin-top</span><span class="token punctuation">:</span> -<span class="token number">50</span>px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>5.2 实现步骤</p><ul><li><code>footer</code> 必须是一个独立的结构，与 <code>wrap</code> 没有任何嵌套关系</li><li><code>wrap</code> 区域的高度通过设置 <code>min-height</code>，变为视口高度</li><li><code>footer</code> 要使用 <code>margin</code> 为负来确定自己的位置</li><li>在 <code>main</code> 区域需要设置 <code>padding-bottom</code>。这也是为了防止负 <code>margin</code> 导致 <code>footer</code> 覆盖任何实际内容。</li></ul><p>参考：<br><a href="https://juejin.im/post/5bbcd7ff5188255c80668028#heading-19" target="_blank" rel="noopener">https://juejin.im/post/5bbcd7ff5188255c80668028#heading-19</a></p></div><div class="post-nav"><div class="post-nav-prev"><a href="/2019/06/05/Trs-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAHexo%E4%B8%BB%E9%A2%98%E4%B9%8BPart3/" rel="prev" title="「译」创建一个Hexo主题-Part3 :评论、分析和小部件"><i class="fa fa-angle-double-left"></i>&nbsp「译」创建一个Hexo主题-Part3 :评论、分析和小部件</a></div><div class="post-nav-next"><a href="/2019/05/30/F-DOM%20%E5%92%8C%20BOM%20%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E5%AE%BD%E9%AB%98%E5%B1%9E%E6%80%A7/" rel="next" title="DOM 和 BOM 中的各种宽高属性">DOM 和 BOM 中的各种宽高属性&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-单列布局"><span class="toc-text">1.单列布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-两列自适应布局"><span class="toc-text">2.两列自适应布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-三栏布局"><span class="toc-text">3.三栏布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-等高布局"><span class="toc-text">4.等高布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-粘连布局"><span class="toc-text">5.粘连布局</span></a></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"retro",pageSize:10,visitor:!0})</script></section></main><script>var user=[1,2,3,4]</script><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - <span>2021</span> My Blog</p><p class="a">Powered by <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a> | Theme - <a href="https://github.com/Chorer/hexo-theme-PureBlue" target="_blank" rel="noopener">PureBlue</a></p></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/search.js"></script><script src="/js/post-except.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script></body></html><!-- rebuild by neat -->
+<script src="/js/prism-line-numbers.min.js"></script></head><body><header class="header"><div class="header_top"><span class="theme"><a href="/">Chor's blog</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">首页</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">分类</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">归档</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">标签</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">关于</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue" class="logo">Focus on FE learning</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div><div class="blog-down"><a href="javascript:void(0);"><i class="fa fa-angle-double-down fa-2x"></i></a></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">CSS 基础系列：常见布局方式</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2019-05-31&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp2.9k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp11 mins&nbsp&nbsp&nbsp</span><div class="post-tags"></div></div><div class="post-content"><div class="figure"><img src="" alt="思维导图"><p class="caption">思维导图</p></div><a id="more"></a><h2 id="单列布局">1.单列布局</h2><p>最简单的布局，默认三个部分是等宽的，“通栏”指的是中间部分比较窄。</p><h3 id="等宽单列布局">等宽单列布局</h3><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/1.jpg" style="zoom:50%"></p><p>代码示例：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;body&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;header&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;content&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;footer&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
+<span class="kw">&lt;/body&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.header</span>,<span class="fl">.content</span>,<span class="fl">.footer</span> <span class="kw">{</span>
+    <span class="kw">width:</span><span class="dt">960px</span><span class="kw">;</span>
+    <span class="kw">margin:</span><span class="dt">0</span> <span class="dt">auto</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div><h3 id="通栏单列布局">通栏单列布局</h3><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/2.jpg" style="zoom:50%"></p><p>代码示例：</p><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.header</span>,<span class="fl">.footer</span> <span class="kw">{</span>
+    <span class="kw">width:</span><span class="dt">960px</span><span class="kw">;</span>
+    <span class="kw">margin:</span><span class="dt">0</span> <span class="dt">auto</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.content</span> <span class="kw">{</span>
+    <span class="kw">width:</span><span class="dt">800px</span><span class="kw">;</span>
+    <span class="kw">margin:</span><span class="dt">0</span> <span class="dt">auto</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div><h2 id="两列布局">2.两列布局</h2><p>一列定宽或者宽度由内容撑开，另一列自适应，撑满剩余宽度。</p><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/3.jpg" style="zoom:50%"></p><h3 id="float-bfc">float + BFC</h3><p>左边部分设置左浮动，右边部分通过 <code>overflow:hidden</code> 开启 BFC，为了规避浮动对自己的影响（不让自己被浮动的元素覆盖），它会往右边移动直至不被浮动元素覆盖。</p><p>代码示例：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;left&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
+<span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;right&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.left</span> <span class="kw">{</span>
+  <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.right</span> <span class="kw">{</span>
+  <span class="kw">overflow:</span> <span class="dt">hidden</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div><h3 id="float-margin-left">float + margin-left</h3><p>左边部分设置左浮动，右边部分通过 <code>margin-left</code> 进行移动，使自己不被浮动元素覆盖。这种方式要求左边部分必须是定宽的，因为 <code>margin-left</code> 的取值依赖于左边部分的宽度。</p><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.left</span> <span class="kw">{</span>
+  <span class="kw">width:</span> <span class="dt">100px</span>
+  float: <span class="dt">left</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.right</span> <span class="kw">{</span>
+  <span class="kw">margin-left:</span> <span class="dt">100px</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div><h3 id="flex-布局">flex 布局</h3><p>设置父盒子为弹性盒，则左右两部分默认水平排列。左边部分默认通过内容撑开宽度，右边部分通过 <code>flex:1</code> 利用剩余宽度。</p><p>代码示例：</p><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.parent</span> <span class="kw">{</span>
+  <span class="kw">display:</span>flex<span class="kw">;</span>
+<span class="kw">}</span>  
+<span class="fl">.right</span> <span class="kw">{</span>
+  <span class="kw">flex:</span><span class="dt">1</span><span class="kw">;</span>   
+<span class="kw">}</span></code></pre></div><h3 id="grid-布局">grid 布局</h3><p>代码示例：</p><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.parent</span> <span class="kw">{</span>
+  <span class="kw">display:</span>grid<span class="kw">;</span>
+  <span class="kw">grid-template-columns:</span><span class="dt">auto</span> <span class="dt">1</span>fr<span class="kw">;</span>
+  <span class="kw">grid-gap:</span><span class="dt">20px</span>
+<span class="kw">}</span> </code></pre></div><h2 id="三列布局">3.三列布局</h2><p>指的是左右两列固定宽度，中间列自适应。</p><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/5.jpg" style="zoom:50%"></p><h3 id="圣杯布局">圣杯布局</h3><p>代码示例：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;article</span><span class="ot"> class=</span><span class="st">&quot;container&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;center&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;left&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;right&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
+<span class="kw">&lt;/article&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.body</span><span class="kw">{</span>
+    <span class="kw">min-width:</span> <span class="dt">600px</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.container</span> <span class="kw">{</span>
+    <span class="kw">padding-left:</span> <span class="dt">220px</span><span class="kw">;</span>
+    <span class="kw">padding-right:</span> <span class="dt">220px</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.left</span> <span class="kw">{</span>
+    <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+    <span class="kw">width:</span> <span class="dt">200px</span><span class="kw">;</span>
+    <span class="kw">height:</span> <span class="dt">400px</span><span class="kw">;</span>
+    <span class="kw">background:</span> <span class="dt">red</span><span class="kw">;</span>
+    <span class="kw">margin-left:</span> <span class="dt">-100%</span><span class="kw">;</span>
+    <span class="kw">position:</span> <span class="dt">relative</span><span class="kw">;</span>
+    <span class="kw">left:</span> <span class="dt">-220px</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.center</span> <span class="kw">{</span>
+    <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+    <span class="kw">width:</span> <span class="dt">100%</span><span class="kw">;</span>
+    <span class="kw">height:</span> <span class="dt">500px</span><span class="kw">;</span>
+    <span class="kw">background:</span> <span class="dt">yellow</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.right</span> <span class="kw">{</span>
+    <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+    <span class="kw">width:</span> <span class="dt">200px</span><span class="kw">;</span>
+    <span class="kw">height:</span> <span class="dt">400px</span><span class="kw">;</span>
+    <span class="kw">background:</span> <span class="dt">blue</span><span class="kw">;</span>
+    <span class="kw">margin-left:</span> <span class="dt">-200px</span><span class="kw">;</span>
+    <span class="kw">position:</span> <span class="dt">relative</span><span class="kw">;</span>
+    <span class="kw">right:</span> <span class="dt">-220px</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div><p>实现步骤：</p><ul><li>首先我们想要优先加载 center 部分的内容，所以 dom 结构上先写 center</li><li>为了让三者共在一行，给它们设置浮动；为了让 center 自适应，给它设置宽度 100%。此时布局是这样的：</li></ul><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F-3.jpg"></div><p>这里要注意的点：块级元素在不显式设置宽度的情况下确实撑满整个屏幕，从这个角度来看，width 设置为 100% 似乎没有必要。但不要忘记了我们给它设置了浮动 —— 浮动元素具有包裹性，在不显式设置宽度的情况下由内容撑开。这里如果不设置 100% 宽度，且里面没有足够的内容，那么会导致布局崩坏。</p><ul><li>设置 left 和 right 的 margin-left 为负值，让它们回到与 center 同一行。此时布局是这样的：</li></ul><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F-4.jpg"></div><p>这里要注意的点：所有浮动元素可以看作位于同一个浮动流，利用负边距可以让某个元素在这个流中移动，并且会叠加到相应元素的上面。对于 left 来说，它需要左移父元素的总宽度，对于 right 来说，它需要左移自身宽度。</p><ul><li>设置父容器的左右 padding，使内部内容向中间挤压，从而使左右留白。此时布局是这样的：</li></ul><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F-5.jpg"></div><ul><li>给 left 和 right 设置绝对定位，让它们占据父元素的留白空间。最终得到的布局是这样的：</li></ul><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F-6.jpg"></div><ul><li>给页面设置 <code>min-width: 600px</code></li></ul><p>这里要注意的点：由于左右两列宽度固定，因此我们至少要给页面一个最小宽度，但这个最小宽度并不是简单的左右两列宽度之和 —— 别忘了，之前的 left 位于 center，left 是 relative 定位，所以在 center 上占据过的空间不会消失。所以页面最小宽度是 <code>left-width * 2 + right-width</code>。</p><p>缺点；</p><p>如果其中一列内容高度拉长，其他两列的背景并不会自动填充（后面介绍的等高布局可以解决这个问题）</p><h3 id="双飞翼布局">双飞翼布局：</h3><p>双飞翼布局在圣杯布局基础上进一步优化，解决了圣杯布局错乱问题，实现了内容与布局的分离。而且任何一栏都可以是最高栏，不会出问题。</p><p>代码示例</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;center&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;inner&quot;</span><span class="kw">&gt;</span>双飞翼布局<span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;left&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
+<span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;right&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.body</span> <span class="kw">{</span>
+    <span class="kw">min-width:</span> <span class="dt">600px</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.left</span> <span class="kw">{</span>
+    <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+    <span class="kw">width:</span> <span class="dt">200px</span><span class="kw">;</span>
+    <span class="kw">height:</span> <span class="dt">400px</span><span class="kw">;</span>
+    <span class="kw">background:</span> <span class="dt">red</span><span class="kw">;</span>
+    <span class="kw">margin-left:</span> <span class="dt">-100%</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.center</span> <span class="kw">{</span>
+    <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+    <span class="kw">width:</span> <span class="dt">100%</span><span class="kw">;</span>
+    <span class="kw">height:</span> <span class="dt">500px</span><span class="kw">;</span>
+    <span class="kw">background:</span> <span class="dt">yellow</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.center</span> <span class="fl">.inner</span> <span class="kw">{</span>
+    <span class="kw">margin:</span> <span class="dt">0</span> <span class="dt">200px</span><span class="kw">;</span> <span class="co">/* 主要区别 */</span>
+<span class="kw">}</span>
+<span class="fl">.right</span> <span class="kw">{</span>
+    <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+    <span class="kw">width:</span> <span class="dt">200px</span><span class="kw">;</span>
+    <span class="kw">height:</span> <span class="dt">400px</span><span class="kw">;</span>
+    <span class="kw">background:</span> <span class="dt">blue</span><span class="kw">;</span>
+    <span class="kw">margin-left:</span> <span class="dt">-200px</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div><p>3.2.2 实现步骤</p><p>前两步与圣杯布局一样： * 三个部分都设定为左浮动，然后设置 center 的宽度为 100%，此时，left 和 right 部分会跳到下一行； * 通过设置负 margin 让 left 和 right 部分回到与 center 部分同一行；</p><p>这里开始有所不同： * center 部分增加一个内层div，并设margin: 0 200px； * 同样要给页面设置最小宽度，这里没有用定位，所以最小宽度可以直接等于左右两列宽度之和</p><p>3.2.3 缺点：</p><p>多加一层 dom 树节点，增加渲染树生成的计算量。</p><p><strong>两种布局的对比：</strong></p><ul><li>优先加载主列。</li><li>三列浮动，配合负外边距形成三列布局</li><li>两种布局方式的主要区别在于如何处理主列，从而让其内容不被覆盖。对于圣杯布局，它是利用父盒子的左右 padding 确保将主列内容挤到中间，在效果上表现为三个独立列；对于双飞翼布局，它是在主列里放置一个子盒子，利用子盒子的左右 margin 确保内容位于中间，在效果上表现为左右两列在主列上面。</li></ul><h3 id="flex-布局-1">flex 布局</h3><p>flex 布局是最简便的，而且在移动端应用广泛。</p><p>3.3.1 代码示例：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;container&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;center&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;left&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;right&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.container</span><span class="kw">{</span>
+    <span class="kw">display:</span> flex<span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.center</span><span class="kw">{</span>
+    <span class="kw">height:</span><span class="dt">500px</span><span class="kw">;</span>
+    <span class="kw">background-color:</span> <span class="dt">blue</span><span class="kw">;</span>
+    <span class="kw">flex:</span> <span class="dt">1</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.left</span><span class="kw">{</span>
+    <span class="kw">height:</span> <span class="dt">200px</span><span class="kw">;</span>     
+    <span class="kw">background-color:</span><span class="dt">gray</span><span class="kw">;</span> 
+    <span class="kw">order:</span> <span class="dt">-1</span><span class="kw">;</span>
+    <span class="kw">flex:</span><span class="dt">0</span> <span class="dt">1</span> <span class="dt">100px</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.right</span><span class="kw">{</span>
+    <span class="kw">height:</span> <span class="dt">200px</span><span class="kw">;</span>
+    <span class="kw">background-color:</span> <span class="dt">red</span><span class="kw">;</span>
+    <span class="kw">flex:</span> <span class="dt">0</span> <span class="dt">1</span> <span class="dt">100px</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div><p>3.3.2 实现步骤：</p><p>只说几个注意的点 * 在不优先加载主列的情况下，dom 结构可以按照左中右顺序书写，这样不需要额外设置 order；因为我们这里要优先加载主列，所以 dom 结构还是先写主列，之后通过降低左列的 order 恢复顺序。</p><ul><li><p>flex 只有一个值时，设置的是 <code>flex-grow</code>，代表弹性子元素对父元素剩余空间的分配，因为不设置的时候默认是 0，所以这里只有设置了 1 的主列参与分配剩余空间，从而实现宽度自适应。</p></li><li><p>flex 有三个值时，设置的是 <code>flex-grow</code>，<code>flex-shrink</code>，<code>flex-basis</code>。这里左右两列的 <code>flex-basis</code> 都是 100px，实际上为它们设置了固定宽度。</p></li></ul><h2 id="三行布局">4. 三行布局</h2><p>指的是头尾固定高度，不管父盒子高度怎么变化，中间部分都会自适应占满剩余高度。</p><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/4.jpg" style="zoom:50%"></p><h3 id="calc"><code>calc()</code></h3><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
+    <span class="kw">height:</span> <span class="dt">100vh</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.header</span>,<span class="fl">.footer</span> <span class="kw">{</span>
+    <span class="kw">height:</span> <span class="dt">100px</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.content</span> <span class="kw">{</span>
+    <span class="kw">height:</span> calc(<span class="dt">100%</span> - <span class="dt">200px</span>)<span class="kw">;</span>
+<span class="kw">}</span></code></pre></div><h3 id="flex">flex</h3><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
+    <span class="kw">display:</span> flex<span class="kw">;</span>
+    <span class="kw">height:</span> <span class="dt">100vh</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.header</span>,<span class="fl">.footer</span> <span class="kw">{</span>
+    <span class="kw">height:</span> <span class="dt">100px</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.content</span> <span class="kw">{</span>
+    <span class="kw">flex:</span><span class="dt">1</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div><h3 id="绝对定位-padding">绝对定位 + <code>padding</code></h3><div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">body <span class="op">{</span>
+    <span class="dt">height</span><span class="op">:</span> 100vh<span class="op">;</span>
+    <span class="dt">position</span><span class="op">:</span> relative<span class="op">;</span>
+<span class="op">}</span>
+.<span class="at">header</span><span class="op">,</span>.<span class="at">footer</span> <span class="op">{</span>
+    <span class="dt">position</span><span class="op">:</span> absolute<span class="op">;</span>
+    <span class="dt">width</span><span class="op">:</span> <span class="dv">100</span><span class="op">%;</span>
+    <span class="dt">height</span><span class="op">:</span> 100px<span class="op">;</span>
+<span class="op">}</span>
+.<span class="at">header</span> <span class="op">{</span>
+    <span class="dt">top</span><span class="op">:</span><span class="dv">0</span><span class="op">;</span>
+<span class="op">}</span>
+.<span class="at">footer</span> <span class="op">{</span>
+    <span class="dt">bottom</span><span class="op">:</span> <span class="dv">0</span><span class="op">;</span>
+<span class="op">}</span>
+.<span class="at">content</span> <span class="op">{</span>
+    <span class="dt">height</span><span class="op">:</span> <span class="dv">100</span><span class="op">%;</span>
+    <span class="dt">padding</span><span class="op">:</span> 100px <span class="dv">0</span><span class="op">;</span>
+    box<span class="op">-</span><span class="dt">sizing</span><span class="op">:</span> border<span class="op">-</span>box<span class="op">;</span>
+<span class="op">}</span></code></pre></div><h2 id="等高布局">5.等高布局</h2><p>等高布局是指多个子元素在父元素中高度相等的布局方式。</p><h3 id="正-padding-负-margin">正 padding + 负 margin</h3><p>该方法可以解决圣杯布局各子元素高度不等的缺点。给各个子元素设置一个大数值的 <code>padding-bottom</code>，再设置相同数值的负的 <code>margin-bottom</code>，并给总的父盒子设置 <code>overflow:hidden</code>，把溢出背景切掉。假设某一列高度最大，则父盒子的高度会等于这一列高度，而其他列本来的留白部分由带背景色的 padding 补偿。 基本代码与圣杯布局一样，新增代码如下：</p><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* 注意是三个都设置 */</span>
+<span class="fl">.center</span>,
+<span class="fl">.left</span>,
+<span class="fl">.right</span> <span class="kw">{</span>
+    <span class="kw">padding-bottom:</span> <span class="dt">10000px</span><span class="kw">;</span>
+    <span class="kw">margin-bottom:</span> <span class="dt">-10000px</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.container</span> <span class="kw">{</span>
+    <span class="kw">padding-left:</span> <span class="dt">220px</span><span class="kw">;</span>
+    <span class="kw">padding-right:</span> <span class="dt">220px</span><span class="kw">;</span>
+    <span class="kw">overflow:</span> <span class="dt">hidden</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div><p>关于原理，我暂时是这么理解的，不一定正确：可以看作 margin 负值是向内收缩至与 padding 高度相等处，虽然 padding 还在（所以有背景颜色），但是丧失了在空间上撑开父盒子的能力（因为此时被 margin 取代，margin 撑不开高度），即父盒子由最高列撑开，其他两列不足高度的部分由 padding 填充。</p><h3 id="利用背景图片">利用背景图片</h3><p>这种方法是我们实现等高列最早使用的一种方法，就是使用背景图片，在列的父元素上使用这个背景图进行Y轴的铺放，从而实现一种等高列的假象。实现方法简单，兼容性强，不需要太多的css样式就可以轻松实现,但此方法不适合流体布局等高列的布局。</p><p>在制作样式之前需要一张类似下面的背景图：</p><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F-7.jpg"></div><p>代码示例：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">”container</span><span class="ot"> clearfix</span><span class="er">”</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">”left”</span><span class="kw">&gt;&lt;/div&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot">  class=</span><span class="st">”content”</span><span class="kw">&gt;&lt;/div&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">”right”</span><span class="kw">&gt;&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.container</span> <span class="kw">{</span>
+  <span class="kw">background:</span> <span class="dt">url(</span><span class="st">&quot;column.png&quot;</span><span class="dt">)</span> <span class="dt">repeat-y</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">960px</span><span class="kw">;</span>
+  <span class="kw">margin:</span> <span class="dt">0</span> <span class="dt">auto</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.left</span> <span class="kw">{</span>
+  <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">220px</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.content</span> <span class="kw">{</span>
+  <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">480px</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.right</span> <span class="kw">{</span>
+  <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">220px</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div><h3 id="使用边框和定位">使用边框和定位</h3><p>这种方法是使用边框和绝对定位来实现一个假的高度相等列的效果。结构简单，兼容各浏览器，容易掌握。假设你需要实现一个两列等高布局，侧栏高度要和主内容高度相等。</p><p>代码示例：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;wrapper&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;mainContent&quot;</span><span class="kw">&gt;</span>...<span class="kw">&lt;/div&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;sidebar&quot;</span><span class="kw">&gt;</span>...<span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#wrapper</span> <span class="kw">{</span>
+  <span class="kw">width:</span> <span class="dt">960px</span><span class="kw">;</span>
+  <span class="kw">margin:</span> <span class="dt">0</span> <span class="dt">auto</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">#mainContent</span> <span class="kw">{</span>
+  <span class="kw">border-right:</span> <span class="dt">220px</span> <span class="dt">solid</span> <span class="dt">#dfdfdf</span><span class="kw">;</span>
+  <span class="kw">position:</span> <span class="dt">absolute</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">740px</span><span class="kw">;</span>
+  <span class="kw">height:</span> <span class="dt">800px</span><span class="kw">;</span>  
+  <span class="kw">background:</span> <span class="dt">green</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">#sidebar</span> <span class="kw">{</span>
+  <span class="kw">background:</span> <span class="dt">#dfdfdf</span><span class="kw">;</span>
+  <span class="kw">margin-left:</span> <span class="dt">740px</span><span class="kw">;</span>
+  <span class="kw">position:</span> <span class="dt">absolute</span><span class="kw">;</span>
+  <span class="kw">height:</span> <span class="dt">800px</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">220px</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div><h3 id="利用-flex-布局">利用 flex 布局</h3><p>最简单的方法就是直接设置父盒子为弹性盒。此时弹性子元素的 align-items 属性默认值是 stretch，也就是在 y 轴上将所有子元素拉伸为同一高度，从而达到等高布局。</p><h2 id="粘连布局">6.粘连布局</h2><ul><li>内容区 <code>main</code> 高度足够长的时候，<code>footer</code> 紧跟在 <code>main</code>后面；</li><li>内容区 <code>main</code> 高度不够长的时候，<code>footer</code> 粘连在屏幕的底部</li></ul><div class="figure"><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/CSS%20%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F-8.jpg"></div><p>代码示例：</p><div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;wrap&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;main&quot;</span><span class="kw">&gt;</span>
+        main <span class="kw">&lt;br&gt;</span>
+        main <span class="kw">&lt;br&gt;</span>
+        main <span class="kw">&lt;br&gt;</span>
+    <span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;footer&quot;</span><span class="kw">&gt;</span>footer<span class="kw">&lt;/div&gt;</span></code></pre></div><div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">* <span class="kw">{</span>
+    <span class="kw">margin:</span> <span class="dt">0</span><span class="kw">;</span>
+    <span class="kw">padding:</span> <span class="dt">0</span><span class="kw">;</span>
+<span class="kw">}</span>
+html,
+body <span class="kw">{</span>
+    <span class="kw">height:</span> <span class="dt">100%</span><span class="kw">;</span><span class="co">/* 高度一层层继承下来 */</span>
+<span class="kw">}</span>
+<span class="fl">#wrap</span> <span class="kw">{</span>
+    <span class="kw">min-height:</span> <span class="dt">100%</span><span class="kw">;</span>
+    <span class="kw">background:</span> pink<span class="kw">;</span>
+    <span class="kw">text-align:</span> <span class="dt">center</span><span class="kw">;</span>
+    <span class="kw">overflow:</span> <span class="dt">hidden</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">#wrap</span> <span class="fl">.main</span> <span class="kw">{</span>
+    <span class="kw">padding-bottom:</span> <span class="dt">50px</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">#footer</span> <span class="kw">{</span>
+    <span class="kw">height:</span> <span class="dt">50px</span><span class="kw">;</span>
+    <span class="kw">line-height:</span> <span class="dt">50px</span><span class="kw">;</span>
+    <span class="kw">background:</span> deeppink<span class="kw">;</span>
+    <span class="kw">text-align:</span> <span class="dt">center</span><span class="kw">;</span>
+    <span class="kw">margin-top:</span> <span class="dt">-50px</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div><p>实现步骤</p><ul><li><code>footer</code> 必须是一个独立的结构，与 <code>wrap</code> 没有任何嵌套关系</li><li><code>wrap</code> 区域的高度通过设置 <code>min-height</code>，变为视口高度（这是实现的关键）</li><li><code>footer</code> 要使用 <code>margin</code> 为负来确定自己的位置</li><li>在 <code>main</code> 区域需要设置 <code>padding-bottom</code>。这也是为了防止负 <code>margin</code> 导致 <code>footer</code> 覆盖任何实际内容。</li></ul><p>参考： https://juejin.im/post/5bbcd7ff5188255c80668028#heading-19</p></div><div class="post-nav"><div class="post-nav-prev"><a href="/2019/06/05/Trs-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAHexo%E4%B8%BB%E9%A2%98%E4%B9%8BPart3/" rel="prev" title="「译」创建一个Hexo主题-Part3 :评论、分析和小部件"><i class="fa fa-angle-double-left"></i>&nbsp「译」创建一个Hexo主题-Part3 :评论、分析和小部件</a></div><div class="post-nav-next"><a href="/2019/05/30/F-DOM%20%E5%92%8C%20BOM%20%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E5%AE%BD%E9%AB%98%E5%B1%9E%E6%80%A7/" rel="next" title="DOM 和 BOM 中的各种宽高属性">DOM 和 BOM 中的各种宽高属性&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%88%97%E5%B8%83%E5%B1%80"><span class="toc-text">1.单列布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%89%E5%AE%BD%E5%8D%95%E5%88%97%E5%B8%83%E5%B1%80"><span class="toc-text">等宽单列布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E6%A0%8F%E5%8D%95%E5%88%97%E5%B8%83%E5%B1%80"><span class="toc-text">通栏单列布局</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E5%88%97%E5%B8%83%E5%B1%80"><span class="toc-text">2.两列布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#float-bfc"><span class="toc-text">float + BFC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#float-margin-left"><span class="toc-text">float + margin-left</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-%E5%B8%83%E5%B1%80"><span class="toc-text">flex 布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grid-%E5%B8%83%E5%B1%80"><span class="toc-text">grid 布局</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%88%97%E5%B8%83%E5%B1%80"><span class="toc-text">3.三列布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80"><span class="toc-text">圣杯布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80"><span class="toc-text">双飞翼布局：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-%E5%B8%83%E5%B1%80-1"><span class="toc-text">flex 布局</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%A1%8C%E5%B8%83%E5%B1%80"><span class="toc-text">4. 三行布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#calc"><span class="toc-text">calc()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex"><span class="toc-text">flex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D-padding"><span class="toc-text">绝对定位 + padding</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%89%E9%AB%98%E5%B8%83%E5%B1%80"><span class="toc-text">5.等高布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3-padding-%E8%B4%9F-margin"><span class="toc-text">正 padding + 负 margin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87"><span class="toc-text">利用背景图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%BE%B9%E6%A1%86%E5%92%8C%E5%AE%9A%E4%BD%8D"><span class="toc-text">使用边框和定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8-flex-%E5%B8%83%E5%B1%80"><span class="toc-text">利用 flex 布局</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B2%98%E8%BF%9E%E5%B8%83%E5%B1%80"><span class="toc-text">6.粘连布局</span></a></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"retro",pageSize:10,visitor:!0})</script></section></main><script>var user=[1,2,3,4]</script><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - <span>2021</span> My Blog</p><p class="a">Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/search.js"></script><script src="/js/post-except.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script></body></html><!-- rebuild by neat -->

@@ -1484,7 +1484,7 @@
   <entry>
     <title><![CDATA[Test]]></title>
     <url>%2F2017%2F01%2F19%2Ftest%2F</url>
-    <content type="text"><![CDATA[111 1111 222 2222 function()&#123; var num = 1; &#125; function()&#123; var num = 1; &#125; function()&#123; var num = 1; &#125; function()&#123; var num = 1; &#125; module.exports = &#123; entry: ..., output:&#123;...&#125;, module:&#123; rules:[ &#123; test: ..., use:['xxx-loader','xxx-loader',...] &#125;, &#123;...&#125;, &#123;...&#125;, ] &#125; &#125;]]></content>
+    <content type="text"><![CDATA[&lt;div id&#x3D;&quot;app&quot;&gt; &lt;!--展示方式一--&gt; &lt;cpn&gt; &lt;template slot-scope&#x3D;&quot;obj&quot;&gt; &lt;ul&gt; &lt;li v-for&#x3D;&quot;item in obj.lang&quot;&gt;&#123;&#123;item&#125;&#125;&lt;&#x2F;li&gt; &lt;&#x2F;ul&gt; &lt;&#x2F;template&gt; &lt;&#x2F;cpn&gt; &lt;!--展示方式二--&gt; &lt;cpn&gt; &lt;template slot-scope&#x3D;&quot;obj&quot;&gt; &#123;&#123;obj.lang.join(&#39;&#x2F;&#39;)&#125;&#125; &lt;&#x2F;template&gt; &lt;&#x2F;cpn&gt; &lt;!--展示方式三--&gt; &lt;cpn&gt; &lt;template slot-scope&#x3D;&quot;obj&quot;&gt; &#123;&#123;obj.lang.join(&#39;----&#39;)&#125;&#125; &lt;&#x2F;template&gt; &lt;&#x2F;cpn&gt; &lt;&#x2F;div&gt;]]></content>
       <tags>
         <tag>test</tag>
       </tags>

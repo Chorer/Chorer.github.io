@@ -1,0 +1,270 @@
+<!-- build time:Sat Nov 27 2021 16:09:54 GMT+0800 (中国标准时间) --><!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Focus on FE learning</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third%20party/prism.css"><link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third%20party/pace-theme-flash.css"><link rel="icon" href="/images/kour.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"></head><body><header class="header"><div class="header_top"><span class="theme"><a href="/">Chor's blog</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">首页</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">分类</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">归档</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">标签</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">关于</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue" class="logo">Focus on FE learning</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div><div class="blog-down"><a href="javascript:void(0);"><i class="fa fa-angle-double-down fa-2x"></i></a></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">TypeScript 官方手册翻译计划【四】：函数</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2021-11-20&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp6.6k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp27 mins&nbsp&nbsp&nbsp</span><div class="post-tags"><i class="fa fa-tags"></i> <a href="/tags/TypeScript/">TypeScript</a> <a href="/tags/documentation/">documentation</a></div></div><div class="post-content"><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/TypeScript%20%E5%AE%98%E6%96%B9%E6%89%8B%E5%86%8C%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92/banner.jpeg"></p><span id="more"></span><blockquote><ul><li><strong>说明</strong>：目前网上没有 TypeScript 最新官方文档的中文翻译，所以有了这么一个翻译计划。因为我也是 TypeScript 的初学者，所以无法保证翻译百分之百准确，若有错误，欢迎评论区指出；</li><li><strong>翻译内容</strong>：暂定翻译内容为 <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/intro.html">TypeScript Handbook</a>，后续有空会补充翻译文档的其它部分；</li><li><strong>项目地址</strong>：<a target="_blank" rel="noopener" href="https://github.com/Chorer/TypeScript-Doc-Zh">TypeScript-Doc-Zh</a>，如果对你有帮助，可以点一个 star ~</li></ul></blockquote><p>本章节官方文档地址：<a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/2/functions.html">More on Functions</a></p><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>无论是本地函数，还是从其它模块导入的函数，或者是类上的方法，函数都是任何应用的基本组成部分。它们同样也是值，就和其它值一样，TypeScript 有很多种描述函数如何被调用的方式。接下来，让我们了解如何编写类型去描述函数吧。</p><h3 id="函数类型表达式"><a href="#函数类型表达式" class="headerlink" title="函数类型表达式"></a>函数类型表达式</h3><p>最简单的描述函数的方式就是使用函数类型表达式。这些类型在语法上和箭头函数非常相似：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function greeter(fn: (a: string) &#x3D;&gt; void) &#123;
+  fn(&quot;Hello, World&quot;);
+&#125;
+ 
+function printToConsole(s: string) &#123;
+  console.log(s);
+&#125;
+ 
+greeter(printToConsole);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>语法 <code>(a: string) =&gt; void</code> 表示“某个函数接受名为 <code>a</code> 的参数，类型为字符串，且该函数没有返回值”。和函数声明一样，如果没有指定参数类型，那么参数会被隐式推断为 <code>any</code> 类型。</p><blockquote><p>注意参数名是<strong>必需的</strong>。函数类型 <code>(string) =&gt; void</code>表示“某个函数接受名为 <code>string</code> 的参数，类型为 <code>any</code>”</p></blockquote><p>当然，我们也可以使用类型别名为某个函数类型命名：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">type GreetFunction &#x3D; (a: string) &#x3D;&gt; void;
+function greeter(fn: GreetFunction) &#123;
+  &#x2F;&#x2F; ...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h3 id="调用签名"><a href="#调用签名" class="headerlink" title="调用签名"></a>调用签名</h3><p>在 JavaScript 中，函数可以拥有属性，以方便进行调用。但是，TypeScript 的函数类型表达式语法不允许声明属性。如果我们想要描述某个可以通过属性被调用的东西，那么我们可以在一个对象类型上编写一个调用签名：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">type DescribableFunction &#x3D; &#123;
+  description: string;
+  (someArg: number): boolean;
+&#125;;
+function doSomething(fn: DescribableFunction) &#123;
+  console.log(fn.description + &quot; returned &quot; + fn(6));
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>注意这个语法和函数类型表达式的语法不太一样。在参数列表和返回值类型之间，它使用的是 <code>:</code> 而不是 <code>=&gt;</code>。</p><h3 id="构造签名"><a href="#构造签名" class="headerlink" title="构造签名"></a>构造签名</h3><p>JavaScript 函数也可以通过 <code>new</code> 运算符进行调用。TypeScript 将这种函数视为构造器，因为它们通常用于创建新对象。你可以在调用签名前面添加 <code>new</code> 关键字，从而编写一个构造签名：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">type SomeConstructor &#x3D; &#123;
+  new (s: string): SomeObject;
+&#125;;
+function fn(ctor: SomeConstructor) &#123;
+  return new ctor(&quot;hello&quot;);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>有些对象，比如 JavaScript 的 <code>Date</code> 对象，可以直接调用也可以通过 <code>new</code> 调用。你可以在同一类型中任意组合调用签名和构造签名：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface CallOrConstruct &#123;
+  new (s: string): Date;
+  (n?: number): number;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h3 id="泛型函数"><a href="#泛型函数" class="headerlink" title="泛型函数"></a>泛型函数</h3><p>我们经常需要编写某个函数，它的输入值类型和输出值类型相关联，或者两个输入值的类型在某种程度上相关联。假设现在有一个函数，它需要返回某个数组中的第一个元素：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function firstElement(arr: any[]) &#123;
+  return arr[0];
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>这个函数可以运行，但不幸的是，它的返回值类型为 <code>any</code>。如果返回值类型和数组类型一样，那就更好了。</p><p>在 TypeScript 中，当我们想要描述两个值之间的对应关系的时候，可以使用泛型。怎么使用呢？只需要在函数签名中声明一个类型参数：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function firstElement&lt;Type&gt;(arr: Type[]): Type | undefined &#123;
+    return arr[0];
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>通过添加一个类型参数 <code>Type</code> 到函数中，并在两个地方使用这个参数，我们已经让函数的输入值（数组）和输出值（返回值）建立了一个联系。现在当我们再次调用函数的时候，将会得到一个类型更加具体的返回值：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">&#x2F;&#x2F; s 的类型是 string
+const s &#x3D; firstElement([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]);
+&#x2F;&#x2F; n 的类型是 number
+const n &#x3D; firstElement([1, 2, 3]);
+&#x2F;&#x2F; u 的类型是 undefined
+const u &#x3D; firstElement([]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="推断"><a href="#推断" class="headerlink" title="推断"></a>推断</h4><p>注意在上面的例子中，我们不需要特殊说明 <code>Type</code> 的类型。因为 TypeScript 可以推断 —— 自动选择它的类型。</p><p>我们也可以使用多个类型参数。举个例子，可以像下面这样实现一个独立版本的 <code>map</code>：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function map&lt;Input, Output&gt;(arr: Input[], func: (arg: Input) &#x3D;&gt; Output): Output[] &#123;
+  return arr.map(func);
+&#125;
+ 
+&#x2F;&#x2F; n 的类型是 string
+&#x2F;&#x2F; parsed 的类型是 number[]
+const parsed &#x3D; map([&quot;1&quot;, &quot;2&quot;, &quot;3&quot;], (n) &#x3D;&gt; parseInt(n));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>注意在这个例子中，TypeScript 可以基于给定的 <code>string</code> 类型数组推断出 <code>Input</code> 类型参数的类型，也可以基于函数表达式的返回值类型（<code>number</code>）推断出 <code>Output</code> 类型参数的类型。</p><h4 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h4><p>我们目前编写的泛型函数适用于所有类型的值。有时候，我们想要关联两个值，但要求只能对值的某个子集进行操作。这时候，我们可以使用“约束”去限制类型参数可以接受的种类。</p><p>我们来编写一个函数，它可以返回两个值长度较长的那个。为了实现这个功能，我们需要一个 <code>number</code> 类型的 <code>length</code> 属性。这里，我们通过 <code>extends</code> 子句将类型参数约束为具有 <code>length</code> 属性的类型：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function longest&lt;Type extends &#123; length: number &#125;&gt;(a: Type, b: Type) &#123;
+  if (a.length &gt;&#x3D; b.length) &#123;
+    return a;
+  &#125; else &#123;
+    return b;
+  &#125;
+&#125;
+ 
+&#x2F;&#x2F; longerArray 的类型是 number[]
+const longerArray &#x3D; longest([1, 2], [1, 2, 3]);
+&#x2F;&#x2F; longerString 的类型是 &#39;alice&#39; | &#39;bob&#39;
+const longerString &#x3D; longest(&quot;alice&quot;, &quot;bob&quot;);
+&#x2F;&#x2F; 报错！number 类型的值没有 length 属性
+const notOK &#x3D; longest(10, 100);
+&#x2F;&#x2F; Argument of type &#39;number&#39; is not assignable to parameter of type &#39;&#123; length: number; &#125;&#39;.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在这个例子中，没有什么有趣的事情值得注意。我们允许 TypeScript 推断 <code>longest</code> 函数返回值的类型。返回值的类型推断也适用于泛型函数。</p><p>我们将 <code>Type</code> 约束为 <code>&#123;length: number&#125;</code>，因此得以访问 <code>a</code> 参数和 <code>b</code> 参数的 <code>length</code> 属性。如果没有类型约束，那么我们是无法访问这个属性的，因为传入的参数可能是其它不具备 <code>length</code> 属性的类型。</p><p><code>longerArray</code> 和 <code>longerString</code> 的类型是基于函数参数推断出来的。记住，泛型都是将两个或多个值与同一类型相关联！</p><h4 id="使用约束值"><a href="#使用约束值" class="headerlink" title="使用约束值"></a>使用约束值</h4><p>下面是使用泛型约束的时候常见的一个错误：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function minimumLength&lt;Type extends &#123; length: number &#125;&gt;(
+  obj: Type,
+  minimum: number
+): Type &#123;
+  if (obj.length &gt;&#x3D; minimum) &#123;
+    return obj;
+  &#125; else &#123;
+    return &#123; length: minimum &#125;;
+&#x2F;*
+Type &#39;&#123; length: number; &#125;&#39; is not assignable to type &#39;Type&#39;.
+  &#39;&#123; length: number; &#125;&#39; is assignable to the constraint of type &#39;Type&#39;, but &#39;Type&#39; could be instantiated with a different subtype of constraint &#39;&#123; length: number; &#125;&#39;.
+*&#x2F;  
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这个函数看起来似乎没毛病 —— <code>Type</code> 被约束为 <code>&#123;length: number&#125;</code>，函数要么返回 <code>Type</code>，要么返回匹配约束条件的值。但问题在于，函数承诺返回一个与传入参数相同类型的对象，而不是某个匹配约束条件的对象。如果这段代码是合法的，那么你很可能写出下面这样无法正常运行的代码：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">&#x2F;&#x2F; &#39;arr&#39; 的值是 &#123; length: 6 &#125;
+const arr &#x3D; minimumLength([1, 2, 3], 6);
+&#x2F;&#x2F; 这里会报错，因为 arr 不是数组，没有 slice 方法
+console.log(arr.slice(0));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h4 id="指定类型参数"><a href="#指定类型参数" class="headerlink" title="指定类型参数"></a>指定类型参数</h4><p>在一次泛型调用中，TypeScript 通常可以推断出预期的类型参数，但也有例外。举个例子，假设你要编写一个合并两个数组的函数：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function combine&lt;Type&gt;(arr1: Type[], arr2: Type[]): Type[] &#123;
+    return arr1.concat(arr2);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>如果调用该函数的时候传入的两个数组的类型不匹配，那么正常情况下是会抛出错误的：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">const arr &#x3D; combine([1, 2, 3], [&quot;hello&quot;]);
+							 ^^^^^^^
+&#x2F;&#x2F; Type &#39;string&#39; is not assignable to type &#39;number&#39;.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>不过，如果你本意就是想合并两个类型不匹配的数组，那么你可以手动指定 <code>Type</code>：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">const arr &#x3D; combine&lt;string | number&gt;([1,2,3],[&quot;hello&quot;]);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="编写良好泛型函数的指南"><a href="#编写良好泛型函数的指南" class="headerlink" title="编写良好泛型函数的指南"></a>编写良好泛型函数的指南</h4><p>编写泛型函数很有意思，并且很容易因为使用类型参数而忘乎所以。使用过多类型参数或者在不需要的时候使用约束条件，会导致类型推断很难成功，对函数的调用者造成困惑。</p><p><strong>抑制类型参数</strong></p><p>下面两种方式编写的函数很相似：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function firstElement1&lt;Type&gt;(arr: Type[]) &#123;
+  return arr[0];
+&#125;
+ 
+function firstElement2&lt;Type extends any[]&gt;(arr: Type) &#123;
+  return arr[0];
+&#125;
+ 
+&#x2F;&#x2F; a: number (good)
+const a &#x3D; firstElement1([1, 2, 3]);
+&#x2F;&#x2F; b: any (bad)
+const b &#x3D; firstElement2([1, 2, 3]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>乍一看这两个函数好像差不多，但 <code>firstElement1</code> 函数要更好。它推断得到的返回值类型是 <code>Type</code>，而 <code>firstElement2</code> 推断得到的返回值类型却是 <code>any</code>，因为 TypeScript 需要使用约束类型去解析 <code>arr[0]</code> 表达式，而不是在函数调用期间“等着”去解析元素。</p><blockquote><p><strong>规则：</strong> 在可能的情况下，请直接使用类型参数，而不是给它设置约束条件</p></blockquote><p><strong>使用更少的类型参数</strong></p><p>下面是另一对相似的函数：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function filter1&lt;Type&gt;(arr: Type[], func: (arg: Type) &#x3D;&gt; boolean): Type[] &#123;
+  return arr.filter(func);
+&#125;
+ 
+function filter2&lt;Type, Func extends (arg: Type) &#x3D;&gt; boolean&gt;(
+  arr: Type[],
+  func: Func
+): Type[] &#123;
+  return arr.filter(func);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在第二个函数中，我们创建了一个类型参数 <code>Func</code>，但是它并没有关联两个值。这是一个危险的信号，因为这意味着调用者传入实际的类型参数的时候，必须毫无理由地手动指定一个额外的类型参数。<code>Func</code> 不但没有帮上任何忙，反而破坏了函数的可读性和合理性。</p><blockquote><p><strong>规则：</strong> 总是尽可能地使用更少的类型参数</p></blockquote><p><strong>类型参数应该出现两次</strong></p><p>有时候我们会忘记某个函数可能是不需要使用泛型的：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function greet&lt;Str extends string&gt;(s: Str) &#123;
+  console.log(&quot;Hello, &quot; + s);
+&#125;
+ 
+greet(&quot;world&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>上面的函数可以改写为下面这个更简单的版本：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function greet(s: string) &#123;
+  console.log(&quot;Hello, &quot; + s);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>记住，类型参数的目的是关联多个值的类型。如果一个类型参数在函数签名中只使用了一次，那么它其实没有关联任何东西。</p><blockquote><p><strong>规则：</strong> 如果一个类型参数在某个地方只出现了一次，请重新慎重思考自己是否需要使用类型参数</p></blockquote><h3 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h3><p>JavaScript 中的函数可以接受的参数数量总是可变的。举个例子，<code>number</code> 的 <code>toFixed</code> 方法可以接受一个可选的参数表示数位：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function f(n: number) &#123;
+  console.log(n.toFixed()); &#x2F;&#x2F; 0 个参数
+  console.log(n.toFixed(3)); &#x2F;&#x2F; 1 个参数
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>在 TypeScript 中，我们可以使用 <code>?</code> 标识某个参数是可选的：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function f(x?: number) &#123;
+  &#x2F;&#x2F; ...
+&#125;
+f(); &#x2F;&#x2F; OK
+f(10); &#x2F;&#x2F; OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>虽然参数被指定为 <code>number</code> 类型，但它实际上是 <code>number | undefined</code> 类型，因为在 JavaScript 中，没有指定的参数的默认值就是 <code>undefined</code>.</p><p>你也可以给参数提供一个默认值：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function f(x &#x3D; 10)&#123;
+	&#x2F;&#x2F; ...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>现在，<code>f</code> 函数体中的 <code>x</code> 的类型将为 <code>number</code>，因为任何 <code>undefined</code> 类型的参数都会被替换为 <code>10</code>。注意，当参数可选的时候，调用者总是会传递 <code>undefined</code> 给这个参数，从而简单地模拟一个“丢失的”参数。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">declare function f(x? : number): void;
+&#x2F;&#x2F; cut
+&#x2F;&#x2F; All ok
+f();
+f(10);
+f(undefined);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="回调函数中的可选参数"><a href="#回调函数中的可选参数" class="headerlink" title="回调函数中的可选参数"></a>回调函数中的可选参数</h4><p>在你了解了可选参数和函数类型表达式之后，你可能会很容易在编写回调函数的时候犯下面的错误：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function myForEach(arr: any[], callback: (arg: any, index?: number) &#x3D;&gt; void) &#123;
+    for(let i &#x3D; 0;i &lt; arr.length;i ++)&#123;
+        callback(arr[i],i);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>很多人之所以编写 <code>index?</code> 以将其作为可选参数，本意是想让下面两种调用都是合法的：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">myForEach([1, 2, 3], (a) &#x3D;&gt; console.log(a));
+myForEach([1, 2, 3], (a, i) &#x3D;&gt; console.log(a, i));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>这实际上意味着，在调用 <code>callback</code> 的时候可能只传入了一个参数。换句话说，上面的函数定义表明了它的内部实现可能是这样的：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function myForEach(arr: any[], callback: (arg: any, index?: number) &#x3D;&gt; void) &#123;
+  for (let i &#x3D; 0; i &lt; arr.length; i++) &#123;
+    &#x2F;&#x2F; 这次我不想要提供 index
+    callback(arr[i]);
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>反过来推导，TypeScript 会使用这个内部实现，并抛出一个实际上不可能出现的错误：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">myForEach([1, 2, 3], (a, i) &#x3D;&gt; &#123;
+  console.log(i.toFixed());
+              ^
+&#x2F;&#x2F; Object is possibly &#39;undefined&#39;.
+&#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在 JavaScript 中，如果调用函数的时候传入的实参数量多于形参数量，那么多余的参数只会被简单地忽略掉。TypeScript 同样也是这么处理的。参数数量较少的函数总是可以替换参数数量较多的函数（两个函数的参数类型相同）。</p><blockquote><p>当为回调函数编写一个函数类型的时候，永远不要使用可选参数，除非你的本意是在调用该函数的时候不传入那个参数。</p></blockquote><h3 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h3><p>在调用某些 JavaScript 函数的时候，传入的参数数量和类型可能是多种多样的。举个例子，编写一个产生 <code>Date</code> 的函数时，既可以传入一个时间戳（一个参数），也可以传入年份/月份/天数（三个参数）。</p><p>在 TypeScript 中，我们可以编写重载签名来指定一个函数可以通过不同方式调用。要实现重载，你需要先编写一些函数签名（通常是两个或者两个以上），然后跟着一个函数体：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function makeDate(timestamp: number): Date;
+function makeDate(m: number, d: number, y: number): Date;
+function makeDate(mOrTimestamp: number, d?: number, y?: number): Date &#123;
+  if (d !&#x3D;&#x3D; undefined &amp;&amp; y !&#x3D;&#x3D; undefined) &#123;
+    return new Date(y, mOrTimestamp, d);
+  &#125; else &#123;
+    return new Date(mOrTimestamp);
+  &#125;
+&#125;
+const d1 &#x3D; makeDate(12345678);
+const d2 &#x3D; makeDate(5, 5, 5);
+const d3 &#x3D; makeDate(1, 3);
+&#x2F;&#x2F; No overload expects 2 arguments, but overloads do exist that expect either 1 or 3 arguments.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在这个例子中，我们编写了两个重载：一个接受单个参数，另一个接受三个参数。前面的这两个签名称为“重载签名”。</p><p>之后，我们编写了一个带有兼容签名的函数实现。函数有一个“实现签名”，但是这个签名不能被直接调用。即使函数的一个必需参数后面跟着两个可选参数，调用该函数的时候也不能只传入两个参数！</p><h4 id="重载签名和实现签名"><a href="#重载签名和实现签名" class="headerlink" title="重载签名和实现签名"></a>重载签名和实现签名</h4><p>这是一个常见的让人困惑的地方。人们通常会写出下面的代码，并且不理解为什么会抛出错误：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function fn(x: string): void;
+function fn() &#123;
+  &#x2F;&#x2F; ...
+&#125;
+&#x2F;&#x2F; 这里本应该可以不传入任何参数
+fn();
+^^^^
+&#x2F;&#x2F; Expected 1 arguments, but got 0.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>再次重申，用于编写函数体的签名必须不能从外部被“看到”。</p><blockquote><p>实现签名不能从外部被“看到”。当编写重载函数的时候，在函数的代码实现部分的上面，必须始终有两个或者两个以上的签名。</p></blockquote><p>此外，实现签名必须与重载签名兼容。举个例子，下面的写法都是错误的，因为实现签名没有正确地匹配重载签名：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function fn(x: boolean): void;
+&#x2F;&#x2F; 参数类型不对
+function fn(x: string): void;
+&#x2F;&#x2F; This overload signature is not compatible with its implementation signature.
+function fn(x: boolean) &#123;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function fn(x: string): string;
+&#x2F;&#x2F; 返回值类型不对
+function fn(x: number): boolean;
+&#x2F;&#x2F; This overload signature is not compatible with its implementation signature.
+function fn(x: string | number) &#123;
+  return &quot;oops&quot;;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="编写良好的重载函数"><a href="#编写良好的重载函数" class="headerlink" title="编写良好的重载函数"></a>编写良好的重载函数</h4><p>就像泛型一样，在使用重载函数的时候，我们也需要遵循一些规则。遵循这些规则可以让你的函数更容易被调用、理解和实现。</p><p>假设有一个函数可以返回某个字符串或者数组的长度：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function len(s: string): number;
+function len(arr: any[]): number;
+function len(x: any) &#123;
+    return x.length;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这个函数很好，我们在调用的时候可以传入字符串或者数组。但是，我们无法传入一个可能是字符串或者数组的值，因为 TypeScript 只能将一个函数调用解析为单个重载：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">len(&quot;&quot;); &#x2F;&#x2F; OK
+len([0]); &#x2F;&#x2F; OK
+len(Math.random() &gt; 0.5 ? &quot;hello&quot; : [0]);
+&#x2F;*
+No overload matches this call.
+  Overload 1 of 2, &#39;(s: string): number&#39;, gave the following error.
+    Argument of type &#39;number[] | &quot;hello&quot;&#39; is not assignable to parameter of type &#39;string&#39;.
+      Type &#39;number[]&#39; is not assignable to type &#39;string&#39;.
+  Overload 2 of 2, &#39;(arr: any[]): number&#39;, gave the following error.
+    Argument of type &#39;number[] | &quot;hello&quot;&#39; is not assignable to parameter of type &#39;any[]&#39;.
+      Type &#39;string&#39; is not assignable to type &#39;any[]&#39;.
+*&#x2F; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>因为两个重载都有相同的参数数量和返回类型，所以实际上可以编写一个不使用重载的函数版本：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function len(x: any[] | string) &#123;
+    return x.length;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>这看起来就好多了！调用者调用该函数的时候可以传入两种参数的任意一种。还有一个额外的好处是，我们不需要搞清楚正确的实现签名。</p><blockquote><p>在可能的情况下，请始终使用联合类型参数，而不是重载</p></blockquote><h4 id="在函数中声明-this"><a href="#在函数中声明-this" class="headerlink" title="在函数中声明 this"></a>在函数中声明 <code>this</code></h4><p>TypeScript 可以通过代码流分析推断出函数中的 <code>this</code> 指向。举个例子：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">const user &#x3D; &#123;
+  id: 123,
+ 
+  admin: false,
+  becomeAdmin: function () &#123;
+    this.admin &#x3D; true;
+  &#125;,
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>TypeScript 知道 <code>user.becomeAdimin</code> 这个函数对应的 <code>this</code> 是外部对象 <code>user</code>。在大部分情况下这其实就足够了，但也有一些情况，我们需要更明确地控制 <code>this</code> 指向的对象。JavaScript 规范指出，参数不能取名为 <code>this</code>，因此 TypeScript 就利用了这个“语法空缺”让开发者声明函数体中 <code>this</code> 的类型。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface DB &#123;
+  filterUsers(filter: (this: User) &#x3D;&gt; boolean): User[];
+&#125;
+ 
+const db &#x3D; getDB();
+const admins &#x3D; db.filterUsers(function (this: User) &#123;
+  return this.admin;
+&#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在回调风格的 API 中，通常会有另一个对象控制函数何时被调用，因此这种模式很常见。注意，你需要使用 <code>function</code> 普通函数而不是箭头函数：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface DB &#123;
+  filterUsers(filter: (this: User) &#x3D;&gt; boolean): User[];
+&#125;
+ 
+const db &#x3D; getDB();
+const admins &#x3D; db.filterUsers(() &#x3D;&gt; this.admin);
+&#x2F;&#x2F;The containing arrow function captures the global value of &#39;this&#39;.
+&#x2F;&#x2F;Element implicitly has an &#39;any&#39; type because type &#39;typeof globalThis&#39; has no &#x2F;&#x2F;index signature.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="其它需要了解的类型"><a href="#其它需要了解的类型" class="headerlink" title="其它需要了解的类型"></a>其它需要了解的类型</h3><p>在使用函数类型的时候，我们还需要了解一些额外的类型。它们和之前介绍过的类型一样，也可以在任何地方使用，但和函数上下文的关联尤其紧密。</p><h4 id="void"><a href="#void" class="headerlink" title="void"></a><code>void</code></h4><p><code>void</code> 表示没有返回任何值的函数的返回值。只要某个函数没有 <code>return</code> 语句，或者 <code>return</code> 语句中没有返回任何显式的值，那么函数的返回值类型就会被推断为 <code>void</code>：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">&#x2F;&#x2F; 返回值的类型被推断为 void
+function noop() &#123;
+  return;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>在 JavaScript 中，没有返回值的函数会隐式返回 <code>undefined</code>。但是，在 TypeScript 中，<code>void</code> 和 <code>undefined</code> 是不一样的东西。在本章节的最后，我们会进一步讲解相关细节。</p><blockquote><p><code>void</code> 和 <code>undefined</code> 是不一样的</p></blockquote><h4 id="object"><a href="#object" class="headerlink" title="object"></a><code>object</code></h4><p>特殊类型 <code>object</code> 代表的是任意非原始类型的值（<code>string</code>、 <code>number</code>、<code>bigint</code>、<code>boolean</code>、 <code>symbol</code>、<code>null</code> 或者 <code>undefined</code>）。它和空对象类型 <code>&#123;&#125;</code> 不一样，和全局类型 <code>Object</code> 也不一样。很可能你永远也不会用到 <code>Object</code>。</p><blockquote><p><code>object</code> 不是 <code>Object</code>，请<strong>始终</strong>使用 <code>object</code>！</p></blockquote><p>注意，在 JavaScript 中，函数也是对象：它们也有属性，原型链也包含 <code>Object.prototype</code>，并且 <code>instanceof Object</code> 返回 <code>true</code>，你还可以给 <code>Object.keys</code> 传递函数等。基于这些理由，TypeScript 中的函数类型被归类为 <code>object</code>。</p><h4 id="unknown"><a href="#unknown" class="headerlink" title="unknown"></a><code>unknown</code></h4><p><code>unknown</code> 类型表示任意值。它和 <code>any</code> 类型很相似，但更加安全，因为对 <code>unknown</code> 类型的值执行任何操作都是不合法的：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function f1(a: any) &#123;
+  a.b(); &#x2F;&#x2F; OK
+&#125;
+function f2(a: unknown) &#123;
+  a.b();
+  ^  
+&#x2F;&#x2F;Object is of type &#39;unknown&#39;.
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在描述函数类型的时候，这很有用，因为你可以描述一个能接受任意值的函数，同时又避免在函数体中出现任何 <code>any</code> 类型的值。</p><p>同样的，你可以描述一个返回 <code>unknown</code> 类型值的函数：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function safeParse(s: string): unknown &#123;
+  return JSON.parse(s);
+&#125;
+ 
+&#x2F;&#x2F; 注意 obj 的类型！
+const obj &#x3D; safeParse(someRandomString);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="never"><a href="#never" class="headerlink" title="never"></a><code>never</code></h4><p>有些函数从来不会返回任何值：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function fail(msg: string): never &#123;
+  throw new Error(msg);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><code>never</code> 类型表示从来不会被看到的值。当返回值是 <code>never</code> 类型的时候，意味着函数抛出了一个异常，或者终止了程序的执行。</p><p>当 TypeScript 确定联合类型中没有其它剩余类型的时候，也会用到 <code>never</code>。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function fn(x: string | number) &#123;
+  if (typeof x &#x3D;&#x3D;&#x3D; &quot;string&quot;) &#123;
+    &#x2F;&#x2F; 执行某些操作
+  &#125; else if (typeof x &#x3D;&#x3D;&#x3D; &quot;number&quot;) &#123;
+    &#x2F;&#x2F; 执行某些操作
+  &#125; else &#123;
+    x; &#x2F;&#x2F; 类型为 never！
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="Function"><a href="#Function" class="headerlink" title="Function"></a><code>Function</code></h4><p>全局类型 <code>Function</code> 描述了诸如 <code>bind</code>、<code>call</code>、<code>apply</code> 这样的属性，以及其它出现在 JavaScript 中所有函数值上面的属性。它还有一个特点，就是 <code>Function</code> 类型的值总是可以被调用的，并且都会返回 <code>any</code>：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function doSomething(f: Function) &#123;
+  return f(1, 2, 3);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>这是一个非类型化的函数调用，最好避免这种用法，因为返回值为 <code>any</code> 是不安全的。</p><p>如果你需要接受一个任意类型的函数，但不打算调用它，那么使用类型 <code>() =&gt; void</code> 会更加安全。</p><h3 id="剩余参数和展开运算符"><a href="#剩余参数和展开运算符" class="headerlink" title="剩余参数和展开运算符"></a>剩余参数和展开运算符</h3><h4 id="剩余参数"><a href="#剩余参数" class="headerlink" title="剩余参数"></a>剩余参数</h4><p>除了使用可选参数和重载让函数接受固定数量的多个参数以外，我们也可以定义一个函数，通过剩余参数让它接受数量不固定的参数。</p><p>剩余参数出现在所有参数后面，使用 <code>...</code> 语法：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function multiply(n: number, ...m: number[]) &#123;
+  return m.map((x) &#x3D;&gt; n * x);
+&#125;
+&#x2F;&#x2F; a 的值是 [10, 20, 30, 40]
+const a &#x3D; multiply(10, 1, 2, 3, 4);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在 TypeScript 中，这些参数的类型注解隐式为 <code>any[]</code> 而不是 <code>any</code>，任何给定的类型注解也必须是 <code>Array&lt;T&gt;</code> 或者 <code>T[]</code> 的形式，或者使用元组类型（稍后会学习）。</p><h4 id="展开运算符"><a href="#展开运算符" class="headerlink" title="展开运算符"></a>展开运算符</h4><p>反过来，我们可以使用展开语法从数组中提供数量可变的参数。举个例子，数组的 <code>push</code> 方法可以接受任意数量的参数：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">const arr1 &#x3D; [1, 2, 3];
+const arr2 &#x3D; [4, 5, 6];
+arr1.push(...arr2);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>注意，通常情况下，TypeScript 不会假定数组是不可变的。这可能会导致一些令人惊讶的行为：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">&#x2F;&#x2F; 推断的类型是 number[]，也就是一个包含 0 个或更多数字的数组，而
+&#x2F;&#x2F; 不是一个只有两个数字的数组
+const args &#x3D; [8, 5];
+const angle &#x3D; Math.atan2(...args);
+&#x2F;&#x2F; A spread argument must either have a tuple type or be passed to a rest parameter.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>针对这种情况，最好的解决方案需要取决于你编写的代码。但总的来说，<code>const</code> 上下文是最直接的解决方案：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">&#x2F;&#x2F; 推断为长度为 2 的元组
+const args &#x3D; [8, 5] as const;
+&#x2F;&#x2F; OK
+const angle &#x3D; Math.atan2(...args);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>针对比较旧的运行时，使用展开运算符可能需要开启 <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/tsconfig#downlevelIteration">downlevelIteration</a>。</p><h3 id="参数解构"><a href="#参数解构" class="headerlink" title="参数解构"></a>参数解构</h3><blockquote><p>相关阅读：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">解构赋值</a></p></blockquote><p>使用参数解构，你可以方便地将单个参数对象解包为函数体中的一个或多个局部变量。在 JavaScript 中，代码看起来是下面这样的：</p><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">&#123;</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c <span class="token punctuation">&#125;</span></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a <span class="token operator">+</span> b <span class="token operator">+</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> a<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span> b<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> c<span class="token operator">:</span> <span class="token number">9</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>对象的类型注解跟在解构语法后面：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function sum(&#123; a, b, c &#125;: &#123; a: number; b: number; c: number &#125;) &#123;
+  console.log(a + b + c);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>这看起来有点冗长，因此你也可以在这里使用类型别名：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">&#x2F;&#x2F; 和上面的效果是一样的
+type ABC &#x3D; &#123; a: number; b: number; c: number &#125;;
+function sum(&#123; a, b, c &#125;: ABC) &#123;
+  console.log(a + b + c);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="函数的可赋值性"><a href="#函数的可赋值性" class="headerlink" title="函数的可赋值性"></a>函数的可赋值性</h3><h4 id="返回值类型为-void"><a href="#返回值类型为-void" class="headerlink" title="返回值类型为 void"></a>返回值类型为 <code>void</code></h4><p>函数的返回值类型为 <code>void</code> 的时候，可以产生一些不寻常的、但在意料之中的行为。</p><p>返回值类型为 <code>void</code> 的上下文类型并<strong>不会</strong>强迫函数<strong>不</strong>返回任何东西。换句话说，在实现一个返回值类型为 <code>void</code> 的上下文函数类型（<code>type vf = () =&gt; void</code>）的时候，它其实可以返回任意值，只是这些值会被忽略而已。</p><p>因此，类型 <code>() =&gt; void</code> 的下述实现都是有效的：</p><pre class="line-numbers language-TS" data-language="TS"><code class="language-TS">type voidFunc &#x3D; () &#x3D;&gt; void;
+ 
+const f1: voidFunc &#x3D; () &#x3D;&gt; &#123;
+  return true;
+&#125;;
+ 
+const f2: voidFunc &#x3D; () &#x3D;&gt; true;
+ 
+const f3: voidFunc &#x3D; function () &#123;
+  return true;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>当其中某个函数的返回值被赋值给另一个变量的时候，该变量仍会保持 <code>void</code> 类型：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">const v1 &#x3D; f1();
+ 
+const v2 &#x3D; f2();
+ 
+const v3 &#x3D; f3();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>因为有这种行为的存在，所以下面的代码也是有效的。虽然 <code>Array.prototype.forEach</code> 方法期望接受一个返回值为 <code>void</code> 的函数，而 <code>Array.prototype.push</code> 返回的是数字。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">const src &#x3D; [1, 2, 3];
+const dst &#x3D; [0];
+ 
+src.forEach((el) &#x3D;&gt; dst.push(el));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>这里还需要注意一种特殊情况，当某个字面量函数定义的返回值为 <code>void</code> 的时候，该函数<strong>不能</strong>返回任何东西。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function f2(): void &#123;
+  &#x2F;&#x2F; 报错
+  return true;
+&#125;
+ 
+const f3 &#x3D; function (): void &#123;
+  &#x2F;&#x2F; 报错
+  return true;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>关于 <code>void</code> 的更多信息，请查阅下面其它的文档：</p><ul><li><a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/basic-types.html#void">v1 手册</a></li><li><a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/2/functions.html#void">v2 手册</a></li><li><a target="_blank" rel="noopener" href="https://github.com/Microsoft/TypeScript/wiki/FAQ#why-are-functions-returning-non-void-assignable-to-function-returning-void">FAQ - “为什么返回值不是 void 的函数可以赋值给返回值是 void 的函数？”</a></li></ul></div><div class="post-nav"><div class="post-nav-prev"><a href="/2021/11/25/F-TypeScript%20%E5%AE%98%E6%96%B9%E6%89%8B%E5%86%8C%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92%E3%80%90%E4%BA%94%E3%80%91%EF%BC%9A%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/" rel="prev" title="TypeScript 官方手册翻译计划【五】：对象类型"><i class="fa fa-angle-double-left"></i>&nbspTypeScript 官方手册翻译计划【五】：对象类型</a></div><div class="post-nav-next"><a href="/2021/11/19/F-TypeScript%20%E5%AE%98%E6%96%B9%E6%89%8B%E5%86%8C%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92%E3%80%90%E4%B8%89%E3%80%91%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%94%B6%E7%BC%A9/" rel="next" title="TypeScript 官方手册翻译计划【三】：类型收缩">TypeScript 官方手册翻译计划【三】：类型收缩&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">函数类型表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E7%AD%BE%E5%90%8D"><span class="toc-text">调用签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E7%AD%BE%E5%90%8D"><span class="toc-text">构造签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E5%87%BD%E6%95%B0"><span class="toc-text">泛型函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A8%E6%96%AD"><span class="toc-text">推断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%A6%E6%9D%9F"><span class="toc-text">约束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%BA%A6%E6%9D%9F%E5%80%BC"><span class="toc-text">使用约束值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0"><span class="toc-text">指定类型参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E8%89%AF%E5%A5%BD%E6%B3%9B%E5%9E%8B%E5%87%BD%E6%95%B0%E7%9A%84%E6%8C%87%E5%8D%97"><span class="toc-text">编写良好泛型函数的指南</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0"><span class="toc-text">可选参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0"><span class="toc-text">回调函数中的可选参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD"><span class="toc-text">函数重载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD%E7%AD%BE%E5%90%8D%E5%92%8C%E5%AE%9E%E7%8E%B0%E7%AD%BE%E5%90%8D"><span class="toc-text">重载签名和实现签名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E8%89%AF%E5%A5%BD%E7%9A%84%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0"><span class="toc-text">编写良好的重载函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E5%87%BD%E6%95%B0%E4%B8%AD%E5%A3%B0%E6%98%8E-this"><span class="toc-text">在函数中声明 this</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">其它需要了解的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#void"><span class="toc-text">void</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#object"><span class="toc-text">object</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#unknown"><span class="toc-text">unknown</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#never"><span class="toc-text">never</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Function"><span class="toc-text">Function</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0%E5%92%8C%E5%B1%95%E5%BC%80%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">剩余参数和展开运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0"><span class="toc-text">剩余参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%95%E5%BC%80%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">展开运算符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%84"><span class="toc-text">参数解构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%AF%E8%B5%8B%E5%80%BC%E6%80%A7"><span class="toc-text">函数的可赋值性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC%E7%B1%BB%E5%9E%8B%E4%B8%BA-void"><span class="toc-text">返回值类型为 void</span></a></li></ol></li></ol></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"retro",pageSize:10,visitor:!0})</script></section></main><script>var user=[1,2,3,4]</script><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - <span>2021</span> My Blog</p><p class="a">Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/search.js"></script><script src="/js/post-except.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script></body></html><!-- rebuild by neat -->

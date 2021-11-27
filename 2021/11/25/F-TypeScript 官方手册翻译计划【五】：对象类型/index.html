@@ -1,0 +1,384 @@
+<!-- build time:Sat Nov 27 2021 16:09:54 GMT+0800 (中国标准时间) --><!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0" name="viewport"><title>Focus on FE learning</title><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/third%20party/prism.css"><link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css"><link rel="stylesheet" href="/css/third%20party/pace-theme-flash.css"><link rel="icon" href="/images/kour.gif"><link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"></head><body><header class="header"><div class="header_top"><span class="theme"><a href="/">Chor's blog</a></span><nav class="navbar"><ul class="menu"><li class="menu-item"><i class="fa fa-home"></i> <a href="/" class="menu-item-link">首页</a></li><li class="menu-item"><i class="fa fa-folder-open"></i> <a href="/categories" class="menu-item-link">分类</a></li><li class="menu-item"><i class="fa fa-archive"></i> <a href="/archives" class="menu-item-link">归档</a></li><li class="menu-item"><i class="fa fa-tags"></i> <a href="/tags" class="menu-item-link">标签</a></li><li class="menu-item"><i class="fa fa-user"></i> <a href="/about" class="menu-item-link">关于</a></li></ul></nav></div><i id="homelink" data-link="https://chorer.github.io/"></i><div class="header_bottom"><div class="blog-title"><a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue" class="logo">Focus on FE learning</a><div class="descrs"><div class="descr">个人博客</div><div class="descr">" Do what you love,Love what you do "</div></div><div class="blog-down"><a href="javascript:void(0);"><i class="fa fa-angle-double-down fa-2x"></i></a></div></div></div></header><main class="main"><section class="posts"><article class="post_full"><h1 class="post-title"><div class="post-title-link">TypeScript 官方手册翻译计划【五】：对象类型</div></h1><div class="post-info"><div class="post-date"><i class="fa fa-calendar"></i>&nbsp2021-11-25&nbsp&nbsp&nbsp</div><span class="post-words"><i class="fa fa-pencil-square-o"></i>&nbsp5.8k&nbspwords&nbsp&nbsp </span><span class="post-time"><i class="fa fa-clock-o"></i>&nbsp24 mins&nbsp&nbsp&nbsp</span><div class="post-tags"><i class="fa fa-tags"></i> <a href="/tags/TypeScript/">TypeScript</a> <a href="/tags/documentation/">documentation</a></div></div><div class="post-content"><p><img src="https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/TypeScript%20%E5%AE%98%E6%96%B9%E6%89%8B%E5%86%8C%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92/banner.jpeg"></p><span id="more"></span><blockquote><ul><li><strong>说明</strong>：目前网上没有 TypeScript 最新官方文档的中文翻译，所以有了这么一个翻译计划。因为我也是 TypeScript 的初学者，所以无法保证翻译百分之百准确，若有错误，欢迎评论区指出；</li><li><strong>翻译内容</strong>：暂定翻译内容为 <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/intro.html">TypeScript Handbook</a>，后续有空会补充翻译文档的其它部分；</li><li><strong>项目地址</strong>：<a target="_blank" rel="noopener" href="https://github.com/Chorer/TypeScript-Doc-Zh">TypeScript-Doc-Zh</a>，如果对你有帮助，可以点一个 star ~</li></ul></blockquote><p>本章节官方文档地址：<a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/2/objects.html">Object Types</a></p><h2 id="对象类型"><a href="#对象类型" class="headerlink" title="对象类型"></a>对象类型</h2><p>在 JavaScript 中，最基础的分组和传递数据的方式就是使用对象。在 TypeScript 中，我们则通过对象类型来表示。</p><p>正如之前看到的，对象类型可以是匿名的：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function greet(person: &#123; name: string; age: number &#125;) &#123;
+  return &quot;Hello &quot; + person.name;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>或者也可以使用一个接口来命名：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface Person &#123;
+  name: string;
+  age: number;
+&#125;
+ 
+function greet(person: Person) &#123;
+  return &quot;Hello &quot; + person.name;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>或者使用一个类型别名来命名：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">type Person &#x3D; &#123;
+  name: string;
+  age: number;
+&#125;;
+ 
+function greet(person: Person) &#123;
+  return &quot;Hello &quot; + person.name;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在上面的例子中，我们编写的函数接受的对象包含了 <code>name</code> 属性（类型必须是 <code>string</code>）和 <code>age</code> 属性（类型必须是 <code>number</code>）。</p><h3 id="属性修饰符"><a href="#属性修饰符" class="headerlink" title="属性修饰符"></a>属性修饰符</h3><p>对象类型中的每个属性都可以指定一些东西：属性类型、属性是否可选，属性是否可写。</p><h4 id="可选属性"><a href="#可选属性" class="headerlink" title="可选属性"></a>可选属性</h4><p>大多数时候，我们会发现自己处理的对象可能有一个属性集。这时候，我们可以在这些属性的名字后面加上 <code>?</code> 符号，将它们标记为可选属性。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface PaintOptions &#123;
+  shape: Shape;
+  xPos?: number;
+  yPos?: number;
+&#125;
+ 
+function paintShape(opts: PaintOptions) &#123;
+  &#x2F;&#x2F; ...
+&#125;
+ 
+const shape &#x3D; getShape();
+paintShape(&#123; shape &#125;);
+paintShape(&#123; shape, xPos: 100 &#125;);
+paintShape(&#123; shape, yPos: 100 &#125;);
+paintShape(&#123; shape, xPos: 100, yPos: 100 &#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在这个例子中，<code>xPos</code> 和 <code>yPos</code> 都是可选属性。这两个属性我们可以选择提供或者不提供，所以上面的 <code>paintShape</code> 调用都是有效的。可选性真正想要表达的其实是，如果设置了该属性，那么它最好有一个特定的类型。</p><p>这些属性同样可以访问 —— 但如果开启了 <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/tsconfig#strictNullChecks">strictNullChecks</a>，则 TypeScript 会提示我们这些属性可能是 <code>undefined</code>。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function paintShape(opts: PaintOptions) &#123;
+  let xPos &#x3D; opts.xPos;
+                  ^^^^
+			&#x2F;&#x2F; (property) PaintOptions.xPos?: number | undefined
+  let yPos &#x3D; opts.yPos;
+                  ^^^^   
+		    &#x2F;&#x2F; (property) PaintOptions.yPos?: number | undefined
+  &#x2F;&#x2F; ...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在 JavaScript 中，即使从来没有设置过某个属性，我们也依然可以访问它 —— 值是 <code>undefined</code>。我们可以对 <code>undefined</code> 这种情况做特殊的处理。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function paintShape(opts: PaintOptions) &#123;
+  let xPos &#x3D; opts.xPos &#x3D;&#x3D;&#x3D; undefined ? 0 : opts.xPos;
+      ^^^^ 
+    &#x2F;&#x2F; let xPos: number
+  let yPos &#x3D; opts.yPos &#x3D;&#x3D;&#x3D; undefined ? 0 : opts.yPos;
+      ^^^^ 
+    &#x2F;&#x2F; let yPos: number
+  &#x2F;&#x2F; ...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>注意，这种为没有指定的值设置默认值的模式很常见，所以 JavaScript 提供了语法层面的支持。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function paintShape(&#123; shape, xPos &#x3D; 0, yPos &#x3D; 0 &#125;: PaintOptions) &#123;
+  console.log(&quot;x coordinate at&quot;, xPos);
+                                 ^^^^ 
+							&#x2F;&#x2F; (parameter) xPos: number
+  console.log(&quot;y coordinate at&quot;, yPos);
+                                 ^^^^ 
+							&#x2F;&#x2F; (parameter) yPos: number
+  &#x2F;&#x2F; ...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这里我们为 <code>paintShape</code> 的参数使用了<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">解构模式</a>，同时也为 <code>xPos</code> 和 <code>yPos</code> 提供了<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Default_values">默认值</a>。现在，<code>xPos</code> 和 <code>yPos</code> 在 <code>paintShape</code> 函数体中就一定是有值的，且调用该函数的时候这两个参数仍然是可选的。</p><blockquote><p>注意，目前没有任何方法可以在解构模式中使用类型注解。这是因为下面的语法在 JavaScript 中有其它的语义</p></blockquote><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function draw(&#123; shape: Shape, xPos: number &#x3D; 100 &#x2F;*...*&#x2F; &#125;) &#123;
+  render(shape);
+    	^^^^^^
+     &#x2F;&#x2F; Cannot find name &#39;shape&#39;. Did you mean &#39;Shape&#39;?
+  render(xPos);
+         ^^^^^
+    &#x2F;&#x2F; Cannot find name &#39;xPos&#39;.
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在一个对象解构模式中，<code>shape: Shape</code> 表示“捕获 <code>shape</code> 属性并将其重新定义为一个名为 <code>Shape</code> 的局部变量”。同理，<code>xPos: number</code> 也会创建一个名为 <code>number</code> 的变量，它的值就是参数中 <code>xPos</code> 的值。</p><p>使用<a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/2/mapped-types.html#mapping-modifiers">映射修饰符</a>可以移除可选属性。</p><h4 id="只读属性"><a href="#只读属性" class="headerlink" title="只读属性"></a>只读属性</h4><p>在 TypeScript 中，我们可以将属性标记为 <code>readonly</code>，表示这是一个只读属性。虽然这不会改变运行时的任何行为，但标记为 <code>readonly</code> 的属性在类型检查期间无法再被重写。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface SomeType &#123;
+  readonly prop: string;
+&#125;
+ 
+function doSomething(obj: SomeType) &#123;
+  &#x2F;&#x2F; 可以读取 obj.prop
+  console.log(&#96;prop has the value &#39;$&#123;obj.prop&#125;&#39;.&#96;);
+ 
+  &#x2F;&#x2F; 但无法重新给它赋值
+  obj.prop &#x3D; &quot;hello&quot;;
+&#x2F;&#x2F; Cannot assign to &#39;prop&#39; because it is a read-only property.
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>使用 <code>readonly</code> 修饰符并不一定意味着某个值是完全不可修改的 —— 或者换句话说，并不意味着它的内容是不可修改的。<code>readonly</code> 仅表示属性本身不可被重写。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface Home &#123;
+  readonly resident: &#123; name: string; age: number &#125;;
+&#125;
+ 
+function visitForBirthday(home: Home) &#123;
+  &#x2F;&#x2F; 我们可以读取并更新 home.resident 属性
+  console.log(&#96;Happy birthday $&#123;home.resident.name&#125;!&#96;);
+  home.resident.age++;
+&#125;
+ 
+function evict(home: Home) &#123;
+  &#x2F;&#x2F; 但我们无法重写 Home 类型的 resident 属性本身
+  home.resident &#x3D; &#123;
+       ^^^^^^^^
+&#x2F;&#x2F; Cannot assign to &#39;resident&#39; because it is a read-only property.
+    name: &quot;Victor the Evictor&quot;,
+    age: 42,
+  &#125;;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>理解 <code>readonly</code> 的含义非常重要。在使用 TypeScript 进行开发的过程中，它可以有效地表明一个对象应该如何被使用。TypeScript 在检查两个类型是否兼容的时候，并不会考虑它们的属性是否是只读的，所以只读属性也可以通过别名进行修改。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface Person &#123;
+  name: string;
+  age: number;
+&#125;
+ 
+interface ReadonlyPerson &#123;
+  readonly name: string;
+  readonly age: number;
+&#125;
+ 
+let writablePerson: Person &#x3D; &#123;
+  name: &quot;Person McPersonface&quot;,
+  age: 42,
+&#125;;
+ 
+&#x2F;&#x2F; 可以正常执行
+let readonlyPerson: ReadonlyPerson &#x3D; writablePerson;
+ 
+console.log(readonlyPerson.age); &#x2F;&#x2F; 打印 42
+writablePerson.age++;
+console.log(readonlyPerson.age); &#x2F;&#x2F; 打印 43<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>使用<a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/2/mapped-types.html#mapping-modifiers">映射修饰符</a>可以移除只读属性。</p><h4 id="索引签名"><a href="#索引签名" class="headerlink" title="索引签名"></a>索引签名</h4><p>有时候你无法提前知道某个类型所有属性的名字，但你知道这些属性值的类型。在这种情况下，你可以使用索引签名去描述可能值的类型。举个例子：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface StringArray &#123;
+    [index: number]: string
+&#125;
+const myArray: StringArray &#x3D; getStringArray();
+const secondItem &#x3D; myArray[1];
+      ^^^^^^^^^^    
+     &#x2F;&#x2F; const secondItem: string<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>上面的代码中，<code>StringArray</code> 接口有一个索引签名。这个索引签名表明当 <code>StringArray</code> 被 <code>number</code> 类型的值索引的时候，它将会返回 <code>string</code> 类型的值。</p><p>一个索引签名的属性类型要么是 <code>string</code>，要么是 <code>number</code>。</p><p>当然，也可以同时支持两种类型……</p><p>但前提是，数值型索引返回的类型必须是字符串型索引返回的类型的一个子类型。这是因为，当使用数值索引对象属性的时候，JavaScript 实际上会先把数值转化为字符串。这意味着使用 <code>100</code>（数值）进行索引与使用 <code>&quot;100&quot;</code>（字符串）进行索引，效果是一样的，因此这两者必须一致。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface Animal &#123;
+  name: string;
+&#125;
+ 
+interface Dog extends Animal &#123;
+  breed: string;
+&#125;
+ 
+&#x2F;&#x2F; Error: indexing with a numeric string might get you a completely separate type of Animal!
+interface NotOkay &#123;
+  [x: number]: Animal;
+&#x2F;&#x2F; &#39;number&#39; index type &#39;Animal&#39; is not assignable to &#39;string&#39; index type &#39;Dog&#39;.
+  [x: string]: Dog;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>不过，如果索引签名所描述的类型本身是各个属性类型的联合类型，那么就允许出现不同类型的属性了：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface NumberOrStringDictionary &#123;
+  [index: string]: number | string;
+  length: number; &#x2F;&#x2F; length 是数字，可以
+  name: string; &#x2F;&#x2F; name 是字符串，可以
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>最后，可以设置索引签名是只读的，这样可以防止对应索引的属性被重新赋值：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface ReadonlyStringArray &#123;
+  readonly [index: number]: string;
+&#125;
+ 
+let myArray: ReadonlyStringArray &#x3D; getReadOnlyStringArray();
+myArray[2] &#x3D; &quot;Mallory&quot;;
+&#x2F;&#x2F; Index signature in type &#39;ReadonlyStringArray&#39; only permits reading.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>因为索引签名设置了只读，所以无法再更改 <code>myArray[2]</code> 的值。</p><h3 id="拓展类型"><a href="#拓展类型" class="headerlink" title="拓展类型"></a>拓展类型</h3><p>基于某个类型拓展出一个更具体的类型，这是一个很常见的需求。举个例子，我们有一个 <code>BasicAddress</code> 类型用于描述邮寄信件或者包裹所需要的地址信息。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface BasicAddress &#123;
+    name?: string;
+    street: string;
+    city: string;
+    country: string;
+    postalCode: string;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>通常情况下，这些信息已经足够了，不过，如果某个地址的建筑有很多单元的话，那么地址信息通常还需要有一个单元号。这时候，我们可以用一个 <code>AddressWithUnit</code> 来描述地址信息：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface AddressWithUnit &#123;
+    name?: string;
+    unit: string;
+    street: string;
+    city: string;
+    country: string;
+    postalCode: string;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这当然没问题，但缺点就在于：虽然只是单纯添加了一个域，但我们却不得不重复编写 <code>BasicAddress</code> 中的所有域。那么不妨改用一种方法，我们拓展原有的 <code>BasicAddress</code> 类型，并且添加上 <code>AddressWithUnit</code> 独有的新的域。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface BasicAddress &#123;
+  name?: string;
+  street: string;
+  city: string;
+  country: string;
+  postalCode: string;
+&#125;
+ 
+interface AddressWithUnit extends BasicAddress &#123;
+  unit: string;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>跟在某个接口后面的 <code>extends</code> 关键字允许我们高效地复制来自其它命名类型的成员，并且添加上任何我们想要的新成员。这对于减少我们必须编写的类型声明语句有很大的作用，同时也可以表明拥有相同属性的几个不同类型声明之间存在着联系。举个例子，<code>AddressWithUnit</code> 不需要重复编写 <code>street</code> 属性，且由于 <code>street</code> 属性来自于 <code>BasicAddress</code>，开发者可以知道这两个类型之间存在着某种联系。</p><p>接口也可以拓展自多个类型：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface Colorful &#123;
+  color: string;
+&#125;
+ 
+interface Circle &#123;
+  radius: number;
+&#125;
+ 
+interface ColorfulCircle extends Colorful, Circle &#123;&#125;
+ 
+const cc: ColorfulCircle &#x3D; &#123;
+  color: &quot;red&quot;,
+  radius: 42,
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="交叉类型"><a href="#交叉类型" class="headerlink" title="交叉类型"></a>交叉类型</h3><p>接口允许我们通过拓展原有类型去构建新的类型。TypeScript 还提供了另一种称为“交叉类型”的结构，可以用来结合已经存在的对象类型。</p><p>通过 <code>&amp;</code> 操作符可以定义一个交叉类型：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface Colorful &#123;
+    color: string;
+&#125;
+interface Circle &#123;
+    radius: number;
+&#125;
+type ColorfulCircle &#x3D; Colorful &amp; Circle;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这里，我们结合 <code>Colorful</code> 和 <code>Circle</code>类型，产生了一个新的类型，它拥有 <code>Colorful</code> 和 <code>Circle</code> 的所有成员。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function draw(circle: Colorful &amp; Circle) &#123;
+  console.log(&#96;Color was $&#123;circle.color&#125;&#96;);
+  console.log(&#96;Radius was $&#123;circle.radius&#125;&#96;);
+&#125;
+ 
+&#x2F;&#x2F; 可以运行
+draw(&#123; color: &quot;blue&quot;, radius: 42 &#125;);
+ 
+&#x2F;&#x2F; 不能运行
+draw(&#123; color: &quot;red&quot;, raidus: 42 &#125;);
+&#x2F;*
+Argument of type &#39;&#123; color: string; raidus: number; &#125;&#39; is not assignable to parameter of type &#39;Colorful &amp; Circle&#39;.
+  Object literal may only specify known properties, but &#39;raidus&#39; does not exist in type &#39;Colorful &amp; Circle&#39;. Did you mean to write &#39;radius&#39;?
+*&#x2F; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="接口-VS-交叉类型"><a href="#接口-VS-交叉类型" class="headerlink" title="接口 VS 交叉类型"></a>接口 VS 交叉类型</h3><p>目前，我们了解到了可以通过两种方式去结合两个相似但存在差异的类型。使用接口，我们可以通过 <code>extends</code> 子句拓展原有类型；使用交叉类型，我们也可以实现类似的效果，并且使用类型别名去命名新类型。这两者的本质区别在于它们处理冲突的方式，而这个区别通常就是我们在接口和交叉类型的类型别名之间选择其一的主要理由。</p><h3 id="泛型对象类型"><a href="#泛型对象类型" class="headerlink" title="泛型对象类型"></a>泛型对象类型</h3><p>假设我们有一个 <code>Box</code> 类型，它可能包含任何类型的值：<code>string</code>、<code>number</code>、<code>Giraffe</code> 等。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface Box &#123;
+    contents: any;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>现在，<code>contents</code> 属性的类型是 <code>any</code>，这当然没问题，但使用 <code>any</code> 可能会导致类型安全问题。</p><p>因此我们可以改用 <code>unknown</code>。但这意味着只要我们知道了 <code>contents</code> 的类型，我们就需要做一个预防性的检查，或者使用容易出错的类型断言。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface Box &#123;
+  contents: unknown;
+&#125;
+ 
+let x: Box &#x3D; &#123;
+  contents: &quot;hello world&quot;,
+&#125;;
+ 
+&#x2F;&#x2F; 我们可以检查 x.contents
+if (typeof x.contents &#x3D;&#x3D;&#x3D; &quot;string&quot;) &#123;
+  console.log(x.contents.toLowerCase());
+&#125;
+ 
+&#x2F;&#x2F; 或者使用类型断言
+console.log((x.contents as string).toLowerCase());<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>还有另一种确保类型安全的做法是，针对每种不同类型的 <code>contents</code>，创建不同的 <code>Box</code> 类型。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface NumberBox &#123;
+  contents: number;
+&#125;
+ 
+interface StringBox &#123;
+  contents: string;
+&#125;
+ 
+interface BooleanBox &#123;
+  contents: boolean;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>但这意味着我们需要创建不同的函数，或者是函数的重载，这样才能操作不同的 <code>Box</code> 类型。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function setContents(box: StringBox, newContents: string): void;
+function setContents(box: NumberBox, newContents: number): void;
+function setContents(box: BooleanBox, newContents: boolean): void;
+function setContents(box: &#123; contents: any &#125;, newContents: any) &#123;
+  box.contents &#x3D; newContents;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这会带来非常多的样板代码。而且，我们后续还可能引入新的类型和重载，这未免有些冗余，毕竟我们的 <code>Box</code> 类型和重载只是类型不同，实质上是一样的。</p><p>不妨改用一种方式，就是让 <code>Box</code> 类型声明一个类型参数并使用泛型。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface Box&lt;Type&gt; &#123;
+    contents: Type;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>你可以将这段代码解读为“<code>Box</code> 的类型是 <code>Type</code>，它的 <code>contents</code> 的类型是 <code>Type</code>”。接着，当我们引用 <code>Box</code> 的时候，我们需要传递一个类型参数用于替代 <code>Type</code>。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">let box: Box&lt;string&gt;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>如果把 <code>Box</code> 看作是实际类型的模板，那么 <code>Type</code> 就是一个会被其它类型代替的占位符。当 TypeScript 看到 <code>Box&lt;string&gt;</code> 的时候，它会将 <code>Box&lt;Type&gt;</code> 中的所有 <code>Type</code> 替换为 <code>string</code>，得到一个类似 <code>&#123; contents: string &#125;</code> 的对象。换句话说，<code>Box&lt;string&gt;</code> 和之前例子中的 <code>StringBox</code> 是等效的。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface Box&lt;Type&gt; &#123;
+  contents: Type;
+&#125;
+interface StringBox &#123;
+  contents: string;
+&#125;
+ 
+let boxA: Box&lt;string&gt; &#x3D; &#123; contents: &quot;hello&quot; &#125;;
+boxA.contents;
+     ^^^^^^^^   
+    &#x2F;&#x2F; (property) Box&lt;string&gt;.contents: string
+ 
+let boxB: StringBox &#x3D; &#123; contents: &quot;world&quot; &#125;;
+boxB.contents;
+     ^^^^^^^^   
+    &#x2F;&#x2F; (property) StringBox.contents: string<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>因为 <code>Type</code> 可以被任何类型替换，所以 <code>Box</code> 具有可重用性。这意味着当我们的 <code>contents</code> 需要一个新类型的时候，完全无需再声明一个新的 <code>Box</code> 类型（虽然这么做没有任何问题）。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface Box&lt;Type&gt; &#123;
+    contents: Type;
+&#125;
+interface Apple &#123;
+    &#x2F;&#x2F;...
+&#125;
+&#x2F;&#x2F; 和 &#123; contents: Apple &#125; 一样
+type AppleBox &#x3D; Box&lt;Apple&gt;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这也意味着，通过使用<a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/2/functions.html#generic-functions">泛型函数</a>，我们可以完全避免使用重载。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function setContents&lt;Type&gt;(box: Box&lt;Type&gt;, newContents: Type) &#123;
+    box.contents &#x3D; newContents;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>值得注意的是，类型别名也可以使用泛型。之前定义的 <code>Box&lt;Type&gt;</code> 接口：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface Box&lt;Type&gt; &#123;
+    contents: Type;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>可以改写为下面的类型别名：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">type Box&lt;Type&gt; &#x3D; &#123;
+    contents: Type;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>类型别名和接口不一样，它不仅仅可以用于描述对象类型。所以我们也可以使用类型别名编写其它的泛型工具类型。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">type OrNull&lt;Type&gt; &#x3D; Type | null;
+type OneOrMany&lt;Type&gt; &#x3D; Type | Type[];
+type OneOrManyOrNull&lt;Type&gt; &#x3D; OrNull&lt;OneOrMany&lt;Type&gt;&gt;;
+	 ^^^^^^^^^^^^^^
+    &#x2F;&#x2F;type OneOrManyOrNull&lt;Type&gt; &#x3D; OneOrMany&lt;Type&gt; | null
+type OneOrManyOrNullStrings &#x3D; OneOrManyOrNull&lt;string&gt;;
+     ^^^^^^^^^^^^^^^^^^^^^^          
+    &#x2F;&#x2F; type OneOrManyOrNullStrings &#x3D; OneOrMany&lt;string&gt; | null         <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我们稍后会再绕回来讲解类型别名。</p><h4 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h4><p>泛型对象类型通常是某种容器类型，独立于它们所包含的成员的类型工作。数据结构以这种方式工作非常理想，即使数据类型不同也可以重复使用。</p><p>实际上，在这本手册中，我们一直都在和一个泛型打交道，那就是 <code>Array</code> （数组）类型。我们编写的 <code>number[]</code> 类型或者 <code>string[]</code> 类型，实际上都是 <code>Array&lt;number&gt;</code> 和 <code>Array&lt;string&gt;</code> 的简写。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function doSomething(value: Array&lt;string&gt;) &#123;
+  &#x2F;&#x2F; ...
+&#125;
+ 
+let myArray: string[] &#x3D; [&quot;hello&quot;, &quot;world&quot;];
+ 
+&#x2F;&#x2F; 下面两种写法都可以！
+doSomething(myArray);
+doSomething(new Array(&quot;hello&quot;, &quot;world&quot;));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>就和前面的 <code>Box</code> 类型一样，<code>Array</code> 本身也是一个泛型：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface Array&lt;Type&gt; &#123;
+  &#x2F;**
+   * 获取或者设置数组的长度
+   *&#x2F;
+  length: number;
+ 
+  &#x2F;**
+   * 移除数组最后一个元素，并返回该元素
+   *&#x2F;
+  pop(): Type | undefined;
+ 
+  &#x2F;**
+   * 向数组添加新元素，并返回数组的新长度
+   *&#x2F;
+  push(...items: Type[]): number;
+ 
+  &#x2F;&#x2F; ...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>现代 JavaScript 也提供了其它同样是泛型的数据结构，比如 <code>Map&lt;K,V&gt;</code>、<code>Set&lt;T&gt;</code> 和 <code>Promise&lt;T&gt;</code>。这其实意味着，<code>Map</code>、<code>Set</code> 和 <code>Promise</code> 的表现形式使得它们能够处理任意的类型集。</p><h4 id="只读数组类型"><a href="#只读数组类型" class="headerlink" title="只读数组类型"></a>只读数组类型</h4><p><code>ReadonlyArray</code>（只读数组） 是一种特殊的类型，它描述的是无法被修改的数组。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function doStuff(values: ReadonlyArray&lt;string&gt;) &#123;
+  &#x2F;&#x2F; 我们可以读取 values 
+  const copy &#x3D; values.slice();
+  console.log(&#96;The first value is $&#123;values[0]&#125;&#96;);
+ 
+  &#x2F;&#x2F; ...但是无法修改 values
+  values.push(&quot;hello!&quot;);
+    	 ^^^^
+        &#x2F;&#x2F; Property &#39;push&#39; does not exist on type &#39;readonly string[]&#39;.
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>就像属性的 <code>readonly</code> 修饰符一样，它主要是一种用来表明意图的工具。当我们看到一个函数返回 <code>ReadonlyArray</code> 的时候，意味着我们不打算修改这个数组；当我们看到一个函数接受 <code>ReadonlyArray</code> 作为参数的时候，意味着我们可以传递任何数组给这个函数，而无需担心数组会被修改。</p><p>和 <code>Array</code> 不一样，<code>ReadonlyArray</code> 并没有对应的构造函数可以使用。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">new ReadonlyArray(&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;);
+	^^^^^^^^^^^^^
+&#x2F;&#x2F; &#39;ReadonlyArray&#39; only refers to a type, but is being used as a value here.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>不过，我们可以把普通的 <code>Array</code> 赋值给 <code>ReadonlyArray</code>。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">const roArray: ReadonlyArray&lt;string&gt; &#x3D; [&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;];<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>TypeScript 不仅为 <code>Array&lt;Type&gt;</code> 提供了简写 <code>Type[]</code>，也为 <code>ReadonlyArray&lt;Type&gt;</code> 提供了简写 <code>readonly Type[]</code>。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function doStuff(values: readonly string[]) &#123;
+  &#x2F;&#x2F; 我们可以读取 values
+  const copy &#x3D; values.slice();
+  console.log(&#96;The first value is $&#123;values[0]&#125;&#96;);
+ 
+  &#x2F;&#x2F; ...但无法修改 values
+  values.push(&quot;hello!&quot;);
+    	^^^^^
+      &#x2F;&#x2F; Property &#39;push&#39; does not exist on type &#39;readonly string[]&#39;.
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>最后一件需要注意的事情是，和 <code>readonly</code> 属性修饰符不同，普通的 <code>Array</code> 和 <code>ReadonlyArray</code> 之间的可赋值性不是双向的。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">let x: readonly string[] &#x3D; [];
+let y: string[] &#x3D; [];
+ 
+x &#x3D; y;
+y &#x3D; x;
+^
+&#x2F;&#x2F; The type &#39;readonly string[]&#39; is &#39;readonly&#39; and cannot be assigned to the mutable type &#39;string[]&#39;.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="元组类型"><a href="#元组类型" class="headerlink" title="元组类型"></a>元组类型</h4><p>元组类型是一种特殊的 <code>Array</code> 类型，它的元素数量以及每个元素对应的类型都是明确的，</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">type StringNumberPair &#x3D; [string, number];<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这里，<code>StringNumberPair</code> 是一个包含 <code>string</code> 类型和 <code>number</code> 类型的元组类型。和 <code>ReadonlyArray</code> 一样，它没有对应的运行时表示，但对于 TypeScript 仍非常重要。对于类型系统而言，<code>StringNumberPair</code> 描述了这样的一个数组：下标为 <code>0</code> 的位置包含了一个 <code>string</code> 类型的值，下标为 <code>1</code> 的位置包含了一个 <code>number</code> 类型的值。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function doSomething(pair: [string, number]) &#123;
+  const a &#x3D; pair[0];
+        ^
+     &#x2F;&#x2F;const a: string
+  const b &#x3D; pair[1];
+	    ^        
+     &#x2F;&#x2F; const b: number
+  &#x2F;&#x2F; ...
+&#125;
+ 
+doSomething([&quot;hello&quot;, 42]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>如果访问元组元素的时候下标越界，那么会抛出一个错误。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function doSomething(pair: [string, number]) &#123;
+  &#x2F;&#x2F; ...
+ 
+  const c &#x3D; pair[2];
+    		    ^	
+&#x2F;&#x2F; Tuple type &#39;[string, number]&#39; of length &#39;2&#39; has no element at index &#39;2&#39;.
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我们也可以使用 JavaScript 的数组解构去<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring">解构元组</a>。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function doSomething(stringHash: [string, number]) &#123;
+  const [inputString, hash] &#x3D; stringHash;
+ 
+  console.log(inputString);
+              ^^^^^^^^^^^    
+		&#x2F;&#x2F; const inputString: string
+ 
+  console.log(hash);
+              ^^^^   
+			&#x2F;&#x2F; const hash: number
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>元组类型在高度基于约定的 API 中很有用，因为每个元素的含义都是“明确的”。这给予了我们一种灵活性，让我们在解构元组的时候可以给变量取任意名字。在上面的例子中，我们可以给下标为 0 和 1 的元素取任何名字。</p><p>不过，怎么才算“明确”呢？每个开发者的见解都不一样。也许你需要重新考虑一下，在 API 中使用带有描述属性的对象是否会更好。</p></blockquote><p>除了长度检查之外，类似这样的简单元组类型其实等价于一个对象，这个对象声明了特定下标的属性，且包含了数值字面量类型的 <code>length</code> 属性。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">interface StringNumberPair &#123;
+  &#x2F;&#x2F; 特定的属性
+  length: 2;
+  0: string;
+  1: number;
+ 
+  &#x2F;&#x2F; 其它 Array&lt;string | number&gt; 类型的成员
+  slice(start?: number, end?: number): Array&lt;string | number&gt;;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>另一件你可能感兴趣的事情是，元组类型也可以拥有可选元素，只需要在某个元素类型后面加上 <code>?</code>。可选的元组元素只能出现在最后面，并且会影响该类型的长度。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">type Either2dOr3d &#x3D; [number, number, number?];
+ 
+function setCoordinate(coord: Either2dOr3d) &#123;
+  const [x, y, z] &#x3D; coord;
+               ^
+			&#x2F;&#x2F; const z: number | undefined
+ 
+  console.log(&#96;Provided coordinates had $&#123;coord.length&#125; dimensions&#96;);
+                							 ^^^^^^                                
+										&#x2F;&#x2F; (property) length: 2 | 3
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>元组也可以使用展开运算符，运算符后面必须跟着数组或者元组。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">type StringNumberBooleans &#x3D; [string, number, ...boolean[]];
+type StringBooleansNumber &#x3D; [string, ...boolean[], number];
+type BooleansStringNumber &#x3D; [...boolean[], string, number];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ul><li><code>StringNumberBooleans</code> 表示这样的一个元组：它的前两个元素分别是 <code>string</code> 和 <code>number</code> 类型，同时后面跟着若干个 <code>boolean</code> 类型的元素。</li><li><code>StringBooleansNumber</code> 表示这样的一个元组：它的第一个元素是 <code>string</code> 类型，接着跟着若干个 <code>boolean</code> 类型的元素，最后一个元素是 <code>number</code>。</li><li><code>BooleansStringNumber</code> 表示这样的一个元组：它前面有若干个 <code>boolean</code> 类型的元素，最后两个元素分别是 <code>string</code> 和 <code>number</code> 类型。</li></ul><p>使用展开运算符的元组没有明确的长度 —— 可以明确的只是它的不同位置有对应类型的元素。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">const a: StringNumberBooleans &#x3D; [&quot;hello&quot;, 1];
+const b: StringNumberBooleans &#x3D; [&quot;beautiful&quot;, 2, true];
+const c: StringNumberBooleans &#x3D; [&quot;world&quot;, 3, true, false, true, false, true];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>为什么可选元素和展开运算符很有用呢？因为它允许 TypeScript 将参数列表对应到元组上。在<a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/2/functions.html#rest-parameters-and-arguments">剩余参数和展开运算符</a>中可以使用元组，所以下面这段代码：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function readButtonInput(...args: [string, number, ...boolean[]]) &#123;
+  const [name, version, ...input] &#x3D; args;
+  &#x2F;&#x2F; ...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>和这段代码是等效的：</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function readButtonInput(name: string, version: number, ...input: boolean[]) &#123;
+  &#x2F;&#x2F; ...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>有时候，我们使用剩余参数接受数量可变的若干个参数，同时又要求参数不少于某个数量，且不想为此引入中间变量，这时候上面的这种写法就非常方便了。</p><h4 id="只读元组类型"><a href="#只读元组类型" class="headerlink" title="只读元组类型"></a>只读元组类型</h4><p>关于元组类型还有最后一点需要注意的，那就是 —— 元组类型也可以是只读的，通过在元组前面加上 <code>readonly</code> 修饰符，我们可以声明一个只读的元组类型 —— 就像只读数组的简写一样。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function doSomething(pair: readonly [string, number]) &#123;
+  &#x2F;&#x2F; ...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>在 TypeScript 中无法重写只读元组的任何属性。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function doSomething(pair: readonly [string, number]) &#123;
+  pair[0] &#x3D; &quot;hello!&quot;;
+       ^
+&#x2F;&#x2F; Cannot assign to &#39;0&#39; because it is a read-only property.
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在大部分的代码中，元组被创建后就不需要修改了，所以将元组注解为只读类型是一个不错的默认做法。还有一点很重要的是，使用 <code>const</code> 断言的数组字面量将会被推断为只读元组。</p><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">let point &#x3D; [3, 4] as const;
+ 
+function distanceFromOrigin([x, y]: [number, number]) &#123;
+  return Math.sqrt(x ** 2 + y ** 2);
+&#125;
+ 
+distanceFromOrigin(point);
+				 ^^^^^^ 	
+&#x2F;* 
+Argument of type &#39;readonly [3, 4]&#39; is not assignable to parameter of type &#39;[number, number]&#39;.
+  The type &#39;readonly [3, 4]&#39; is &#39;readonly&#39; and cannot be assigned to the mutable type &#39;[number, number]&#39;. 
+*&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这里，<code>distanceFromOrigin</code> 没有修改元组的元素，但它期望接受一个可变的元组。由于 <code>point</code> 的类型被推断为 <code>readonly [3,4]</code>，所以它和 <code>[number, number]</code> 是不兼容的，因为后者无法保证 <code>point</code> 的元素不会被修改。</p></div><div class="post-nav"><div class="post-nav-prev"><a href="/2021/11/26/F-TypeScript%20%E5%AE%98%E6%96%B9%E6%89%8B%E5%86%8C%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92%E3%80%90%E5%85%AD%E3%80%91%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%93%8D%E6%8E%A7-%E6%B3%9B%E5%9E%8B/" rel="prev" title="TypeScript 官方手册翻译计划【六】：类型操控-泛型"><i class="fa fa-angle-double-left"></i>&nbspTypeScript 官方手册翻译计划【六】：类型操控-泛型</a></div><div class="post-nav-next"><a href="/2021/11/20/F-TypeScript%20%E5%AE%98%E6%96%B9%E6%89%8B%E5%86%8C%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92%E3%80%90%E5%9B%9B%E3%80%91%EF%BC%9A%E5%87%BD%E6%95%B0/" rel="next" title="TypeScript 官方手册翻译计划【四】：函数">TypeScript 官方手册翻译计划【四】：函数&nbsp<i class="fa fa-angle-double-right"></i></a></div><div class="clear"></div></div></article><div class="post-toc"><div class="toc-top">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B"><span class="toc-text">对象类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">属性修饰符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E5%B1%9E%E6%80%A7"><span class="toc-text">可选属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AA%E8%AF%BB%E5%B1%9E%E6%80%A7"><span class="toc-text">只读属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%AD%BE%E5%90%8D"><span class="toc-text">索引签名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%93%E5%B1%95%E7%B1%BB%E5%9E%8B"><span class="toc-text">拓展类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E7%B1%BB%E5%9E%8B"><span class="toc-text">交叉类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3-VS-%E4%BA%A4%E5%8F%89%E7%B1%BB%E5%9E%8B"><span class="toc-text">接口 VS 交叉类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B"><span class="toc-text">泛型对象类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">数组类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AA%E8%AF%BB%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">只读数组类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%83%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">元组类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AA%E8%AF%BB%E5%85%83%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">只读元组类型</span></a></li></ol></li></ol></li></ol></div><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el:"#vcomments",appId:"c9Ume1Givsusy6VyqV87iT2z-gzGzoHsz",appKey:"5F7jhJfENet59xDteaKqobSK",notify:!1,verify:!1,placeholder:"Just talk here......",avatar:"retro",pageSize:10,visitor:!0})</script></section></main><script>var user=[1,2,3,4]</script><footer class="footer"><div class="footer-info"><p>Copyright © 2018 - <span>2021</span> My Blog</p><p class="a">Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a> | Theme - <a target="_blank" rel="noopener" href="https://github.com/Chorer/hexo-theme-PureBlue">PureBlue</a></p></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script><script src="/js/navbar.js"></script><script src="/js/pace.min.js"></script><script src="/js/code.js"></script><script src="/js/load.js"></script><script src="/js/search.js"></script><script src="/js/post-except.js"></script><script src="/js/jquery.fancybox.js"></script><script src="/js/jquery.fancyboxStart.js"></script><script src="/js/toc.js"></script><script src="/js/jquery.toTop.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script><script src="/js/IndexToTop.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cd8f8959eacf92e"></script></body></html><!-- rebuild by neat -->

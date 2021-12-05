@@ -6,41 +6,17 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2021-12-04T08:41:40.857Z</updated>
+  <updated>2021-12-04T08:59:56.081Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>TypeScript 官方手册翻译计划【六】：类型操控-泛型</title>
+    <title>TypeScript 官方手册翻译计划【十一】：类型操控-模板字面量类型</title>
     <link href="https://chorer.github.io/2021/12/04/F-TypeScript%20%E5%AE%98%E6%96%B9%E6%89%8B%E5%86%8C%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92%E3%80%90%E5%8D%81%E4%B8%80%E3%80%91%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%93%8D%E6%8E%A7-%E6%A8%A1%E6%9D%BF%E5%AD%97%E9%9D%A2%E9%87%8F%E7%B1%BB%E5%9E%8B/"/>
     <id>https://chorer.github.io/2021/12/04/F-TypeScript 官方手册翻译计划【十一】：类型操控-模板字面量类型/</id>
     <published>2021-12-03T16:00:00.000Z</published>
-    <updated>2021-12-04T08:41:40.857Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/TypeScript%20%E5%AE%98%E6%96%B9%E6%89%8B%E5%86%8C%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92/banner.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
-    
-      <category term="TypeScript" scheme="https://chorer.github.io/categories/Front-end/TypeScript/"/>
-    
-    
-      <category term="TypeScript" scheme="https://chorer.github.io/tags/TypeScript/"/>
-    
-      <category term="documentation" scheme="https://chorer.github.io/tags/documentation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TypeScript 官方手册翻译计划【七】：类型操控-类型操作符</title>
-    <link href="https://chorer.github.io/2021/12/03/F-TypeScript%20%E5%AE%98%E6%96%B9%E6%89%8B%E5%86%8C%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92%E3%80%90%E4%B8%83%E3%80%91%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%93%8D%E6%8E%A7-%E7%B1%BB%E5%9E%8B%E6%93%8D%E4%BD%9C%E7%AC%A6/"/>
-    <id>https://chorer.github.io/2021/12/03/F-TypeScript 官方手册翻译计划【七】：类型操控-类型操作符/</id>
-    <published>2021-12-02T16:00:00.000Z</published>
-    <updated>2021-12-04T08:03:54.479Z</updated>
+    <updated>2021-12-04T08:59:56.081Z</updated>
     
     <summary type="html">
     
@@ -111,8 +87,32 @@
     <title>TypeScript 官方手册翻译计划【八】：类型操控-按索引访问的类型</title>
     <link href="https://chorer.github.io/2021/11/27/F-TypeScript%20%E5%AE%98%E6%96%B9%E6%89%8B%E5%86%8C%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92%E3%80%90%E5%85%AB%E3%80%91%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%93%8D%E6%8E%A7-%E6%8C%89%E7%B4%A2%E5%BC%95%E8%AE%BF%E9%97%AE%E7%9A%84%E7%B1%BB%E5%9E%8B/"/>
     <id>https://chorer.github.io/2021/11/27/F-TypeScript 官方手册翻译计划【八】：类型操控-按索引访问的类型/</id>
-    <published>2021-11-26T16:00:00.000Z</published>
-    <updated>2021-12-04T07:59:05.141Z</updated>
+    <published>2021-11-27T08:47:00.000Z</published>
+    <updated>2021-12-04T09:05:18.012Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/TypeScript%20%E5%AE%98%E6%96%B9%E6%89%8B%E5%86%8C%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92/banner.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Front-end" scheme="https://chorer.github.io/categories/Front-end/"/>
+    
+      <category term="TypeScript" scheme="https://chorer.github.io/categories/Front-end/TypeScript/"/>
+    
+    
+      <category term="TypeScript" scheme="https://chorer.github.io/tags/TypeScript/"/>
+    
+      <category term="documentation" scheme="https://chorer.github.io/tags/documentation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TypeScript 官方手册翻译计划【七】：类型操控-类型操作符</title>
+    <link href="https://chorer.github.io/2021/11/27/F-TypeScript%20%E5%AE%98%E6%96%B9%E6%89%8B%E5%86%8C%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92%E3%80%90%E4%B8%83%E3%80%91%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%93%8D%E6%8E%A7-%E7%B1%BB%E5%9E%8B%E6%93%8D%E4%BD%9C%E7%AC%A6/"/>
+    <id>https://chorer.github.io/2021/11/27/F-TypeScript 官方手册翻译计划【七】：类型操控-类型操作符/</id>
+    <published>2021-11-27T02:20:00.000Z</published>
+    <updated>2021-12-04T09:05:48.751Z</updated>
     
     <summary type="html">
     

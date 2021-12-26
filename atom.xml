@@ -6,10 +6,66 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chorer.github.io/"/>
-  <updated>2021-12-10T12:27:09.777Z</updated>
+  <updated>2021-12-26T01:58:50.197Z</updated>
   <id>https://chorer.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Chor 的 2021 年终总结 | 关于秋招的那些事</title>
+    <link href="https://chorer.github.io/2021/12/24/T-Chor%20%E7%9A%84%202021%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    <id>https://chorer.github.io/2021/12/24/T-Chor 的 2021 年终总结/</id>
+    <published>2021-12-23T16:00:00.000Z</published>
+    <updated>2021-12-26T01:58:50.197Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://myblog-1258623898.cos.ap-chengdu.myqcloud.com/2021%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/banner.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="记录" scheme="https://chorer.github.io/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="个人总结" scheme="https://chorer.github.io/categories/%E8%AE%B0%E5%BD%95/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="秋招" scheme="https://chorer.github.io/tags/%E7%A7%8B%E6%8B%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2021 秋招面经</title>
+    <link href="https://chorer.github.io/2021/12/23/T-2021%20%E7%A7%8B%E6%8B%9B%E9%9D%A2%E7%BB%8F/"/>
+    <id>https://chorer.github.io/2021/12/23/T-2021 秋招面经/</id>
+    <published>2021-12-22T16:00:00.000Z</published>
+    <updated>2021-12-26T02:40:30.207Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;记录秋招部分公司的面经&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;昆仑万维&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#昆仑万维&quot;&gt;&lt;/a&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="记录" scheme="https://chorer.github.io/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="个人总结" scheme="https://chorer.github.io/categories/%E8%AE%B0%E5%BD%95/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="秋招" scheme="https://chorer.github.io/tags/%E7%A7%8B%E6%8B%9B/"/>
+    
+      <category term="面经" scheme="https://chorer.github.io/tags/%E9%9D%A2%E7%BB%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>TypeScript 官方手册翻译计划【十三】：模块</title>
@@ -421,58 +477,6 @@
           &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
 &lt;p&gt;这是JS 原生方法原理探究系列的第七篇文章。本文会介绍如何实现 &lt;code&gt;Object.assign()&lt;/code&gt; 方法。&lt;/p&gt;
 &lt;h3 id=&quot;objectassign-的基本用法&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="https://chorer.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JS原生方法原理探究（六）从 Babel 转译过程浅谈 ES6 实现继承的原理</title>
-    <link href="https://chorer.github.io/2021/05/28/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E4%BB%8E%20Babel%20%E8%BD%AC%E8%AF%91%E8%BF%87%E7%A8%8B%E8%B0%88%E8%B0%88%20ES6%20%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF%E7%9A%84%E5%8E%9F%E7%90%86/"/>
-    <id>https://chorer.github.io/2021/05/28/F-JS原生方法原理探究（六）：从 Babel 转译过程谈谈 ES6 实现继承的原理/</id>
-    <published>2021-05-28T11:21:19.731Z</published>
-    <updated>2021-12-05T02:16:52.374Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-&lt;p&gt;这是JS 原生方法原理探究系列的第六篇文章。&lt;/p&gt;
-&lt;p&gt;都说 ES6 的 Class 是 ES5 的语法糖，那么 ES6 的 Class 是如何实现的呢？其实现继承的原理又是什么呢？不妨我们通过 Babel
-        
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="https://chorer.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JS 原生方法原理探究（五）：如何实现 instanceof？</title>
-    <link href="https://chorer.github.io/2021/05/26/F-JS%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%20instanceof%EF%BC%9F/"/>
-    <id>https://chorer.github.io/2021/05/26/F-JS原生方法原理探究（五）：如何实现 instanceof？/</id>
-    <published>2021-05-26T12:07:14.625Z</published>
-    <updated>2021-12-05T02:16:52.280Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-&lt;p&gt;这是JS 原生方法原理探究系列的第五篇文章。本文会介绍如何实现 &lt;code&gt;instanceof&lt;/code&gt; 方法。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;typeof&lt;/code&gt;
         
       
     
